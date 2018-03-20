@@ -1,0 +1,33 @@
+
+<div id="id-dialog-error">
+    <div class="dialog-title-error" [ngStyle]="{'background': tipoColor}">		
+        <h1 md-dialog-title>
+            <table>
+                <thead>
+                    <tr>
+			<th><img align ="end" src="assets/img/tienda/{{nombreImagen}}"></th>
+                        <th>{{cadenaHeader}}</th>
+                    </tr>
+		</thead>
+		<tbody></tbody>
+            </table>
+	</h1> 
+    </div>
+    <div md-dialog-content>	
+	<div class="texto-error">
+            <p>{{cadenaResumenError}}</p>
+        </div>
+	<div class="dialog-error-completo" [hidden]="ocultarErrorCompleto">{{cadenaError}}</div>
+    </div>
+    <div md-dialog-actions align="end">
+	<div class="dialog-error-acciones">
+            <div *ngIf="!ocultarVerMas ; else elseBlock">
+		<button [hidden]="ocultarVerMas" md-raised-button (click)="verMas()">Ver mas..</button>			
+                <button [hidden]="ocultarRegresar" md-raised-button (click)="regresarMenu()" md-dialog-close="cerrar">Regresar</button>
+            </div>
+            <ng-template #elseBlock>	
+		<button [hidden]="ocultarSalir" md-raised-button md-dialog-close="cerrar">Salir</button>
+            </ng-template>	
+	</div>		
+    </div>
+<div>

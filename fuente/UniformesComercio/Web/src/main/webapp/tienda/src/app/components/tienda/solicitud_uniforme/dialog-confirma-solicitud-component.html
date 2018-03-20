@@ -1,0 +1,17 @@
+<div md-dialog-content>	
+    <div class="dialConfirmaSolicitud">
+	<div class='fel'>Confirma tu pedido</div>
+	<div *ngFor="let kitEmpleado of solicitudes" >
+            <div class="emp">{{kitEmpleado.nombre}}</div>
+            <div *ngFor="let prenda of kitEmpleado.kit.prendas">
+                    <div class="b prenda" *ngIf="prenda.cantidad > 0 && prenda.tallaSeleccionada" >
+                        <img class="img" src="assets/img/tienda/{{prenda.imagen}}" /> {{prenda.cantidad}} {{prenda.descPrenda}} {{prenda.tallaSeleccionada.talla}} {{prenda.cantidad  * prenda.precio  | currency:'USD':true}}
+                    </div>
+		</div>
+           </div>
+    </div>
+</div>
+<div md-dialog-actions align="end">
+    <button class ="btn full " (click)="dialogRef.close(false)" >CANCELAR</button>
+    <button class ="btn full " (click)="dialogRef.close(true)" >ACEPTAR</button>
+</div>

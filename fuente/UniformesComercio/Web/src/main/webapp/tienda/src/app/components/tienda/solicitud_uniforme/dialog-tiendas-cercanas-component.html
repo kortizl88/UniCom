@@ -1,0 +1,13 @@
+<div md-dialog-content>	
+    <div class="dialTiendasCercanas">
+        <div class='tituloM'>Selecciona la tienda dónde recibirás tu uniforme</div>
+	<div class="selTiendas">
+            <md-select placeholder="Tienda" [(ngModel)]="tiendaSeleccionada">
+                <md-option *ngFor="let t of tiendas" [value]="t">{{ t.sucursal }}- {{t.nombreTienda }}</md-option>
+            </md-select>
+	</div>
+    </div>
+</div>
+<div md-dialog-actions align="end">
+    <button class ="btn full " (click)="dialogRef.close(tiendaSeleccionada)" >ACEPTAR</button>
+</div>

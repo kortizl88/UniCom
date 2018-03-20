@@ -1,0 +1,12 @@
+<div md-dialog-content class="dialogContratoSolicitaUniforme">
+    <img src="assets/img/tienda/politicas_1.png" height="825px" width="637px">     
+    <img src="assets/img/tienda/politicas_2.png" height="825px" width="637px">
+    <img src="assets/img/tienda/politicas_3.png" height="825px" width="637px">
+    <img src="assets/img/tienda/politicas_4.png" height="825px" width="637px">
+    <img src="assets/img/tienda/politicas_5.png" height="825px" width="637px">
+    <img src="assets/img/tienda/politicas_6.png" height="825px" width="637px">    
+</div>
+<div md-dialog-actions align="center">
+    <md-checkbox [ngClass]="'chkPol'" color="primary" [(ngModel)]="aceptaPolitica"><span class="leidoPol">He leído y aceptado las políticas y reglas de uniformes</span></md-checkbox>
+    <button [ngClass]="'btnAccPos'" md-raised-button md-dialog-close="cerrar" [disabled]="!aceptaPolitica">Acepto</button>
+</div>

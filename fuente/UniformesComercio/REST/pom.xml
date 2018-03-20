@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.elektra.uniformes.comercio</groupId>
+        <artifactId>UniformesComercio</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <groupId>com.elektra.uniformes.comercio</groupId>
+    <artifactId>REST</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>REST</name>
+    <url>http://maven.apache.org</url>
+    <properties>
+        <spring.version>3.0.3.RELEASE</spring.version>
+        <jackson.version>1.9.10</jackson.version>
+        <jdk.version>1.6</jdk.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.elektra.uniformes.comercio</groupId>
+            <artifactId>Negocio</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.elektra</groupId>
+            <artifactId>log4central</artifactId>
+            <version>4.0</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>6.0</version>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

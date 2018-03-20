@@ -1,0 +1,12 @@
+<div md-dialog-content>
+<!-- Componente Dialog -->
+    <H4>HUELLA</H4>
+    <img src="assets/img/tienda/huella.gif" height="240px" width="160px">
+    <h1>{{usuarioHuella.nombre}}</h1>
+    <h1>{{usuarioHuella.numeroEmpleado}}</h1>
+</div>
+<div md-dialog-actions align="end">
+	<button md-raised-button class="btnDet" md-dialog-close="cerrar" >Salir</button>
+    <button *ngIf="!entregado" md-raised-button (click)='confirmaRecepcionEmpleado(usuarioRecibe, usuarioEntrega)' class="btnDet">Confirmar entrega</button>
+	<button *ngIf="entregado" md-raised-button (click)='actualizaPedidoEntrega(usuarioRecibe, usuarioEntrega)' class="btnDet">Confirmar recepcion</button>
+</div>

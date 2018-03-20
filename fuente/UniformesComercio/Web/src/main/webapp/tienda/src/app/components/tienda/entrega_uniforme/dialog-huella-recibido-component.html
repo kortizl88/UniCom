@@ -1,0 +1,11 @@
+<div md-dialog-content>
+<!-- Componente Dialog -->
+    <H4>HUELLA EMPLEADO</H4>
+    <img src="assets/img/tienda/huella.gif" height="240px" width="160px">
+    <h1>{{usuarioHuella.nombre}}</h1>
+    <h1>{{usuarioHuella.numeroEmpleado}}</h1>
+</div>
+<div md-dialog-actions align="end">
+    <button md-raised-button (click)='iniciarConfirmaEntregaEmpleado(usuarioRecibe, usuarioEntrega)' class="btnDet">Confirmar</button>
+    <button class ="btn full " md-dialog-close="cerrar" >Salir</button>
+</div>

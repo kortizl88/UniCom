@@ -1,0 +1,73 @@
+<div class="wrapperSol">
+    <div class="tbSolicitudes">
+	<div class="guiaTienda">
+            <div class='pad'>
+		<div class='tiendaSeleccionada'>
+                    <div class="tienda">TIENDA RECEPTORA</div>
+                    <div class="nomTiendaRec">{{tiendaSolicitud.sucursal}}-{{tiendaSolicitud.nombreTienda}}</div><a (click)='tiendaSolicitud.tiendaReceptora == 0 && buscaTiendaSolicitud()' class="btnBusqueda">BUSCAR</a></div>
+                    <!-- <img src="assets/img/tienda/mujer-slider.png" class="imgGuia"> -->
+                    <div class="contGuiasMin">
+                        <ngx-siema [options]="options">
+                            <ngx-siema-slide>
+                                <div class="guiaSld">
+                                    <img (click)="muestraGuiaTallas('M')" src="assets/img/tienda/mujer-slider.png" alt="Smiley face" >
+                                </div>
+                            </ngx-siema-slide>
+                            <ngx-siema-slide>
+								<div class="guiaSld">
+                                    <img (click)="muestraGuiaTallas('H')" src="assets/img/tienda/caballero-slider.png"  alt="Smiley face">
+								</div>
+                            </ngx-siema-slide>
+                        </ngx-siema>
+                        <button type="button" class="btnSlide" (click)="prev()"> < </button>
+                        <button type="button" class="btnSlide" (click)="next()"> > </button>
+                    </div>                   
+            </div>
+	</div>
+	<div class="prendasSolicitud">
+            <div class='pad'>
+		<div class="selprend">SELECCIONA LAS PRENDAS A SOLICITAR</div>
+                <div class="ultSol">Última solicitud: 01/01/2017</div>
+                <div class="contSolTallas">
+                    <table class='tbPrendasTallas'>
+			<tr class="thPrendas">
+                            <td>Empleado</td>
+                            <td>Prenda</td>
+                            <td>Información</td>
+                            <td>Cantidad</td>
+                            <td>Talla</td>
+			</tr>
+			<tbody *ngFor="let kitEmpleado of solicitudEmplados">
+                            <tr *ngFor='let prenda of kitEmpleado.kit.prendas; let indP = index'>
+				<td>
+                                    <div [hidden]='indP > 0' class='b' >{{kitEmpleado.nombre}}</div>
+				</td>
+				<td>
+                                    <div><img src="assets/img/tienda/{{prenda.imagen}}" /></div>
+				</td>
+				<td class="alIzq">
+                                    <div>
+					<div>Descripción:<span class='infogris'>{{prenda.descPrenda}}</span></div>
+					<div>Precio:<span class='infogris'>{{prenda.precio | currency:'USD':true}}</span></div>
+                                    </div>
+				</td>
+				<td>
+                                    <md-select placeholder="Cantidad" [(ngModel)]="prenda.cantidad" (ngModelChange)="actualizaTotal()">
+                                        <md-option *ngFor="let cant of cantidadPorPrenda(prenda.minimo,prenda.maximo)" [value]="cant">{{ cant }}</md-option>
+                                    </md-select>
+				</td>
+				<td>
+                                    <md-select placeholder="Talla" [(ngModel)]="prenda.tallaSeleccionada">
+					<md-option *ngFor="let talla of prenda.tallas" [value]="talla">{{ talla.talla }}</md-option>
+                                    </md-select>
+				</td>
+                            </tr>
+			</tbody>
+                    </table>
+                    <div class="totalSol">TOTAL {{totalsolicitud  | currency:'USD':true}}</div>
+                </div>
+                <a (click)='guardaSolicitud()' class="btn2 bcenter">ENVIAR SOLICITUD</a>
+            </div>
+	</div>
+    </div>
+</div>		

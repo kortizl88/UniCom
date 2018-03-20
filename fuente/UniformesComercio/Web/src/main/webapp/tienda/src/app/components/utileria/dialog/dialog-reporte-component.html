@@ -1,0 +1,94 @@
+<h1 md-dialog-title>DETALLE DEL PEDIDO</h1>
+<div md-dialog-content>
+
+<!-- Componente Dialog -->   		
+<div class="cuadrobig">  		
+ 			<div class="padding">
+				<div class="retra">
+					<div class="modavatar">
+						<img src="assets/img/tienda/chino.jpg">
+					</div>
+				</div>					 				
+
+				<div class="detped"> 
+					<div class="detlab">
+						Nombre del empleado
+					</div>
+					<div class="detval">												
+						{{pedido.nombreEmp}}
+					</div> 
+		 
+					<div class="detlab">
+						Número de empleado
+					</div>
+					<div class="detval">
+						{{pedido.numEmp}}
+					</div>
+
+					<div class="detlab">
+						Folio Pedido
+					</div>
+					<div class="detval">
+						{{pedido.folio}}
+					</div>
+
+					<div class="detlab">
+						Nombre de tienda
+					</div>
+					<div class="detval">
+						{{pedido.nombreTienda}}
+					</div>	
+
+					<div class="detlab">
+						Número de tienda
+					</div>
+					<div class="detval">
+						{{pedido.noTienda}}
+					</div>		
+
+					<div class="detlab">
+						Fecha de solicitud
+					</div>
+					<div class="detval">
+						{{pedido.fecha}}
+					</div>
+					<div class="clear"></div>
+
+				</div> 
+
+				<div class="clear"></div>
+				<div class="overflow">
+					<table class="items nowrap   w100">
+						<thead> 
+							<tr>  
+								<th>Pedido</th> 
+								<th>SKU</th> 
+								<th>Descripción</th> 
+								<th>Cantidad</th> 
+								<th>Cancelación</th> 
+								<th>Remisión</th> 
+								<th>No. Remisión</th> 
+								<th>Estatus</th>  
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let detalleProducto of detallesPedidos" >  
+								<td>{{detalleProducto.pedidoCD}}</td>  
+								<td>{{detalleProducto.sku}}</td> 
+								<td>{{detalleProducto.descripcionPrenda}}</td>  
+								<td>{{detalleProducto.cantidad}}</td>  
+								<td>{{detalleProducto.fechaCancelacion}}</td> 
+								<td>{{detalleProducto.remision}}</td>  
+								<td>{{detalleProducto.noRemision}}</td>  
+								<td>{{detalleProducto.estatus}}</td>  
+							</tr>      
+						</tbody>
+					</table> 
+				</div>
+
+			</div>  
+		</div>
+	</div>
+<div md-dialog-actions align="end">
+    <button class ="btn full " md-dialog-close="cerrar">Salir</button>
+</div>

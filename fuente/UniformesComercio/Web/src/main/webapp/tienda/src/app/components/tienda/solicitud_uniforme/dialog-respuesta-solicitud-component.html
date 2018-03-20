@@ -1,0 +1,20 @@
+<div md-dialog-content>	
+    <div class="dialRespuestaSolicitud">
+        <div class='fel'>!Felicidades!, Ya solicitaste tu uniforme</div>
+        <div *ngFor="let sol of solicitudes" >
+            <div class="emp">
+                <img src="assets/img/tienda/solOK.png" class="imgSolOk"/> {{sol.nombre}}
+            </div>
+            <div class="detSol">
+                Tú folio de solicitud es el <span class='b idSol'>{{sol.solicitud}}</span>
+            </div>
+	</div>
+        <div class="rec">
+            <div class="b i rojo">Recuerda!</div>
+                <div>Puedes darle seguimiento a tu solicitud en la opción <span class="b">Estatus de mi Uniforme</span></div>
+            </div>
+	</div>
+</div>
+<div md-dialog-actions align="end">
+    <button class ="btn full " (click)="dialogRef.close(true)" >ACEPTAR</button>
+</div>

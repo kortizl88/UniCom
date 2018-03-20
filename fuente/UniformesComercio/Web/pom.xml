@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.elektra.uniformes.comercio</groupId>
+        <artifactId>UniformesComercio</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <groupId>com.elektra.uniformes.comercio</groupId>
+    <artifactId>WebUniformesComercio</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>WebUniformesComercio</name>
+    <url>http://WebUniformesComercio</url>
+    
+    <dependencies>
+        <dependency>
+            <groupId>com.elektra.uniformes.comercio</groupId>
+            <artifactId>REST</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>        
+    </dependencies>
+    
+    <build>
+        <finalName>WebUniformesComercio</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <!--excluye carpeta angular 4-->
+                    <excludes>
+                        <exclude>tienda/</exclude>
+                    </excludes>                                 
+                </configuration>
+            </plugin>           
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>                          
+                    <warSourceExcludes>tienda/</warSourceExcludes>                      
+                    <!--packagingExcludes>WEB-INF/web.xml</packagingExcludes-->
+                </configuration>
+            </plugin> 
+            <!--Plugin Angular 4-->
+<!--            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.5.0</version>
+                <executions>
+                    <execution>
+                         <id>exec-npm-install</id>
+                         <phase>generate-sources</phase>
+                         <configuration>
+                             <workingDirectory>${project.basedir}/src/main/webapp/tienda</workingDirectory>                             
+                             <executable>npm.cmd</executable>
+                             <arguments>
+                                 <argument>run</argument>
+                                 <argument>build</argument>
+                             </arguments>
+                         </configuration>
+                         <goals>
+                             <goal>exec</goal>
+                         </goals>
+                     </execution>                                        
+                </executions>
+            </plugin>                     -->
+        </plugins>
+    </build>
+    <properties>
+        <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
+    </properties>
+</project>

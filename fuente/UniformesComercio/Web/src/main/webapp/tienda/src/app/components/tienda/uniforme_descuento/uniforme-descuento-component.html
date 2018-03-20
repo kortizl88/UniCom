@@ -1,0 +1,65 @@
+<div class="main "> 
+    <!-- Componente de busqueda de excepciones-->
+    <dl class="accordion2" id="accordion2">  
+	<dd>  
+        <div class="mcontent">	
+            <br>
+		<b>Consultar solicitudes</b><br>  					 
+                <div class="element5">
+                    <div class="div_select">																	
+			<md-select [(ngModel)]="solicitudVoluntaria" (ngModelChange)="seleccionaFolioSolicitudVoluntaria()"> 
+                            <md-option *ngFor="let solicitud of solicitudesVoluntarias" [value]="solicitud">
+                                {{solicitud?.cadenaFechaCaptura}}
+                            </md-option>
+			</md-select>														
+                    </div>
+		</div> 
+            <br> 
+        </div><!-- content--> 
+        </dd>     
+	</dl>
+        <div class="content">   
+            <div class="border">
+                <div class="padding overflow mh320">   
+                    <table class="items ccenter nowrap">
+			<thead> 
+                            <tr>   
+				<th>No. Pedido</th>  
+				<th>SKU</th>
+				<th>Descripción</th>
+				<th>Cantidad</th>	
+				<th>Pagado</th>															
+				<th>Por Pagar</th>
+				<th>Total</th>
+				<th>Detalle</th>
+                            </tr>
+			</thead>
+			<tbody *ngFor="let select of pedidosDescuentos; let idx = index">
+                            <tr *ngIf="idx != this.pedidosDescuentos.length-1; else elseBlock">								
+                                <td>{{select?.noPedido}}</td>
+				<td>{{select?.cadenaSku}}</td>
+                                <td>{{select?.cadenaDescripcion}}</td>								
+				<td>{{select?.noCantidad}}</td>
+				<td>{{select?.cadenaPagado}}</td>									
+				<td>{{select?.cadenaSaldoPorPagar}}</td>
+				<td>{{select?.cadenaCostoPrenda}}</td>								
+				<td><button md-button (click)="consultarInformacionPedidoDescuentos(select)">Ver detalle</button></td>									
+                            </tr>
+                            <ng-template #elseBlock>								
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>								
+                                    <td class="tipo-letra-totales">Totales</td>
+                                    <td class="tipo-letra-totales">{{select?.cadenaPagado}}</td>									
+                                    <td class="tipo-letra-totales">{{select?.cadenaSaldoPorPagar}}</td>
+                                    <td class="tipo-letra-totales">{{select?.cadenaCostoPrenda}}</td>							
+				</tr>
+                            </ng-template>
+			</tbody>
+                    </table> 
+		</div>  
+            </div>
+        </div><!-- content-->
+</div>
+						

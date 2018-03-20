@@ -1,0 +1,9 @@
+<div md-dialog-content>
+    <!-- Componente Dialog -->
+    <div *ngIf="genero == 'H' ;then muestraCaballero else muestraDama"></div>              
+    <ng-template #muestraCaballero><img src="assets/img/tienda/Como-elegir-mi-talla_Caballero.jpg" height="825px" width="637px"> </ng-template>            
+    <ng-template #muestraDama><img src="assets/img/tienda/Como-elegir-mi-talla_Mujer.jpg" height="825px" width="637px"></ng-template> 
+</div>
+<div md-dialog-actions align="end">
+    <button class ="btn full " md-dialog-close="cerrar" >Salir</button>
+</div>
