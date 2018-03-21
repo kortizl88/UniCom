@@ -12,4 +12,12 @@
     <version>1.0-SNAPSHOT</version>
     <name>Utilerias</name>
     <url>http://maven.apache.org</url>
+    <dependencies>
+        <dependency>
+            <groupId>com.elektra</groupId>
+            <artifactId>log4central</artifactId>
+            <version>4.0</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
 </project>

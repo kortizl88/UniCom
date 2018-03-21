@@ -1,11 +1,12 @@
 <div class="wrapperEntrega" md-dialog-content>
-    <div class="entRecibe">Confirmar Recepción</div><br/>
+    <div class="entRecibe">CONFIRMAR RECEPCIÓN</div>
     <div class="leyendaConfirmacionEntrega">
-        <span class="usrEnt">{{usuarioRecibe.empleado}} {{usuarioRecibe.nombre}}</span>, con tu huella aceptas la recepción del siguiente kit de uniforme de <br/><span class="usrEnt">{{usuarioEntrega.empleado}} {{usuarioEntrega.nombre}}</span>
+        <span class="usrEnt">{{usuarioRecibe.empleado}} {{usuarioRecibe.nombre}}</span>
+        <br/>
+        <br/>Con tu huella aceptas la recepción del siguiente kit de uniforme:
     </div>
-    <br/>
     <div>
-        <table class="tablaEnt">
+        <table class="tablaEnt det">
             <tr>
                 <th>Cantidad</th>
                 <th>Descripcion</th>
@@ -17,8 +18,12 @@
         </table>
     </div>
     <br/>
+    <div class="leyendaConfirmacionEntrega">
+        De parte de:
+        <span class="usrEnt">{{usuarioEntrega.empleado}} {{usuarioEntrega.nombre}}</span>
+    </div>
 </div>
 <div md-dialog-actions align="end">
-    <button md-raised-button (click)="cancelaRecepcion()" [ngClass]="'btnAccNeg'" >Cerrar</button>&nbsp;&nbsp;
-    <button md-raised-button (click)="iniciarHuellaEmpleadoConfirmacion(usuarioRecibe,usuarioEntrega)"  [ngClass]="'btnAccPos'" >Acepto</button>
+    <button md-raised-button (click)="cancelaRecepcion()" [ngClass]="'btnAccNeg'">Cerrar</button>&nbsp;&nbsp;
+    <button md-raised-button (click)="iniciarHuellaEmpleadoConfirmacion(usuarioRecibe,usuarioEntrega)" [ngClass]="'btnAccPos'">Acepto  &#10004;</button>
 </div>

@@ -20,17 +20,22 @@ public class DetalleEntrega {
     @PropiedadMap(id=true, campo="FICANAL")
     private int noCanal;
     @PropiedadMap(id=true, campo="FIIDSUCURSAL")
-    private int noSucursal;      
+    private int noSucursal;
     @PropiedadMap(id=true, campo="FIPEDIDO")
     private int pedido;
     @PropiedadMap(id=true, campo="FISKU")
     private int sku;
     @PropiedadMap(id=true, campo="PRENDA")
     private String prenda;
+    @PropiedadMap(campo="FCDIRECCIONIP")
+    private String tiendaIP;
     @PropiedadMap(campo="FICANTIDAD")
     private int cantidad;
     @PropiedadMap(campo="FIREMISION")
     private int remision;
+    
+    private boolean errorEntrega;
+    private String mensaje;
 
     /**
      * @return the solicitud
@@ -146,6 +151,48 @@ public class DetalleEntrega {
 
     public void setNoSucursal(int noSucursal) {
         this.noSucursal = noSucursal;
+    }
+
+    /**
+     * @return the errorEntrega
+     */
+    public boolean isErrorEntrega() {
+        return errorEntrega;
+    }
+
+    /**
+     * @param errorEntrega the errorEntrega to set
+     */
+    public void setErrorEntrega(boolean errorEntrega) {
+        this.errorEntrega = errorEntrega;
+    }
+
+    /**
+     * @return the mensaje
+     */
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    /**
+     * @param mensaje the mensaje to set
+     */
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    /**
+     * @return the tiendaIP
+     */
+    public String getTiendaIP() {
+        return tiendaIP;
+    }
+
+    /**
+     * @param tiendaIP the tiendaIP to set
+     */
+    public void setTiendaIP(String tiendaIP) {
+        this.tiendaIP = tiendaIP;
     }
     
     

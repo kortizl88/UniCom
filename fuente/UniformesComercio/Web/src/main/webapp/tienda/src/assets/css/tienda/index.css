@@ -1380,6 +1380,10 @@ b.tcliente {
     font-size:13px;
 }
 
+.tablaEnt.det{
+    box-shadow: 0 5px 15px rgba(17, 17, 17, 0.2);
+}
+
 .tablaEnt th{
     border-bottom: 1px solid #b4a373;
     color: #b4a373;
@@ -1404,7 +1408,7 @@ b.tcliente {
     text-align: left;
     font-weight: 700;
     font-size: 15px;
-    color: #7b7777;
+    color: #000;
 }
 
 .contSol .selSol .mat-select-trigger{
@@ -1429,12 +1433,12 @@ b.tcliente {
     text-shadow: #c5c5c5 1px 1px 2px;
     padding: 3px;
 }
-.btnAccNeg{
+/*.btnAccNeg{
     color:#d81212!important;
 }
 .btnAccPos{
     color:#57a728!important;
-}
+}*/
 .leidoPol{
     font-weight: 700;
     padding: 5px;

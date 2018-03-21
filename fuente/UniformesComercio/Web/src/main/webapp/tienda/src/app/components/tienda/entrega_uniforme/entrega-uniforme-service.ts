@@ -14,7 +14,7 @@ import { WSUniformesComercioGlobalService } from '../../servicio/endpoint/ws-uni
 //Modelo
 import { WrapperRespuesta } from '../../modelo/wrapper_respuesta';
 import { ConfirmacionEntrega } from '../../modelo/confirmacion_entrega';
-import { Pedido } from '../../modelo/pedido';
+import { UsuarioRecibe } from '../../modelo/usuario_recibe';
 
 
 @Injectable()
@@ -37,13 +37,12 @@ export class EntregaService {
     /**
      * Envia la confirmacion de la entrega
     */
-    public postEntregaUniformes(pedidos:Pedido[]): Observable<WrapperRespuesta> { 
-	let confirmaciones:ConfirmacionEntrega[] = this.crearConfirmacionesEntrega(pedidos);
+    public postEntregaUniformes(entrega:UsuarioRecibe): Observable<WrapperRespuesta> { 
         let observable:Observable<WrapperRespuesta>;
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         try{            
-            observable = this.http.post(this.endPointWSUniformesComercio.urlPostEntregaUniformes(),confirmaciones)
+            observable = this.http.post(this.endPointWSUniformesComercio.urlPostEntregaUniformes(),entrega)
             .map((response: Response) => <WrapperRespuesta> response.json());           
         }catch(e){
             console.log('Ocurrio un error (EntregaService postEntregaUniformes):'+ e.name + ': ' + e.message);
@@ -54,6 +53,7 @@ export class EntregaService {
     /**
      * Envia la informacion restante de la entrega
     */
+   /*
     private crearConfirmacionesEntrega(pedidos:Pedido[]) : any[]{
         let arregloConfirmaciones = [];
         let envioConfirmacion:ConfirmacionEntrega = new ConfirmacionEntrega();
@@ -75,5 +75,5 @@ export class EntregaService {
         }
         return arregloConfirmaciones;
     }
-    
+    */
 }	

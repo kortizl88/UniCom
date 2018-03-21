@@ -119,7 +119,7 @@ export class DialogDetalleEntrega {
 
     public aplicaDescargaInv() {
         this.descargando = true;
-        this.entregaService.postEntregaUniformes(this.usuarioRecibe.pedidos).subscribe(
+        this.entregaService.postEntregaUniformes(this.usuarioRecibe).subscribe(
             respuestaWS => {
                 if (!respuestaWS.error) {
                     console.log(respuestaWS.respuesta);

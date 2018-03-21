@@ -19,15 +19,16 @@ import org.springframework.stereotype.Component;
  */
 @Component("negocioEntrega")
 public class NegocioEntrega {
+
     @Autowired
     @Qualifier("daoEntrega")
     private DAOEntrega daoEntrega;
-    
+
     public ArrayList<EntregaDTO> getPendientesEntrega(int numEmp) throws Exception {
         return daoEntrega.getPendientesEntrega(numEmp);
     }
 
-    public ArrayList<ConfirmacionEntrega> postConfirmacionEntrega(ArrayList<ConfirmacionEntrega> confirmaciones) throws Exception {
-        return daoEntrega.postConfirmacionEntrega(confirmaciones);
+    public void postConfirmacionEntrega(EntregaDTO confirmaciones) throws Exception {
+        daoEntrega.postConfirmacionEntrega(confirmaciones);
     }
 }

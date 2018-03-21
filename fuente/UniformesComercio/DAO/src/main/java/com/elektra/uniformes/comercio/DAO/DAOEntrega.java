@@ -7,6 +7,7 @@ package com.elektra.uniformes.comercio.DAO;
 import Com.Elektra.Log.Dao.LogeoDAO;
 import com.elektra.mapper.Mapper;
 import com.elektra.uniformes.comercio.Modelo.ConfirmacionEntrega;
+import com.elektra.uniformes.comercio.Modelo.DetalleEntrega;
 import com.elektra.uniformes.comercio.Modelo.EntregaDTO;
 import com.elektra.uniformes.comercio.utilerias.FuncionesBD;
 import java.sql.CallableStatement;
@@ -86,13 +87,18 @@ public class DAOEntrega {
     }
     
     
-    public ArrayList<ConfirmacionEntrega> postConfirmacionEntrega(ArrayList<ConfirmacionEntrega> confirmaciones) throws Exception {
+    public void postConfirmacionEntrega(EntregaDTO entrega) throws Exception {
         Connection conn = null;
         CallableStatement cs = null;        
         ResultSet rs = null;
         Mapper m = new Mapper();
         OracleConnection oracleConnection = null;
         try {
+            for (DetalleEntrega p:entrega.getPedidos()) {
+                p.setErrorEntrega(false);
+                p.setMensaje("YA CAYO A LA BD");
+            }
+            /*
             for (int i = 0; i < confirmaciones.size(); i++) {
                 System.out.println("FIFOLIOSOLICITUD " + confirmaciones.get(i).getNoFolioSolicitud());   
                 System.out.println("FIIDDETALLE " + confirmaciones.get(i).getNoIdDetalle());
@@ -109,7 +115,7 @@ public class DAOEntrega {
                 System.out.println("FIERROR " + confirmaciones.get(i).getNoError());
                 System.out.println("FCCOMENTARIOS " + confirmaciones.get(i).getCadenaComentarios());                
             }
-            /*
+            
             conn = fabricaDAO.getConexion();
 
             if (conn == null) {
@@ -159,6 +165,5 @@ public class DAOEntrega {
         } finally {
             close(conn, cs, rs);
         }
-        return confirmaciones;
     }
 }

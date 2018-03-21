@@ -1,23 +1,30 @@
 <div class="wrapperEntrega" md-dialog-content>
-	<div class="entRecibe">Confirmar Entrega</div><br/>
-	<div class="leyendaConfirmacionEntrega">
-        <span class="usrEnt">{{usuarioEntrega.empleado}} {{usuarioEntrega.nombre}}</span>, con tu huella aceptas la entrega del siguiente kit de uniforme a <br/><span class="usrEnt">{{usuarioRecibe.empleado}} {{usuarioRecibe.nombre}}</span>
-    </div>
+    <div class="entRecibe">CONFIRMAR ENTREGA</div>
+    <div class="leyendaConfirmacionEntrega">
+        <span class="usrEnt">{{usuarioEntrega.empleado}} {{usuarioEntrega.nombre}}</span>
         <br/>
-        <div>
-            <table class="tablaEnt">
-                <tr>
-                    <th>Cantidad</th>
-                    <th>Descripcion</th>
-		</tr>
-		<tr *ngFor="let pedido of usuarioRecibe.pedidos">
-                    <td>{{pedido.cantidad}}</td>
-                    <td>{{pedido.prenda}}</td>
-		</tr>
-            </table>
-	</div>    
+        <br/>Con tu huella aceptas la entrega del siguiente kit de uniforme:
+        <br/>
+    </div>
+    <div>
+        <table class="tablaEnt det">
+            <tr>
+                <th>Cantidad</th>
+                <th>Descripcion</th>
+            </tr>
+            <tr *ngFor="let pedido of usuarioRecibe.pedidos">
+                <td>{{pedido.cantidad}}</td>
+                <td>{{pedido.prenda}}</td>
+            </tr>
+        </table>
+    </div>
+    <br/>
+    <div class="leyendaConfirmacionEntrega">
+            Al empleado:
+        <span class="usrEnt">{{usuarioRecibe.empleado}} {{usuarioRecibe.nombre}}</span>
+    </div>
 </div>
 <div md-dialog-actions align="end">
-    <button md-raised-button (click)="cancelaEntrega()" [ngClass]="'btnAccNeg'" >Cerrar</button>&nbsp;&nbsp;
-    <button md-raised-button (click)="iniciarHuellaEmpleadoEntrega(usuarioRecibe, usuarioEntrega)" [ngClass]="'btnAccPos'" >Acepto</button>
+    <button md-raised-button (click)="cancelaEntrega()" [ngClass]="'btnAccNeg'">Cerrar</button>&nbsp;&nbsp;
+    <button md-raised-button (click)="iniciarHuellaEmpleadoEntrega(usuarioRecibe, usuarioEntrega)" [ngClass]="'btnAccPos'">Acepto  &#10004;</button>
 </div>

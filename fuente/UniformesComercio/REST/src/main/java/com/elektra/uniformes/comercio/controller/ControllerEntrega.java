@@ -6,6 +6,7 @@ package com.elektra.uniformes.comercio.controller;
 
 import Com.Elektra.Log.Dao.LogeoDAO;
 import com.elektra.uniformes.comercio.Modelo.ConfirmacionEntrega;
+import com.elektra.uniformes.comercio.Modelo.EntregaDTO;
 import com.elektra.uniformes.comercio.controller.negocio.NegocioEntrega;
 import com.elektra.uniformes.comercio.controller.negocio.NegocioSolicitud;
 import com.elektra.uniformes.comercio.response.Respuesta;
@@ -51,13 +52,13 @@ public class ControllerEntrega {
     
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public @ResponseBody
-    Respuesta postConfirmacionEntrega(@RequestBody ConfirmacionEntrega[] arregloConfirmaciones) {
+    Respuesta postConfirmacionEntrega(@RequestBody EntregaDTO entrega) {
         Respuesta r = new Respuesta();
-        try {
-            ArrayList<ConfirmacionEntrega> confirmaciones = new ArrayList<ConfirmacionEntrega>(Arrays.asList(arregloConfirmaciones));            
-            r.setRespuesta(negocioEntrega.postConfirmacionEntrega(confirmaciones));
+        try {           
+            negocioEntrega.postConfirmacionEntrega(entrega);
+            r.setRespuesta(entrega);
             r.setError(false);
-            r.setMensaje("Consulta obtenida correctamente");
+            r.setMensaje("Entregado Correctamente");
         } catch (Exception e) {
             r.setError(true);
             r.setMensaje(e.getMessage());

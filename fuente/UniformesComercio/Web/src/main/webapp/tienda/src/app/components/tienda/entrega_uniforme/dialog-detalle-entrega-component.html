@@ -1,6 +1,6 @@
 <div class="wrapperEntrega" md-dialog-content>
     <div class="entRecibe">{{usuarioRecibe.nombre}}</div><br/>
-        <table class="tablaEnt">
+        <table class="tablaEnt det">
             <tr>
                 <th>Solicitud</th>
 				<th>Pedido</th>
@@ -19,12 +19,12 @@
             <td>{{pedido.remision}}</td>
             <td>{{pedido.resEntrega}}</td>
         </tr>
-	</table>
-    <br/>
+    </table>
     <div class='errHuella'> {{msjError}}</div>
+    <br/>
 </div>
-<br/>
+
 <div md-dialog-actions align="end" *ngIf="!descargando">
     <button md-raised-button [ngClass]="'btnAccNeg'" md-dialog-close>Cancelar</button>&nbsp;&nbsp;
-    <button md-raised-button [ngClass]="'btnAccPos'" (click)="iniciarEntregaUniforme(usuarioRecibe,usuarioEntrega)">Entregar</button>
+    <button md-raised-button [ngClass]="'btnAccPos'" (click)="iniciarEntregaUniforme(usuarioRecibe,usuarioEntrega)">Entregar &#10004;</button>
 </div>
