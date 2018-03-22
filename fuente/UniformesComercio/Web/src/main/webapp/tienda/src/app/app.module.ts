@@ -16,6 +16,9 @@ import { SolicitudUniformeComponent } from './components/tienda/solicitud_unifor
 import { EstatusUniformeComponent } from './components/tienda/estatus_uniforme/estatus-uniforme-component';
 import { UniformeDescuentoComponent } from './components/tienda/uniforme_descuento/uniforme-descuento-component';
 import { EntregaUniformeComponent, SearchFilterPipe } from './components/tienda/entrega_uniforme/entrega-uniforme-component';
+import { AdministracionComponent } from './components/administracion/administracion-uniforme-component';
+import { AdministracionCargasComponent } from './components/administracion/cargas/administracion-uniforme-cargas-component';
+import { AdministracionReporteComponent } from './components/administracion/reporte/administracion-uniforme-reporte-component';
 
 import {
     DialogDetalleEntrega,
@@ -106,7 +109,10 @@ import { CdkTableModule } from '@angular/cdk';
         DialogErrorComponent,
         DialogSicronoComponent,
         DialogGuiaComponent,
-        SearchFilterPipe
+        SearchFilterPipe,
+        AdministracionComponent,
+        AdministracionCargasComponent,
+        AdministracionReporteComponent
 
     ],
     imports: [

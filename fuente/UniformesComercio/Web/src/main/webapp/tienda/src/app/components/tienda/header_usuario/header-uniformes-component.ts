@@ -1,6 +1,6 @@
 import { URLSearchParams } from "@angular/http";
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { NavigationStart } from '@angular/router';
 import { MdDialog, MdDialogRef } from '@angular/material';
 
@@ -32,69 +32,78 @@ export class HeaderUniformesComponent implements OnInit {
     private datosUsuarioUniformes: DatosUsuarioUniformesGlobalService;
     public usuario: Usuario;
     public menu: Menu;
-    public ocultarListaUsuario:boolean;
-    public verMenuHeader:boolean;
-    private router:Router;
-    private dialogGeneral:DialogGeneralComponent;
-    private dialogGuia:DialogGeneralComponent;
-   
-    constructor(usuarioService:UsuarioService, datosUsuarioUniformes:DatosUsuarioUniformesGlobalService, router: Router, public dialog: MdDialog, public endPointWSUniformesComercio:WSUniformesComercioGlobalService) {
-	this.usuario =	new Usuario();		
-	this.usuarioService = usuarioService;
+    public ocultarListaUsuario: boolean;
+    public verMenuHeader: boolean;
+    public administracion: boolean;
+    public logueado: boolean;
+    public menuAdmin: Menu[];
+    public empleadoPar: number;
+    private router: Router;
+    private dialogGeneral: DialogGeneralComponent;
+    private dialogGuia: DialogGeneralComponent;
+    private subs: any;
+
+    constructor(usuarioService: UsuarioService, datosUsuarioUniformes: DatosUsuarioUniformesGlobalService, router: Router, public dialog: MdDialog, public endPointWSUniformesComercio: WSUniformesComercioGlobalService) {
+        this.usuario = new Usuario();
+        this.usuarioService = usuarioService;
         this.datosUsuarioUniformes = datosUsuarioUniformes;
-	this.router = router;
-	this.ocultarListaUsuario = true;
-        this.verMenuHeader = false;
+        this.router = router;
+        this.ocultarListaUsuario = true;
+        this.verMenuHeader = true;
         this.dialogGeneral = new DialogGeneralComponent(this.dialog);
-        this.dialogGeneral.iniciarEspera();
-        this.dialogGeneral.guia();		 	
-	this.router.events.subscribe((event) => {
+        this.logueado = false;
+        this.router.events.subscribe((event) => {
             if (event instanceof NavigationStart) {
-		if(event.url != '/menu'){
-                    this.verMenuHeader = true;
-		}else{
-                    this.verMenuHeader = false;
-		}
+                this.verMenuHeader = true;
+                let rut = event.url.split("=")[0];
+                switch (rut) {
+                    case '/menu': this.verMenuHeader = false;
+                        break;
+                    case '/admin': this.menuAdmin = [new Menu(1, "Carga Semestral", "Carga Semestral", "/admin/cargas"), new Menu(2, "Reporte", "Reporte", "/admin/reporte")];
+                        this.administracion = true;
+                        break;
+                    case '/?numEmpleado': this.obtieneParamatroEmpleado();
+                        break;
+                }
             }
-	});
+        });
+
+        /*sub evento notificacion login*/
+        this.subs = this.datosUsuarioUniformes.notificaLogin.subscribe((respLogin) => {
+            if (respLogin.valido)
+                this.logueado = true;
+            else
+                this.logueado = false;
+        });
     }
 
     ngOnInit() {
-	let numeroEmpleadoPar = this.getParam('numEmpleado');
-/*	let pais = this.getParam('pais');
-	let canal = this.getParam('canal');
-	let tienda = this.getParam('sucursal');
-*/
-//      if(!numeroEmpleadoPar || !pais || !canal || !tienda){	
-        if(!numeroEmpleadoPar){		
-            this.dialogGeneral.cerrarEspera();						
-            this.dialogGeneral.mensajeError("No se proporcionaron los parámetros correctos ",'',1);			
-	}
-	else{
-            /*
-            let tiendaCC:string;
-			
-            if(tienda<1000){
-		tiendaCC = "520"+String(tienda);
-            }else{
-		tiendaCC = "52"+String(tienda);
-            }			
-            this.endPointWSUniformesComercio.setCadenaUrl(document.getElementById('id_endPointWS').textContent.trim());
-            this.consultarDatosEmpleado(numeroEmpleadoPar);
-            this.datosUsuarioUniformes.setTiendaLogin( new Tienda( pais, String(canal), Number(tiendaCC) ) );
-            */		
-            this.endPointWSUniformesComercio.setCadenaUrl(document.getElementById('id_endPointWS').textContent.trim());
-            this.consultarDatosEmpleado(numeroEmpleadoPar);
-	}
+
     }
-	
-    private consultarDatosEmpleado(numEmpleado : number): void {
+
+    ngOndestroy() {
+        this.subs.unsubscribe();
+    }
+
+    private obtieneParamatroEmpleado() {
+        this.empleadoPar = this.getParam('numEmpleado');
+        if (!this.empleadoPar) {
+            this.dialogGeneral.cerrarEspera();
+            this.dialogGeneral.mensajeError("No se proporcionaron los parámetros correctos ", '', 1);
+        }
+        else {
+            this.endPointWSUniformesComercio.setCadenaUrl(document.getElementById('id_endPointWS').textContent.trim());
+            this.consultarDatosEmpleado(this.empleadoPar);
+        }
+    }
+
+    private consultarDatosEmpleado(numEmpleado: number): void {
         this.usuarioService.getDatosUsuario(numEmpleado).subscribe(
-            respuestaUsuario => {                   
-		this.usuario = respuestaUsuario.respuesta;
-		this.datosUsuarioUniformes.setDatosUsuario(this.usuario);
-		this.datosUsuarioUniformes.setTiendaLogin( new Tienda( this.usuario.idPais, String(this.usuario.canal), this.usuario.ceco ) );
-		/*obtener menu*/
+            respuestaUsuario => {
+                this.usuario = respuestaUsuario.respuesta;
+                this.datosUsuarioUniformes.setDatosUsuario(this.usuario);
+                this.datosUsuarioUniformes.setTiendaLogin(new Tienda(this.usuario.idPais, String(this.usuario.canal), this.usuario.ceco));
+                /*obtener menu*/
                 /*				
                 this.usuarioService.getMenuUsuario(numEmpleado).subscribe(
                     respuestaMenu => {                    
@@ -109,8 +118,8 @@ export class HeaderUniformesComponent implements OnInit {
                         this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getMenuUsuario",error,1);
                     }
                 );*/
-                this.usuarioService.getMenuFuncionNegocio(numEmpleado,this.datosUsuarioUniformes.getDatosUsuario().funcionSAP,this.datosUsuarioUniformes.getDatosUsuario().negocio).subscribe(
-                    respuestaMenu => {                    
+                this.usuarioService.getMenuFuncionNegocio(numEmpleado, this.datosUsuarioUniformes.getDatosUsuario().funcionSAP, this.datosUsuarioUniformes.getDatosUsuario().negocio).subscribe(
+                    respuestaMenu => {
                         this.menu = respuestaMenu.respuesta;
                         this.datosUsuarioUniformes.setMenu(this.menu);
                         this.router.navigateByUrl('menu');
@@ -119,23 +128,23 @@ export class HeaderUniformesComponent implements OnInit {
                     error => {
                         console.log(error);
                         this.dialogGeneral.cerrarEspera();
-                        this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getMenuFuncionNegocio",error,1);
+                        this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getMenuFuncionNegocio", error, 1);
                     }
                 );
             },
-            error => {		
+            error => {
                 this.dialogGeneral.cerrarEspera();
-		this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getDatosUsuario",error,1);
+                this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getDatosUsuario", error, 1);
             }
         );
     }
-	
+
     /*
     * Recupera el parametros de la URL, que enviará el navegador del mago
     */
-    private getParam(nombrePar:any){
-	let params = new URLSearchParams(window.location.search.slice(1));
-	let valorPar = params.get(nombrePar);
+    private getParam(nombrePar: any) {
+        let params = new URLSearchParams(window.location.search.slice(1));
+        let valorPar = params.get(nombrePar);
         return Number(valorPar);
     }
 
