@@ -49,31 +49,4 @@ export class EntregaService {
         }
         return observable;  
     }
-
-    /**
-     * Envia la informacion restante de la entrega
-    */
-   /*
-    private crearConfirmacionesEntrega(pedidos:Pedido[]) : any[]{
-        let arregloConfirmaciones = [];
-        let envioConfirmacion:ConfirmacionEntrega = new ConfirmacionEntrega();
-        for(let confirmacionEntrega of pedidos){
-            envioConfirmacion.noFolioSolicitud = confirmacionEntrega.solicitud;
-            envioConfirmacion.noIdDetalle = confirmacionEntrega.noIdDetalle
-            envioConfirmacion.noPais = confirmacionEntrega.noPais
-            envioConfirmacion.noCanal = confirmacionEntrega.noCanal
-            envioConfirmacion.noIdSucursal = confirmacionEntrega.noSucursal
-            envioConfirmacion.noNumPedido = confirmacionEntrega.pedido
-            envioConfirmacion.noSKU = confirmacionEntrega.sku
-            envioConfirmacion.noIdTipoEvento = 100; 
-            envioConfirmacion.cadenaXmlDatos = 'ENTREGA DEL UNIFORME SE ENCUENTRA COMPLETADA';
-            envioConfirmacion.noIdEstatusAnt = 5;
-            envioConfirmacion.noIdEstatusNvo = 6;
-            envioConfirmacion.noError = 0;
-            envioConfirmacion.cadenaComentarios = 'Sin comentarios presentes';
-            arregloConfirmaciones.push(envioConfirmacion);
-        }
-        return arregloConfirmaciones;
-    }
-    */
 }	

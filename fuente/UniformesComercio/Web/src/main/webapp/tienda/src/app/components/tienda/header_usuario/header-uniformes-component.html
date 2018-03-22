@@ -1,39 +1,63 @@
-    <!--Componente NavBar (Encabezado)--> 
-    <!--Componente Administrador Menu Usuario-->
-    <div class="header"> 
-        <div class="superior">
-            <div class=logo>
-                <div style="padding-left:3%;" >
-                    <img src="assets/img/tienda/logo.png" width="120px">
-                </div>
+<!--Componente NavBar (Encabezado)-->
+<!--Componente Administrador Menu Usuario-->
+<div class="header" [hidden]="administracion">
+    <div class="superior">
+        <div class=logo>
+            <div style="padding-left:3%;">
+                <img src="assets/img/tienda/logo.png" width="120px">
             </div>
-            <div class="usrInf" [hidden] ="!usuario">
-		<div style="padding-right:3%;">
-                    <img src="assets/img/tienda/user.svg"/>
-                    <span class="nombreUsr">
-                        <b>{{usuario.nombre}}</b>
-                        <div><span class="b">{{usuario.funcionSAP}}</span> - {{usuario.descPosicion}}</div>
-                        <div><span class="b">{{usuario.ceco}}</span> {{usuario.descCeco}}</div>
-                    </span>
-		</div>
-		<img  src="assets/img/tienda/guia_uniformes.png" width="30px"/>
+        </div>
+        <div class="usrInf" [hidden]="!usuario">
+            <div style="padding-right:3%;">
+                <img src="assets/img/tienda/user.svg" />
+                <span class="nombreUsr">
+                    <b>{{usuario.nombre}}</b>
+                    <div>
+                        <span class="b">{{usuario.funcionSAP}}</span> - {{usuario.descPosicion}}</div>
+                    <div>
+                        <span class="b">{{usuario.ceco}}</span> {{usuario.descCeco}}</div>
+                </span>
             </div>
-	</div>
-	<!--Componente Administrador Menu Usuario-->	
-        <div class="hspacer"></div>
-	<!--Componente Administrador Bienvenida-->
-        <div class="msjBienv">
-            <div [hidden]="verMenuHeader">
-		<div class="ttitulos">Sistema de Uniformes</div>
-		<div class="btitulos">Bienvenido {{usuario.nombre}}, selecciona la opción que desees consultar.</div>
-            </div>
-	</div>
-		
-	<div class="menuColap" [hidden] ="!verMenuHeader"> 
-            <a *ngFor='let mn of menu' [routerLink]="[mn.ruta]" class="opcM">{{mn.titulo}}</a>
-        </div>		
-        <!--Fin Componente Menu-->
+            <img src="assets/img/tienda/guia_uniformes.png" width="30px" />
+        </div>
     </div>
-<!--Fin Componente NavBar (Encabezado)-->
+    <!--Componente Administrador Menu Usuario-->
+    <div class="hspacer"></div>
+    <!--Componente Administrador Bienvenida-->
+    <div class="msjBienv">
+        <div [hidden]="verMenuHeader">
+            <div class="ttitulos">Sistema de Uniformes</div>
+            <div class="btitulos">Bienvenido {{usuario.nombre}}, selecciona la opción que desees consultar.</div>
+        </div>
+    </div>
 
-	
+    <div class="menuColap" [hidden]="!verMenuHeader">
+        <a *ngFor='let mn of menu' [routerLink]="[mn.ruta]" class="opcM">{{mn.titulo}}</a>
+    </div>
+</div>
+
+<!--Administracion-->
+<div class="header" *ngIf="(administracion == true && logueado == true)">
+    <div class="superior">
+        <div class=logo>
+            <div style="padding-left:3%;">
+                <img src="assets/img/tienda/logo.png" width="120px">
+            </div>
+        </div>
+        <div class="usrInf" [hidden]="!usuario">
+            <div style="padding-right:3%;">
+                <img src="assets/img/tienda/user.svg" />
+                <span class="nombreUsr">
+                    <b>{{usuario.nombre}}</b>
+                    <div>
+                        <span class="b">{{usuario.funcionSAP}}</span> - {{usuario.descPosicion}}</div>
+                    <div>
+                        <span class="b">{{usuario.ceco}}</span> {{usuario.descCeco}}</div>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="menuColap">
+        <a *ngFor='let mn of menuAdmin' [routerLink]="[mn.ruta]" class="opcM">{{mn.titulo}}</a>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="contCats">
+    <a *ngFor='let vista of menu' [routerLink]="[vista.ruta]" class="cats">
+        <img src="assets/img/tienda/online-shop.png">
+	<div class="titCat">{{vista.titulo}}</div>
+        <hr class="separador">
+	<span class="catDesc">{{vista.descMenu}}</span>
+    </a>
+</div> 

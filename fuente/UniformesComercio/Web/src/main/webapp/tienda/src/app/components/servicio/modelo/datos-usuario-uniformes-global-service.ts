@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 //Modelo
 import { Menu } from '../../modelo/menu';
 import { Usuario } from '../../modelo/usuario';
@@ -11,7 +12,8 @@ export class DatosUsuarioUniformesGlobalService {
     public usuario: Usuario;
     public menu: Menu;
     public tiendaLogin: Tienda;	
-	
+    public notificaLogin = new EventEmitter<any>();
+    
     constructor() {}
 		
     public setDatosUsuario (usuario : Usuario) : void{

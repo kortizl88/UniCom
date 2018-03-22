@@ -1,1 +1,6 @@
 unicom/fuente/UniformesComercio/Web/src/main/webapp/tienda/node_modules/**
+fuente/UniformesComercio/Web/target/WebUniformesComercio/WEB-INF/lib/DAO-1.0-SNAPSHOT.jar
+fuente/UniformesComercio/Web/target/WebUniformesComercio/WEB-INF/lib/DAO-1.0-SNAPSHOT.jar
+fuente/UniformesComercio/Web/target/WebUniformesComercio/WEB-INF/lib/Negocio-1.0-SNAPSHOT.jar
+fuente/UniformesComercio/Web/target/WebUniformesComercio/WEB-INF/lib/REST-1.0-SNAPSHOT.jar
+fuente/UniformesComercio/REST/target/surefire-reports/com.elektra.agenda.rest.AppTest.txt
