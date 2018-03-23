@@ -19,7 +19,7 @@ import { EntregaUniformeComponent, SearchFilterPipe } from './components/tienda/
 import { AdministracionComponent } from './components/administracion/administracion-uniforme-component';
 import { AdministracionCargasComponent } from './components/administracion/cargas/administracion-uniforme-cargas-component';
 import { AdministracionReporteComponent } from './components/administracion/reporte/administracion-uniforme-reporte-component';
-
+import { ModalCargaSemestralComponent } from './components/administracion/reporte/modal-carga-semestral-component';
 import {
     DialogDetalleEntrega,
     DialogConfirmaEntrega,
@@ -87,6 +87,7 @@ import { WSUniformesComercioGlobalService } from './components/servicio/endpoint
 
 
 import { CdkTableModule } from '@angular/cdk';
+import { AdministracionService } from './components/administracion/administracion-uniforme-service';
 @NgModule({
     declarations: [
         AppComponent,
@@ -112,7 +113,8 @@ import { CdkTableModule } from '@angular/cdk';
         SearchFilterPipe,
         AdministracionComponent,
         AdministracionCargasComponent,
-        AdministracionReporteComponent
+        AdministracionReporteComponent,
+        ModalCargaSemestralComponent
 
     ],
     imports: [
@@ -198,7 +200,8 @@ import { CdkTableModule } from '@angular/cdk';
         DialogGeneralComponent,
         UniformeDescuentoService,
         EntregaService,
-        WSUniformesComercioGlobalService
+        WSUniformesComercioGlobalService,
+        AdministracionService
 
     ],
 
@@ -216,7 +219,8 @@ import { CdkTableModule } from '@angular/cdk';
         DialogConfirmaRecibido,
         DialogErrorComponent,
         DialogSicronoComponent,
-        DialogGuiaComponent
+        DialogGuiaComponent,
+        ModalCargaSemestralComponent
 
     ] // Component Dialog
 })

@@ -82,4 +82,17 @@ public class FuncionesBD {
     
     @Value("#{propiedadesUniformesComercio['TYPE_CONFIRMACION_ENTREGA']}")
     public String TYPE_CONFIRMACION_ENTREGA;
+    
+    /*administrador*/
+    @Value("#{propiedadesUniformesComercio['FN_CONS_INFOEMPLEADO']}")
+    public String FN_CONS_INFOEMPLEADO;
+    
+    @Value("#{propiedadesUniformesComercio['FN_CONS_CARGA_SEMESTRAL']}")
+    public String FN_CONS_CARGA_SEMESTRAL;
+    
+    @Value("#{propiedadesUniformesComercio['FN_CONS_TIENDAS']}")
+    public String FN_CONS_TIENDAS;
+    
+    @Value("#{propiedadesUniformesComercio['FN_CONS_ESTATUS_SOLICITUD']}")
+    public String FN_CONS_ESTATUS_SOLICITUD;
 }

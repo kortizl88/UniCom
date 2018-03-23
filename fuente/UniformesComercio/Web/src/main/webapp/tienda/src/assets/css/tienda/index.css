@@ -1705,3 +1705,23 @@ table.ccenter td {
 }
 
 /****** FIN DANIEL ****************/
+/*administrador*/
+ .headAdm{
+    font-size: 1.2em;
+    font-weight: 700;
+    padding: 10px 5px;
+}
+
+.repCarga .tbCarg{
+    max-width: 90%;
+    margin: auto;
+}
+
+.admReporte .filtros{
+    padding: 10px;
+    font-size: 14px;
+}
+
+.admReporte .filtros .cntFil{
+    padding-right: 12px;
+}

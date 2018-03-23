@@ -1,0 +1,36 @@
+<div md-dialog-content>
+    <div class="entRecibe">Selecciona una o más cargas para generar el reporte</div>
+    <br/>
+    <table class="tablaEnt det tbCarg">
+        <tr>
+            <th>Carga</th>
+            <th>Fecha Inicial</th>
+            <th>Fecha Final</th>
+            <th>Negocios</th>
+            <th>Solicitudes</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let carga of cargas">
+            <td>{{carga.desc}}</td>
+            <td>{{carga.fini}}</td>
+            <td>{{carga.ffin}}</td>
+            <td>
+                <div *ngFor="let neg of carga.negocios">
+                    {{neg.nombre}}
+                </div>
+            </td>
+            <td>{{carga.totSol}}</td>
+            <td>
+                <md-checkbox [ngClass]="'chkPol'" color="primary" [(ngModel)]="carga.seleccionado"></md-checkbox>
+            </td>
+        </tr>
+        <tr *ngIf="!cargasAnt || cargasAnt.length == 0">
+            <td colspan="5"> No se encontraron cargas registradas </td>
+        </tr>
+    </table>
+    <br/>
+</div>
+<div md-dialog-actions align="end">
+    <button md-raised-button [ngClass]="'btnAccNeg'" md-dialog-close>Cancelar</button>&nbsp;&nbsp;
+    <button md-raised-button [ngClass]="'btnAccPos'" (click)="seleccionarCargasConsulta(usuarioRecibe,usuarioEntrega)">Aceptar</button>
+</div>

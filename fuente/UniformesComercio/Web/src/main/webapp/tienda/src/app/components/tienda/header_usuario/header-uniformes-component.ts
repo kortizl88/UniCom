@@ -42,6 +42,7 @@ export class HeaderUniformesComponent implements OnInit {
     private dialogGeneral: DialogGeneralComponent;
     private dialogGuia: DialogGeneralComponent;
     private subs: any;
+    private empAdm: any;
 
     constructor(usuarioService: UsuarioService, datosUsuarioUniformes: DatosUsuarioUniformesGlobalService, router: Router, public dialog: MdDialog, public endPointWSUniformesComercio: WSUniformesComercioGlobalService) {
         this.usuario = new Usuario();
@@ -70,15 +71,17 @@ export class HeaderUniformesComponent implements OnInit {
 
         /*sub evento notificacion login*/
         this.subs = this.datosUsuarioUniformes.notificaLogin.subscribe((respLogin) => {
-            if (respLogin.valido)
+            if (respLogin.valido) {
                 this.logueado = true;
+                this.empAdm = respLogin.usr;
+            }
             else
                 this.logueado = false;
         });
     }
 
     ngOnInit() {
-
+        this.endPointWSUniformesComercio.setCadenaUrl(document.getElementById('id_endPointWS').textContent.trim());
     }
 
     ngOndestroy() {
@@ -92,7 +95,6 @@ export class HeaderUniformesComponent implements OnInit {
             this.dialogGeneral.mensajeError("No se proporcionaron los parámetros correctos ", '', 1);
         }
         else {
-            this.endPointWSUniformesComercio.setCadenaUrl(document.getElementById('id_endPointWS').textContent.trim());
             this.consultarDatosEmpleado(this.empleadoPar);
         }
     }
