@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="70A8FF67-2A66-71AC-7ADA-DF88E934F843" containerWithKeyObject="ECD8AA8D-4B82-BDB5-DFAA-5610AD0966D7" localFKIndex="0516F62B-5C47-977F-5247-2543CF2DDBDF" name="FK_TASOLICITUDES_01">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:33:51 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<referredTableLongName>TANEGOCIOS</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>BCF2C562-390E-1EE7-39F4-3166656777FB</referredTableID>
+<keyObject>B8328F1B-1C07-D1BF-303D-D67822338095</keyObject>
+<referredKeyID>B8328F1B-1C07-D1BF-303D-D67822338095</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>FIIDNEGOCIO</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

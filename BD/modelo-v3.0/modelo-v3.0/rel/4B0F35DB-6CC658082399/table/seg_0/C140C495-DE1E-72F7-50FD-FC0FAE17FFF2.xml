@@ -1,0 +1,147 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C140C495-DE1E-72F7-50FD-FC0FAE17FFF2" name="TAREMISIONESXPEDIDO">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:00:28 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_18</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIPAIS" id="591FFAFA-CF81-818E-8812-C9F14430B999">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:00:43 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="73006E1C-4EC2-234E-A605-AB8A89E65938" referredColumn="14926F5B-9BC2-AEDF-AEE7-D04CD1ADC319"/>
+</associations>
+</Column>
+<Column name="FICANAL" id="8748F3C2-B5CC-9B08-5CF7-F57F369010FD">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:00:48 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="73006E1C-4EC2-234E-A605-AB8A89E65938" referredColumn="7C7ED9AF-B10A-C1DA-66AA-75C235F69D6B"/>
+</associations>
+</Column>
+<Column name="FISUCURSAL" id="683183EA-4C5C-A14C-29A7-728167B349EE">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:00:59 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="73006E1C-4EC2-234E-A605-AB8A89E65938" referredColumn="0C1A63D3-8286-0C40-FAE4-ABCF59B2528F"/>
+</associations>
+</Column>
+<Column name="FIPEDIDO" id="0C49B863-BE2C-DA8A-583A-AA7E2DFCBB87">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:01:05 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="73006E1C-4EC2-234E-A605-AB8A89E65938" referredColumn="6337ABB5-8051-EAC9-3D76-363178AAA9F0"/>
+</associations>
+</Column>
+<Column name="FISKU" id="4B2B24F0-1680-D5D6-C99C-31535C9F8928">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:01:12 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="73006E1C-4EC2-234E-A605-AB8A89E65938" referredColumn="C060B8C1-81AC-C082-72AD-C0EA73790DC0"/>
+</associations>
+</Column>
+<Column name="FIREMISION" id="E0372829-300D-5365-DF2A-2FB2A60C2077">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:01:22 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FICANTIDAD" id="20AA7EAC-D098-A88C-A7A3-68188F3B621E">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:02:15 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIEMPLEADORECIBE" id="326C0E17-73E6-1C41-2AA2-3149BC2B60EE">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:02:37 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6953E888-32E0-7FBF-97B6-62B79443866E" name="PK_TAREMISIONESXPEDIDO">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:01:38 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="591FFAFA-CF81-818E-8812-C9F14430B999"/>
+<colUsage columnID="8748F3C2-B5CC-9B08-5CF7-F57F369010FD"/>
+<colUsage columnID="683183EA-4C5C-A14C-29A7-728167B349EE"/>
+<colUsage columnID="0C49B863-BE2C-DA8A-583A-AA7E2DFCBB87"/>
+<colUsage columnID="4B2B24F0-1680-D5D6-C99C-31535C9F8928"/>
+<colUsage columnID="E0372829-300D-5365-DF2A-2FB2A60C2077"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A2183D63-B109-BAF7-6A35-FD2516488BD0" name="FK_TAREMISIONESXPEDIDO_01">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:04:10 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="591FFAFA-CF81-818E-8812-C9F14430B999"/>
+<colUsage columnID="8748F3C2-B5CC-9B08-5CF7-F57F369010FD"/>
+<colUsage columnID="683183EA-4C5C-A14C-29A7-728167B349EE"/>
+<colUsage columnID="0C49B863-BE2C-DA8A-583A-AA7E2DFCBB87"/>
+<colUsage columnID="4B2B24F0-1680-D5D6-C99C-31535C9F8928"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

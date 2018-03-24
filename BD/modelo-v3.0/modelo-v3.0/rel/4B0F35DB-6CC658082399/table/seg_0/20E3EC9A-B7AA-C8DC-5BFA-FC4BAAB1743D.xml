@@ -1,0 +1,69 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="20E3EC9A-B7AA-C8DC-5BFA-FC4BAAB1743D" name="TATALLAS">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-21 22:48:10 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FITALLA" id="8C4F893A-906F-F83A-FEFB-B7971EF17522">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:40:19 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDESCRIPCION" id="FEF018AB-9535-B583-1E3C-760E94E9D2FC">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:40:52 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCCLAVE" id="FFA93A04-E9F4-BADF-3505-037F1DE7E5BF">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:40:37 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIORDEN" id="DBBF22FA-F17E-A9C7-EF57-618B43B34B78">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:41:07 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="97710385-F12E-69F8-5A3E-DA46ABFD6848" name="PK_TATALLAS">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:41:26 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8C4F893A-906F-F83A-FEFB-B7971EF17522"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

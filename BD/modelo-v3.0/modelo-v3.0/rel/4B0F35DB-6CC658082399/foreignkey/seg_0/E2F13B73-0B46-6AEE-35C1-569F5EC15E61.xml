@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="E2F13B73-0B46-6AEE-35C1-569F5EC15E61" containerWithKeyObject="51B7D5B7-616C-BB35-72EF-3463A546AB7B" localFKIndex="064704E8-1222-24E8-10EC-531C8FA1D950" name="FK_TABITACORASOLICITUD_02">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 17:45:09 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<referredTableLongName>TAESTATUSPEDIDOS</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>81F640AF-0892-6599-2E85-E9393D4B5E23</referredTableID>
+<keyObject>80C48070-13B8-414F-0368-2E90ACD67A84</keyObject>
+<referredKeyID>80C48070-13B8-414F-0368-2E90ACD67A84</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>FIIDESTATUSPEDIDO</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

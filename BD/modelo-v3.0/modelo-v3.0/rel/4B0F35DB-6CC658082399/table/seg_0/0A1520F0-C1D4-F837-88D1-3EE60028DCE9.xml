@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0A1520F0-C1D4-F837-88D1-3EE60028DCE9" name="TATIPOSPRENDAXKIT">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:20:08 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_22</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIKIT" id="F91F3362-DB95-941B-06FC-883C1E8C1876">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:20:41 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4C2039E1-D2EC-6F63-0CA3-8276610D51D2" referredColumn="D422EA38-DE63-2CC7-ACF3-7CA160B8729A"/>
+</associations>
+</Column>
+<Column name="FIIDTIPOPRENDA" id="D80D5BA2-C9C4-1DA2-694B-4DF4AC3E9941">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:20:49 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1F87562A-4ABF-A462-FFB9-496BCAE44A69" referredColumn="35D47A39-1957-88A3-C2B7-135B082C30A4"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4A12FB34-A0B9-DEAB-7CD0-0DAE08CD2111" name="PK_TATIPOSPRENDAXKIT">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:20:56 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F91F3362-DB95-941B-06FC-883C1E8C1876"/>
+<colUsage columnID="D80D5BA2-C9C4-1DA2-694B-4DF4AC3E9941"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="139596B6-3B1A-FF25-E362-B8534EDB1D91" name="FK_TATIPOSPRENDAXKIT_02">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:21:13 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D80D5BA2-C9C4-1DA2-694B-4DF4AC3E9941"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DCA102AC-8C54-30BF-95AA-6655B727FD20" name="FK_TATIPOSPRENDAXKIT_01">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:21:24 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F91F3362-DB95-941B-06FC-883C1E8C1876"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,69 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BCF2C562-390E-1EE7-39F4-3166656777FB" name="TANEGOCIOS">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:28:57 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_7</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIIDNEGOCIO" id="AC9DF8A6-5009-04A6-F6F3-9723AD6E4108">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:30:09 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDESCRIPCION" id="29682427-E1E5-6E97-7F02-72183E0D5B9B">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:32:54 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDESCRCORTA" id="F70174F3-80BC-088F-C319-526AAB3B1E22">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:33:03 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FISOLICITAENTIENDA" id="2301DEBD-C685-21EC-77C3-DCAB785A3412">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 16:56:04 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B8328F1B-1C07-D1BF-303D-D67822338095" name="PK_TANEGOCIOS">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:33:11 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AC9DF8A6-5009-04A6-F6F3-9723AD6E4108"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

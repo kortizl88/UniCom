@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Tiendas Elektra</title>  
+	<link rel="stylesheet" href="css/estilo.css" />     
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/tooltipster.bundle.css" />
+	<link rel="stylesheet" media="screen" href="css/modal.css"> 
+</head>
+<body>
+
+
+
+ 
+
+<div class="mainbox" >
+	<div class="header"> 
+
+		<div class="nave" >
+		<a href="#" class="menu" >
+		<img src="img/menu.svg">
+		</a> 
+			<a href="login.html" class="logo">
+				<img src="img/logo.png" width="120px">
+			</a>
+			<div class="user dropdown " onclick="myFunction()"> 
+				<div class="foto"> 
+					<img src="img/avatar.png">
+				</div>
+				<span style="height: 26px; line-height: 30px;">
+					<b>Ismael Pérez Reyes</b>
+				</span>
+				<img src="img/acarrow2.svg" class="masmenu dropbtn2"> 
+				<div id="myDropdown2" class="dropdown-content2 ">
+					<div class="myinfo">
+						<a href="#">Mi Perfil</a>
+						<a href="#">Manual de Vestimenta</a>
+						<a href="#">Ayuda</a>
+						<a href="#">Politicas</a>
+						<a href="#">Cerrar Sesión</a>
+					</div>
+				</div> 
+			</div> 
+		</div> 
+		<div class="hspacer"></div>
+
+		<div class="hdiv"></div>
+		<div class="secmenu"> 
+			<a href="index.html" class="top ">Reporte<span> General</span></a>
+			<a href="excepciones.html" class="top">Excepciones</a>
+			<a href="cancelaciones.html" class="top">Cancelaciones</a>
+			<a href="monitoreo.html" class="top">Monitoreo</a>
+			<a href="segurodecompra.html" class="top active">Seguro<span> de compra</span></a>
+
+			<a href="distribucion.html" class="top  ">Distribución <img src="img/acarrow2.svg" class="masmenu dropbtn2" >
+			</a>
+				<div id="myDropdown2" class="dropdown-content">
+					<div class="myinfo"> 
+						<div class="fotobig" > 
+							<img src="img/avatar.png">
+						</div>
+						<br>
+						<b>Ismael Pérez Reyes</b><br>
+						Administrador de Usuarios
+						<br><br>
+						<span class="folios">
+							FOLIO 0607163670234bea1
+						</span><br>
+						<a href="mailto:webmaster@bancoazteca.com" >webmaster@bancoazteca.com</a> 
+					</div>
+					<a href="#" class="perfil_view">cambiar de perfil</a>
+					<hr>
+					<a href="#">cerrar sesión</a>
+				</div> 
+		</div>
+	</div>
+
+	<div class="main ">
+ 		<dl class="accordion2" id="accordion2"> 
+			<dt class="accordion2">
+			</dt>  
+			<dd >  
+				<div class="mcontent">   
+				<br> 					
+					<b>Semana a consultar</b><br> 
+					<div class="element5">
+						<label>
+							<span>Fecha Inicial</span>
+						<input type="text" class="calico" id="datepicker_solicitud_ini" value="17/01/1983">  
+						</label>
+					</div> 
+					<div class="element5">
+						<label>
+							<span>Fecha Final</span>
+						<input type="text" class="calico" id="datepicker_solicitud_fin" value="17/01/1983">  
+						</label>
+					</div> 
+					<div class="element5">
+						<a href="#" class="btn full">Buscar</a> 
+					</div> 
+					<br> 
+				</div><!-- content--> 
+			</dd>     
+		</dl>  
+
+
+		<div class="content">   
+
+			<div class="border">  
+				<div class="padding overflow mh320">   
+					<table class="items ccenter nowrap ">
+						<thead> 
+							<tr>   
+								<th>No. de Empleado</th>  
+								<th>Periodo</th>
+								<th>Fecha de solicitud</th>
+								<th>Subkit</th>
+								<th>Orden</th>
+								<th>SKU</th>
+								<th>Descripción</th>
+								<th>Cantidad</th>
+								<th>CeDis</th>
+								<th>Nombre...</th> 
+							</tr>
+						</thead>
+						<tbody>
+							<tr>    
+								<td>215779</td> 
+								<td>2016-2020</td> 
+								<td>16/MAY/2016</td> 
+								<td>Camisa ASF MC</td> 
+								<td>1</td> 
+								<td>1004601</td> 
+								<td>Camisa ASF Dam MC M</td> 
+								<td>2</td> 
+								<td>9387</td> 
+								<td>Cd. Pueb</td> 
+							</tr> 
+							<tr>    
+								<td>215779</td> 
+								<td>2016-2020</td> 
+								<td>16/MAY/2016</td> 
+								<td>Pantalon ASF MC</td> 
+								<td>1</td> 
+								<td>1004601</td> 
+								<td>Pantalón ASF Dam7</td> 
+								<td>2</td> 
+								<td>9387</td> 
+								<td>Cd. Nuev</td> 
+							</tr> 
+							<tr>    
+								<td>215779</td> 
+								<td>2016-2020</td> 
+								<td>16/MAY/2016</td> 
+								<td>Chaleco ASF</td> 
+								<td>1</td> 
+								<td>1004601</td> 
+								<td>Chaleco ASF Dam CH</td> 
+								<td>2</td> 
+								<td>9387</td> 
+								<td>Cd. Villa</td> 
+							</tr> 
+							<tr>    
+								<td>215779</td> 
+								<td>2016-2020</td> 
+								<td>16/MAY/2016</td> 
+								<td>Camisa  Cyc</td> 
+								<td>1</td> 
+								<td>1004601</td> 
+								<td>Camisa CyC Cab ML G</td> 
+								<td>1</td> 
+								<td>9387</td> 
+								<td>Cd. Guan</td> 
+							</tr> 
+							<tr>    
+								<td>215779</td> 
+								<td>2016-2020</td> 
+								<td>16/MAY/2016</td> 
+								<td>Pantalon Cyc</td> 
+								<td>1</td> 
+								<td>1004601</td> 
+								<td>Pantalón CyC Cab 30</td> 
+								<td>1</td> 
+								<td>9387</td> 
+								<td>Cd. Villa</td> 
+							</tr>  
+							<tr>    
+								<td>215779</td> 
+								<td>2016-2020</td> 
+								<td>16/MAY/2016</td> 
+								<td>Camisa ASF MC</td> 
+								<td>1</td> 
+								<td>1004601</td> 
+								<td>Camisa ASF Dam MC M</td> 
+								<td>2</td> 
+								<td>9387</td> 
+								<td>Cd. Pueb</td> 
+							</tr> 
+							<tr>    
+								<td>215779</td> 
+								<td>2016-2020</td> 
+								<td>16/MAY/2016</td> 
+								<td>Pantalon ASF MC</td> 
+								<td>1</td> 
+								<td>1004601</td> 
+								<td>Pantalón ASF Dam7</td> 
+								<td>2</td> 
+								<td>9387</td> 
+								<td>Cd. Nuev</td> 
+							</tr> 
+							<tr>    
+								<td>215779</td> 
+								<td>2016-2020</td> 
+								<td>16/MAY/2016</td> 
+								<td>Chaleco ASF</td> 
+								<td>1</td> 
+								<td>1004601</td> 
+								<td>Chaleco ASF Dam CH</td> 
+								<td>2</td> 
+								<td>9387</td> 
+								<td>Cd. Villa</td> 
+							</tr> 
+							<tr>    
+								<td>215779</td> 
+								<td>2016-2020</td> 
+								<td>16/MAY/2016</td> 
+								<td>Camisa  Cyc</td> 
+								<td>1</td> 
+								<td>1004601</td> 
+								<td>Camisa CyC Cab ML G</td> 
+								<td>1</td> 
+								<td>9387</td> 
+								<td>Cd. Guan</td> 
+							</tr> 
+							<tr>    
+								<td>215779</td> 
+								<td>2016-2020</td> 
+								<td>16/MAY/2016</td> 
+								<td>Pantalon Cyc</td> 
+								<td>1</td> 
+								<td>1004601</td> 
+								<td>Pantalón CyC Cab 30</td> 
+								<td>1</td> 
+								<td>9387</td> 
+								<td>Cd. Villa</td> 
+							</tr>  
+							<tr>    
+								<td>215779</td> 
+								<td>2016-2020</td> 
+								<td>16/MAY/2016</td> 
+								<td>Camisa ASF MC</td> 
+								<td>1</td> 
+								<td>1004601</td> 
+								<td>Camisa ASF Dam MC M</td> 
+								<td>2</td> 
+								<td>9387</td> 
+								<td>Cd. Pueb</td> 
+							</tr> 
+							<tr>    
+								<td>215779</td> 
+								<td>2016-2020</td> 
+								<td>16/MAY/2016</td> 
+								<td>Pantalon ASF MC</td> 
+								<td>1</td> 
+								<td>1004601</td> 
+								<td>Pantalón ASF Dam7</td> 
+								<td>2</td> 
+								<td>9387</td> 
+								<td>Cd. Nuev</td> 
+							</tr> 
+							<tr>    
+								<td>215779</td> 
+								<td>2016-2020</td> 
+								<td>16/MAY/2016</td> 
+								<td>Chaleco ASF</td> 
+								<td>1</td> 
+								<td>1004601</td> 
+								<td>Chaleco ASF Dam CH</td> 
+								<td>2</td> 
+								<td>9387</td> 
+								<td>Cd. Villa</td> 
+							</tr> 
+							<tr>    
+								<td>215779</td> 
+								<td>2016-2020</td> 
+								<td>16/MAY/2016</td> 
+								<td>Camisa  Cyc</td> 
+								<td>1</td> 
+								<td>1004601</td> 
+								<td>Camisa CyC Cab ML G</td> 
+								<td>1</td> 
+								<td>9387</td> 
+								<td>Cd. Guan</td> 
+							</tr> 
+							<tr>    
+								<td>215779</td> 
+								<td>2016-2020</td> 
+								<td>16/MAY/2016</td> 
+								<td>Pantalon Cyc</td> 
+								<td>1</td> 
+								<td>1004601</td> 
+								<td>Pantalón CyC Cab 30</td> 
+								<td>1</td> 
+								<td>9387</td> 
+								<td>Cd. Villa</td> 
+							</tr>    
+
+						</tbody>
+					</table> 
+				</div>  
+			</div>
+	
+
+			<div class="botones" id="continuar"> 
+				<br>
+				<a href="#" class="btn espaciador"><img src="img/excel.png">descargar excel</a>   
+			</div> 
+
+  
+
+		</div><!-- content-->
+	</div><!-- main--> 
+</div>
+
+
+
+	<!-- jquery Start -->
+		 <script type="text/javascript" src="js/jquery.js"></script> 
+ 
+	<!-- menu toggle -->
+		 <script>
+			$(document).ready(function(){
+			    $(".menu").click(function(){
+			        $(".secmenu").toggleClass("verver");
+			        $(".menu").toggleClass("hams");
+			    });
+			});
+
+
+
+		$(function(){
+			$('td a .menos').on('click',function(e){
+				e.preventDefault();
+				$(this).parent().parent().parent().remove(); 
+			});
+		});
+
+		</script>
+		
+	<!-- accordion -->
+		<script type="text/javascript">
+			jQuery(function() {
+			  //Hide all panels
+			  // var allPanels = $('.accordion > dd').hide(); 
+			     var allPanels = $('.accordion > dd').hide().first().show();
+
+			  jQuery('.accordion > dt').on('click', function() {
+			    $this = $(this);
+			    //the target panel content
+			    $target = $this.next();
+			    
+			    jQuery('.accordion > dt').removeClass('accordion-active');
+			    if ($target.hasClass("in")) {
+			      $this.removeClass('accordion-active');
+			      $target.slideUp();
+			      $target.removeClass("in");
+			    } else {
+			      $this.addClass('accordion-active');
+			      jQuery('.accordion > dd').removeClass("in");
+			      $target.addClass("in");
+
+			      jQuery('.accordion > dd').slideUp();
+			      $target.slideDown();
+			    }
+			  })
+
+
+
+
+			  var allPanels = $('.accordion2 > dd').hide();
+
+			  jQuery('.accordion2 > dt').on('click', function() {
+			    $this = $(this);
+			    //the target panel content
+			    $target = $this.next();
+			    
+			    jQuery('.accordion2 > dt').removeClass('accordion2-active');
+			    if ($target.hasClass("in")) {
+			      $this.removeClass('accordion2-active');
+			      $target.slideUp();
+			      $target.removeClass("in");
+			    } else {
+			      $this.addClass('accordion2-active');
+			      jQuery('.accordion2 > dd').removeClass("in");
+			      $target.addClass("in");
+
+			      jQuery('.accordion2 > dd').slideUp();
+			      $target.slideDown();
+			    }
+			  })
+
+
+			})
+		</script>
+ 
+ 
+ 		<!-- Date Picker -->
+			<link rel="stylesheet" href="css/jquery-ui-datepicker.min.css">
+			<script type="text/javascript" src="js/jquery-ui-datepicker.min.js"></script>
+			<script type="text/javascript" src="js/jquery-ui-es.min.js"></script>
+			<script type="text/javascript">
+				$(function() {
+					$( "#datepicker_solicitud_ini, #datepicker_solicitud_fin, #datepicker_remision_ini, #datepicker_remision_fin" ).datepicker({       
+						changeMonth: false,
+      					changeYear: false,
+         				 yearRange: "1900:today", 
+						beforeShow : function(){
+			                 if(!$('.date_picker').length){
+			                      $('#ui-datepicker-div').wrap('<span class="date_picker"></span>');
+
+
+			                 }
+			             }
+					});
+				});
+			</script>
+
+		<!--Toogle-->
+		<script type="text/javascript">	
+
+		var x =  document.getElementById("myDropdown2");
+
+			function myFunction(){
+			 	if(x.style.display === 'none'){
+			 		x.style.display = 'block';
+			 	}else{
+			 		x.style.display = 'none';
+			 	}
+		    }
+		</script>   
+
+</body>
+</html>

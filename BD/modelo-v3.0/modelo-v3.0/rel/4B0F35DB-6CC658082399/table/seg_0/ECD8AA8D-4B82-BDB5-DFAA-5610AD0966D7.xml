@@ -1,0 +1,127 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="ECD8AA8D-4B82-BDB5-DFAA-5610AD0966D7" name="TASOLICITUDES">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:51:57 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_5</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIFOLIOSOLICITUD" id="8274F1EC-508C-34BE-36BB-4E275D99ECFF">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:52:24 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIIDEMPLEADO" id="20453D9C-6D88-85EB-B3B9-3E198CECA27B">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:52:41 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIIDTIPOSOLICITUD" id="E1E1877F-0AC8-4C2E-7C92-061F3ECC3176">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:53:04 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2821B49D-E930-9255-AD2F-5BE1BB3B7323" referredColumn="360CD94B-A604-84D7-3F2E-E800D9AFD175"/>
+</associations>
+</Column>
+<Column name="FIIDNEGOCIO" id="8EEFE5DC-EE71-65AA-AC8D-510401C2B531">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:53:24 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="70A8FF67-2A66-71AC-7ADA-DF88E934F843" referredColumn="AC9DF8A6-5009-04A6-F6F3-9723AD6E4108"/>
+</associations>
+</Column>
+<Column name="FIFUNCIONSAP" id="F0C760E9-E32E-C5CF-41A1-CB79E32486CB">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:53:50 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIIDEMPCAPTURA" id="78CD6D56-AD0A-8258-0186-5258A372823D">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:54:22 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FDFECHACAPTURA" id="5F1D3F0D-EBCC-8B2B-9AED-5A5C828208C7">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:54:08 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4257D7F7-2379-E03C-CE73-9C4C8869A7CC" name="PK_TASOLICITUDES">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:54:42 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8274F1EC-508C-34BE-36BB-4E275D99ECFF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A854808F-FA1C-A6D4-876C-215669CB3F8D" name="FK_TASOLICITUDES_02">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:59:25 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E1E1877F-0AC8-4C2E-7C92-061F3ECC3176"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0516F62B-5C47-977F-5247-2543CF2DDBDF" name="FK_TASOLICITUDES_01">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:33:51 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8EEFE5DC-EE71-65AA-AC8D-510401C2B531"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

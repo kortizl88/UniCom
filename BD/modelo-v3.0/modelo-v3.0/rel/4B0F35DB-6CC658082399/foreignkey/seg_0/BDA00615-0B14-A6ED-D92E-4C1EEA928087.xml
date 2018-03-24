@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="BDA00615-0B14-A6ED-D92E-4C1EEA928087" containerWithKeyObject="51B7D5B7-616C-BB35-72EF-3463A546AB7B" localFKIndex="EFD3C7BE-D626-6A02-4441-F749B29BB135" name="FK_TABITACORASOLICITUD_05">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-02-28 18:15:16 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<referredTableLongName>TATIPOSERRORES</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1A6C0AD4-6456-7235-F0D3-C948F1B3BC5A</referredTableID>
+<keyObject>87E16BD6-CB10-1814-7411-112C088184CF</keyObject>
+<referredKeyID>87E16BD6-CB10-1814-7411-112C088184CF</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>FIIDERROR</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

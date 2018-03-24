@@ -1,0 +1,188 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EEC506B1-6AEA-7657-994A-DBB8CE36884F" name="TASOLICITUDESDETALLE">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:44:25 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_8</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIFOLIOSOLICITUD" id="F3F3F685-A2AA-075D-CFB2-88575B86078F">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:44:47 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2B46C2E2-4EC2-2712-98B2-DC10F2BD3FF6" referredColumn="8274F1EC-508C-34BE-36BB-4E275D99ECFF"/>
+</associations>
+</Column>
+<Column name="FIIDDETALLE" id="6E89AED2-79C2-E8CE-7FC4-556EA1B6DB22">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:45:02 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIIDTIPOPRENDA" id="800A8A0E-3565-D7FD-E42F-A281F1683549">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:45:37 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1EAD724D-4DCE-6DDE-D414-66B48D830B7F" referredColumn="35D47A39-1957-88A3-C2B7-135B082C30A4"/>
+</associations>
+</Column>
+<Column name="FITALLA" id="64918410-FEED-5850-91E3-479F98F4E01C">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:45:50 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A8CE5B4C-0D9C-2EB8-C6A4-3A5276618910" referredColumn="8C4F893A-906F-F83A-FEFB-B7971EF17522"/>
+</associations>
+</Column>
+<Column name="FICANTIDAD" id="D43ED2C8-5B06-D738-A715-92570EA96C63">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:46:00 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FNPRECIOUNITARIO" id="21FE3734-492E-E561-4A19-ED485FCEE11A">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:46:14 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FNPRECIOTOTAL" id="02131151-4C38-E3E2-1762-C147A01F8AA0">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:46:25 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIBANDERAACTIVA" id="BE1113CF-2CDB-8B28-6315-2B1D984A4663">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 21:04:38 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIPAIS" id="11BF2418-C9FC-D4EB-BE59-2712C29B2FD8">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 17:02:48 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FICANAL" id="03561F7F-78CC-AC0C-6D95-4A8B472EF45F">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 17:03:13 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FISUCURSAL" id="7BD1246E-DD8C-FA96-124E-C643E0B2EBDA">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 17:03:33 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9F2CA998-E1B2-AF13-3E94-3F97B72EE38D" name="PK_TASOLICITUDESDETALLE">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:47:03 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F3F3F685-A2AA-075D-CFB2-88575B86078F"/>
+<colUsage columnID="6E89AED2-79C2-E8CE-7FC4-556EA1B6DB22"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FB8C07E8-9023-76E1-7822-4D6F5A8C7EBE" name="FK_TASOLICITUDESDETALLE_01">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:47:15 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F3F3F685-A2AA-075D-CFB2-88575B86078F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="29773DD3-5E31-189A-7C81-0E3A3F71D511" name="FK_TASOLICITUDESDETALLE_02">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:47:36 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="800A8A0E-3565-D7FD-E42F-A281F1683549"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1FF61E24-48CA-8851-3CC5-130185D487E9" name="FK_TASOLICITUDESDETALLE_03">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:48:14 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="64918410-FEED-5850-91E3-479F98F4E01C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DD339508-E335-DCF7-324F-024BF5C81124" name="TATIPOCALCULOPRECIO">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 23:06:41 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_24</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIIDTIPOCALCULO" id="9307A4A3-B393-40A0-3A69-E25A94E9732E">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 23:07:02 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDESCRIPCION" id="B59AE967-8C28-CD58-AEAA-50A3A61977B9">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 23:07:13 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="AE849C2B-5B23-3301-91C9-C6FD573E4501" name="PK_TATIPOCALCULOPRECIO">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 23:07:21 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9307A4A3-B393-40A0-3A69-E25A94E9732E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

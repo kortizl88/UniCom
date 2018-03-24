@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7D5C7954-3F77-A048-F413-117E99421064" name="TAGENERO">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:43:06 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_3</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIIDGENERO" id="0A258913-4428-F290-7059-D05E38339691">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:43:21 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDESCRIPCION" id="EF53153D-C63A-9053-D3C8-563CA74C1AC6">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:43:28 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="29BD47E3-2104-069F-D014-74A078492EB4" name="PK_TAGENERO">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:43:38 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0A258913-4428-F290-7059-D05E38339691"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

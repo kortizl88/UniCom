@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="60D1E92C-F031-1F57-3CEB-401DFFDD637D" containerWithKeyObject="87D55857-F7C2-3B81-89DF-534E3B842186" localFKIndex="5BD01BB5-7A9C-0744-CDCA-77ED2B1BF84A" name="FK_TAPEDIDOSCD_02">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 17:08:48 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<referredTableLongName>TAPRENDAS</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1FEC219E-D5A7-DE95-C6C6-087335B55525</referredTableID>
+<keyObject>D9BFBEA7-DA4D-AF7D-2AA1-49AC2D9F6628</keyObject>
+<referredKeyID>D9BFBEA7-DA4D-AF7D-2AA1-49AC2D9F6628</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>FISKU</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="1EAD724D-4DCE-6DDE-D414-66B48D830B7F" containerWithKeyObject="EEC506B1-6AEA-7657-994A-DBB8CE36884F" localFKIndex="29773DD3-5E31-189A-7C81-0E3A3F71D511" name="FK_TASOLICITUDESDETALLE_02">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:47:36 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<referredTableLongName>TATIPOSPRENDA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>AF77AEEC-050B-B8B3-F8FD-9BAA527E2264</referredTableID>
+<keyObject>11E098D0-850C-2438-3E7A-F27FCCBA239F</keyObject>
+<referredKeyID>11E098D0-850C-2438-3E7A-F27FCCBA239F</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>FIIDTIPOPRENDA</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

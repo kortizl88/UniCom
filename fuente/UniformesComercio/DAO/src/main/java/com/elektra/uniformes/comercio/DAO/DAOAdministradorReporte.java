@@ -8,6 +8,8 @@ import Com.Elektra.Log.Dao.LogeoDAO;
 import com.elektra.mapper.Mapper;
 import com.elektra.uniformes.comercio.Modelo.CargaSemestral;
 import com.elektra.uniformes.comercio.Modelo.EstatusSolicitud;
+import com.elektra.uniformes.comercio.Modelo.ReporteDTO;
+import com.elektra.uniformes.comercio.Modelo.ReporteReq;
 import com.elektra.uniformes.comercio.Modelo.Tienda;
 import com.elektra.uniformes.comercio.utilerias.FuncionesBD;
 import java.sql.CallableStatement;
@@ -103,8 +105,41 @@ public class DAOAdministradorReporte {
         }
         return lc;
     }
-    
-    public void obtieneReporte(){
-        //TODO: GENERAR REPORTE
+
+    public ArrayList<ReporteDTO> obtieneReporte(ReporteReq reporteReq) throws Exception{
+        Connection conn = null;
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        Mapper m = new Mapper();
+        ArrayList<ReporteDTO> lc = null;
+        try {
+            conn = fabricaDAO.getConexion();
+            if (conn == null) {
+                throw new Exception("La conexion no se creo.");
+            }
+            cs = conn.prepareCall(funcionesBD.FN_CONS_REPORTE);
+            cs.registerOutParameter(1, OracleTypes.CURSOR);
+            cs.setInt(1, reporteReq.getIndicaFecha());
+            cs.setString(2, reporteReq.getFechaInicio());
+            cs.setString(3, reporteReq.getFechaFin());
+            cs.setInt(4, reporteReq.getIndCarga());
+            cs.setString(5, reporteReq.getCarga());
+            cs.setInt(6, reporteReq.getIndEstatus());
+            cs.setString(7, reporteReq.getEstatus());
+            cs.setInt(8, reporteReq.getIndTienda());
+            cs.setInt(9, reporteReq.getTienda());
+            cs.setInt(10, reporteReq.getIndEmpleado());
+            cs.setInt(11, reporteReq.getEmpleado());
+            cs.execute();
+            rs = (ResultSet) cs.getObject(1);
+            lc = (ArrayList<ReporteDTO>) m.mapperArrayBean(rs, ReporteDTO.class);
+        } catch (Exception e) {
+            LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getTiendas " + e.getMessage());
+            LogeoDAO.getInstancia().logStackExcepcion(e);
+            throw new Exception("ERROR en : " + this.getClass() + " metodo: getTiendas " + e.getMessage());
+        } finally {
+            close(conn, cs, rs);
+        }
+        return lc;
     }
 }

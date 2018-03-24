@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="4C2039E1-D2EC-6F63-0CA3-8276610D51D2" containerWithKeyObject="0A1520F0-C1D4-F837-88D1-3EE60028DCE9" localFKIndex="DCA102AC-8C54-30BF-95AA-6655B727FD20" name="FK_TATIPOSPRENDAXKIT_01">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:21:24 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<referredTableLongName>TAKITS</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>51220265-E543-F06F-3E7D-217873753CE5</referredTableID>
+<keyObject>04A8C654-21E9-71A6-EE2C-0FA0CDB1FC64</keyObject>
+<referredKeyID>04A8C654-21E9-71A6-EE2C-0FA0CDB1FC64</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>FIKIT</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

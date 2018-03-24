@@ -1,0 +1,78 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DE299834-6D46-7458-B4FB-D38FFA3C609C" name="TACARGAS">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 17:32:03 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_12</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIIDCARGA" id="9126D46E-2CC9-4354-44E0-0D3559DD4C1F">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 17:32:26 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDESCRIPCION" id="23C72EDF-AB67-788D-9BD9-036B2B2B4745">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 17:33:00 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40</dataTypeSize>
+<ownDataTypeParameters>40,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FDFECHAINICIAL" id="72D07868-D28B-354B-7B1A-F6F6ECF61177">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 17:33:13 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FDFECHAFINAL" id="D4357E5B-2EC1-930F-AAD9-1F5CC4D61416">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 17:33:20 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIESTATUS" id="BE4F7842-2F1D-BFC9-B5F3-341EF50FA3AF">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-08-29 00:23:23 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="820F33D2-CE96-85D2-A21A-3E3B611D3574" name="PK_TACARGAS">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 17:34:08 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9126D46E-2CC9-4354-44E0-0D3559DD4C1F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

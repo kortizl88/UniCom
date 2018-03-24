@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="73006E1C-4EC2-234E-A605-AB8A89E65938" containerWithKeyObject="C140C495-DE1E-72F7-50FD-FC0FAE17FFF2" localFKIndex="A2183D63-B109-BAF7-6A35-FD2516488BD0" name="FK_TAREMISIONESXPEDIDO_01">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:04:10 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<referredTableLongName>TAPEDIDOSCD</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>87D55857-F7C2-3B81-89DF-534E3B842186</referredTableID>
+<keyObject>3C29CABC-0A20-FD4F-AA36-8D08EF6CD88C</keyObject>
+<referredKeyID>3C29CABC-0A20-FD4F-AA36-8D08EF6CD88C</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>FIPAIS,FICANAL,FIIDSUCURSAL,FIPEDIDO,FISKU</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,127 @@
+ /********************\
+  $Reset ☰
+\********************/
+* {
+  box-sizing:border-box;
+}  
+/********************\
+  $Layout ☰
+\********************/
+
+/*Damos estilos al menú*/
+.menutitle {    
+  background-color: #555555; 
+  color: #ffffff;
+  text-align: left;
+  padding: 7px; 
+  font-size: 20px; 
+}
+.menu {
+  position:absolute;
+  width:200px;
+  height:100vh;
+  top:0px;
+  left:-200px;  
+  background-color: #ffffff; 
+  transition:all .5s ease;  
+  z-index: 300;
+}
+   /*Estilos de los li del menú*/
+   .menu__item {
+     display:block;
+     width:100%;
+     margin:0 auto;
+     line-height:2;
+     position:relative; 
+     border-bottom:1px solid #bbbbbb; 
+     background-color:transparent; 
+     text-align:left;
+     color: #464646;
+     padding: 8px;
+   }
+   .menu__item:hover {
+    background-color: #cfcfcf; 
+    color: #464646; 
+    text-decoration: none;
+  }
+     .menu__item img {
+      vertical-align: middle; 
+      margin-right: 15px;}
+   .current {
+    background-color: #e83a27; 
+    color: #ffffff; 
+  }
+   .current:hover {
+    background-color: #d9321f; 
+    color: #ffffff; 
+  }
+  .current img { 
+    -webkit-filter: brightness(10000%);
+    filter: brightness(10000%); 
+  }
+
+        
+       .current:before {
+          content:"";
+          width:0;
+          height:0;
+          position:absolute; 
+          border-top:17px solid transparent;
+          border-bottom:17px solid transparent;
+          top:0px;
+          right:-6px; 
+          z-index:4;  
+       } 
+      .current:after {
+          content:"";
+          width:0;
+          height:0;
+          position:absolute; 
+          border-top:16.5px solid transparent; 
+          border-bottom:17px solid transparent;
+          top:.5px;
+          right:-21px;
+          z-index:1;  
+      } 
+  .menu-toogle {
+    position:absolute;  
+    width: 38px;
+    line-height:28px;
+    text-align:center; 
+    left: 0;   
+    transition: all .5s ease;  
+    z-index:10;
+    cursor: pointer;
+  }
+ 
+    .menu-toogle::before {
+      content:"☰";
+      font-size:30px;
+      color:white;
+      z-index: 1001;   
+    }
+
+ 
+.main-w {
+  width:100%;
+  height:100vh;
+  transition: all .5s ease;
+}   
+
+
+ 
+    .checkbox {
+      display:none;  
+    }
+    .checkbox:checked ~ .menu {
+      left:0px; 
+      position:fixed; 
+    }
+    .checkbox:checked ~ .main-w {
+      margin-left:200px;  
+    }
+    .checkbox:checked ~ .menu-toogle { 
+      left:160px;
+      position:fixed; 
+      z-index: 1001;
+    }

@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1FEC219E-D5A7-DE95-C6C6-087335B55525" name="TAPRENDAS">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-21 22:39:57 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FISKU" id="8F918C5A-13DD-AE62-BB4E-BB6F48D36BF3">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-21 22:44:36 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDESCRIPCION" id="8FF12BBE-85A9-1C3E-D1B3-E4C513BA54E5">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 20:08:36 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIIDTIPOPRENDA" id="4F11C857-368A-5800-D225-F8CF22D57D3F">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 20:32:04 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AD0CB486-80FF-3445-AAC2-4C642774F9FA" referredColumn="6FE5C615-04DA-F62B-E9BC-05E7AE4027EC"/>
+</associations>
+</Column>
+<Column name="FITALLA" id="1CB6C42C-0DDB-D97C-78E9-9929E59A854F">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-21 22:45:05 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AD0CB486-80FF-3445-AAC2-4C642774F9FA" referredColumn="2D9BB515-317B-4F00-638C-18AB6BDFBB88"/>
+</associations>
+</Column>
+<Column name="FIIDGENERO" id="EF12F506-E030-C501-93C1-9A01CBD80293">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 21:50:16 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AD0CB486-80FF-3445-AAC2-4C642774F9FA" referredColumn="8EB240AD-3D75-EDC9-7BFC-692DDC9537D9"/>
+</associations>
+</Column>
+<Column name="FNCOSTO" id="A2468E98-7FD0-F1DF-5A64-8CD578548912">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-21 22:47:07 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIDISCONTINUO" id="A1A85C90-E387-A394-CC24-159B0AABC3AA">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-22 15:10:01 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D9BFBEA7-DA4D-AF7D-2AA1-49AC2D9F6628" name="PK_TAPRENDAS">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-21 22:47:56 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8F918C5A-13DD-AE62-BB4E-BB6F48D36BF3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BDA66C92-CED4-C097-A9B7-C6EA1E7D1D2F" name="FK_TAPRENDAS_01">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 20:46:04 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4F11C857-368A-5800-D225-F8CF22D57D3F"/>
+<colUsage columnID="1CB6C42C-0DDB-D97C-78E9-9929E59A854F"/>
+<colUsage columnID="EF12F506-E030-C501-93C1-9A01CBD80293"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

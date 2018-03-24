@@ -1,0 +1,171 @@
+div.modal { display:none;  width: 100% !important; } 
+/* Overlay */
+#simplemodal-overlay { background-color:#000;  width: 100%;}
+
+.simplemodal-body { padding: 0px;  width: 100%;}
+div.checks div{ margin-bottom: 0px; }
+
+.cuadro { 
+	width: 85%;
+	max-width: 500px;
+	margin: 0 auto;
+	background-color:#FFFFFF; 
+	border:1px solid #AAB7CE; 
+	transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-webkit-transition: all 0.3s ease-out; 
+}
+
+.cuadromed { 
+	width: 85%;
+	max-width: 650px;
+	margin: 0 auto;
+	background-color:#FFFFFF; 
+	border:1px solid #AAB7CE; 
+	transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-webkit-transition: all 0.3s ease-out; 
+}
+
+.cuadrobig {  
+	width: 85%;
+	max-width: 700px;
+	margin: 0 auto;
+	position: relative;
+	background-color:#FFFFFF; 
+	border:1px solid #AAB7CE; 
+	transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-webkit-transition: all 0.3s ease-out; 
+}
+
+ 
+ 
+ .retra { width: 120px; height: 120px; float: right; text-align: center; background-color:  ;}
+}
+ 
+.modavatar {  
+	width:  110px; 
+	height: 110px; 
+    border-radius: 100px;
+    -moz-border-radius: 100px;   
+    border: 1px solid silver;
+    overflow: hidden;
+		transition: all 0.30s ease-out;
+		-moz-transition: all 0.30s ease-out;
+		-webkit-transition: all 0.30s ease-out;  
+}
+ 
+.modavatar img { 
+	width:  100% ;   
+}
+
+
+img.cerrar {
+	position: absolute; right: -30px; top: 0px; width: 30px;
+}
+ 
+ .modal div.padding {margin: 25px;}
+
+
+table.mpermits { width: 100%; }
+table.mpermits th { white-space: nowrap; padding: 5px 10px; text-align: center; }
+table.mpermits th:nth-child(1) { text-align: left; } 
+
+table.mpermits td { text-align: center; white-space: nowrap; padding: 0px 3px; color: #aaaaaa;}
+table.mpermits td:nth-child(1) { text-align: left; } 
+
+ 
+table.bcenter { width: 100%; }
+table.bcenter th { white-space: nowrap; padding: 5px 10px; text-align: center; line-height: 1.1em;} 
+table.bcenter td { text-align: center; white-space: nowrap; padding: 3px 5px; color: #aaaaaa;}  
+table.bcenter td  a { color: #0e8454; text-decoration: underline;}
+ 
+
+.detped { width: 60%; background-color:  ; margin-bottom: 20px;}
+.detlab {
+	font-weight: bold;
+	font-size: .89em;
+	width: 40%;
+	float: left;
+	background-color: ;
+}
+.detval {
+	font-weight: normal;
+	width: 60%;
+	font-size: .89em; 
+	float: left;
+	background-color: ;
+}
+
+.dets {
+	margin: 15px 0;
+}
+.dets tr td {
+	padding: 3px 0px;
+	line-height: 15px; 
+}
+.dets tr td:nth-child(1){
+	font-weight: bold;
+	font-size: .8em;
+	width: 140px;
+}
+
+
+.modal .items td {text-align: center;}
+
+
+
+
+
+ @media screen and (max-width: 700px) {
+.retra {display: block;width: 100%; height: 70px; clear: both;   text-align: center; margin-top: 5px;}
+
+ 
+.modavatar {  
+	width:  60px; 
+	height: 60px;  
+	margin: 0 auto;
+		transition: all 0.30s ease-out;
+		-moz-transition: all 0.30s ease-out;
+		-webkit-transition: all 0.30s ease-out;  
+}
+.detped { width: 100%;  }
+
+.detlab { 
+	width: 100%; 
+}
+.detval {
+	width: 100%; 
+}
+
+ 
+
+
+ }
+
+
+
+ @media screen and (max-width: 370px) {
+ 
+ .cuadromed { 
+	width: 85%; 
+	margin: 0 auto;
+	background-color:#FFFFFF; 
+	border:1px solid #AAB7CE; 
+	transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-webkit-transition: all 0.3s ease-out; 
+}
+
+
+
+img.cerrar {
+	position: absolute; right: 0px; top: 0px; width: 30px;
+}
+ 
+
+
+ }
+
+

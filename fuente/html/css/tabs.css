@@ -1,0 +1,148 @@
+.etabs {   
+    padding: 0; 
+    font-size: 0;   
+}
+.tab { 
+    display: inline-block; 
+    zoom:1; 
+    *display:inline;
+    border-bottom: none;
+    border-right: none;
+    margin-right: .5%; 
+    width: 24.5%;
+}
+
+
+.tab.d25 {  
+    margin-right: .5%; 
+    width: 24.5%;
+}
+.tab.d33 {  
+    margin-right: .5%; 
+    width: 32.5%;
+}
+
+
+.tab a {   
+
+    height: 30px;
+    line-height: 15px;
+    padding: 15px 5px 0px 5px;
+    vertical-align: middle; 
+    font-size: 12px; 
+    display: block; 
+
+    color: #333333;
+    border: 1px solid #e6e7e8;
+    border-top: 2px solid #e6e7e8; 
+    border-bottom: 0px  ; 
+    background-color: #f8fafb; 
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative; 
+    top: 2px;
+    -moz-box-shadow: 0 -3px 7px rgba(3, 3, 5, 0.1);
+    -webkit-box-shadow: 0 -3px 7px rgba(3, 3, 5, 0.1);
+    box-shadow: 0 -3px 7px rgba(3, 3, 5, 0.1);
+    transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;  
+}
+.tab a.active {   
+    color: #0e8454;  
+    background-color: #ffffff; 
+    border-top: 2px solid #0e8454; 
+    z-index: 8;
+}
+
+
+ 
+
+.tab-container .panel-container {   
+    padding: 0px; 
+    min-height: 400px;   
+    position: relative;
+    z-index: 7;
+}
+ 
+
+
+.tab-container .panel-container .border {   
+    width: 100%;
+}
+
+
+
+
+
+.tab-container .steps {   
+    height: 300px;
+}
+
+
+
+
+
+@media screen and (max-width: 1120px) {
+
+
+.tab a span {    
+    font-size: 0px; 
+    transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;  
+ 
+}
+
+
+}
+
+
+
+@media screen and (max-width: 850px) {
+
+.tab a {    
+    height: 30px;
+    padding: 17px 5px 0px 5px;
+    font-size: 11px; 
+    transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;  
+ 
+} 
+
+.tab a more {    
+    font-size: 0px; 
+    transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;  
+ 
+}
+
+}
+
+
+
+@media screen and (max-width: 550px) {
+
+
+/*.tab {  
+    margin-right: 0%; 
+    width: 100%;
+}*/
+
+
+
+.tab a {  
+
+    height: 40px;
+    padding: 10px 5px 0px 5px;
+    line-height: 15px;
+    font-size: 10px; 
+    -moz-box-shadow: 0 -3px 7px rgba(3, 3, 5, 0);
+    -webkit-box-shadow: 0 -3px 7px rgba(3, 3, 5, 0);
+    box-shadow: 0 -3px 7px rgba(3, 3, 5, 0);
+}
+
+}

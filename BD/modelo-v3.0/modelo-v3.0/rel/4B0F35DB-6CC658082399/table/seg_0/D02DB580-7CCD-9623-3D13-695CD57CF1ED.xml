@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D02DB580-7CCD-9623-3D13-695CD57CF1ED" name="TATALLASXTIPOPRENDA">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 20:43:28 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_17</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIIDTIPOPRENDA" id="6FE5C615-04DA-F62B-E9BC-05E7AE4027EC">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 20:44:00 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="49561E8C-92C9-AB3F-F8BB-5A914F829F01" referredColumn="35D47A39-1957-88A3-C2B7-135B082C30A4"/>
+</associations>
+</Column>
+<Column name="FITALLA" id="2D9BB515-317B-4F00-638C-18AB6BDFBB88">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 20:43:52 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7C708319-9FBB-436C-FBAB-A87CC715FE9C" referredColumn="8C4F893A-906F-F83A-FEFB-B7971EF17522"/>
+</associations>
+</Column>
+<Column name="FIIDGENERO" id="8EB240AD-3D75-EDC9-7BFC-692DDC9537D9">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 21:48:43 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1BC2241E-927D-1D24-089E-AA24DDC66775" referredColumn="0A258913-4428-F290-7059-D05E38339691"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="89734A3D-F211-ECE3-2AF1-1AC521C8D473" name="PK_TATALLASXTIPOPRENDA">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 20:44:08 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6FE5C615-04DA-F62B-E9BC-05E7AE4027EC"/>
+<colUsage columnID="2D9BB515-317B-4F00-638C-18AB6BDFBB88"/>
+<colUsage columnID="8EB240AD-3D75-EDC9-7BFC-692DDC9537D9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6475D726-8C11-008B-25BC-B525F6340470" name="FK_TATALLASXTIPOPRENDA_03">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 20:44:57 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2D9BB515-317B-4F00-638C-18AB6BDFBB88"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="656E01E7-8F1B-1C18-E572-B23E4917CB5E" name="FK_TATALLASXTIPOPRENDA_02">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 20:45:07 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6FE5C615-04DA-F62B-E9BC-05E7AE4027EC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1AB22359-4557-30BB-ADA9-2E5DE0D3C4E9" name="FK_TATALLASXTIPOPRENDA_01">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 21:49:24 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8EB240AD-3D75-EDC9-7BFC-692DDC9537D9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Tiendas Elektra</title>  
+	<link rel="stylesheet" href="css/estilo.css" />     
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/tooltipster.bundle.css" />
+	<link rel="stylesheet" media="screen" href="css/modal.css"> 
+</head>
+<body>
+
+<div class="mainbox" >
+	<div class="header"> 
+
+		<div class="nave" >
+		<a href="#" class="menu" >
+		<img src="img/menu.svg">
+		</a> 
+			<a href="login.html" class="logo">
+				<img src="img/logo.png" width="120px">
+			</a>
+			<div class="user dropdown " onclick="myFunction()"> 
+				<div class="foto"> 
+					<img src="img/avatar.png">
+				</div>
+				<span style="height: 26px; line-height: 30px;">
+					<b>Ismael Pérez Reyes</b>
+				</span>
+				<img src="img/acarrow2.svg" class="masmenu dropbtn2"> 
+				<div id="myDropdown2" class="dropdown-content2 ">
+					<div class="myinfo">
+						<a href="#">Mi Perfil</a>
+						<a href="#">Manual de Vestimenta</a>
+						<a href="#">Ayuda</a>
+						<a href="#">Politicas</a>
+						<a href="#">Cerrar Sesión</a>
+					</div>
+				</div> 
+			</div> 
+		</div> 
+		<div class="hspacer"></div>
+
+		<div class="hdiv"></div>
+		<div class="secmenu"> 
+			<a href="index.html" class="top ">Reporte<span> General</span></a>
+			<a href="excepciones.html" class="top active">Excepciones</a>
+			<a href="cancelaciones.html" class="top">Cancelaciones</a>
+			<a href="monitoreo.html" class="top">Monitoreo</a>
+			<a href="segurodecompra.html" class="top">Seguro<span> de compra</span></a>
+			<a href="distribucion.html" class="top  ">Distribución <img src="img/acarrow2.svg" class="masmenu dropbtn2" >
+			</a>
+				
+		</div>
+	</div>
+
+	<div class="main ">
+
+
+ 		<dl class="accordion2" id="accordion2"> 
+ 
+			<dt class="accordion2">
+				 
+			</dt>  
+			<dd >  
+				<div class="mcontent">   
+				<br> 
+					<b>Realiza una búsqueda por socio</b><br>  
+					<div class="element5">
+						<label>
+							<span>No. de Empleado</span>
+							<input type="text" value="209922">
+						</label>
+					</div> 
+					<div class="element5">
+						<a href="#" class="btn full">Buscar</a> 
+					</div>  
+					<br> 
+				</div><!-- content--> 
+					</dd>     
+		</dl>  
+
+
+		<div class="content">   
+
+			<div class="border">  
+				<div class="padding overflow mh200">   
+					<table class="items ccenter nowrap ">
+						<thead> 
+							<tr>   
+								<th>Selección</th> 
+								<th>Número de Empleado</th>  
+								<th>Socio</th> 
+								<th>Eliminar</th>  
+							</tr>
+						</thead>
+						<tbody>
+							<tr>   
+								<td><input name="3050796" id="autopen1"    type="checkbox" ><label for="autopen1"></label></td> 
+								<td>849381</td> 
+								<td>Luis Enrique Martinez Ávila</td> 
+								<td><a href="#"><img src="img/eliminar.svg" class="menos"></a></td>   
+							</tr>  
+							<tr>   
+								<td><input name="3050796" id="autopen2"    type="checkbox" ><label for="autopen2"></label></td> 
+								<td>881232</td> 
+								<td>Alberto Vázquez Jiménez</td> 
+								<td><a href="#"><img src="img/eliminar.svg" class="menos"></a></td>   
+							</tr>  
+							<tr>   
+								<td><input name="3050796" id="autopen3"    type="checkbox" ><label for="autopen3"></label></td> 
+								<td>209921</td> 
+								<td>David Alfonso Gutiérrez Rivera</td> 
+								<td><a href="#"><img src="img/eliminar.svg" class="menos"></a></td>   
+							</tr>  
+							<tr>   
+								<td><input name="3050796" id="autopen4"    type="checkbox" ><label for="autopen4"></label></td> 
+								<td>209921</td> 
+								<td>César Hernández López</td> 
+								<td><a href="#"><img src="img/eliminar.svg" class="menos"></a></td>   
+							</tr>  
+							<tr>   
+								<td><input name="3050796" id="autopen5"    type="checkbox" ><label for="autopen5"></label></td> 
+								<td>209921</td> 
+								<td>Gonzalo Herrera Bravo</td> 
+								<td><a href="#"><img src="img/eliminar.svg" class="menos"></a></td>   
+							</tr>       
+
+						</tbody>
+					</table> 
+				</div>  
+			</div>
+	
+
+			<div class="botones" id="continuar"> 
+				<br>
+				<a href="#" class="btn agregar espaciador"><img src="img/agregar.png">Agregar socio</a>   
+			</div> 
+
+		</div><!-- content-->
+	</div><!-- main--> 
+</div>
+
+
+
+
+
+	<!-- jquery Start -->
+		 <script type="text/javascript" src="js/jquery.js"></script> 
+ 
+
+	<!-- menu toggle -->
+		 <script>
+			$(document).ready(function(){
+			    $(".menu").click(function(){
+			        $(".secmenu").toggleClass("verver");
+			        $(".menu").toggleClass("hams");
+			    });
+			});
+
+
+
+		$(function(){
+			$('td a .menos').on('click',function(e){
+				e.preventDefault();
+				$(this).parent().parent().parent().remove(); 
+			});
+		});
+
+		</script>
+ 
+ 
+
+
+
+	<!-- accordion -->
+		<script type="text/javascript">
+			jQuery(function() {
+			  //Hide all panels
+			  // var allPanels = $('.accordion > dd').hide(); 
+			     var allPanels = $('.accordion > dd').hide().first().show();
+
+			  jQuery('.accordion > dt').on('click', function() {
+			    $this = $(this);
+			    //the target panel content
+			    $target = $this.next();
+			    
+			    jQuery('.accordion > dt').removeClass('accordion-active');
+			    if ($target.hasClass("in")) {
+			      $this.removeClass('accordion-active');
+			      $target.slideUp();
+			      $target.removeClass("in");
+			    } else {
+			      $this.addClass('accordion-active');
+			      jQuery('.accordion > dd').removeClass("in");
+			      $target.addClass("in");
+
+			      jQuery('.accordion > dd').slideUp();
+			      $target.slideDown();
+			    }
+			  })
+
+
+
+
+			  var allPanels = $('.accordion2 > dd').hide();
+
+			  jQuery('.accordion2 > dt').on('click', function() {
+			    $this = $(this);
+			    //the target panel content
+			    $target = $this.next();
+			    
+			    jQuery('.accordion2 > dt').removeClass('accordion2-active');
+			    if ($target.hasClass("in")) {
+			      $this.removeClass('accordion2-active');
+			      $target.slideUp();
+			      $target.removeClass("in");
+			    } else {
+			      $this.addClass('accordion2-active');
+			      jQuery('.accordion2 > dd').removeClass("in");
+			      $target.addClass("in");
+
+			      jQuery('.accordion2 > dd').slideUp();
+			      $target.slideDown();
+			    }
+			  })
+
+
+			})
+		</script>
+		
+
+		<!--Toogle-->
+		<script type="text/javascript">	
+
+		var x =  document.getElementById("myDropdown2");
+
+			function myFunction(){
+			 	if(x.style.display === 'none'){
+			 		x.style.display = 'block';
+			 	}else{
+			 		x.style.display = 'none';
+			 	}
+		    }
+		</script>   
+</body>
+</html>

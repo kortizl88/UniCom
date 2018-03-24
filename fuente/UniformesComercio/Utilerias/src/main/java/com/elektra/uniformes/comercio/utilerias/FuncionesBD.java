@@ -95,4 +95,8 @@ public class FuncionesBD {
     
     @Value("#{propiedadesUniformesComercio['FN_CONS_ESTATUS_SOLICITUD']}")
     public String FN_CONS_ESTATUS_SOLICITUD;
+    
+    @Value("#{propiedadesUniformesComercio['FN_CONS_REPORTE']}")
+    public String FN_CONS_REPORTE;
+    
 }

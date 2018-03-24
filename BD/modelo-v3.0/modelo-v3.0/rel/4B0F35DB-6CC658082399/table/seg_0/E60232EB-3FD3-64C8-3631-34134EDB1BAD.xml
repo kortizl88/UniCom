@@ -1,0 +1,91 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E60232EB-3FD3-64C8-3631-34134EDB1BAD" name="TAMENUS">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 22:05:30 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_12</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIIDMENU" id="B170AA73-8D50-761D-02D4-5348FAE5FC73">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 22:05:30 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCTITULO" id="4BD50CA4-071F-7760-F993-EDD81DB45906">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 22:05:30 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
+<ownDataTypeParameters>300,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDESCMENU" id="53E42A43-BFEB-75A8-1D82-EEC6D93E1313">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 22:05:30 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
+<ownDataTypeParameters>300,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCRUTAENLACE" id="67A1BE70-6CBF-7F07-6518-C2EEC17D4718">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 22:05:30 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
+<ownDataTypeParameters>300,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIAPLICACARGA" id="1ECA4419-38DF-514A-48C0-339801D8881C">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 22:05:30 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIBLOQUEADOCARGA" id="B479B8FC-5668-FFC9-8520-F569ACC35612">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 22:09:28 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="55CE47F3-10FC-97CA-ADD2-14E27DA76884" name="PK_TAMENUS">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 22:05:30 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B170AA73-8D50-761D-02D4-5348FAE5FC73"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

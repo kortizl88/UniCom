@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6A25E14F-C55D-1FEE-F7A1-966AC2F9CB1A" name="TASKUSXKIT">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:13:52 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_20</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FISKU" id="12A698AA-9F6F-1A22-CA85-BEE23A684421">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:14:08 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3B93FD37-B1FD-17C1-E7F6-C3357E6049A6" referredColumn="8F918C5A-13DD-AE62-BB4E-BB6F48D36BF3"/>
+</associations>
+</Column>
+<Column name="FIKIT" id="84E340C2-CDB8-D461-4E2B-A78B8A9E7347">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:14:15 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E600588C-3E84-14F5-D080-182DE2A41113" referredColumn="D422EA38-DE63-2CC7-ACF3-7CA160B8729A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="143E571D-4087-4E85-49D7-0F38D609F7A8" name="PK_TASKUSXKIT">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:16:39 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="12A698AA-9F6F-1A22-CA85-BEE23A684421"/>
+<colUsage columnID="84E340C2-CDB8-D461-4E2B-A78B8A9E7347"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="248D4D2E-038F-7753-B0E6-177BEBE55E20" name="FK_TASKUSXKIT_02">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:16:54 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="12A698AA-9F6F-1A22-CA85-BEE23A684421"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BCEE4376-867D-A349-F9A2-5E3390BF92E6" name="FK_TASKUSXKIT_01">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 22:17:11 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="84E340C2-CDB8-D461-4E2B-A78B8A9E7347"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

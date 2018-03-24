@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2BA7BFC1-A2F6-29A0-9172-B6E033C809DF" name="TATIPOSOLICITUD">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:57:07 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIIDTIPOSOLICITUD" id="360CD94B-A604-84D7-3F2E-E800D9AFD175">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:57:29 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDESCRIPCION" id="D185AD66-D669-5C53-0EDE-D984FFDAC9D5">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:57:37 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1B3F135C-AA2E-F655-0690-5828A46F2755" name="PK_TATIPOSOLICITUD">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:57:58 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="360CD94B-A604-84D7-3F2E-E800D9AFD175"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

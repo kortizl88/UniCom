@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="37DDB363-9490-3E90-A915-18B8A376370B" containerWithKeyObject="127127AE-FC70-C3E1-2ECB-0462968CBAD2" localFKIndex="DA178BF8-43FF-08D5-6B7C-CFF1A9541D77" name="FK_TACARGASXNEGOCIO_01">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-12-06 17:12:31 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<referredTableLongName>TACARGAS</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>DE299834-6D46-7458-B4FB-D38FFA3C609C</referredTableID>
+<keyObject>820F33D2-CE96-85D2-A21A-3E3B611D3574</keyObject>
+<referredKeyID>820F33D2-CE96-85D2-A21A-3E3B611D3574</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>FIIDCARGA</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

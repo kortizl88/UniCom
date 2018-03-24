@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CFE4BF29-6AD2-7AA2-9FE3-6C1A2F907865" name="TATIENDAS">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 17:11:56 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_10</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIPAIS" id="3F4A2306-3936-2E77-4BA9-BAC640FC17D5">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 21:21:49 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FICANAL" id="CCF9341F-39A6-8056-9DC5-410B22C6184A">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 21:22:02 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FISUCURSAL" id="B3C06A46-F66B-2E5B-196B-8499FB4962D8">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 17:12:21 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCNOMBRE" id="3D1FC90C-C86E-D80C-C96A-D51833EE078E">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 21:29:48 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDIRIP" id="521FD596-0B0E-21BC-F43D-A08A8FEF2EF1">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 17:12:29 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIIDCDISTRIBUCION" id="FECFDD8A-AD79-06BE-AE52-3D650BC8FC01">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 17:12:45 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIIDFORMADOR" id="9271486D-06A9-EF51-91E2-D089FB7D5072">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 17:12:54 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="20B8274F-8008-A5F2-5D29-B128CFED8CE2" name="PK_TATIENDAS">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 17:13:00 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3F4A2306-3936-2E77-4BA9-BAC640FC17D5"/>
+<colUsage columnID="B3C06A46-F66B-2E5B-196B-8499FB4962D8"/>
+<colUsage columnID="CCF9341F-39A6-8056-9DC5-410B22C6184A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

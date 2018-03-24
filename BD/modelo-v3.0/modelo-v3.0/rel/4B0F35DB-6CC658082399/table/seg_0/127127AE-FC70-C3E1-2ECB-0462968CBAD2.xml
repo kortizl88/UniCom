@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="127127AE-FC70-C3E1-2ECB-0462968CBAD2" name="TACARGASXNEGOCIO">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-12-06 17:02:36 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_12</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIIDCARGA" id="7F14EC92-A4FD-5566-BA5F-9C7EAA2E8756">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-12-06 17:02:36 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="37DDB363-9490-3E90-A915-18B8A376370B" referredColumn="9126D46E-2CC9-4354-44E0-0D3559DD4C1F"/>
+</associations>
+</Column>
+<Column name="FIIDNEGOCIO" id="2DA56D34-4E14-67D2-CD29-5AED5D208B6F">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-12-06 17:02:36 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EC58F27E-7719-C1BB-C27A-3B044578CAB0" referredColumn="AC9DF8A6-5009-04A6-F6F3-9723AD6E4108"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C32FA886-CA37-6F76-5533-44529773B872" name="PK_TACARGASXNEGOCIO">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-12-06 17:02:36 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7F14EC92-A4FD-5566-BA5F-9C7EAA2E8756"/>
+<colUsage columnID="2DA56D34-4E14-67D2-CD29-5AED5D208B6F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DA178BF8-43FF-08D5-6B7C-CFF1A9541D77" name="FK_TACARGASXNEGOCIO_01">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-12-06 17:12:31 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7F14EC92-A4FD-5566-BA5F-9C7EAA2E8756"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FD2DA194-ADD3-830A-B0D9-E413DBC65B70" name="FK_TACARGASXNEGOCIO_02">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-12-06 17:12:31 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2DA56D34-4E14-67D2-CD29-5AED5D208B6F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,90 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A702D089-7D76-8D3C-46BD-D14D8351FF23" name="TAMENUSFUNCIONESXNEGOCIO">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 22:12:02 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_12</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIIDMENU" id="DD560E41-C79F-B3E8-FD09-99CAA668F686">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 22:12:02 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A1A452AA-DF62-502D-60EA-CA8D4DF14BFB" referredColumn="B170AA73-8D50-761D-02D4-5348FAE5FC73"/>
+</associations>
+</Column>
+<Column name="FIIDNEGOCIO" id="160CBEEA-8C95-799C-060D-2A75C46D5D00">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 23:28:08 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1E658DC7-460B-7CD3-56A2-27280083C3B8" referredColumn="5B8AC53D-EE7D-A90E-0EAC-8DEF36614E54"/>
+</associations>
+</Column>
+<Column name="FIFUNCIONSAP" id="C80DF697-9702-0BEF-7A4F-3439AC8C7F69">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 22:12:02 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1E658DC7-460B-7CD3-56A2-27280083C3B8" referredColumn="A7256135-D1FE-5FD9-F991-1A4CFED5D983"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FF00244A-C72C-F827-13FC-CF85574FDB7C" name="PK_TAMENUSFUNCIONESXNEGOCIO">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 22:12:02 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DD560E41-C79F-B3E8-FD09-99CAA668F686"/>
+<colUsage columnID="C80DF697-9702-0BEF-7A4F-3439AC8C7F69"/>
+<colUsage columnID="160CBEEA-8C95-799C-060D-2A75C46D5D00"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="470E6D64-DF47-207F-7E19-4D5D69864729" name="FK_TAMENUSFUNCIONESXNEGOCIO_01">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 22:16:14 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DD560E41-C79F-B3E8-FD09-99CAA668F686"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2B711161-F622-9A56-4113-838DA9BFCFD5" name="FK_TAMENUSFUNCIONESXNEGOCIO_02">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 23:29:27 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="160CBEEA-8C95-799C-060D-2A75C46D5D00"/>
+<colUsage columnID="C80DF697-9702-0BEF-7A4F-3439AC8C7F69"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

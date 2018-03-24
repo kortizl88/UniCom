@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AF29086D-0E80-8E1F-1AA0-989453EBCBEE" name="TAEQUIVALENCIACANALES">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-28 00:34:00 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_10</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FICANALCECO" id="44949E13-6DA0-69D4-4FA9-D9F6C6C5E50F">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-28 00:34:00 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FICANAL" id="F64B97C2-E17C-6526-F324-618DBC92DF12">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-28 00:34:00 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDESCRIPCION" id="C19F4215-6BCB-8BE2-8E08-FC431E5AC946">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-28 00:34:00 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="91DD3408-CA8F-BA90-C134-303B156C3362" name="PK_TAEQUIVALENCIACANALES">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-28 00:34:00 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="44949E13-6DA0-69D4-4FA9-D9F6C6C5E50F"/>
+<colUsage columnID="F64B97C2-E17C-6526-F324-618DBC92DF12"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

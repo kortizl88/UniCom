@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Tiendas Elektra</title>  
+	<link rel="stylesheet" href="css/estilo.css" />     
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+	<link rel="stylesheet" media="screen" href="css/modal.css"> 
+</head>
+<body>
+
+
+
+ 
+
+<div class="mainbox" >
+	<div class="header"> 
+
+		<div class="nave" >
+		<a href="#" class="menu" >
+		<img src="img/menu.svg">
+		</a> 
+			<a href="login.html" class="logo">
+				<img src="img/logo.png" width="120px">
+			</a>
+			<div class="user dropdown " onclick="myFunction()"> 
+				<div class="foto"> 
+					<img src="img/avatar.png">
+				</div>
+				<span style="height: 26px; line-height: 30px;">
+					<b>Ismael Pérez Reyes</b>
+				</span>
+				<img src="img/acarrow2.svg" class="masmenu dropbtn2"> 
+				<div id="myDropdown2" class="dropdown-content2 ">
+					<div class="myinfo">
+						<a href="#">Mi Perfil</a>
+						<a href="#">Manual de Vestimenta</a>
+						<a href="#">Ayuda</a>
+						<a href="#">Politicas</a>
+						<a href="#">Cerrar Sesión</a>
+					</div>
+				</div> 
+			</div> 
+		</div> 
+		<div class="hspacer"></div>
+
+		<div class="hdiv"></div>
+		<div class="secmenu"> 
+		<div class="containter">
+			<a href="index.html" class="top ">Reporte<span> General</span></a>
+			<a href="excepciones.html" class="top">Excepciones</a>
+			<a href="cancelaciones.html" class="top">Cancelaciones</a>
+			<a href="monitoreo.html" class="top">Monitoreo</a>
+			<a href="segurodecompra.html" class="top">Seguro<span> de compra</span></a> 
+ 
+	  		<div class="dropdown top sup100"   > 
+				<a href="distribucion.html" class="dropbtn top w100" style="width: 100%;"> Distribución <img src="img/acarrow.svg"></a> 
+				  <div class="dropdown-content">
+				    <a href="#">SAP</a>
+				    <a href="#">SPPI</a>
+				  </div>
+			</div> 
+		</div>
+ 
+
+
+ 
+		</div>
+	</div>
+
+	<div class="main ">
+ 		<dl class="accordion2" id="accordion2"> 
+			<dt class="accordion2">
+			</dt>  
+			<dd >  
+				<div class="mcontent">   
+				<br> 					
+					<b>Semana a consultar</b><br> 
+					<div class="element5">
+						<label>
+							<span>Fecha Inicial</span>
+						<input type="text" class="calico" id="datepicker_solicitud_ini" value="17/01/1983">  
+						</label>
+					</div> 
+					<div class="element5">
+						<label>
+							<span>Fecha Final</span>
+						<input type="text" class="calico" id="datepicker_solicitud_fin" value="17/01/1983">  
+						</label>
+					</div> 
+					<div class="element5">
+						<label>
+							<span>Empleado</span>
+						<input type="text"   value="209921">  
+						</label>
+					</div> 
+					<div class="element5">
+						<a href="#" class="btn full">Buscar</a> 
+					</div> 
+					<br> 
+				</div><!-- content--> 
+			</dd>     
+		</dl>  
+
+
+		<div class="content">   
+
+			<div class="border">  
+				<div class="padding overflow mh320">   
+					<table class="items ccenter nowrap ">
+						<thead> 
+							<tr>   
+								<th>No. de Empleado</th>  
+								<th>Pedido</th>
+								<th>Sucursal</th>
+								<th>Negocio</th>
+								<th>Folio</th>
+								<th>Importe</th>
+								<th>Amortización</th>
+								<th>Referencia SAP</th>
+								<th>Observaciones</th> 
+							</tr>
+						</thead>
+						<tbody>
+							<tr>    
+								<td>173110</td> 
+								<td>1476</td> 
+								<td>3201</td> 
+								<td>Dinero Elektra</td> 
+								<td>AAI02216</td> 
+								<td>$300.00</td> 
+								<td>$37.50</td> 
+								<td>AAI02214-1476-1</td> 
+								<td>MSGTYP:TEXT</td>  
+							</tr>
+							<tr>    
+								<td>221040</td> 
+								<td>2174</td> 
+								<td>4307</td> 
+								<td>Dinero Elektra</td> 
+								<td>AAI02216</td> 
+								<td>$300.00</td> 
+								<td>$37.50</td> 
+								<td>AAI05465-1476-1</td> 
+								<td>MSGTYP:TEXT</td>  
+							</tr>
+							<tr>    
+								<td>173110</td> 
+								<td>1476</td> 
+								<td>3201</td> 
+								<td>Afore</td> 
+								<td>AAI02216</td> 
+								<td>$300.00</td> 
+								<td>$37.50</td> 
+								<td>AAI02214-1476-1</td> 
+								<td>MSGTYP:TEXT</td>  
+							</tr>
+							<tr>    
+								<td>928801</td> 
+								<td>1611</td> 
+								<td>4307</td> 
+								<td>Credito</td> 
+								<td>AAI02216</td> 
+								<td>$300.00</td> 
+								<td>$37.50</td> 
+								<td>AAI05465-1476-1</td> 
+								<td>MSGTYP:TEXT</td>  
+							</tr>  
+							<tr>    
+								<td>928801</td> 
+								<td>1611</td> 
+								<td>4307</td> 
+								<td>Canales de Terceros</td> 
+								<td>AAI02216</td> 
+								<td>$300.00</td> 
+								<td>$37.50</td> 
+								<td>AAI05465-1476-1</td> 
+								<td>MSGTYP:TEXT</td>  
+							</tr>
+							<tr>    
+								<td>928801</td> 
+								<td>1611</td> 
+								<td>4307</td> 
+								<td>División Financiera</td> 
+								<td>AAI02216</td> 
+								<td>$300.00</td> 
+								<td>$37.50</td> 
+								<td>AAI05465-1476-1</td> 
+								<td>MSGTYP:TEXT</td>  
+							</tr>
+							<tr>    
+								<td>173110</td> 
+								<td>1476</td> 
+								<td>3201</td> 
+								<td>Dinero Elektra</td> 
+								<td>AAI02216</td> 
+								<td>$300.00</td> 
+								<td>$37.50</td> 
+								<td>AAI02214-1476-1</td> 
+								<td>MSGTYP:TEXT</td>  
+							</tr>
+							<tr>    
+								<td>221040</td> 
+								<td>2174</td> 
+								<td>4307</td> 
+								<td>Dinero Elektra</td> 
+								<td>AAI02216</td> 
+								<td>$300.00</td> 
+								<td>$37.50</td> 
+								<td>AAI05465-1476-1</td> 
+								<td>MSGTYP:TEXT</td>  
+							</tr>
+							<tr>    
+								<td>173110</td> 
+								<td>1476</td> 
+								<td>3201</td> 
+								<td>Afore</td> 
+								<td>AAI02216</td> 
+								<td>$300.00</td> 
+								<td>$37.50</td> 
+								<td>AAI02214-1476-1</td> 
+								<td>MSGTYP:TEXT</td>  
+							</tr>
+							<tr>    
+								<td>928801</td> 
+								<td>1611</td> 
+								<td>4307</td> 
+								<td>Credito</td> 
+								<td>AAI02216</td> 
+								<td>$300.00</td> 
+								<td>$37.50</td> 
+								<td>AAI05465-1476-1</td> 
+								<td>MSGTYP:TEXT</td>  
+							</tr> 
+							<tr>    
+								<td>680581</td> 
+								<td>1940</td> 
+								<td>4307</td> 
+								<td>Elektra</td> 
+								<td>AAI02216</td> 
+								<td>$300.00</td> 
+								<td>$37.50</td> 
+								<td>AAI05465-1476-1</td> 
+								<td>MSGTYP:TEXT</td>  
+							</tr>  
+
+						</tbody>
+					</table> 
+				</div>  
+			</div>
+	
+
+			<div class="botones" id="continuar"> 
+				<br>
+				<a href="#" class="btn espaciador"><img src="img/excel.png">descargar excel</a>   
+			</div> 
+		</div><!-- content-->
+	</div><!-- main--> 
+</div>
+
+
+
+
+	<!-- jquery Start -->
+		<script type="text/javascript" src="js/jquery.js"></script> 
+		
+	<!-- menu toggle -->
+		 <script>
+			$(document).ready(function(){
+			    $(".menu").click(function(){
+			        $(".secmenu").toggleClass("verver");
+			        $(".menu").toggleClass("hams");
+			    });
+			});
+
+
+
+		$(function(){
+			$('td a .menos').on('click',function(e){
+				e.preventDefault();
+				$(this).parent().parent().parent().remove(); 
+			});
+		});
+
+		</script>
+ 
+ 
+
+
+
+	<!-- accordion -->
+		<script type="text/javascript">
+			jQuery(function() {
+			  //Hide all panels
+			  // var allPanels = $('.accordion > dd').hide(); 
+			     var allPanels = $('.accordion > dd').hide().first().show();
+
+			  jQuery('.accordion > dt').on('click', function() {
+			    $this = $(this);
+			    //the target panel content
+			    $target = $this.next();
+			    
+			    jQuery('.accordion > dt').removeClass('accordion-active');
+			    if ($target.hasClass("in")) {
+			      $this.removeClass('accordion-active');
+			      $target.slideUp();
+			      $target.removeClass("in");
+			    } else {
+			      $this.addClass('accordion-active');
+			      jQuery('.accordion > dd').removeClass("in");
+			      $target.addClass("in");
+
+			      jQuery('.accordion > dd').slideUp();
+			      $target.slideDown();
+			    }
+			  })
+
+
+
+
+			  var allPanels = $('.accordion2 > dd').hide();
+
+			  jQuery('.accordion2 > dt').on('click', function() {
+			    $this = $(this);
+			    //the target panel content
+			    $target = $this.next();
+			    
+			    jQuery('.accordion2 > dt').removeClass('accordion2-active');
+			    if ($target.hasClass("in")) {
+			      $this.removeClass('accordion2-active');
+			      $target.slideUp();
+			      $target.removeClass("in");
+			    } else {
+			      $this.addClass('accordion2-active');
+			      jQuery('.accordion2 > dd').removeClass("in");
+			      $target.addClass("in");
+
+			      jQuery('.accordion2 > dd').slideUp();
+			      $target.slideDown();
+			    }
+			  })
+
+
+			})
+		</script>
+ 
+
+ 
+ 		<!-- Date Picker -->
+			<link rel="stylesheet" href="css/jquery-ui-datepicker.min.css">
+			<script type="text/javascript" src="js/jquery-ui-datepicker.min.js"></script>
+			<script type="text/javascript" src="js/jquery-ui-es.min.js"></script>
+			<script type="text/javascript">
+				$(function() {
+					$( "#datepicker_solicitud_ini, #datepicker_solicitud_fin, #datepicker_remision_ini, #datepicker_remision_fin" ).datepicker({       
+						changeMonth: false,
+      					changeYear: false,
+         				 yearRange: "1900:today", 
+						beforeShow : function(){
+			                 if(!$('.date_picker').length){
+			                      $('#ui-datepicker-div').wrap('<span class="date_picker"></span>');
+
+
+			                 }
+			             }
+					});
+				});
+			</script>
+
+
+
+		<!--Toogle-->
+		<script type="text/javascript">	
+
+		var x =  document.getElementById("myDropdown2");
+
+			function myFunction(){
+			 	if(x.style.display === 'none'){
+			 		x.style.display = 'block';
+			 	}else{
+			 		x.style.display = 'none';
+			 	}
+		    }
+		</script>   
+
+</body>
+</html>

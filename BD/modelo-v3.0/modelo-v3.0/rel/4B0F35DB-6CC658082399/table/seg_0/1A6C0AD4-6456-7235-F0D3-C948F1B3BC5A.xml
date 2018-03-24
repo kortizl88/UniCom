@@ -1,0 +1,48 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1A6C0AD4-6456-7235-F0D3-C948F1B3BC5A" name="TATIPOSERRORES">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-02-28 18:08:28 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_30</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIIDERROR" id="4BF919C8-BE2A-60DE-97C1-08A6C106276C">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-02-28 18:11:03 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDESCRIPCION" id="BA5E1D22-DDEB-53EE-FB9A-324B408BE942">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-02-28 18:11:03 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="87E16BD6-CB10-1814-7411-112C088184CF" name="PK_TATIPOSERRORES">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-02-28 18:11:03 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4BF919C8-BE2A-60DE-97C1-08A6C106276C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

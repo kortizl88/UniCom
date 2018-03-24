@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A8CE5B4C-0D9C-2EB8-C6A4-3A5276618910" containerWithKeyObject="EEC506B1-6AEA-7657-994A-DBB8CE36884F" localFKIndex="1FF61E24-48CA-8851-3CC5-130185D487E9" name="FK_TASOLICITUDESDETALLE_03">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 16:48:14 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<referredTableLongName>TATALLAS</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>20E3EC9A-B7AA-C8DC-5BFA-FC4BAAB1743D</referredTableID>
+<keyObject>97710385-F12E-69F8-5A3E-DA46ABFD6848</keyObject>
+<referredKeyID>97710385-F12E-69F8-5A3E-DA46ABFD6848</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>FITALLA</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

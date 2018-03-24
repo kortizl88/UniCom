@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="60px"
+	 height="60px" viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve">
+<g id="Layer_2" display="none">
+	
+		<image display="inline" overflow="visible" width="60" height="60" xlink:href="muserbg.png"  transform="matrix(0.9999 0 0 0.9999 0 0)">
+	</image>
+</g>
+<g id="Layer_1">
+	<path fill="#0B6343" d="M30.046,0C13.513,0,0.094,13.418,0.094,29.952c0,16.534,13.418,29.952,29.952,29.952
+		C46.578,59.904,60,46.486,60,29.952C60,13.418,46.578,0,30.046,0 M30.046,8.985c4.969,0,8.985,4.014,8.985,8.986
+		c0,4.971-4.016,8.985-8.985,8.985c-4.972,0-8.985-4.014-8.985-8.985C21.061,13,25.075,8.985,30.046,8.985 M30.046,51.518
+		c-7.487,0-14.107-3.834-17.971-9.645c0.089-5.963,11.981-9.227,17.971-9.227c5.96,0,17.88,3.264,17.97,9.227
+		C44.153,47.684,37.534,51.518,30.046,51.518"/>
+</g>
+</svg>

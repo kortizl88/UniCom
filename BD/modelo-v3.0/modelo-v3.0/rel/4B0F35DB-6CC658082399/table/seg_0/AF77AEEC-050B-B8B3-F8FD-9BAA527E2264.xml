@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AF77AEEC-050B-B8B3-F8FD-9BAA527E2264" name="TATIPOSPRENDA">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:46:34 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIIDTIPOPRENDA" id="35D47A39-1957-88A3-C2B7-135B082C30A4">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:46:53 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDESCRIPCION" id="0EA45E3C-2396-065F-BB84-9E8A05BF959D">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:47:07 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCIMAGEN" id="C876EF5C-681B-2F0A-4F8F-7779D0F8A60C">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-21 16:47:23 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
+<ownDataTypeParameters>300,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="11E098D0-850C-2438-3E7A-F27FCCBA239F" name="PK_TATIPOSPRENDA">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 15:47:22 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="35D47A39-1957-88A3-C2B7-135B082C30A4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

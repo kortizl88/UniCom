@@ -1,0 +1,82 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9A7F134E-F76A-5FCE-BE1D-845B05182628" name="TATIENDASDIRIP">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-28 00:32:55 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_10</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FITIENDAID" id="D8495B7E-1A39-E2CE-6305-8AC4C0921818">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-28 00:32:55 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIPAISID" id="C1BA55F2-C51C-07B9-7A5A-1CE808C89407">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-28 00:32:55 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FICANALDIRIP" id="9AD98A25-1A33-0BE6-F49E-C0629FE60E9A">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-28 00:32:55 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDESCRIPTIENDA" id="89ECB7AF-E617-170F-1D10-47001AEBA9B8">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-28 00:32:55 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDIRECCIONIP" id="97CAF859-56D3-A139-8089-791FA819A9D6">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-28 00:32:55 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="78A1867F-86AA-6AD6-A456-DD519C434EFA" name="PK_TATIENDASDIRIP">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2017-11-28 00:32:55 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D8495B7E-1A39-E2CE-6305-8AC4C0921818"/>
+<colUsage columnID="C1BA55F2-C51C-07B9-7A5A-1CE808C89407"/>
+<colUsage columnID="9AD98A25-1A33-0BE6-F49E-C0629FE60E9A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

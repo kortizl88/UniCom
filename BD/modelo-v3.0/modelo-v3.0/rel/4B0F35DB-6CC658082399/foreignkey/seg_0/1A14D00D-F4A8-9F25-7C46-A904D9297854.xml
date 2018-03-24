@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="1A14D00D-F4A8-9F25-7C46-A904D9297854" containerWithKeyObject="51B7D5B7-616C-BB35-72EF-3463A546AB7B" localFKIndex="342360D4-1540-39FC-707E-8BFCBDF12033" name="FK_TABITACORASOLICITUD_04">
+<createdBy>oggonzalez</createdBy>
+<createdTime>2017-08-22 18:04:03 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<referredTableLongName>TATIPOSEVENTO</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>2BCF33CC-2366-EBC0-E03E-CC1D511ED7CB</referredTableID>
+<keyObject>60E427FE-15D4-7F08-AE63-1A9CF8C11A78</keyObject>
+<referredKeyID>60E427FE-15D4-7F08-AE63-1A9CF8C11A78</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>FIIDTIPOEVENTO</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

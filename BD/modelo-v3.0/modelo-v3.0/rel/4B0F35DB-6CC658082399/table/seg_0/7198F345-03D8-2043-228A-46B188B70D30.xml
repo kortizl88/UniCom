@@ -1,0 +1,148 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7198F345-03D8-2043-228A-46B188B70D30" name="TAREINYECCIONPEDIDOSCD">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-03-15 23:36:46 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<ordsAlias>table_30</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="FIPAIS" id="8011429B-8423-8FF1-B8DC-E0BAC30DE389">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-03-15 23:36:46 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AC59A86D-D7D2-732B-D9F2-C87F66C46A8D" referredColumn="14926F5B-9BC2-AEDF-AEE7-D04CD1ADC319"/>
+</associations>
+</Column>
+<Column name="FICANAL" id="375B831A-417B-030E-6AA2-881CF7A08601">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-03-15 23:36:46 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AC59A86D-D7D2-732B-D9F2-C87F66C46A8D" referredColumn="7C7ED9AF-B10A-C1DA-66AA-75C235F69D6B"/>
+</associations>
+</Column>
+<Column name="FIIDSUCURSAL" id="51FFECAA-DEA2-AD70-D055-3C6937CFAC4C">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-03-15 23:46:52 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AC59A86D-D7D2-732B-D9F2-C87F66C46A8D" referredColumn="0C1A63D3-8286-0C40-FAE4-ABCF59B2528F"/>
+</associations>
+</Column>
+<Column name="FIPEDIDO" id="36AA9395-614C-A0D8-21F7-D9235EFEBCBF">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-03-15 23:46:52 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AC59A86D-D7D2-732B-D9F2-C87F66C46A8D" referredColumn="6337ABB5-8051-EAC9-3D76-363178AAA9F0"/>
+</associations>
+</Column>
+<Column name="FISKU" id="AD044C55-B56B-643F-9C73-2C8A2E2C6770">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-03-15 23:46:52 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AC59A86D-D7D2-732B-D9F2-C87F66C46A8D" referredColumn="C060B8C1-81AC-C082-72AD-C0EA73790DC0"/>
+</associations>
+</Column>
+<Column name="FIDESACTIVADA" id="F9EBB8F6-5C1A-56B0-6133-A0D79B2A32D5">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-03-15 23:46:52 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FCDESCRIPCIONCD" id="9862E283-29BF-950D-02F5-2EBE4C86D614">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-03-15 23:46:52 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FDFECHA" id="F62F1845-7E8E-049C-F444-17B7207776EE">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-03-15 23:48:09 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="41D0D36A-6D07-9F89-2B47-9F0C41AF4A88" name="PK_TAREINYECCIONPEDIDOSCD">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-03-15 23:36:46 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8011429B-8423-8FF1-B8DC-E0BAC30DE389"/>
+<colUsage columnID="375B831A-417B-030E-6AA2-881CF7A08601"/>
+<colUsage columnID="51FFECAA-DEA2-AD70-D055-3C6937CFAC4C"/>
+<colUsage columnID="36AA9395-614C-A0D8-21F7-D9235EFEBCBF"/>
+<colUsage columnID="AD044C55-B56B-643F-9C73-2C8A2E2C6770"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C567AAA0-A396-93A3-C3DB-CD686BEFDA27" name="FK_TAREINYECCIONPEDIDOSCD_01">
+<createdBy>lrodriguez</createdBy>
+<createdTime>2018-03-15 23:52:26 UTC</createdTime>
+<ownerDesignName>modelo-v3.0</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8011429B-8423-8FF1-B8DC-E0BAC30DE389"/>
+<colUsage columnID="375B831A-417B-030E-6AA2-881CF7A08601"/>
+<colUsage columnID="51FFECAA-DEA2-AD70-D055-3C6937CFAC4C"/>
+<colUsage columnID="36AA9395-614C-A0D8-21F7-D9235EFEBCBF"/>
+<colUsage columnID="AD044C55-B56B-643F-9C73-2C8A2E2C6770"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
