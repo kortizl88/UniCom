@@ -366,7 +366,9 @@ AS
       		 D.FIPEDIDO,
       		 D.FISKU,
       		 TP.FCDESCRIPCION,
-      		 D.FICANTIDAD;
+      		 D.FICANTIDAD
+    ORDER BY S.FIFOLIOSOLICITUD,
+    	     D.FIPEDIDO;
        RETURN curCursorSalida;
        	EXCEPTION
           WHEN OTHERS THEN
