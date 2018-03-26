@@ -14,6 +14,8 @@ export class DatosUsuarioUniformesGlobalService {
     public tiendaLogin: Tienda;	
     public notificaLogin = new EventEmitter<any>();
     public cargaSeleccionada = new EventEmitter<any>();
+    public actualizaListaCargas = new EventEmitter<any>();
+    public notificaCambioMenu = new EventEmitter<any>();
     
     constructor() {}
 		

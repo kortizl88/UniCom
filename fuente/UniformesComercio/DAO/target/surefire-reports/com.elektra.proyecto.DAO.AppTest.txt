@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.elektra.proyecto.DAO.AppTest
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
-=======
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 sec
->>>>>>> 063b23934262db33b15b8e7e91d47d61fa6cc322
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 sec

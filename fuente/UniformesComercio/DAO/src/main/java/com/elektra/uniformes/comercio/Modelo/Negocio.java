@@ -5,11 +5,13 @@
 package com.elektra.uniformes.comercio.Modelo;
 
 import com.elektra.mapper.anotaciones.PropiedadMap;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  *
  * @author kortizl
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Negocio {
     @PropiedadMap(id=true, campo = "FIIDNEGOCIO")
     private int idNegocio;

@@ -1,0 +1,53 @@
+<div md-dialog-content class="contEditCarga">
+    <div class="entRecibe">{{ carga.idCarga == 0 ? 'Nueva' : 'Editar'}} Carga Semestral</div>
+    <div>
+        <div class="titSecc">Título</div>
+        <md-input-container class="inpContTitulo">
+            <input mdInput placeholder="título de la carga" [(ngModel)]="carga.titulo" />
+        </md-input-container>
+    </div>
+    <div>
+        <div class="titSecc">Vigencia</div>
+        <div class="inpContFechas">
+            <md-input-container>
+                <input mdInput [mdDatepicker]="dpIni" [(ngModel)]="carga.fechaInicio" placeholder="Fecha inicial">
+                <button mdSuffix [mdDatepickerToggle]="dpIni"></button>
+            </md-input-container>
+            <md-datepicker #dpIni></md-datepicker>
+            &nbsp;&nbsp;&nbsp;
+            <md-input-container>
+                <input mdInput [mdDatepicker]="dpFin" [(ngModel)]="carga.fechaFin" placeholder="Fecha final">
+                <button mdSuffix [mdDatepickerToggle]="dpFin"></button>
+            </md-input-container>
+            <md-datepicker #dpFin></md-datepicker>
+        </div>
+    </div>
+    <div>
+        <div class="titSecc">Negocios</div>
+        <div class="contNegocios">
+            <div *ngFor="let neg of negocios" class="negocio">
+                <md-checkbox [ngClass]="'chkPol'" color="primary" [(ngModel)]="neg.seleccionado">
+                    <span>{{neg.negocio}}</span>
+                </md-checkbox>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="carga.idCarga > 0">
+        <div class="titSecc">Estatus</div>
+
+        <md-checkbox [ngClass]="'chkPol'" color="primary" [(ngModel)]="carga.estatus">
+            <span>{{carga.estatus ? 'Activa' : 'Inactiva'}}</span>
+        </md-checkbox>
+    </div>
+    <div *ngIf="carga.idCarga > 0">
+        <div class="titSecc">Enviar a CD</div>
+        <md-checkbox [ngClass]="'chkPol'" color="primary" [(ngModel)]="carga.generarPedidos">
+            <span>{{carga.generarPedidos ? 'Sí' : 'No'}}</span>
+        </md-checkbox>
+    </div>
+    <br/>
+</div>
+<div md-dialog-actions align="end">
+    <button md-raised-button md-dialog-close>Cancelar</button>&nbsp;&nbsp;
+    <button md-raised-button class="btnUni" (click)="actualizaCarga()">Aceptar</button>
+</div>

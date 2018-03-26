@@ -21,7 +21,7 @@ public class Usuario {
     private int funcionSAP;
     @PropiedadMap(campo="FIIDNEGOCIO")
     private int negocio;
-    @PropiedadMap(campo="FISOLICITUDPLANTILA")
+    @PropiedadMap(campo="FISOLICITUDPLANTILLA")
     private int solicitudPlantilla;
     @PropiedadMap(campo="FISOLICITAENTIENDA")
     private int solicitaEnTienda;

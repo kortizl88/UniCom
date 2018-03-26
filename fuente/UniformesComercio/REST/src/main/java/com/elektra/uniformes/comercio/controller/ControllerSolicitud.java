@@ -86,9 +86,7 @@ public class ControllerSolicitud {
     public @ResponseBody Respuesta guardaSolicitud(@RequestBody SolicitudDTO[] arregloSolicitudes) {     
         Respuesta r = new Respuesta();
         try {
-            ArrayList<SolicitudDTO> solicitudes = new ArrayList<SolicitudDTO>();
-            solicitudes.add(arregloSolicitudes[0]);
-            r.setRespuesta(negocioSolicitud.guardaSolicitud(solicitudes));
+            r.setRespuesta(negocioSolicitud.guardaSolicitud(arregloSolicitudes));
             r.setError(false);
             r.setMensaje("Consulta obtenida correctamente");
         } catch (Exception e) {

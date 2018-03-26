@@ -115,10 +115,19 @@ export class WSUniformesComercioGlobalService {
     public consultaCargas(): string {
         return `${this._cadenaUrl}/json/administracion/carga`;
     }
+    public actualizaCarga(): string {
+        return `${this._cadenaUrl}/json/administracion/carga`;
+    }
     public consultaEstatus(): string {
         return `${this._cadenaUrl}/json/administracion/reporte/estatus`;
     }
     public consultaTiendas(): string {
         return `${this._cadenaUrl}/json/administracion/reporte/tiendas`;
+    }
+    public consultaNegocios(): string {
+        return `${this._cadenaUrl}/json/administracion/reporte/negocios`;
+    }
+    public obtieneReporte(): string {
+        return `${this._cadenaUrl}/json/administracion/reporte`;
     }
 }

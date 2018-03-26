@@ -68,4 +68,44 @@ export class AdministracionService {
         return observable;
     }
 
+    /*negocios*/
+    public getNegocios(): Observable<WrapperRespuesta> {
+        let observable: Observable<WrapperRespuesta>;
+        try {
+            observable = this.http.get(this.endPointWSUniformesComercio.consultaNegocios())
+                .map((response: Response) => <WrapperRespuesta>response.json());
+        } catch (e) {
+            console.log('Ocurrio un error (AdministracionService: getNegocios) :' + e.name + ': ' + e.message);
+        }
+        return observable;
+    }
+
+    /* actualiza guarda carga*/
+    public actualizaCarga(carga:any): Observable<WrapperRespuesta> {
+        let observable:Observable<WrapperRespuesta>; 
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+        try{
+            observable = this.http.post(this.endPointWSUniformesComercio.actualizaCarga(),carga,options)
+            .map((response: Response) => <WrapperRespuesta> response.json());
+        }catch(e){
+            console.log('Ocurrio un error (SolicitudService: guardaSolicitud) :'+ e.name + ': ' + e.message);
+        }        
+        return observable;
+    }
+    
+    /* OBTIENE REPORTE */
+    public obtieneReporte(postRep:any): Observable<WrapperRespuesta> {
+        let observable:Observable<WrapperRespuesta>; 
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+        try{
+            observable = this.http.post(this.endPointWSUniformesComercio.obtieneReporte(),postRep,options)
+            .map((response: Response) => <WrapperRespuesta> response.json());
+        }catch(e){
+            console.log('Ocurrio un error (SolicitudService: obtieneReporte) :'+ e.name + ': ' + e.message);
+        }        
+        return observable;
+    }
+
 }	

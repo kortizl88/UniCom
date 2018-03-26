@@ -5,6 +5,9 @@
 package com.elektra.uniformes.comercio.controller;
 
 import Com.Elektra.Log.Dao.LogeoDAO;
+import com.elektra.uniformes.comercio.Modelo.CargaSemestral;
+import com.elektra.uniformes.comercio.Modelo.ReporteReq;
+import com.elektra.uniformes.comercio.Modelo.SolicitudDTO;
 import com.elektra.uniformes.comercio.controller.negocio.NegocioAdministrador;
 import com.elektra.uniformes.comercio.controller.negocio.NegocioAdministradorCargas;
 import com.elektra.uniformes.comercio.controller.negocio.NegocioAdministradorReporte;
@@ -13,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -69,6 +73,23 @@ public class ControllerAdministracion {
         return r;
     }
 
+    @RequestMapping(value = "/carga", method = RequestMethod.POST)
+    public @ResponseBody
+    Respuesta actualizaCarga(@RequestBody CargaSemestral carga) {
+        Respuesta r = new Respuesta();
+        try {
+            r.setRespuesta(negocioAdministradorCargas.actualizaCarga(carga));
+            r.setError(false);
+            r.setMensaje("Consulta obtenida correctamente");
+        } catch (Exception e) {
+            r.setError(true);
+            r.setMensaje(e.getMessage());
+            LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getCargas " + e.getMessage());
+            LogeoDAO.getInstancia().logStackExcepcion(e);
+        }
+        return r;
+    }
+
     @RequestMapping(value = "/reporte/estatus", method = RequestMethod.GET)
     public @ResponseBody
     Respuesta getReporteEstatus() {
@@ -85,7 +106,7 @@ public class ControllerAdministracion {
         }
         return r;
     }
-    
+
     @RequestMapping(value = "/reporte/tiendas", method = RequestMethod.GET)
     public @ResponseBody
     Respuesta getReporteTiendas() {
@@ -98,6 +119,40 @@ public class ControllerAdministracion {
             r.setError(true);
             r.setMensaje(e.getMessage());
             LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getReporteTiendas " + e.getMessage());
+            LogeoDAO.getInstancia().logStackExcepcion(e);
+        }
+        return r;
+    }
+
+    @RequestMapping(value = "/reporte/negocios", method = RequestMethod.GET)
+    public @ResponseBody
+    Respuesta getNegocios() {
+        Respuesta r = new Respuesta();
+        try {
+            r.setRespuesta(negocioAdministradorCargas.getNegocios());
+            r.setError(false);
+            r.setMensaje("Consulta obtenida correctamente");
+        } catch (Exception e) {
+            r.setError(true);
+            r.setMensaje(e.getMessage());
+            LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getNegocios " + e.getMessage());
+            LogeoDAO.getInstancia().logStackExcepcion(e);
+        }
+        return r;
+    }
+
+    @RequestMapping(value = "/reporte", method = RequestMethod.POST)
+    public @ResponseBody
+    Respuesta consultaReporte(@RequestBody ReporteReq reporteReqa) {
+        Respuesta r = new Respuesta();
+        try {
+            r.setRespuesta(negocioAdministradorReporte.obtieneReporte(reporteReqa));
+            r.setError(false);
+            r.setMensaje("Consulta obtenida correctamente");
+        } catch (Exception e) {
+            r.setError(true);
+            r.setMensaje(e.getMessage());
+            LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getCargas " + e.getMessage());
             LogeoDAO.getInstancia().logStackExcepcion(e);
         }
         return r;

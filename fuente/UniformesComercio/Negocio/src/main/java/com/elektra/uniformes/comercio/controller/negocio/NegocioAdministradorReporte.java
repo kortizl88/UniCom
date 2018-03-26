@@ -6,6 +6,8 @@ package com.elektra.uniformes.comercio.controller.negocio;
 
 import com.elektra.uniformes.comercio.DAO.DAOAdministradorReporte;
 import com.elektra.uniformes.comercio.Modelo.EstatusSolicitud;
+import com.elektra.uniformes.comercio.Modelo.ReporteDTO;
+import com.elektra.uniformes.comercio.Modelo.ReporteReq;
 import com.elektra.uniformes.comercio.Modelo.Tienda;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +31,9 @@ public class NegocioAdministradorReporte {
 
     public ArrayList<Tienda> getTiendas() throws Exception {
         return daoAdministradorReporte.getTiendas();
+    }
+    
+    public ArrayList<ReporteDTO> obtieneReporte(ReporteReq reporteReq) throws Exception {
+        return daoAdministradorReporte.obtieneReporte(reporteReq);
     }
 }

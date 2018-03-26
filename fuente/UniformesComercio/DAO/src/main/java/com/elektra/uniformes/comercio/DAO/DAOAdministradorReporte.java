@@ -119,17 +119,17 @@ public class DAOAdministradorReporte {
             }
             cs = conn.prepareCall(funcionesBD.FN_CONS_REPORTE);
             cs.registerOutParameter(1, OracleTypes.CURSOR);
-            cs.setInt(1, reporteReq.getIndicaFecha());
-            cs.setString(2, reporteReq.getFechaInicio());
-            cs.setString(3, reporteReq.getFechaFin());
-            cs.setInt(4, reporteReq.getIndCarga());
-            cs.setString(5, reporteReq.getCarga());
-            cs.setInt(6, reporteReq.getIndEstatus());
-            cs.setString(7, reporteReq.getEstatus());
-            cs.setInt(8, reporteReq.getIndTienda());
-            cs.setInt(9, reporteReq.getTienda());
-            cs.setInt(10, reporteReq.getIndEmpleado());
-            cs.setInt(11, reporteReq.getEmpleado());
+            cs.setInt(2, reporteReq.getIndicaFecha());
+            cs.setString(3, reporteReq.getFechaInicio());
+            cs.setString(4, reporteReq.getFechaFin());
+            cs.setInt(5, reporteReq.getIndCarga());
+            cs.setString(6, reporteReq.getCarga());
+            cs.setInt(7, reporteReq.getIndEstatus());
+            cs.setString(8, reporteReq.getEstatus());
+            cs.setInt(9, reporteReq.getIndTienda());
+            cs.setInt(10, reporteReq.getTienda());
+            cs.setInt(11, reporteReq.getIndEmpleado());
+            cs.setInt(12, reporteReq.getEmpleado());
             cs.execute();
             rs = (ResultSet) cs.getObject(1);
             lc = (ArrayList<ReporteDTO>) m.mapperArrayBean(rs, ReporteDTO.class);

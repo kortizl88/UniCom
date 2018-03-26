@@ -20,6 +20,7 @@ import { AdministracionComponent } from './components/administracion/administrac
 import { AdministracionCargasComponent } from './components/administracion/cargas/administracion-uniforme-cargas-component';
 import { AdministracionReporteComponent } from './components/administracion/reporte/administracion-uniforme-reporte-component';
 import { ModalCargaSemestralComponent } from './components/administracion/reporte/modal-carga-semestral-component';
+import { ModalEditarCargaSemestralComponent } from './components/administracion/cargas/modal-editar-carga-semestral-component';
 import {
     DialogDetalleEntrega,
     DialogConfirmaEntrega,
@@ -114,7 +115,8 @@ import { AdministracionService } from './components/administracion/administracio
         AdministracionComponent,
         AdministracionCargasComponent,
         AdministracionReporteComponent,
-        ModalCargaSemestralComponent
+        ModalCargaSemestralComponent,
+        ModalEditarCargaSemestralComponent
 
     ],
     imports: [
@@ -220,7 +222,8 @@ import { AdministracionService } from './components/administracion/administracio
         DialogErrorComponent,
         DialogSicronoComponent,
         DialogGuiaComponent,
-        ModalCargaSemestralComponent
+        ModalCargaSemestralComponent,
+        ModalEditarCargaSemestralComponent
 
     ] // Component Dialog
 })

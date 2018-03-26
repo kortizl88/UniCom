@@ -1,59 +1,45 @@
 <div class="repCarga">
     <div>
-        <div class="headAdm">CARGAS VIGENTES</div>
-        <table class="tablaEnt det tbCarg">
-            <tr>
-                <th>Carga</th>
-                <th>Fecha Inicial</th>
-                <th>Fecha Final</th>
-                <th>Negocios</th>
-                <th>Solicitudes</th>
-                <th>Editar</th>
-            </tr>
-            <tr *ngFor="let carga of cargasAct">
-                <td>{{carga.titulo}}</td>
-                <td>{{carga.fechaInicio}}</td>
-                <td>{{carga.fechaFin}}</td>
-                <td>
-                    <div *ngFor="let neg of carga.negocios">
-                        {{neg.negocio}}
-                    </div>
-                </td>
-                <td>{{carga.totalSolicitudes}}</td>
-                <td>
-                    <button md-raised-button (click)='actCarga(carga)' class="btnDet">+</button>
-                </td>
-            </tr>
-            <tr *ngIf="!cargasAct || cargasAct.length == 0">
-                <td colspan="6"> No existen cargas vigentes, para crear una click en + </td>
-            </tr>
-        </table>
+        <div class="headAdm">CARGAS SEMESTRALES
+            <span>
+                <button md-raised-button  (click)="actualizaCarga(carga)" class="btnUni" > + CARGA </button>
+            </span>
+        </div>
+        <div class="contTablaEnt">
+            <table class="tablaEnt">
+                <tr>
+                    <th>Carga</th>
+                    <th>Fecha Inicial</th>
+                    <th>Fecha Final</th>
+                    <th>Vigente</th>
+                    <th>Negocios</th>
+                    <th>Solicitudes</th>
+                    <th>Estatus</th>
+                    <th>Enviar a CD</th>
+                    <th>Editar</th>
+                </tr>
+                <tr *ngFor="let carga of cargasAct">
+                    <td>{{carga.titulo}}</td>
+                    <td>{{carga.fechaInicio}}</td>
+                    <td>{{carga.fechaFin}}</td>
+                    <td>{{validaVigencia(carga)}}</td>
+                    <td>
+                        <div *ngFor="let neg of carga.negocios">
+                            {{neg.negocio}}
+                        </div>
+                    </td>
+                    <td>{{carga.totalSolicitudes | number}}</td>
+                    <td>{{carga.estatus == 1 ? "Activa" : "Inactiva"}}</td>
+                    <td>{{carga.generarPedidos == 1 ? "Sí" : "No"}}</td>
+                    <td>
+                        <img src="../../../../assets/img/admin/edit.png" class='icoEditCarga' (click)="actualizaCarga(carga)">
+                    </td>
+                </tr>
+                <tr *ngIf="!cargasAct || cargasAct.length == 0">
+                    <td colspan="9"> No existen cargas vigentes, para crear una click en el botón <B>+  CARGA  </B> </td>
+                </tr>
+            </table>
+        </div>
     </div>
     <br/>
-    <div>
-        <div class="headAdm">ÚLTIMAS CARGAS SEMESTRALES</div>
-        <table class="tablaEnt det tbCarg">
-            <tr>
-                <th>Carga</th>
-                <th>Fecha Inicial</th>
-                <th>Fecha Final</th>
-                <th>Negocios</th>
-                <th>Solicitudes</th>
-            </tr>
-            <tr *ngFor="let carga of cargasAnt">
-                <td>{{carga.titulo}}</td>
-                <td>{{carga.fechaInicio}}</td>
-                <td>{{carga.fechaFin}}</td>
-                <td>
-                    <div *ngFor="let neg of carga.negocios">
-                        {{neg.negocio}}
-                    </div>
-                </td>
-                <td>{{carga.totalSolicitudes}}</td>
-            </tr>
-            <tr *ngIf="!cargasAnt || cargasAnt.length == 0">
-                <td colspan="5"> No se encontraron cargas registradas </td>
-            </tr>
-        </table>
-    </div>
 </div>

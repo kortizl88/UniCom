@@ -93,10 +93,24 @@ public class FuncionesBD {
     @Value("#{propiedadesUniformesComercio['FN_CONS_TIENDAS']}")
     public String FN_CONS_TIENDAS;
     
+    @Value("#{propiedadesUniformesComercio['FN_CONS_NEGOCIOS']}")
+    public String FN_CONS_NEGOCIOS;
+    
     @Value("#{propiedadesUniformesComercio['FN_CONS_ESTATUS_SOLICITUD']}")
     public String FN_CONS_ESTATUS_SOLICITUD;
     
     @Value("#{propiedadesUniformesComercio['FN_CONS_REPORTE']}")
     public String FN_CONS_REPORTE;
     
+    @Value("#{propiedadesUniformesComercio['TYP_NEGOCIO']}")
+    public String TYP_NEGOCIO;
+    
+    @Value("#{propiedadesUniformesComercio['TYP_ARR_NEGOCIO']}")
+    public String TYP_ARR_NEGOCIO;
+    
+    @Value("#{propiedadesUniformesComercio['TYP_CARGA']}")
+    public String TYP_CARGA;
+    
+    @Value("#{propiedadesUniformesComercio['SP_ACTUALIZA_CARGA']}")
+    public String SP_ACTUALIZA_CARGA;
 }

@@ -26,7 +26,10 @@ export class CategoriasComponent implements OnInit {
 
     ngOnInit(){
         this.usuario = this.datosUsuarioUniformes.getDatosUsuario();
-	this.menu = this.datosUsuarioUniformes.getMenu();
+	    this.menu = this.datosUsuarioUniformes.getMenu();
     }
 
+    public selMenu(mn:any):void{
+        this.datosUsuarioUniformes.notificaCambioMenu.emit(mn);
+    }
 }

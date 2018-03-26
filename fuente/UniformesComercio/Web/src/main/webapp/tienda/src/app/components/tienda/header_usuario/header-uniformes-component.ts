@@ -42,6 +42,7 @@ export class HeaderUniformesComponent implements OnInit {
     private dialogGeneral: DialogGeneralComponent;
     private dialogGuia: DialogGeneralComponent;
     private subs: any;
+    private subsMenu: any;
     private empAdm: any;
 
     constructor(usuarioService: UsuarioService, datosUsuarioUniformes: DatosUsuarioUniformesGlobalService, router: Router, public dialog: MdDialog, public endPointWSUniformesComercio: WSUniformesComercioGlobalService) {
@@ -53,14 +54,17 @@ export class HeaderUniformesComponent implements OnInit {
         this.verMenuHeader = true;
         this.dialogGeneral = new DialogGeneralComponent(this.dialog);
         this.logueado = false;
+        this.menuAdmin = [new Menu(1, "Carga Semestral", "Carga Semestral", "/admin/cargas"), new Menu(2, "Reporte", "Reporte", "/admin/reporte")];
+        this.menuAdmin[0].sel = true;
         this.router.events.subscribe((event) => {
             if (event instanceof NavigationStart) {
                 this.verMenuHeader = true;
                 let rut = event.url.split("=")[0];
+                console.log("ruta:" + rut);
                 switch (rut) {
                     case '/menu': this.verMenuHeader = false;
                         break;
-                    case '/admin': this.menuAdmin = [new Menu(1, "Carga Semestral", "Carga Semestral", "/admin/cargas"), new Menu(2, "Reporte", "Reporte", "/admin/reporte")];
+                    case '/admin':
                         this.administracion = true;
                         break;
                     case '/?numEmpleado': this.obtieneParamatroEmpleado();
@@ -77,6 +81,10 @@ export class HeaderUniformesComponent implements OnInit {
             }
             else
                 this.logueado = false;
+        });
+        /*sub evento cambio de menu*/
+        this.subs = this.datosUsuarioUniformes.notificaCambioMenu.subscribe((respMenu) => {
+           this.selMenu(this.menu, respMenu);
         });
     }
 
@@ -141,6 +149,14 @@ export class HeaderUniformesComponent implements OnInit {
         );
     }
 
+    public selMenu(menu: any, mn: any): void {
+        if (menu) {
+            menu.forEach(menu => {
+                menu.sel = false;
+            });
+            mn.sel = true;
+        }
+    }
     /*
     * Recupera el parametros de la URL, que enviará el navegador del mago
     */
