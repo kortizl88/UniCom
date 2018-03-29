@@ -18,14 +18,20 @@ public class ReporteDTO {
     private String nombre;
     @PropiedadMap(campo="FIFOLIOSOLICITUD")
     private int solicitud;
+    @PropiedadMap(campo="FIPAIS")
+    private int pais;
+    @PropiedadMap(campo="FICANAL")
+    private int canal;
+    @PropiedadMap(campo="FISUCURSAL")
+    private int tienda;
+    @PropiedadMap(campo="FCTIENDA")
+    private String nombreTienda;
     @PropiedadMap(campo="FCESTATUS")
     private String estatus;
     @PropiedadMap(campo="FCFUNCION")
     private String funcion;
     @PropiedadMap(campo="FDFECHACAPTURA")
     private String fecha;
-    @PropiedadMap(campo="FIREMISION")
-    private int remision;
     @PropiedadMap(lista=true, tipoComplejo = "com.elektra.uniformes.comercio.Modelo.PedidoReporteDTO")
     private ArrayList<PedidoReporteDTO> pedidos;
 
@@ -114,20 +120,6 @@ public class ReporteDTO {
     }
 
     /**
-     * @return the remision
-     */
-    public int getRemision() {
-        return remision;
-    }
-
-    /**
-     * @param remision the remision to set
-     */
-    public void setRemision(int remision) {
-        this.remision = remision;
-    }
-
-    /**
      * @return the pedidos
      */
     public ArrayList<PedidoReporteDTO> getPedidos() {
@@ -139,5 +131,61 @@ public class ReporteDTO {
      */
     public void setPedidos(ArrayList<PedidoReporteDTO> pedidos) {
         this.pedidos = pedidos;
+    }
+
+    /**
+     * @return the pais
+     */
+    public int getPais() {
+        return pais;
+    }
+
+    /**
+     * @param pais the pais to set
+     */
+    public void setPais(int pais) {
+        this.pais = pais;
+    }
+
+    /**
+     * @return the canal
+     */
+    public int getCanal() {
+        return canal;
+    }
+
+    /**
+     * @param canal the canal to set
+     */
+    public void setCanal(int canal) {
+        this.canal = canal;
+    }
+
+    /**
+     * @return the tienda
+     */
+    public int getTienda() {
+        return tienda;
+    }
+
+    /**
+     * @param tienda the tienda to set
+     */
+    public void setTienda(int tienda) {
+        this.tienda = tienda;
+    }
+
+    /**
+     * @return the nombreTienda
+     */
+    public String getNombreTienda() {
+        return nombreTienda;
+    }
+
+    /**
+     * @param nombreTienda the nombreTienda to set
+     */
+    public void setNombreTienda(String nombreTienda) {
+        this.nombreTienda = nombreTienda;
     }
 }

@@ -109,8 +109,8 @@ export class WSUniformesComercioGlobalService {
     /**************************************************************************** 
     *	AdministracionService
     *****************************************************************************/
-    public consultaDatosEmpleado(numeroEmpleado: number): string {
-        return `${this._cadenaUrl}/json/administracion/datos/empleado/${numeroEmpleado}`;
+    public consultaDatosEmpleado(): string {
+        return `${this._cadenaUrl}/json/administracion/datos/acceso`;
     }
     public consultaCargas(): string {
         return `${this._cadenaUrl}/json/administracion/carga`;
@@ -130,4 +130,12 @@ export class WSUniformesComercioGlobalService {
     public obtieneReporte(): string {
         return `${this._cadenaUrl}/json/administracion/reporte`;
     }
+    public exportarAExcel(): string {
+        return `${this._cadenaUrl}/json/administracion/reporte/generar`;
+    }
+
+    public seguimientoSolicitud(solicitud:number, detalleproc:number): string {
+        return `${this._cadenaUrl}/json/administracion/reporte/seguimiento/solicitud/${solicitud}/detalleproc/${detalleproc}`;
+    }
+
 }

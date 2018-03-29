@@ -67,23 +67,4 @@ public class ControllerEntrega {
         }
         return r;
     }
-    /*    
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    public @ResponseBody Respuesta guardaSolicitud(@RequestBody SolicitudDTO[] solicitud ) {     
-        Respuesta r = new Respuesta();
-        try {
-            ArrayList<SolicitudDTO> solicitudes = new ArrayList<SolicitudDTO>();
-            solicitudes.add(solicitud[0]);
-            r.setRespuesta(negocioSolicitud.guardaSolicitud(solicitudes));
-            r.setError(false);
-            r.setMensaje("Consulta obtenida correctamente");
-        } catch (Exception e) {
-            r.setError(true);
-            r.setMensaje(e.getMessage());
-            LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getMenuUsuario " + e.getMessage());
-            LogeoDAO.getInstancia().logStackExcepcion(e);
-        }
-        return r;
-    }
-    */
 }

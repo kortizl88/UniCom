@@ -38,6 +38,9 @@ public class DAOEntrega {
     @Autowired
     @Qualifier("fabricaDAO")
     private FabricaDAO fabricaDAO;
+    @Autowired
+    @Qualifier("daoEntregaTienda")
+    private DAOEntregaTienda daoEntregaTienda;
 
     /*CERRAR LA CONEXION*/
     private void close(Connection conn, CallableStatement cs, ResultSet rs) throws SQLException {
@@ -85,79 +88,57 @@ public class DAOEntrega {
         }
         return le;
     }
-    
-    
+
     public void postConfirmacionEntrega(EntregaDTO entrega) throws Exception {
         Connection conn = null;
-        CallableStatement cs = null;        
+        CallableStatement cs = null;
         ResultSet rs = null;
         Mapper m = new Mapper();
         OracleConnection oracleConnection = null;
         try {
-            for (DetalleEntrega p:entrega.getPedidos()) {
-                p.setErrorEntrega(false);
-                p.setMensaje("YA CAYO A LA BD");
-            }
-            /*
-            for (int i = 0; i < confirmaciones.size(); i++) {
-                System.out.println("FIFOLIOSOLICITUD " + confirmaciones.get(i).getNoFolioSolicitud());   
-                System.out.println("FIIDDETALLE " + confirmaciones.get(i).getNoIdDetalle());
-                System.out.println("FIPAIS " + confirmaciones.get(i).getNoPais());                
-                System.out.println("FICANAL " + confirmaciones.get(i).getNoCanal());
-                System.out.println("FIIDSUCURSAL " + confirmaciones.get(i).getNoIdSucursal());    
-                System.out.println("FINUMPEDIDO " + confirmaciones.get(i).getNoNumPedido());      
-                System.out.println("FISKU " + confirmaciones.get(i).getNoSKU());               
-                System.out.println("FIIDTIPOEVENTO " + confirmaciones.get(i).getNoIdTipoEvento());          
-                System.out.println("FXDATOS " + confirmaciones.get(i).getCadenaXmlDatos());                 
-                System.out.println("FIIDESTATUSANT " + confirmaciones.get(i).getNoIdEstatusAnt());
-                System.out.println("FIIDESTATUSNVO " + confirmaciones.get(i).getNoIdEstatusNvo());
-                System.out.println("FDFECHAEVENTO ");               
-                System.out.println("FIERROR " + confirmaciones.get(i).getNoError());
-                System.out.println("FCCOMENTARIOS " + confirmaciones.get(i).getCadenaComentarios());                
-            }
-            
+            daoEntregaTienda.descargaPedidoTienda(entrega);
+
             conn = fabricaDAO.getConexion();
 
             if (conn == null) {
                 throw new Exception("La conexion no se creo.");
             }
-            if(conn.isWrapperFor(OracleConnection.class)){
+            if (conn.isWrapperFor(OracleConnection.class)) {
                 oracleConnection = conn.unwrap(OracleConnection.class);
-            }else{
+            } else {
                 oracleConnection = (OracleConnection) conn;
             }
-            
-            StructDescriptor sdConfirmacionEntrega = StructDescriptor.createDescriptor(funcionesBD.TYPE_CONFIRMACION_ENTREGA,(java.sql.Connection)oracleConnection);
+
+            StructDescriptor sdConfirmacionEntrega = StructDescriptor.createDescriptor(funcionesBD.TYPE_CONFIRMACION_ENTREGA, (java.sql.Connection) oracleConnection);
             ArrayList<STRUCT> listaStruct = new ArrayList<STRUCT>();
-            for(ConfirmacionEntrega confirmacion : confirmaciones){
+            for (DetalleEntrega pedido : entrega.getPedidos()) {
                 Object[] objetoConfirmacion = new Object[13];
-                objetoConfirmacion[0] = confirmacion.getNoFolioSolicitud();   
-                objetoConfirmacion[1] = confirmacion.getNoIdDetalle();
-                objetoConfirmacion[2] = confirmacion.getNoPais();                
-                objetoConfirmacion[3] = confirmacion.getNoCanal();
-                objetoConfirmacion[4] = confirmacion.getNoIdSucursal();    
-                objetoConfirmacion[5] = confirmacion.getNoNumPedido();      
-                objetoConfirmacion[6] = confirmacion.getNoSKU();               
-                objetoConfirmacion[7] = confirmacion.getNoIdTipoEvento();          
-                objetoConfirmacion[8] = confirmacion.getCadenaXmlDatos();
-                objetoConfirmacion[9] = confirmacion.getNoIdEstatusAnt();
-                objetoConfirmacion[10] = confirmacion.getNoIdEstatusNvo();                           
-                objetoConfirmacion[11] = confirmacion.getNoError();
-                objetoConfirmacion[12] = confirmacion.getCadenaComentarios(); 
-                STRUCT struct = new STRUCT(sdConfirmacionEntrega,(java.sql.Connection)oracleConnection,objetoConfirmacion);
+                objetoConfirmacion[0] = pedido.getSolicitud();
+                objetoConfirmacion[1] = pedido.getNoIdDetalle();
+                objetoConfirmacion[2] = pedido.getNoPais();
+                objetoConfirmacion[3] = pedido.getNoCanal();
+                objetoConfirmacion[4] = pedido.getNoSucursal();
+                objetoConfirmacion[5] = entrega.getEmpleado();
+                objetoConfirmacion[6] = pedido.getSku();
+                objetoConfirmacion[7] = 0;
+                objetoConfirmacion[8] = pedido.getMensaje();
+                objetoConfirmacion[9] = 6;
+                objetoConfirmacion[10] = ( pedido.isErrorEntrega() ? 6 : 7 );
+                objetoConfirmacion[11] = ( pedido.isErrorEntrega() ? 1 : 0 );
+                objetoConfirmacion[12] = pedido.getMensaje();
+                STRUCT struct = new STRUCT(sdConfirmacionEntrega, (java.sql.Connection) oracleConnection, objetoConfirmacion);
                 listaStruct.add(struct);
             }
             STRUCT arregloStructConfirmacion[] = listaStruct.toArray(new STRUCT[listaStruct.size()]);
-            ArrayDescriptor adConfirmacionEntrega = ArrayDescriptor.createDescriptor(funcionesBD.TYPE_ARR_CONFIRMACION_ENTREGA,(java.sql.Connection)oracleConnection);
-            ARRAY arrayConfirmacionEntrega = new ARRAY(adConfirmacionEntrega,(java.sql.Connection)oracleConnection,arregloStructConfirmacion);
-                    
+            ArrayDescriptor adConfirmacionEntrega = ArrayDescriptor.createDescriptor(funcionesBD.TYPE_ARR_CONFIRMACION_ENTREGA, (java.sql.Connection) oracleConnection);
+            ARRAY arrayConfirmacionEntrega = new ARRAY(adConfirmacionEntrega, (java.sql.Connection) oracleConnection, arregloStructConfirmacion);
+
             cs = conn.prepareCall(funcionesBD.SP_GUARDA_CONFIRMACION_ENTREGA);
-            cs.setArray(1, arrayConfirmacionEntrega);            
-            cs.registerOutParameter(2,OracleTypes.NUMBER);
+            cs.setArray(1, arrayConfirmacionEntrega);
+            cs.registerOutParameter(2, OracleTypes.NUMBER);
             cs.execute();
-            
-            System.out.println("Numero de registros " + (int)cs.getInt(2));
-            */
+
+            System.out.println("Numero de registros " + (int) cs.getInt(2));
         } catch (Exception e) {
             LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: postConfirmacionEntrega " + e.getMessage());
             LogeoDAO.getInstancia().logStackExcepcion(e);

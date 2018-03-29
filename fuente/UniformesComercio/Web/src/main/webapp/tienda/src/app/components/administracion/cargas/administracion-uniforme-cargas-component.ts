@@ -6,6 +6,7 @@ import { DatosUsuarioUniformesGlobalService } from '../../servicio/modelo/datos-
 import { DialogGeneralComponent } from '../../servicio/componentes/dialog/dialog-general-component';
 import { AdministracionService } from '../administracion-uniforme-service';
 import { ModalEditarCargaSemestralComponent } from './modal-editar-carga-semestral-component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
     selector: 'app-admin-cargas',
@@ -18,6 +19,7 @@ export class AdministracionCargasComponent {
     public cargasAct: any[];
     public cargasAnt: any[];
     private subs: any;
+    public pag: number;
 
     constructor(private datosUsuarioUniformesGlobalService: DatosUsuarioUniformesGlobalService,
         public dialog: MdDialog,
@@ -25,6 +27,7 @@ export class AdministracionCargasComponent {
         private datosUsuarioUniformes: DatosUsuarioUniformesGlobalService) {
         this.dialogGeneral = new DialogGeneralComponent(this.dialog);
         this.consultaCargas();
+        this.pag = 1;
         this.subs = this.datosUsuarioUniformes.actualizaListaCargas.subscribe(() => {
             this.consultaCargas();
         });

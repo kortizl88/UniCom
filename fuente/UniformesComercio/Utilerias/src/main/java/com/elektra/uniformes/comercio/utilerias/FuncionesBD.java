@@ -113,4 +113,8 @@ public class FuncionesBD {
     
     @Value("#{propiedadesUniformesComercio['SP_ACTUALIZA_CARGA']}")
     public String SP_ACTUALIZA_CARGA;
+    
+    @Value("#{propiedadesUniformesComercio['FN_CONS_SEGUIMIENTO_SOL']}")
+    public String FN_CONS_SEGUIMIENTO_SOL;
+    
 }

@@ -22,11 +22,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.namespace.QName;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author kortizl
  */
+@Component("daoEntregaTienda")
 public class DAOEntregaTienda {
 
     public void descargaPedidoTienda(EntregaDTO solicitud) throws Exception {
@@ -64,6 +66,7 @@ public class DAOEntregaTienda {
                 IWSUniformes port = wsTienda.getPort(IWSUniformes.class);
                 SalidaDatos respAct = port.actualizaPedido(ap);
                 p.setErrorEntrega(false);
+                p.setMensaje("Descargado correctamente en tienda");
                 if (respAct.getBanderaError() != 0) {
                     p.setMensaje(respAct.getMsjSalida().getValue());
                     if (p.getMensaje().contains("no puede pasar dos veces por el mismo status 3")) {

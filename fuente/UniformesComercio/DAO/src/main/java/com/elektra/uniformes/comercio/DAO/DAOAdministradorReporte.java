@@ -6,6 +6,7 @@ package com.elektra.uniformes.comercio.DAO;
 
 import Com.Elektra.Log.Dao.LogeoDAO;
 import com.elektra.mapper.Mapper;
+import com.elektra.uniformes.comercio.Modelo.BitacoraSolicitud;
 import com.elektra.uniformes.comercio.Modelo.CargaSemestral;
 import com.elektra.uniformes.comercio.Modelo.EstatusSolicitud;
 import com.elektra.uniformes.comercio.Modelo.ReporteDTO;
@@ -106,7 +107,7 @@ public class DAOAdministradorReporte {
         return lc;
     }
 
-    public ArrayList<ReporteDTO> obtieneReporte(ReporteReq reporteReq) throws Exception{
+    public ArrayList<ReporteDTO> obtieneReporte(ReporteReq reporteReq) throws Exception {
         Connection conn = null;
         CallableStatement cs = null;
         ResultSet rs = null;
@@ -137,6 +138,34 @@ public class DAOAdministradorReporte {
             LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getTiendas " + e.getMessage());
             LogeoDAO.getInstancia().logStackExcepcion(e);
             throw new Exception("ERROR en : " + this.getClass() + " metodo: getTiendas " + e.getMessage());
+        } finally {
+            close(conn, cs, rs);
+        }
+        return lc;
+    }
+
+    public ArrayList<BitacoraSolicitud> getSeguimientoSolicitud(int solicitud, int datosProc) throws Exception {
+        Connection conn = null;
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        Mapper m = new Mapper();
+        ArrayList<BitacoraSolicitud> lc = null;
+        try {
+            conn = fabricaDAO.getConexion();
+            if (conn == null) {
+                throw new Exception("La conexion no se creo.");
+            }
+            cs = conn.prepareCall(funcionesBD.FN_CONS_SEGUIMIENTO_SOL);
+            cs.registerOutParameter(1, OracleTypes.CURSOR);
+            cs.setInt(2, solicitud);
+            cs.setInt(3, datosProc);
+            cs.execute();
+            rs = (ResultSet) cs.getObject(1);
+            lc = (ArrayList<BitacoraSolicitud>) m.mapperArrayBean(rs, BitacoraSolicitud.class);
+        } catch (Exception e) {
+            LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getSeguimientoSolicitud " + e.getMessage());
+            LogeoDAO.getInstancia().logStackExcepcion(e);
+            throw new Exception("ERROR en : " + this.getClass() + " metodo: getSeguimientoSolicitud " + e.getMessage());
         } finally {
             close(conn, cs, rs);
         }

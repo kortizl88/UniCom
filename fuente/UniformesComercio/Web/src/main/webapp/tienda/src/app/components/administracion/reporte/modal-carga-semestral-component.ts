@@ -21,10 +21,12 @@ export class ModalCargaSemestralComponent {
     public dialogGeneral: DialogGeneralComponent;
     public cargas: any[];
     public msgError : string;
+    public pag: number;
 
     constructor(public dialog: MdDialog, public administracionService: AdministracionService, private datosUsuarioUniformesGlobalService: DatosUsuarioUniformesGlobalService, public dialogRef: MdDialogRef<ModalCargaSemestralComponent> ) {
         this.dialogGeneral = new DialogGeneralComponent(this.dialog);
         this.consultaCargas();
+        this.pag = 1;
     }
 
     public consultaCargas() {

@@ -9,6 +9,7 @@
 				<th>Cantidad</th>
                 <th>Remisión</th>
                 <th></th>
+                <th></th>
             </tr>
         <tr *ngFor="let pedido of usuarioRecibe.pedidos">
 			<td>{{pedido.solicitud}}</td>
@@ -17,14 +18,21 @@
             <td>{{pedido.prenda}}</td>
 			<td>{{pedido.cantidad}}</td>
             <td>{{pedido.remision}}</td>
-            <td>{{pedido.resEntrega}}</td>
+            <td>
+                <img src="../../../../assets/img/tienda/solOK.png" *ngIf="terminoProceso && !pedido.errorEntrega" width="30"/>
+                <img src="../../../../assets/img/tienda/errdesc.png" *ngIf="terminoProceso && pedido.errorEntrega" width="30"/>
+            </td>
+            <td>{{pedido.mensaje}}</td>
+        
         </tr>
     </table>
     <div class='errHuella'>{{msjError}}</div>
     <br/>
+    <div *ngIf="descargando" class="msjDesc"><img src="../../../../assets/img/tienda/espere.gif" width="60"><br> Realizando la descarga de su uniforme, espere por favor</div>
 </div>
 
 <div md-dialog-actions align="end" *ngIf="!descargando">
-    <button md-raised-button [ngClass]="'btnAccNeg'" md-dialog-close>Cancelar</button>&nbsp;&nbsp;
-    <button md-raised-button [ngClass]="'btnAccPos'" (click)="iniciarEntregaUniforme(usuarioRecibe,usuarioEntrega)">Entregar &#10004;</button>
+    <button md-raised-button  *ngIf="!terminoProceso" md-dialog-close>Cancelar</button>&nbsp;&nbsp;
+    <button md-raised-button *ngIf="!terminoProceso" class="btnUni" (click)="iniciarEntregaUniforme(usuarioRecibe,usuarioEntrega)">Entregar &#10004;</button>&nbsp;&nbsp;
+    <button md-raised-button *ngIf="terminoProceso" class="btnUni" md-dialog-close>Aceptar</button>&nbsp;&nbsp;
 </div>

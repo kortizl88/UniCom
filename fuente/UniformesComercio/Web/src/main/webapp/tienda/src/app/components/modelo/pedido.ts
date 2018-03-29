@@ -9,5 +9,7 @@ export class Pedido{
     prenda: string;
     tiendaIP: string;
     cantidad: number;
-    remision: number;	
+    remision: number;
+    errorEntrega:boolean;
+    mensaje:string;	
 }

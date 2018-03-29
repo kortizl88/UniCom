@@ -11,14 +11,25 @@ import com.elektra.mapper.anotaciones.PropiedadMap;
  * @author kortizl
  */
 public class PedidoReporteDTO {
-    @PropiedadMap(id=true, campo="FIPEDIDO")
+
+    @PropiedadMap(id = true, campo = "FIPEDIDO")
     private int pedido;
-    @PropiedadMap(campo="FISKU")
+    @PropiedadMap(campo = "FISKU")
     private int sku;
-    @PropiedadMap(campo="FCPRENDA")
+    @PropiedadMap(campo = "FCPRENDA")
     private String descripcion;
-    @PropiedadMap(campo="FICANTIDAD")
+    @PropiedadMap(campo = "FITALLA")
+    private int talla;
+    @PropiedadMap(campo = "FCTALLA")
+    private String descTalla;
+    @PropiedadMap(campo = "FICANTIDAD")
     private int cantidad;
+    @PropiedadMap(campo = "FCESTATUS")
+    private String estatusPedido;
+    @PropiedadMap(campo = "FIREMISION")
+    private int remision;
+    @PropiedadMap(campo = "FDFECHAACT")
+    private String fechaAct;
 
     /**
      * @return the pedido
@@ -74,5 +85,75 @@ public class PedidoReporteDTO {
      */
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    /**
+     * @return the talla
+     */
+    public int getTalla() {
+        return talla;
+    }
+
+    /**
+     * @param talla the talla to set
+     */
+    public void setTalla(int talla) {
+        this.talla = talla;
+    }
+
+    /**
+     * @return the descTalla
+     */
+    public String getDescTalla() {
+        return descTalla;
+    }
+
+    /**
+     * @param descTalla the descTalla to set
+     */
+    public void setDescTalla(String descTalla) {
+        this.descTalla = descTalla;
+    }
+
+    /**
+     * @return the estatusPedido
+     */
+    public String getEstatusPedido() {
+        return estatusPedido;
+    }
+
+    /**
+     * @param estatusPedido the estatusPedido to set
+     */
+    public void setEstatusPedido(String estatusPedido) {
+        this.estatusPedido = estatusPedido;
+    }
+
+    /**
+     * @return the remision
+     */
+    public int getRemision() {
+        return remision;
+    }
+
+    /**
+     * @param remision the remision to set
+     */
+    public void setRemision(int remision) {
+        this.remision = remision;
+    }
+
+    /**
+     * @return the fechaAct
+     */
+    public String getFechaAct() {
+        return fechaAct;
+    }
+
+    /**
+     * @param fechaAct the fechaAct to set
+     */
+    public void setFechaAct(String fechaAct) {
+        this.fechaAct = fechaAct;
     }
 }

@@ -21,7 +21,7 @@ declare var System: any;
 export class DialogDetalleEntrega {
 
     public usuarioRecibe: UsuarioRecibe;
-    public dialogGeneral:DialogGeneralComponent;
+    public dialogGeneral: DialogGeneralComponent;
     public usuarioEntrega: Usuario;
     public validoEntrega: boolean;
     public validoRecepcion: boolean;
@@ -30,10 +30,12 @@ export class DialogDetalleEntrega {
     public flujo: number;
     public msjError: String;
     public descargando: boolean;
+    public terminoProceso: boolean;
 
     constructor(public dialogRef: MdDialogRef<DialogDetalleEntrega>, public dialog: MdDialog, private ngZone: NgZone, public entregaService: EntregaService) {
         this.flujo = 1;
         this.descargando = false;
+        this.terminoProceso = false;
         this.dialogGeneral = new DialogGeneralComponent(this.dialog);
     }
 
@@ -122,10 +124,21 @@ export class DialogDetalleEntrega {
         this.entregaService.postEntregaUniformes(this.usuarioRecibe).subscribe(
             respuestaWS => {
                 if (!respuestaWS.error) {
-                    console.log(respuestaWS.respuesta);
-                    //TODO: validar pedido por pedido para regresar estatus
+                    this.descargando = false;
+                    this.usuarioRecibe = respuestaWS.respuesta;
+                    let erroresDescarga = false;
+                    this.usuarioRecibe.pedidos.forEach(ped => {
+                        if (ped.errorEntrega) {
+                            erroresDescarga = true;
+                        }
+                    });
+                    if (erroresDescarga) {
+                        this.msjError = "Ocurrieron errores durante la descarga, por favor, verifique el detalle en cada pedido"
+                    }
+                    this.terminoProceso = true;
                 } else {
                     this.dialogGeneral.mensajeError("Ocurrió un error al realizar la descarga de los pedidos", respuestaWS.mensaje, 1);
+                    this.terminoProceso = true;
                 }
             }, error => {
                 this.dialogGeneral.mensajeError("Ocurrió un error al realizar la descarga de los pedidos", error, 1);

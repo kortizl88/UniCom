@@ -1,7 +1,7 @@
 <div md-dialog-content>
     <div class="entRecibe">Selecciona una o más cargas para generar el reporte</div>
     <br/>
-    <table class="tablaEnt det tbCarg">
+    <table class="tablaEnt">
         <tr>
             <th>Carga</th>
             <th>Fecha Inicial</th>
@@ -10,7 +10,7 @@
             <th>Solicitudes</th>
             <th>Seleccionar</th>
         </tr>
-        <tr *ngFor="let carga of cargas">
+        <tr *ngFor="let carga of cargas | paginate: { itemsPerPage: 10, currentPage: pag}">
             <td>{{carga.titulo}}</td>
             <td>{{carga.fechaInicio}}</td>
             <td>{{carga.fechaFin}}</td>
@@ -28,6 +28,9 @@
             <td colspan="6"> No existen cargas vigentes, para crear una click en + </td>
         </tr>
     </table>
+    <br/>
+    <pagination-controls class="pagTb" (pageChange)="pag = $event" previousLabel="Anterior" nextLabel="Siguiente">
+    </pagination-controls>
     <div class="errHuella">
         {{msgError}}
     </div>

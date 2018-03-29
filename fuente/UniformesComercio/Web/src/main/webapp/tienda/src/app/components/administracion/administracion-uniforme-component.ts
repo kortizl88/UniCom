@@ -24,7 +24,8 @@ export class AdministracionComponent {
 
     public validaAcceso() {
         let dialEsp = this.dialogGeneral.iniciarEspera();
-        this.administracionService.getDatosEmpleado(this.usr).subscribe(
+        let usr = {usuario : this.usr, password: this.pass};
+        this.administracionService.getDatosEmpleado(usr).subscribe(
             respuestaDatosEmp => {
                 this.dialogGeneral.cerrarEsperaId(dialEsp);
                 if (!respuestaDatosEmp.error) {

@@ -21,10 +21,12 @@ export class AdministracionService {
     /*TODO: SERVICIO LOGIN */
 
     /*datos empleado logueado*/
-    public getDatosEmpleado(numeroEmpleado: number): Observable<WrapperRespuesta> {
+    public getDatosEmpleado(empleado: any): Observable<WrapperRespuesta> {
         let observable: Observable<WrapperRespuesta>;
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
         try {
-            observable = this.http.get(this.endPointWSUniformesComercio.consultaDatosEmpleado(numeroEmpleado))
+            observable = this.http.post(this.endPointWSUniformesComercio.consultaDatosEmpleado(), empleado, options)
                 .map((response: Response) => <WrapperRespuesta>response.json());
         } catch (e) {
             console.log('Ocurrio un error (AdministracionService: getDatosEmpleado) :' + e.name + ': ' + e.message);
@@ -81,31 +83,58 @@ export class AdministracionService {
     }
 
     /* actualiza guarda carga*/
-    public actualizaCarga(carga:any): Observable<WrapperRespuesta> {
-        let observable:Observable<WrapperRespuesta>; 
-		let headers = new Headers({ 'Content-Type': 'application/json' });
-		let options = new RequestOptions({ headers: headers });
-        try{
-            observable = this.http.post(this.endPointWSUniformesComercio.actualizaCarga(),carga,options)
-            .map((response: Response) => <WrapperRespuesta> response.json());
-        }catch(e){
-            console.log('Ocurrio un error (SolicitudService: guardaSolicitud) :'+ e.name + ': ' + e.message);
-        }        
+    public actualizaCarga(carga: any): Observable<WrapperRespuesta> {
+        let observable: Observable<WrapperRespuesta>;
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        try {
+            observable = this.http.post(this.endPointWSUniformesComercio.actualizaCarga(), carga, options)
+                .map((response: Response) => <WrapperRespuesta>response.json());
+        } catch (e) {
+            console.log('Ocurrio un error (SolicitudService: guardaSolicitud) :' + e.name + ': ' + e.message);
+        }
         return observable;
     }
-    
+
     /* OBTIENE REPORTE */
-    public obtieneReporte(postRep:any): Observable<WrapperRespuesta> {
-        let observable:Observable<WrapperRespuesta>; 
-		let headers = new Headers({ 'Content-Type': 'application/json' });
-		let options = new RequestOptions({ headers: headers });
-        try{
-            observable = this.http.post(this.endPointWSUniformesComercio.obtieneReporte(),postRep,options)
-            .map((response: Response) => <WrapperRespuesta> response.json());
-        }catch(e){
-            console.log('Ocurrio un error (SolicitudService: obtieneReporte) :'+ e.name + ': ' + e.message);
-        }        
+    public obtieneReporte(postRep: any): Observable<WrapperRespuesta> {
+        let observable: Observable<WrapperRespuesta>;
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        try {
+            observable = this.http.post(this.endPointWSUniformesComercio.obtieneReporte(), postRep, options)
+                .map((response: Response) => <WrapperRespuesta>response.json());
+        } catch (e) {
+            console.log('Ocurrio un error (SolicitudService: obtieneReporte) :' + e.name + ': ' + e.message);
+        }
         return observable;
     }
+
+    /* exportar a Excel */
+    public exportarAExcel(postRep: any): Observable<WrapperRespuesta> {
+        let observable: Observable<WrapperRespuesta>;
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        try {
+            observable = this.http.post(this.endPointWSUniformesComercio.exportarAExcel(), postRep, options)
+                .map((response: Response) => <WrapperRespuesta>response.json());
+        } catch (e) {
+            console.log('Ocurrio un error (SolicitudService: exportarAExcel) :' + e.name + ': ' + e.message);
+        }
+        return observable;
+    }
+
+    /*Bitacora de solicitud*/
+    public seguimientoSolicitud(solicitud: number, detalleproc: number): Observable<WrapperRespuesta> {
+        let observable: Observable<WrapperRespuesta>;
+        try {
+            observable = this.http.get(this.endPointWSUniformesComercio.seguimientoSolicitud(solicitud, detalleproc))
+                .map((response: Response) => <WrapperRespuesta>response.json());
+        } catch (e) {
+            console.log('Ocurrio un error (AdministracionService: seguimientoSolicitud) :' + e.name + ': ' + e.message);
+        }
+        return observable;
+    }
+
 
 }	

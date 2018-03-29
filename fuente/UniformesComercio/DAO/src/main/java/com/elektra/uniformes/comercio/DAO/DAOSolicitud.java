@@ -109,13 +109,6 @@ public class DAOSolicitud {
             cs.setInt(3, tipoSolicitud);
             cs.execute();
             rs = (ResultSet) cs.getObject(1);
-            while(rs.next()){
-                if(rs.getInt("ERROR") == 1){
-                    throw new Exception(rs.getString("MSG"));
-                }
-                break;
-            }
-            rs = (ResultSet) cs.getObject(1);
             lk = (ArrayList<EmpleadoKitDTO>) m.mapperArrayBean(rs, EmpleadoKitDTO.class);
 
         } catch (Exception e) {

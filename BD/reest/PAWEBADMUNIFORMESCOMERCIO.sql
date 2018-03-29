@@ -1,4 +1,4 @@
-CREATE OR REPLACE PACKAGE           PAWEBADMUNIFORMESCOMERCIO
+CREATE OR REPLACE PACKAGE                     PAWEBADMUNIFORMESCOMERCIO
 AS
   /*************************************************************
   Proyecto:                       Uniformes Comercio
@@ -11,8 +11,12 @@ AS
   Fecha de creacion:              
   *************************************************************/
   TYPE rcgCursor IS REF CURSOR;
+  
+  FUNCTION FNCONSULTAINFOEMPLEADO(
+      paNumEmpleado  IN UNIFORMES.TAEMPLEADOS.FIEMPLEADO%TYPE)
+  RETURN rcgCursor;
 
-  FUNCTION FNCONSULTANEGOCIOS
+  FUNCTION FNCONSCARGASEMESTRAL
   RETURN rcgCursor;
   
   FUNCTION FNCONSTIENDAS
@@ -21,21 +25,22 @@ AS
   FUNCTION FNCONSESTATUSSOLICITUD
   RETURN rcgCursor;
   
-  FUNCTION FNCONSCARGASEMESTRAL
+  FUNCTION FNCONSULTANEGOCIOS
   RETURN rcgCursor;
   
   FUNCTION FNCONSREPORTE(
   	paIndFecha NUMBER,
-  	paFi VARCHAR2,
-  	paFf VARCHAR2,
+  	paFechaInicio VARCHAR2,
+  	paFechaFin VARCHAR2,
   	paIndCarga NUMBER,
-  	paCargas VARCHAR2,
-  	paIndEst NUMBER,
-  	paEst VARCHAR2,
-  	paIndTda NUMBER,
+  	paCarga VARCHAR2,
+  	paIndEstatus NUMBER,
+  	paEstatus VARCHAR2,
+  	paIndTienda NUMBER,
   	paTienda NUMBER,
-  	paIndEmp NUMBER,
-  	paEmp NUMBER)
+  	paIndEmpleado NUMBER,
+  	paEmpleado NUMBER
+  )
   RETURN rcgCursor;
   
   PROCEDURE SPACTUALIZACARGA(
@@ -43,9 +48,15 @@ AS
   	paRes OUT NUMBER
   );
   
+  FUNCTION FNCONSSEGUIMIENTOSOL(
+  	paSolicitud UNIFORMES.TASOLICITUDES.FIFOLIOSOLICITUD%TYPE,
+  	paDatosProceso NUMBER
+  )
+  RETURN rcgCursor;
+  
 END PAWEBADMUNIFORMESCOMERCIO;
 
-CREATE OR REPLACE PACKAGE BODY            PAWEBADMUNIFORMESCOMERCIO
+CREATE OR REPLACE PACKAGE BODY                      PAWEBADMUNIFORMESCOMERCIO
 AS
   /*************************************************************
    Proyecto:                           Uniformes
@@ -61,28 +72,153 @@ AS
     vgErrMsg    VARCHAR2(500 CHAR)  := '';                  -- Variable para el manejo de errores mensaje
     csgCero     NUMBER(1)           :=0;
     csgUno      NUMBER(1)           :=1;
-    csgDos      NUMBER(1)           :=2;
-    csgTres                 CONSTANT NUMBER(1):=3;    
-    csgCuatro               CONSTANT NUMBER(1):=4; 
-    csgDieceNueve           CONSTANT NUMBER(2):=19;
-    csgCien                 CONSTANT NUMBER(3):=100;
-    csgFalso                CONSTANT NUMBER(1):=0;    
-    csgCierto               CONSTANT NUMBER(1):=1;
-    csgCancelado            CONSTANT NUMBER(1):=0;  -- Cancelado
-    csgPendiente            CONSTANT NUMBER(1):=1;  -- Pendiente de solicitar a CD
-    csgSolicitado           CONSTANT NUMBER(1):=2;  -- Solicitado a CD
-    csgAtendido             CONSTANT NUMBER(1):=3;  -- Atendido en CD
-    csgEnCamino             CONSTANT NUMBER(1):=4;  -- En camino a tienda
-    csgRecibido             CONSTANT NUMBER(1):=5;  -- Recibido en tienda
-    csgEntregado            CONSTANT NUMBER(1):=6;  -- Entregado    
-    csgCadenaCancelado      CONSTANT VARCHAR2(50 CHAR):='CANCELADO';                     -- Cancelado
-    csgCadenaPendiente      CONSTANT VARCHAR2(50 CHAR):='PENDIENTE DE SOLICITAR A CD';   -- Pendiente de solicitar a CD
-    csgCadenaSolicitado     CONSTANT VARCHAR2(50 CHAR):='SOLICITADO A CD';               -- Solicitado a CD
-    csgCadenaAtendido       CONSTANT VARCHAR2(50 CHAR):='ATENDIDO EN CD';                -- Atendido en CD
-    csgCadenaEnCamino       CONSTANT VARCHAR2(50 CHAR):='EN CAMINO A TIENDA';            -- En camino a tienda
-    csgCadenaRecibido       CONSTANT VARCHAR2(50 CHAR):='RECIBIDO EN TIENDA';            -- Recibido en tienda
-    csgCadenaEntregado      CONSTANT VARCHAR2(50 CHAR):='ENTREGADO';                     -- Entregado
     
+  FUNCTION FNCONSULTAINFOEMPLEADO(
+      paNumEmpleado  IN UNIFORMES.TAEMPLEADOS.FIEMPLEADO%TYPE)
+  RETURN rcgCursor
+  IS 
+  /*************************************************************
+   Proyecto:                         Sistema de Uniformes
+   Descripcion:                      Consulta datos de empleado
+   Parametros de entrada:            paNumEmpleado    Numero de empleado
+   Parametros de salida:             curDatos         Cursor de referencia
+   Parametros de entrada-salida      No aplica
+   Precondiciones:                   Tener creado el esquema
+   Creador:                          
+   Fecha de creacion:                
+  *************************************************************/
+  curCursorSalida rcgCursor;
+  
+  BEGIN
+  	UPDATE UNIFORMES.TAEMPLEADOSADMINISTRADOR
+         SET FDULTIMOLOGIN = SYSDATE
+       WHERE FINUMEMPLEADO = paNumEmpleado; 
+       
+    OPEN curCursorSalida FOR
+      SELECT FINUMEMPLEADO
+            ,FCNOMBRE
+            ,FCAREA
+            ,TO_CHAR(FDULTIMOLOGIN, 'DD/MM/YYYY')
+        FROM UNIFORMES.TAEMPLEADOSADMINISTRADOR
+       WHERE FINUMEMPLEADO = paNumEmpleado;
+       RETURN curCursorSalida;
+       	EXCEPTION
+          WHEN OTHERS THEN
+              vgErrCode := SQLCODE;
+              vgErrMsg := SQLERRM;
+              RAISE_APPLICATION_ERROR (-20002,'ERROR ' || vgErrCode  || ' EN "PAWEBADMUNIFORMESCOMERCIO.FNCONSULTAINFOEMPLEADO": ' || vgErrMsg);
+              
+  END FNCONSULTAINFOEMPLEADO;
+  
+  FUNCTION FNCONSCARGASEMESTRAL
+  RETURN rcgCursor
+  IS 
+  /*************************************************************
+   Proyecto:                         Sistema de Uniformes
+   Descripcion:                      Consulta datos de empleado
+   Parametros de entrada:            paNumEmpleado    Numero de empleado
+   Parametros de salida:             curDatos         Cursor de referencia
+   Parametros de entrada-salida      No aplica
+   Precondiciones:                   Tener creado el esquema
+   Creador:                          
+   Fecha de creacion:                
+  *************************************************************/
+  curCursorSalida rcgCursor;
+  
+  BEGIN
+    OPEN curCursorSalida FOR
+      SELECT C.FIIDCARGA,
+      		 C.FCDESCRIPCION,
+      		 TO_CHAR(C.FDFECHAINICIAL,'DD/MM/YYYY') FDFECHAINICIAL,
+      		 TO_CHAR(C.FDFECHAFINAL,'DD/MM/YYYY') FDFECHAFINAL,
+      		 C.FIESTATUS,
+      		 C.FIGENERARPEDIDO,
+      		 COUNT(S.FIFOLIOSOLICITUD) FITOTALSOLICITUDES,
+      		 CN.FIIDNEGOCIO,
+      		 N.FCDESCRIPCION FCNEGOCIO
+        FROM UNIFORMES.TACARGAS C
+   LEFT JOIN UNIFORMES.TACARGASXNEGOCIO CN
+           ON  C.FIIDCARGA = CN.FIIDCARGA
+   LEFT JOIN UNIFORMES.TANEGOCIOS N
+           ON CN.FIIDNEGOCIO = N.FIIDNEGOCIO
+   LEFT JOIN UNIFORMES.TASOLICITUDESXCARGA S
+           ON S.FIIDCARGA = C.FIIDCARGA
+      GROUP BY C.FIIDCARGA,
+      		 C.FCDESCRIPCION,
+      		 C.FDFECHAINICIAL,
+      		 C.FDFECHAFINAL,
+      		 C.FIESTATUS,
+      		 C.FIGENERARPEDIDO,
+      		 CN.FIIDNEGOCIO,
+      		 N.FCDESCRIPCION
+      ORDER BY C.FIIDCARGA;
+       RETURN curCursorSalida;
+       	EXCEPTION
+          WHEN OTHERS THEN
+              vgErrCode := SQLCODE;
+              vgErrMsg := SQLERRM;
+              RAISE_APPLICATION_ERROR (-20002,'ERROR ' || vgErrCode  || ' EN "PAWEBADMUNIFORMESCOMERCIO.FNCONSULTAINFOEMPLEADO": ' || vgErrMsg);
+              
+  END FNCONSCARGASEMESTRAL;
+  
+  FUNCTION FNCONSTIENDAS
+  RETURN rcgCursor
+  IS 
+  /*************************************************************
+   Proyecto:                         Sistema de Uniformes
+   Descripcion:                      Consulta datos de empleado
+   Parametros de entrada:            paNumEmpleado    Numero de empleado
+   Parametros de salida:             curDatos         Cursor de referencia
+   Parametros de entrada-salida      No aplica
+   Precondiciones:                   Tener creado el esquema
+   Creador:                          
+   Fecha de creacion:                
+  *************************************************************/
+  curCursorSalida rcgCursor;
+  
+  BEGIN
+    OPEN curCursorSalida FOR
+      SELECT FISUCURSAL,
+             FCNOMBRE
+        FROM UNIFORMES.TATIENDAS;
+       RETURN curCursorSalida;
+       	EXCEPTION
+          WHEN OTHERS THEN
+              vgErrCode := SQLCODE;
+              vgErrMsg := SQLERRM;
+              RAISE_APPLICATION_ERROR (-20002,'ERROR ' || vgErrCode  || ' EN "PAWEBADMUNIFORMESCOMERCIO.FNCONSTIENDAS": ' || vgErrMsg);
+              
+  END FNCONSTIENDAS;
+  
+  FUNCTION FNCONSESTATUSSOLICITUD
+  RETURN rcgCursor
+  IS 
+  /*************************************************************
+   Proyecto:                         Sistema de Uniformes
+   Descripcion:                      Consulta datos de empleado
+   Parametros de entrada:            paNumEmpleado    Numero de empleado
+   Parametros de salida:             curDatos         Cursor de referencia
+   Parametros de entrada-salida      No aplica
+   Precondiciones:                   Tener creado el esquema
+   Creador:                          
+   Fecha de creacion:                
+  *************************************************************/
+  curCursorSalida rcgCursor;
+  
+  BEGIN
+    OPEN curCursorSalida FOR
+      SELECT FIIDESTATUSPEDIDO FIESTATUSPEDIDOS,
+             FCDESCRIPCION
+        FROM UNIFORMES.TAESTATUSPEDIDOS;
+       RETURN curCursorSalida;
+       	EXCEPTION
+          WHEN OTHERS THEN
+              vgErrCode := SQLCODE;
+              vgErrMsg := SQLERRM;
+              RAISE_APPLICATION_ERROR (-20002,'ERROR ' || vgErrCode  || ' EN "PAWEBADMUNIFORMESCOMERCIO.FNCONSESTATUSSOLICITUD": ' || vgErrMsg);
+              
+  END FNCONSESTATUSSOLICITUD;
+  
   FUNCTION FNCONSULTANEGOCIOS
   RETURN rcgCursor
   IS 
@@ -113,7 +249,19 @@ AS
               
   END FNCONSULTANEGOCIOS;
   
-  FUNCTION FNCONSTIENDAS
+   FUNCTION FNCONSREPORTE(
+  	paIndFecha NUMBER,
+  	paFechaInicio VARCHAR2,
+  	paFechaFin VARCHAR2,
+  	paIndCarga NUMBER,
+  	paCarga VARCHAR2,
+  	paIndEstatus NUMBER,
+  	paEstatus VARCHAR2,
+  	paIndTienda NUMBER,
+  	paTienda NUMBER,
+  	paIndEmpleado NUMBER,
+  	paEmpleado NUMBER
+  )
   RETURN rcgCursor
   IS 
   /*************************************************************
@@ -127,103 +275,156 @@ AS
    Fecha de creacion:                
   *************************************************************/
   curCursorSalida rcgCursor;
-  
+  vlfIni DATE;
+  vlfFin DATE;
+  vlListaCarga UNIFORMES.TIPO_CARGAS;
+  vlListaEstatus UNIFORMES.TIPO_CARGAS;
+  vlTiendas UNIFORMES.TIPO_CARGAS;
+  vlEmpleados UNIFORMES.TIPO_CARGAS;
+  vlGenUnisex NUMBER(1) := 3;
   BEGIN
+  	
+  	-- fecha
+  	IF paIndFecha = csgUno THEN
+  	   vlfIni := TO_DATE(paFechaInicio,'DD/MM/YYYY');
+  	   vlfFin := TO_DATE(paFechaFin,'DD/MM/YYYY');
+  	ELSE
+  	   vlfIni := TO_DATE('01/01/2013','DD/MM/YYYY');
+  	   vlfFin := SYSDATE + 1;
+  	END IF;
+  	
+  	-- carga
+  	IF paIndCarga = csgUno THEN
+  	   SELECT FIIDCARGA
+  	    BULK COLLECT INTO vlListaCarga
+  	     FROM UNIFORMES.TACARGAS
+  	    WHERE FIIDCARGA IN ( SELECT TO_NUMBER(column_value) FROM XMLTABLE(SUBSTR(paCarga,0,LENGTH(paCarga)-1)));
+  	ELSE
+  	   SELECT FIIDCARGA
+  	    BULK COLLECT INTO vlListaCarga
+  	     FROM UNIFORMES.TACARGAS;
+  	END IF;
+  	
+  	-- estatus
+  	IF paIndEstatus = csgUno THEN
+  	   SELECT FIIDESTATUSPEDIDO
+  	    BULK COLLECT INTO vlListaEstatus
+  	     FROM UNIFORMES.TAESTATUSPEDIDOS
+  	    WHERE FIIDESTATUSPEDIDO IN ( SELECT TO_NUMBER(column_value) FROM XMLTABLE(SUBSTR(paEstatus,0,LENGTH(paEstatus)-1)));
+  	ELSE
+  	   SELECT FIIDESTATUSPEDIDO
+  	    BULK COLLECT INTO vlListaEstatus
+  	     FROM UNIFORMES.TAESTATUSPEDIDOS;
+  	END IF;
+  	
+  	--tiendas
+  	IF paIndTienda = csgUno THEN
+  	   SELECT FISUCURSAL
+  	    BULK COLLECT INTO vlTiendas
+  	     FROM UNIFORMES.TATIENDAS
+  	    WHERE FISUCURSAL = paTienda;
+  	ELSE
+  	   SELECT FISUCURSAL
+  	    BULK COLLECT INTO vlTiendas
+  	     FROM UNIFORMES.TATIENDAS;
+  	END IF;
+  	
+  	-- empleados
+  	IF paIndEmpleado = csgUno THEN
+  	   SELECT paEmpleado FIEMPLEADO
+  	    BULK COLLECT INTO vlEmpleados
+  	     FROM DUAL;
+  	ELSE
+  	   SELECT FIEMPLEADO
+  	    BULK COLLECT INTO vlEmpleados
+  	     FROM UNIFORMES.TAEMPLEADOS E
+  	 INNER JOIN UNIFORMES.TAFUNCIONESXNEGOCIO F
+  	    ON F.FIFUNCIONSAP = E.FIFUNCION
+  	 INNER JOIN UNIFORMES.TASOLICITUDES S
+  	    ON S.FIIDEMPLEADO = E.FIEMPLEADO
+  	    GROUP BY FIEMPLEADO;
+  	END IF; 
+  	
     OPEN curCursorSalida FOR
-      SELECT FISUCURSAL,
-             FCNOMBRE
-        FROM UNIFORMES.TATIENDAS;
-        
+          SELECT S.FIIDEMPLEADO,
+      		 E.FCNOMBRE,
+      		 S.FIFOLIOSOLICITUD,
+      		 D.FIPAIS,
+      		 D.FICANAL,
+      		 D.FISUCURSAL,
+      		 T.FCNOMBRE FCTIENDA,
+      		 EP.FCDESCRIPCION FCESTATUS,
+      		 F.FCDESCFUNCION FCFUNCION,
+      		 TO_CHAR(S.FDFECHACAPTURA,'DD/MM/YYYY') FDFECHACAPTURA,
+      		 NVL (R.FIREMISION, 0) FIREMISION,
+      		 D.FIPEDIDO,
+      		 D.FISKU,
+      		 TP.FCDESCRIPCION FCPRENDA,
+      		 TP.FITALLA,
+      		 TL.FCDESCRIPCION FCTALLA,
+      		 D.FICANTIDAD
+        FROM UNIFORMES.TASOLICITUDES S
+  INNER JOIN UNIFORMES.TAEMPLEADOS E
+  		  ON S.FIIDEMPLEADO = E.FIEMPLEADO
+  INNER JOIN UNIFORMES.TASOLICITUDESDETALLE D
+          ON D.FIFOLIOSOLICITUD = S.FIFOLIOSOLICITUD
+  INNER JOIN UNIFORMES.TAESTATUSPEDIDOS EP
+          ON EP.FIIDESTATUSPEDIDO = D.FIESTATUSSOL
+  INNER JOIN UNIFORMES.TAFUNCIONESXNEGOCIO F
+          ON F.FIFUNCIONSAP = S.FIFUNCIONSAP
+   LEFT JOIN UNIFORMES.TAREMISIONESXPEDIDO R
+          ON R.FIPAIS = D.FIPAIS
+         AND R.FICANAL = D.FICANAL
+         AND R.FISUCURSAL = D.FISUCURSAL
+         AND R.FIPEDIDO = D.FIPEDIDO
+   LEFT JOIN UNIFORMES.TAPRENDAS TP
+          ON TP.FIIDTIPOPRENDA = D.FIIDTIPOPRENDA
+         AND TP.FITALLA = D.FITALLA
+         AND TP.FIIDGENERO = ( CASE WHEN E.FCGENERO = 'H' THEN 1 ELSE 2 END ), vlGenUnisex )
+   LEFT JOIN TATALLAS TL
+          ON TL.FITALLA = TP.FITALLA
+   LEFT JOIN UNIFORMES.TASOLICITUDESXCARGA SC
+          ON SC.FIFOLIOSOLICITUD = D.FIFOLIOSOLICITUD
+   LEFT JOIN UNIFORMES.TACARGAS C
+          ON C.FIIDCARGA = SC.FIIDCARGA
+  INNER JOIN UNIFORMES.TATIENDAS T
+          ON T.FIPAIS = D.FIPAIS
+         AND T.FICANAL = D.FICANAL
+         AND T.FISUCURSAL = D.FISUCURSAL
+        WHERE TRUNC(S.FDFECHACAPTURA) BETWEEN vlfIni AND vlfFin
+          AND C.FIIDCARGA IN ( SELECT * FROM TABLE (vlListaCarga) )
+          AND D.FIESTATUSSOL IN ( SELECT * FROM TABLE (vlListaEstatus) )
+          AND D.FISUCURSAL IN ( SELECT * FROM TABLE (vlTiendas) )
+          AND S.FIIDEMPLEADO IN ( SELECT * FROM TABLE (vlEmpleados) )
+          AND D.FISUCURSAL IN ( SELECT * FROM TABLE (vlTiendas) )
+    GROUP BY S.FIIDEMPLEADO,
+      		 E.FCNOMBRE,
+      		 S.FIFOLIOSOLICITUD,
+      		 D.FIPAIS,
+      		 D.FICANAL,
+      		 D.FISUCURSAL,
+      		 T.FCNOMBRE,
+      		 EP.FCDESCRIPCION,
+      		 F.FCDESCFUNCION,
+      		 S.FDFECHACAPTURA,
+      		 R.FIREMISION,
+      		 D.FIPEDIDO,
+      		 D.FISKU,
+      		 TP.FCDESCRIPCION,
+      		 TP.FITALLA,
+      		 TL.FCDESCRIPCION,
+      		 D.FICANTIDAD
+    ORDER BY S.FIFOLIOSOLICITUD,
+    	     D.FIPEDIDO;
        RETURN curCursorSalida;
        	EXCEPTION
           WHEN OTHERS THEN
               vgErrCode := SQLCODE;
               vgErrMsg := SQLERRM;
-              RAISE_APPLICATION_ERROR (-20002,'ERROR ' || vgErrCode  || ' EN "PAWEBADMUNIFORMESCOMERCIO.FNCONSTIENDAS": ' || vgErrMsg);
+              RAISE_APPLICATION_ERROR (-20002,'ERROR ' || vgErrCode  || ' EN "PAWEBADMUNIFORMESCOMERCIO.FNCONSREPORTE": ' || vgErrMsg);
               
-  END FNCONSTIENDAS;
-    
-  FUNCTION FNCONSESTATUSSOLICITUD
-  RETURN rcgCursor
-  IS 
-  /*************************************************************
-   Proyecto:                         Sistema de Uniformes
-   Descripcion:                      Consulta datos de empleado
-   Parametros de entrada:            paNumEmpleado    Numero de empleado
-   Parametros de salida:             curDatos         Cursor de referencia
-   Parametros de entrada-salida      No aplica
-   Precondiciones:                   Tener creado el esquema
-   Creador:                          
-   Fecha de creacion:                
-  *************************************************************/
-  curCursorSalida rcgCursor;
+  END FNCONSREPORTE;
   
-  BEGIN
-    OPEN curCursorSalida FOR
-      SELECT FIIDESTATUSPEDIDO FIESTATUSPEDIDOS,
-             FCDESCRIPCION
-        FROM UNIFORMES.TAESTATUSPEDIDOS;
-        
-       RETURN curCursorSalida;
-       	EXCEPTION
-          WHEN OTHERS THEN
-              vgErrCode := SQLCODE;
-              vgErrMsg := SQLERRM;
-              RAISE_APPLICATION_ERROR (-20002,'ERROR ' || vgErrCode  || ' EN "PAWEBADMUNIFORMESCOMERCIO.FNCONSESTATUSSOLICITUD": ' || vgErrMsg);
-              
-  END FNCONSESTATUSSOLICITUD;
-  
-  FUNCTION FNCONSCARGASEMESTRAL
-  RETURN rcgCursor
-    IS 
-  /*************************************************************
-   Proyecto:                         Sistema de Uniformes
-   Descripcion:                      Consulta datos de empleado
-   Parametros de entrada:            paNumEmpleado    Numero de empleado
-   Parametros de salida:             curDatos         Cursor de referencia
-   Parametros de entrada-salida      No aplica
-   Precondiciones:                   Tener creado el esquema
-   Creador:                          
-   Fecha de creacion:                
-  *************************************************************/
-  curCursorSalida rcgCursor;
-  
-  BEGIN
-    OPEN curCursorSalida FOR
-      SELECT C.FIIDCARGA,
-      		 C.FCDESCRIPCION,
-      		 TO_CHAR(C.FDFECHAINICIAL,'DD/MM/YYYY') FDFECHAINICIAL,
-             TO_CHAR(C.FDFECHAFINAL,'DD/MM/YYYY') FDFECHAFINAL,
-             C.FIESTATUS,
-             C.FIGENERARPEDIDO,
-             COUNT(S.FIFOLIOSOLICITUD) FITOTALSOLICITUDES,
-             N.FIIDNEGOCIO,
-             N.FCDESCRIPCION FCNEGOCIO
-        FROM UNIFORMES.TACARGAS C
-   LEFT JOIN UNIFORMES.TASOLICITUDESXCARGA S
-          ON S.FIIDCARGA = C.FIIDCARGA
-  INNER JOIN UNIFORMES.TACARGASXNEGOCIO NC
-          ON NC.FIIDCARGA = C.FIIDCARGA
-  INNER JOIN UNIFORMES.TANEGOCIOS N
-          ON N.FIIDNEGOCIO = NC.FIIDNEGOCIO
-    GROUP BY C.FIIDCARGA,
-      		 C.FCDESCRIPCION,
-      		 C.FDFECHAINICIAL,
-             C.FDFECHAFINAL,
-             C.FIESTATUS,
-             C.FIGENERARPEDIDO,
-             N.FIIDNEGOCIO,
-             N.FCDESCRIPCION
-    ORDER BY C.FIIDCARGA;
-       RETURN curCursorSalida;
-       	EXCEPTION
-          WHEN OTHERS THEN
-              vgErrCode := SQLCODE;
-              vgErrMsg := SQLERRM;
-              RAISE_APPLICATION_ERROR (-20002,'ERROR ' || vgErrCode  || ' EN "PAWEBADMUNIFORMESCOMERCIO.FNCONSCARGASEMESTRAL": ' || vgErrMsg);
-              
-  END FNCONSCARGASEMESTRAL;
-    
   PROCEDURE SPACTUALIZACARGA(
   	paCarga IN UNIFORMES.TYPCARGA,
   	paRes OUT NUMBER
@@ -301,18 +502,10 @@ AS
               
   END SPACTUALIZACARGA;
   
-  FUNCTION FNCONSREPORTE(
-  	paIndFecha NUMBER,
-  	paFi VARCHAR2,
-  	paFf VARCHAR2,
-  	paIndCarga NUMBER,
-  	paCargas VARCHAR2,
-  	paIndEst NUMBER,
-  	paEst VARCHAR2,
-  	paIndTda NUMBER,
-  	paTienda NUMBER,
-  	paIndEmp NUMBER,
-  	paEmp NUMBER)
+  FUNCTION FNCONSSEGUIMIENTOSOL(
+  	paSolicitud UNIFORMES.TASOLICITUDES.FIFOLIOSOLICITUD%TYPE,
+  	paDatosProceso NUMBER
+  )
   RETURN rcgCursor
   IS 
   /*************************************************************
@@ -329,54 +522,35 @@ AS
   
   BEGIN
     OPEN curCursorSalida FOR
-      SELECT S.FIIDEMPLEADO,
-      		 E.FCNOMBRE,
-      		 S.FIFOLIOSOLICITUD,
-      		 EP.FCDESCRIPCION FCESTATUS,
-      		 F.FCDESCFUNCION FCFUNCION,
-      		 TO_CHAR(S.FDFECHACAPTURA,'DD/MM/YYYY') FDFECHACAPTURA,
-      		 NVL (R.FIREMISION, 0) FIREMISION,
-      		 D.FIPEDIDO,
-      		 D.FISKU,
-      		 TP.FCDESCRIPCION FCPRENDA,
-      		 D.FICANTIDAD
-        FROM UNIFORMES.TASOLICITUDES S
-  INNER JOIN UNIFORMES.TAEMPLEADOS E
-  		  ON S.FIIDEMPLEADO = E.FIEMPLEADO
+      SELECT 	B.FIFOLIOSOLICITUD,
+				B.FIIDDETALLE,
+				D.FIPAIS,
+				D.FICANAL,
+				D.FISUCURSAL,
+				D.FIPEDIDO,
+				CASE WHEN paDatosProceso = csgUno THEN B.FCDATOSPROCESO ELSE TO_CLOB(' ') END FCDATOSPROCESO,
+				B.FCCOMENTARIOS,
+				EA.FCDESCRIPCION EST_ANT,
+				EN.FCDESCRIPCION EST_NUEVO,
+				TO_CHAR(B.FDFECHA, 'DD/MM/YYYY HH24:MI:SS') FDFECHA
+        FROM UNIFORMES.TABITACORASOLICITUD B
   INNER JOIN UNIFORMES.TASOLICITUDESDETALLE D
-          ON D.FIFOLIOSOLICITUD = S.FIFOLIOSOLICITUD
-  INNER JOIN UNIFORMES.TAESTATUSPEDIDOS EP
-          ON EP.FIIDESTATUSPEDIDO = D.FIESTATUSSOL
-  INNER JOIN UNIFORMES.TAFUNCIONESXNEGOCIO F
-          ON F.FIFUNCIONSAP = S.FIFUNCIONSAP
-   LEFT JOIN UNIFORMES.TAREMISIONESXPEDIDO R
-          ON R.FIPAIS = D.FIPAIS
-         AND R.FICANAL = D.FICANAL
-         AND R.FISUCURSAL = D.FISUCURSAL
-         AND R.FIPEDIDO = D.FIPEDIDO
-   LEFT JOIN UNIFORMES.TATIPOSPRENDA TP
-          ON TP.FIIDTIPOPRENDA = D.FIIDTIPOPRENDA
-    GROUP BY S.FIIDEMPLEADO,
-      		 E.FCNOMBRE,
-      		 S.FIFOLIOSOLICITUD,
-      		 EP.FCDESCRIPCION,
-      		 F.FCDESCFUNCION,
-      		 S.FDFECHACAPTURA,
-      		 R.FIREMISION,
-      		 D.FIPEDIDO,
-      		 D.FISKU,
-      		 TP.FCDESCRIPCION,
-      		 D.FICANTIDAD
-    ORDER BY S.FIFOLIOSOLICITUD,
-    	     D.FIPEDIDO;
+  		  ON D.FIFOLIOSOLICITUD = B.FIFOLIOSOLICITUD
+  		 AND D.FIIDDETALLE = B.FIIDDETALLE
+  INNER JOIN UNIFORMES.TAESTATUSPEDIDOS EA
+          ON EA.FIIDESTATUSPEDIDO = B.FIESTATUSANT 
+  INNER JOIN UNIFORMES.TAESTATUSPEDIDOS EN
+          ON EN.FIIDESTATUSPEDIDO = B.FIESTATUSNVO
+       WHERE B.FIFOLIOSOLICITUD = 61482
+       ORDER BY B.FIIDBITACORA,B.FIFOLIOSOLICITUD,B.FIIDDETALLE,B.FDFECHA;
        RETURN curCursorSalida;
        	EXCEPTION
           WHEN OTHERS THEN
               vgErrCode := SQLCODE;
               vgErrMsg := SQLERRM;
-              RAISE_APPLICATION_ERROR (-20002,'ERROR ' || vgErrCode  || ' EN "PAWEBADMUNIFORMESCOMERCIO.FNCONSCARGASEMESTRAL": ' || vgErrMsg);
+              RAISE_APPLICATION_ERROR (-20002,'ERROR ' || vgErrCode  || ' EN "PAWEBADMUNIFORMESCOMERCIO.FNCONSESTATUSSOLICITUD": ' || vgErrMsg);
               
-  END FNCONSREPORTE;
+  END FNCONSSEGUIMIENTOSOL;
   
 END PAWEBADMUNIFORMESCOMERCIO;
 

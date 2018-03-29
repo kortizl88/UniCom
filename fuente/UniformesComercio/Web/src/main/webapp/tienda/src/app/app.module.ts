@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgxSiemaModule } from 'ngx-siema';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { Md2Module } from 'md2';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,6 +22,8 @@ import { AdministracionCargasComponent } from './components/administracion/carga
 import { AdministracionReporteComponent } from './components/administracion/reporte/administracion-uniforme-reporte-component';
 import { ModalCargaSemestralComponent } from './components/administracion/reporte/modal-carga-semestral-component';
 import { ModalEditarCargaSemestralComponent } from './components/administracion/cargas/modal-editar-carga-semestral-component';
+import { ModalDetalleSolicitudComponent } from './components/administracion/reporte/modal-detalle-solicitud-component';
+import { ModalBitacoraSolicitudComponent } from './components/administracion/reporte/modal-bitacora-solicitud-component' ;
 import {
     DialogDetalleEntrega,
     DialogConfirmaEntrega,
@@ -116,8 +119,9 @@ import { AdministracionService } from './components/administracion/administracio
         AdministracionCargasComponent,
         AdministracionReporteComponent,
         ModalCargaSemestralComponent,
-        ModalEditarCargaSemestralComponent
-
+        ModalEditarCargaSemestralComponent,
+        ModalDetalleSolicitudComponent,
+        ModalBitacoraSolicitudComponent
     ],
     imports: [
         NoopAnimationsModule,
@@ -190,7 +194,8 @@ import { AdministracionService } from './components/administracion/administracio
         MdTooltipModule,
         NgxSiemaModule.forRoot(),
         HttpModule,
-        FormsModule
+        FormsModule,
+        NgxPaginationModule
 
     ],
 
@@ -223,7 +228,9 @@ import { AdministracionService } from './components/administracion/administracio
         DialogSicronoComponent,
         DialogGuiaComponent,
         ModalCargaSemestralComponent,
-        ModalEditarCargaSemestralComponent
+        ModalEditarCargaSemestralComponent,
+        ModalDetalleSolicitudComponent,
+        ModalBitacoraSolicitudComponent
 
     ] // Component Dialog
 })

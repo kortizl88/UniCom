@@ -1867,3 +1867,27 @@ table.ccenter td {
     text-shadow: #ccc 1px 1px 2px;
     font-weight: 700;
 }
+.pagTb{
+    text-align: center;
+}
+.itmPag{
+    padding: 10px;
+    padding-bottom: 15px;
+    color:#b4a372;
+
+}
+
+.trReporte:hover{
+    cursor: pointer;
+    background-color:rgb(248, 248, 248);
+}
+.verdeCarga{
+    color:#35c335!important;
+    font-weight: 700;
+}
+
+.msjDesc{
+    font-size: 1.3em;
+    color:#b4a372;
+    text-align: center;
+}

@@ -83,7 +83,7 @@ AS
  RETURN VARCHAR2;
  
  FUNCTION FNCADENAESTADOESTATUS(
-    paNoEstadoNuevo UNIFORMES.TABITACORASOLICITUD.FIESTATUSNVO%TYPE
+    paNoEstadoNuevo UNIFORMES.TASOLICITUDESDETALLE.FIESTATUSCD%TYPE
  )
  RETURN VARCHAR2;
  
@@ -130,7 +130,7 @@ AS
   )
   RETURN rcgCursor;
   
-  
+
   
 END PAWEBUNIFORMESCOMERCIO;
 
@@ -146,31 +146,34 @@ AS
    Creador:                            
    Fecha de creacion:                  
    *************************************************************/
-  	vgErrCode   NUMBER(6)           := 0;                   -- Variable para el manejo de errores codigo
-    vgErrMsg    VARCHAR2(500 CHAR)  := '';                  -- Variable para el manejo de errores mensaje
-    csgCero     NUMBER(1)           :=0;
-    csgUno      NUMBER(1)           :=1;
-    csgDos      NUMBER(1)           :=2;
-    csgTres                 CONSTANT NUMBER(1):=3;    
-    csgCuatro               CONSTANT NUMBER(1):=4; 
-    csgDieceNueve           CONSTANT NUMBER(2):=19;
-    csgCien                 CONSTANT NUMBER(3):=100;
-    csgFalso                CONSTANT NUMBER(1):=0;    
-    csgCierto               CONSTANT NUMBER(1):=1;
-    csgCancelado            CONSTANT NUMBER(1):=0;  -- Cancelado
-    csgPendiente            CONSTANT NUMBER(1):=1;  -- Pendiente de solicitar a CD
-    csgSolicitado           CONSTANT NUMBER(1):=2;  -- Solicitado a CD
-    csgAtendido             CONSTANT NUMBER(1):=3;  -- Atendido en CD
-    csgEnCamino             CONSTANT NUMBER(1):=4;  -- En camino a tienda
-    csgRecibido             CONSTANT NUMBER(1):=5;  -- Recibido en tienda
-    csgEntregado            CONSTANT NUMBER(1):=6;  -- Entregado    
-    csgCadenaCancelado      CONSTANT VARCHAR2(50 CHAR):='CANCELADO';                     -- Cancelado
-    csgCadenaPendiente      CONSTANT VARCHAR2(50 CHAR):='PENDIENTE DE SOLICITAR A CD';   -- Pendiente de solicitar a CD
-    csgCadenaSolicitado     CONSTANT VARCHAR2(50 CHAR):='SOLICITADO A CD';               -- Solicitado a CD
-    csgCadenaAtendido       CONSTANT VARCHAR2(50 CHAR):='ATENDIDO EN CD';                -- Atendido en CD
-    csgCadenaEnCamino       CONSTANT VARCHAR2(50 CHAR):='EN CAMINO A TIENDA';            -- En camino a tienda
-    csgCadenaRecibido       CONSTANT VARCHAR2(50 CHAR):='RECIBIDO EN TIENDA';            -- Recibido en tienda
-    csgCadenaEntregado      CONSTANT VARCHAR2(50 CHAR):='ENTREGADO';                     -- Entregado
+  	vgErrCode                   NUMBER(6)         := 0; -- Variable para el manejo de errores codigo
+    vgErrMsg                    VARCHAR2(500 CHAR):= '';-- Variable para el manejo de errores mensaje
+    csgCero                     CONSTANT NUMBER(1):=0;
+    csgUno                      CONSTANT NUMBER(1):=1;
+    csgDos                      CONSTANT NUMBER(1):=2;
+    csgTres                     CONSTANT NUMBER(1):=3;    
+    csgCuatro                   CONSTANT NUMBER(1):=4; 
+    csgDieceNueve               CONSTANT NUMBER(2):=19;
+    csgCien                     CONSTANT NUMBER(3):=100;
+    csgFalso                    CONSTANT NUMBER(1):=0;    
+    csgCierto                   CONSTANT NUMBER(1):=1;
+    
+    csgCancelado                CONSTANT NUMBER(1):=0;  -- Cancelado
+    csgSolicitudGenerada        CONSTANT NUMBER(1):=1;  -- Solicitud Generada
+    csgSolicitadoTienda         CONSTANT NUMBER(1):=2;  -- Solicitado en Tienda
+    csgSolicitadoCD             CONSTANT NUMBER(1):=3;  -- Solicitado en CD
+    csgAtendidoCD               CONSTANT NUMBER(1):=4;  -- Atendido en CD
+    csgCaminoTienda             CONSTANT NUMBER(1):=5;  -- En camino a Tienda
+    csgRecibidoTienda           CONSTANT NUMBER(1):=6;  -- Recibido en Tienda
+    csgEntregado                CONSTANT NUMBER(1):=7;  -- Entregado
+    csgCadenaCancelado          CONSTANT VARCHAR2(50 CHAR):='CANCELADO';            -- Cancelado
+    csgCadenaSolicitudGenerada  CONSTANT VARCHAR2(50 CHAR):='SOLICITUD GENERADA';   -- Solicitud Generada
+    csgCadenaSolicitadoTienda   CONSTANT VARCHAR2(50 CHAR):='SOLICITADO EN TIENDA'; -- Solicitado en Tienda
+    csgCadenaSolicitadoCD       CONSTANT VARCHAR2(50 CHAR):='SOLICITADO EN CD';     -- Solicitado en CD
+    csgCadenaAtendidoCD         CONSTANT VARCHAR2(50 CHAR):='ATENDIDO EN CD';       -- Atendido en CD
+    csgCadenaCaminoTienda       CONSTANT VARCHAR2(50 CHAR):='EN CAMINO A TIENDA';   -- En camino a tienda    
+    csgCadenaRecibidoTienda     CONSTANT VARCHAR2(50 CHAR):='RECIBIDO EN TIENDA';   -- Recibido en tienda
+    csgCadenaEntregado          CONSTANT VARCHAR2(50 CHAR):='ENTREGADO';            -- Entregado
     
   FUNCTION FNCONSULTAINFOEMPLEADO(
       paNumEmpleado  IN UNIFORMES.TAEMPLEADOS.FIEMPLEADO%TYPE)
@@ -936,10 +939,9 @@ AS
         AND T.FICANAL = SD.FICANAL
         AND T.FISUCURSAL = SD.FISUCURSAL
     WHERE S.FIIDEMPLEADO = paNumeroEmpleado AND ROWNUM <= paNumeroSolicitudes
-    ORDER BY S.FDFECHACAPTURA DESC;   
-
-       
+    ORDER BY S.FDFECHACAPTURA DESC;         
  RETURN curDatos;
+ 
  EXCEPTION
     WHEN OTHERS THEN
         vgErrCode := SQLCODE;
@@ -964,34 +966,9 @@ AS
     Fecha de creacion:                16 de Septiembre del 2017
     *************************************************************/
  BEGIN  
- OPEN curDatos FOR
-/*     SELECT TBS.FINUMPEDIDO,
-            TO_CHAR(TBS.FISKU) AS FCSKU, 
-            FNDEFINEDESCRIPCIONPRENDA(TBS.FISKU,TSD.FIIDTIPOPRENDA) AS FCDESCRIPCION,
-            FNNOREMISION(TBS.FINUMPEDIDO,TBS.FISKU) AS FIREMISION,
-            TSD.FICANTIDAD,
-            FNCADENAESTADOESTATUS(TBS.FIIDESTATUSNVO) AS FCIDESTATUSNVO,
-            TBS.FIIDDETALLE,
-            TO_CHAR(TBS.FDFECHAEVENTO, 'dd/mm/yyyy HH24:MI:SS') AS FCFECHAEVENTO
-     FROM   (SELECT TBSAUX.FIFOLIOSOLICITUD, 
-                    TBSAUX.FINUMPEDIDO, 
-                    TBSAUX.FISKU,
-                    TBSAUX.FIIDESTATUSNVO,
-                    TBSAUX.FIIDDETALLE,
-                    TBSAUX.FDFECHAEVENTO
-            FROM    (SELECT FIIDDETALLE, 
-                            MAX(FDFECHAEVENTO) AS FDFECHAEVENTO
-                        FROM UNIFORMES.TABITACORASOLICITUD 
-                    WHERE FIFOLIOSOLICITUD = paNoFolioSolicitud 
-                    GROUP BY FIIDDETALLE) TBSORDEN
-            INNER JOIN UNIFORMES.TABITACORASOLICITUD TBSAUX
-                ON TBSAUX.FIIDDETALLE = TBSORDEN.FIIDDETALLE
-                AND TBSAUX.FDFECHAEVENTO = TBSORDEN.FDFECHAEVENTO) TBS
-     INNER JOIN UNIFORMES.TASOLICITUDESDETALLE TSD
-        ON TSD.FIFOLIOSOLICITUD = TBS.FIFOLIOSOLICITUD 
-        AND TSD.FIIDDETALLE = TBS.FIIDDETALLE; */
-        
+ OPEN curDatos FOR        
 --   USO RANK OVER    
+    /* ANTIGUO ESQUEMA
     SELECT  TSD.FIPEDIDO,
             TO_CHAR(TSD.FISKU) AS FCSKU, 
             FNDEFINEDESCRIPCIONPRENDA(TSD.FISKU,TSD.FIIDTIPOPRENDA) AS FCDESCRIPCION,
@@ -1013,7 +990,18 @@ AS
                 WHERE ESCIERTO = csgCierto AND FIFOLIOSOLICITUD = paNoFolioSolicitud) TBS
      INNER JOIN UNIFORMES.TASOLICITUDESDETALLE TSD
         ON TSD.FIFOLIOSOLICITUD = TBS.FIFOLIOSOLICITUD 
-        AND TSD.FIIDDETALLE = TBS.FIIDDETALLE;        
+        AND TSD.FIIDDETALLE = TBS.FIIDDETALLE;*/ 
+        
+    SELECT  TSD.FIPEDIDO,
+            TO_CHAR(TSD.FISKU) AS FCSKU, 
+            FNDEFINEDESCRIPCIONPRENDA(TSD.FISKU,TSD.FIIDTIPOPRENDA) AS FCDESCRIPCION,
+            FNNOREMISION(TSD.FIPEDIDO,TSD.FISKU) AS FIREMISION,
+            TSD.FICANTIDAD,
+            FNCADENAESTADOESTATUS(TSD.FIESTATUSSOL) AS FCIDESTATUSNVO,
+            TSD.FIIDDETALLE,
+            TO_CHAR(TSD.FDFECHAACT, 'dd/mm/yyyy HH24:MI:SS') AS FCFECHAEVENTO
+     FROM   UNIFORMES.TASOLICITUDESDETALLE TSD
+     WHERE  TSD.FIFOLIOSOLICITUD = paNoFolioSolicitud AND TSD.FIACTIVO = csgUno;        
  RETURN curDatos;
  
  EXCEPTION
@@ -1051,10 +1039,10 @@ AS
  END FNNOREMISION;
  
  FUNCTION FNCADENAESTADOESTATUS(
-    paNoEstadoNuevo UNIFORMES.TABITACORASOLICITUD.FIESTATUSNVO%TYPE)
+    paNoEstadoNuevo UNIFORMES.TASOLICITUDESDETALLE.FIESTATUSCD%TYPE)
  RETURN VARCHAR2
  IS
- vlCadenaDescripcionEstatus UNIFORMES.TAESTATUSPEDIDOS.FCDESCRIPCION%TYPE;
+ vlCadenaDescripcionEstatus UNIFORMES.TABITACORASOLICITUD.FCCOMENTARIOS%TYPE;
     /*************************************************************
     Proyecto:                         Uniformes Comercio V2
     Descripcion:                      Retorna la numero de remision
@@ -1066,15 +1054,15 @@ AS
     Fecha de creacion:                1 de Enero del 2017
     *************************************************************/
  BEGIN
-
     vlCadenaDescripcionEstatus :=   (CASE paNoEstadoNuevo
-                                        WHEN csgCancelado   THEN csgCadenaCancelado
-                                        WHEN csgPendiente   THEN csgCadenaPendiente
-                                        WHEN csgSolicitado  THEN csgCadenaSolicitado
-                                        WHEN csgAtendido    THEN csgCadenaAtendido
-                                        WHEN csgEnCamino    THEN csgCadenaEnCamino
-                                        WHEN csgRecibido    THEN csgCadenaRecibido
-                                        WHEN csgEntregado   THEN csgCadenaEntregado
+                                        WHEN csgCancelado         THEN csgCadenaCancelado
+                                        WHEN csgSolicitudGenerada THEN csgCadenaSolicitudGenerada
+                                        WHEN csgSolicitadoTienda  THEN csgCadenaSolicitadoTienda
+                                        WHEN csgSolicitadoCD      THEN csgCadenaSolicitadoCD
+                                        WHEN csgAtendidoCD        THEN csgCadenaAtendidoCD
+                                        WHEN csgCaminoTienda      THEN csgCadenaCaminoTienda
+                                        WHEN csgRecibidoTienda    THEN csgCadenaRecibidoTienda
+                                        WHEN csgEntregado         THEN csgCadenaEntregado
                                      END);
  RETURN vlCadenaDescripcionEstatus;
  
@@ -1099,7 +1087,7 @@ AS
     Fecha de creacion:                16 de Septiembre del 2017
  *************************************************************/    
  BEGIN
-        IF paSKU is NULL THEN
+        IF paSKU = 0 THEN
             SELECT  FCDESCRIPCION 
                     INTO vlCadenaDescripcion
             FROM UNIFORMES.TATIPOSPRENDA
@@ -1140,6 +1128,8 @@ AS
  BEGIN
  vlCalculoPorcentaje := FNCALCULOPORCENTAJE(paNoFolioSolicitud);
  OPEN curDatos FOR
+    
+ /* ANTIGUO ESQUEMA
     SELECT    
             FNCADENAPORCENTAJE(CANCELADO * vlCalculoPorcentaje)   AS FCPORCCANCELADO,
             FNCADENAPORCENTAJE(
@@ -1168,7 +1158,32 @@ AS
                 6 AS ENTREGADO
             )
     );
-    
+ */
+    SELECT  FNCADENAPORCENTAJE(CANCELADO * vlCalculoPorcentaje) AS FCPORCCANCELADO,
+            FNCADENAPORCENTAJE((CASE (SOLICITUDGENERADA + SOLICITADOTIENDA)
+                                    WHEN csgCero THEN 0
+                                    ELSE (SOLICITUDGENERADA + SOLICITADOTIENDA)/2
+                                END) * vlCalculoPorcentaje) AS FCPORCSOLICITUD,
+            FNCADENAPORCENTAJE((CASE (SOLICITADOCD + ATENDIDOCD)  
+                                    WHEN csgCero THEN 0
+                                    ELSE (SOLICITADOCD + ATENDIDOCD)/2
+                                END) * vlCalculoPorcentaje)  AS FCPORCATENDIDOCD,
+            FNCADENAPORCENTAJE(CAMINOTIENDA * vlCalculoPorcentaje)      AS FCPORCCAMINOTIENDA,        
+            FNCADENAPORCENTAJE(RECIBIDOTIENDA * vlCalculoPorcentaje)    AS FCPORCRECIBIDOTIENDA,
+            FNCADENAPORCENTAJE(ENTREGADO * vlCalculoPorcentaje)         AS FCPORCENTREGADO           
+    FROM (SELECT FIESTATUSNVO FROM UNIFORMES.TABITACORASOLICITUD WHERE FIFOLIOSOLICITUD = paNoFolioSolicitud) 
+    PIVOT (count(FIESTATUSNVO) for FIESTATUSNVO in  
+            (
+                0 AS CANCELADO,
+                1 AS SOLICITUDGENERADA,
+                2 AS SOLICITADOTIENDA,
+                3 AS SOLICITADOCD,
+                4 AS ATENDIDOCD,    
+                5 AS CAMINOTIENDA,
+                6 AS RECIBIDOTIENDA,
+                7 AS ENTREGADO                
+            )
+    );
  RETURN curDatos;
     
  EXCEPTION
