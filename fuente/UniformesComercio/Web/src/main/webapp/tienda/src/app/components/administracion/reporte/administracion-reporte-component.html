@@ -68,7 +68,23 @@
                 <input mdInput placeholder="Escriba el número de empleado" [(ngModel)]="emp" />
             </md-input-container>
         </div>
-
+        <div class="seccFil"></div>
+        <div class="seccFil contEmpB">
+            <div class="titSecc">
+                <b>Folio Solicitud</b>
+            </div>
+            <md-input-container class="inpBEmp">
+                <input mdInput placeholder="Escriba el folio de la solicitud" [(ngModel)]="sol" />
+            </md-input-container>
+        </div>
+        <div class="seccFil contEmpB">
+            <div class="titSecc">
+                <b>Remisión</b>
+            </div>
+            <md-input-container class="inpBEmp">
+                <input mdInput placeholder="Escriba el número de remisión" [(ngModel)]="rem" />
+            </md-input-container>
+        </div>
         <div style="text-align: right; padding-right: 20px;">
             <div class="msjRep">{{mensajeReporte}}</div>
             <button [ngClass]="'btnUni'" md-raised-button (click)="consultaReporte()">Buscar</button>

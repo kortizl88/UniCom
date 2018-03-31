@@ -118,7 +118,7 @@ export class UniformeDescuentoComponent implements OnInit {
     private contieneSolicitudesVoluntarias(respuestaWS:WrapperRespuesta): boolean {        
         if(respuestaWS.error == false){
             if(respuestaWS.respuesta.length == 0){            
-                this.dialogGeneral.mensajeError('No tiene solicitudes disponibles','',2);
+                //this.dialogGeneral.mensajeError('No tiene solicitudes disponibles','',2);
                 return false;                    
             }else{
                 return true;

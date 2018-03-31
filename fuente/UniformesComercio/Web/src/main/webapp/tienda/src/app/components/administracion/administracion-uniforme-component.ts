@@ -37,7 +37,7 @@ export class AdministracionComponent {
                 }
             }, error => {
                 this.dialogGeneral.cerrarEsperaId(dialEsp);
-                console.log(error);
+                this.dialogGeneral.mensajeError("No fue posible validar el acceso al sistema", error.getMessage, 1);
             }
         );
     }

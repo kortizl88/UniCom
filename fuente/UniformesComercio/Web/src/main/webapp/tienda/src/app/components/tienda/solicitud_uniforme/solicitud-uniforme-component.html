@@ -41,18 +41,6 @@
                             <td>Cantidad</td>
                             <td>Talla</td>
                         </tr>
-                        <tbody *ngIf="( !solicitudEmplados || solicitudEmplados.length == 0 ) && tipoSolicitud == 1">
-                            <tr>
-                                <td colspan="5">
-                                    <div class="msjSolSemestral">
-                                        <span>¡Atención!</span>
-                                        <br/> La solicitud semestral de tu plantilla ya fue registrada, para consultar el estado,
-                                        ve a la sección
-                                        <b>ESTATUS DE MI UNIFORME</b>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
                         <tbody *ngFor="let kitEmpleado of solicitudEmplados">
                             <tr *ngFor='let prenda of kitEmpleado.kit.prendas; let indP = index'>
                                 <td>
@@ -75,7 +63,7 @@
                                 </td>
                                 <td>
                                     <md-select placeholder="Cantidad" [(ngModel)]="prenda.cantidad" (ngModelChange)="actualizaTotal()">
-                                        <md-option *ngFor="let cant of cantidadPorPrenda(prenda.minimo,prenda.maximo)" [value]="cant">{{ cant }}</md-option>
+                                        <md-option *ngFor="let cant of cantidadPorPrenda(prenda)" [value]="cant">{{ cant }}</md-option>
                                     </md-select>
                                 </td>
                                 <td>

@@ -28,26 +28,34 @@ public class NegocioSolicitud {
     private DAOSolicitud daoSolicitud;
 
     public ArrayList<EmpleadoKitDTO> getKitEmpleado(int numEmp, int tipoSolicitud) throws Exception {
-        return daoSolicitud.getKitEmpleado(numEmp, tipoSolicitud);
+        ArrayList<EmpleadoKitDTO> lk = daoSolicitud.getKitEmpleado(numEmp, tipoSolicitud);
+        if (lk == null || lk.isEmpty()) {
+            throw new Exception("Ya se tiene registrada tu solicitud para la carga semestral");
+        }
+        return lk;
     }
-    
+
     public ArrayList<EmpleadoKitDTO> getKitEmpleadosTienda(int pais, int canal, int tienda, int tipoSolicitud) throws Exception {
-        return daoSolicitud.getKitEmpleadosTienda(pais, canal, tienda,tipoSolicitud);
+        ArrayList<EmpleadoKitDTO> lk = daoSolicitud.getKitEmpleadosTienda(pais, canal, tienda, tipoSolicitud);
+        if (lk == null || lk.isEmpty()) {
+            throw new Exception("No se encontraron solicitudes pendientes de registrar para esta carga semestral");
+        }
+        return lk;
     }
-    
+
     public ArrayList<RespuestaSolicitudDTO> guardaSolicitud(SolicitudDTO[] solicitud) throws Exception {
         ArrayList<SolicitudDTO> solicitudA = new ArrayList<SolicitudDTO>(Arrays.asList(solicitud));
         return daoSolicitud.guardaSolicitud(solicitudA);
     }
 
-    public Tienda getInfoTienda(int pais, int canal, int tienda) throws Exception{
+    public Tienda getInfoTienda(int pais, int canal, int tienda) throws Exception {
         return daoSolicitud.getInfoTienda(pais, canal, tienda);
     }
-    
-    public ArrayList<Tienda> getTiendasCercanas(int pais, int canal, int tienda) throws Exception{
+
+    public ArrayList<Tienda> getTiendasCercanas(int pais, int canal, int tienda) throws Exception {
         return daoSolicitud.getTiendasCercanas(pais, canal, tienda);
     }
-    
+
     public ArrayList<Usuario> getNuevosIngreso(int tienda) throws Exception {
         return daoSolicitud.getNuevosIngreso(tienda);
     }

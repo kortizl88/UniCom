@@ -17,6 +17,8 @@
                     <div>
                         <span class="b">{{usuario.ceco}}</span> {{usuario.descCeco}}</div>
                 </span>
+                <span mdTooltip="Ver Politicas y Reglas" [mdTooltipPosition]="'before'"><img src="../../../../assets/img/tienda/guia_uniformes.png" (click)="mostrarGuia()" ></span>
+                
             </div>
         </div>
     </div>
@@ -50,6 +52,7 @@
                     <b>{{empAdm.nombre}}</b>
                     <div><span class="b">{{empAdm.area}}</span></div>
                 </span>
+                <div><a class="cerrSes" (click)="cerrarSesion()">Cerrar Sesión</a></div>
             </div>
         </div>
     </div>

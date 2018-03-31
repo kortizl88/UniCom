@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { MdDialog, MdDialogRef } from '@angular/material';
+import { DateAdapter, MD_DATE_FORMATS } from "@angular/material";
 import { DialogGeneralComponent } from '../../servicio/componentes/dialog/dialog-general-component';
 import { ModalCargaSemestralComponent } from './modal-carga-semestral-component';
 import { ModalDetalleSolicitudComponent } from './modal-detalle-solicitud-component';
@@ -10,10 +11,19 @@ import { WSUniformesComercioGlobalService } from '../../servicio/endpoint/ws-uni
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+import { AppDateAdapter, APP_DATE_FORMATS } from '../../utileria/fecha/fecha_formato_adaptador'
 
 @Component({
     selector: 'app-admin-reporte',
-    templateUrl: './administracion-reporte-component.html'
+    templateUrl: './administracion-reporte-component.html',
+    providers: [
+        {
+            provide: DateAdapter, useClass: AppDateAdapter
+        },
+        {
+            provide: MD_DATE_FORMATS, useValue: APP_DATE_FORMATS
+        }
+    ]
 })
 
 export class AdministracionReporteComponent {
@@ -39,6 +49,8 @@ export class AdministracionReporteComponent {
     public pag: number;
     public filasPorPag: number;
     public urlExpExcel: SafeResourceUrl;
+    public sol:number;
+    public rem:number;
 
     constructor(public dialog: MdDialog, public sanitizer: DomSanitizer, private datosUsuarioUniformes: DatosUsuarioUniformesGlobalService, public administracionService: AdministracionService, public endPointWSUniformesComercio: WSUniformesComercioGlobalService) {
         this.dialogGeneral = new DialogGeneralComponent(this.dialog);
@@ -122,7 +134,7 @@ export class AdministracionReporteComponent {
         /*validar filtros aplicados*/
         let estatusSel = this.estatus.filter(est => est.sel);
 
-        if ((this.finicio && this.ffin) || (this.filCarga && this.cargas && this.cargas.length > 0) || estatusSel.length > 0 || this.consTda || this.emp) {
+        if ((this.finicio && this.ffin) || (this.filCarga && this.cargas && this.cargas.length > 0) || estatusSel.length > 0 || this.consTda || this.emp || this.sol || this.rem) {
             this.mensajeReporte = null;
             let reqRepo = {
                 indicaFecha: 0,
@@ -135,7 +147,11 @@ export class AdministracionReporteComponent {
                 indTienda: 0,
                 tienda: 0,
                 indEmpleado: 0,
-                empleado: 0
+                empleado: 0,
+                indSol: 0,
+                solicitud: 0,
+                indRem: 0,
+                remision : 0
             };
 
             if (this.finicio && this.ffin) {
@@ -162,6 +178,16 @@ export class AdministracionReporteComponent {
             if (this.emp) {
                 reqRepo.indEmpleado = 1;
                 reqRepo.empleado = this.emp;
+            }
+
+            if (this.sol) {
+                reqRepo.indSol = 1;
+                reqRepo.solicitud = this.sol;
+            }
+
+            if (this.rem) {
+                reqRepo.indRem = 1;
+                reqRepo.remision = this.rem;
             }
 
             this.reqPet = reqRepo;

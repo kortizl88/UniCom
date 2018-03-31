@@ -131,6 +131,10 @@ public class DAOAdministradorReporte {
             cs.setInt(10, reporteReq.getTienda());
             cs.setInt(11, reporteReq.getIndEmpleado());
             cs.setInt(12, reporteReq.getEmpleado());
+            cs.setInt(13, reporteReq.getIndSol());
+            cs.setInt(14, reporteReq.getSolicitud());
+            cs.setInt(15, reporteReq.getIndRem());
+            cs.setInt(16, reporteReq.getRemision());
             cs.execute();
             rs = (ResultSet) cs.getObject(1);
             lc = (ArrayList<ReporteDTO>) m.mapperArrayBean(rs, ReporteDTO.class);

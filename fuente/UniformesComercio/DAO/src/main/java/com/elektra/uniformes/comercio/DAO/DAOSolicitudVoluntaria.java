@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.elektra.uniformes.comercio.DAO;
 
 import Com.Elektra.Log.Dao.LogeoDAO;
@@ -21,12 +20,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component("daoSolicitudVoluntaria")
-public class DAOSolicitudVoluntaria{
+public class DAOSolicitudVoluntaria {
 
     @Autowired
     @Qualifier("funcionesBD")
     private FuncionesBD funcionesBD;
-    
     @Autowired
     @Qualifier("fabricaDAO")
     private FabricaDAO fabricaDAO;
@@ -48,41 +46,34 @@ public class DAOSolicitudVoluntaria{
         }
 
     }
-                   
 
-    public ArrayList<SolicitudVoluntaria> getSolicitudesVoluntarias(Integer numeroEmpleado, Integer numeroSolicitudes) throws Exception {                           
+    public ArrayList<SolicitudVoluntaria> getSolicitudesVoluntarias(Integer numeroEmpleado, Integer numeroSolicitudes) throws Exception {
         Connection conn = null;
         CallableStatement cs = null;
-        ResultSet rs = null;        
-        Mapper m = new Mapper();        
+        ResultSet rs = null;
+        Mapper m = new Mapper();
         ArrayList<SolicitudVoluntaria> solicitudesVoluntarias;
-                System.out.println("ID getSolicitudes "+ numeroEmpleado);
         try {
             conn = fabricaDAO.getConexion();
             if (conn == null) {
                 throw new Exception("La conexion no se creo.");
-            }           
-            cs = conn.prepareCall(funcionesBD.FN_CONS_SOLICITUDES_VOLUNTARIAS);            
-            cs.registerOutParameter(1, OracleTypes.CURSOR);  
+            }
+            cs = conn.prepareCall(funcionesBD.FN_CONS_SOLICITUDES_VOLUNTARIAS);
+            cs.registerOutParameter(1, OracleTypes.CURSOR);
             cs.setInt(2, numeroEmpleado);
             cs.setInt(3, numeroSolicitudes);
             cs.execute();
-            rs = (ResultSet) cs.getObject(1);                  
+            rs = (ResultSet) cs.getObject(1);
             solicitudesVoluntarias = null;
-            
-            solicitudesVoluntarias = (ArrayList<SolicitudVoluntaria>) m.mapperArrayBean(rs, SolicitudVoluntaria.class);            
-            if (solicitudesVoluntarias.size() == 0) {
-                System.out.println("Esta vacia la estrutura de datos (arrayList)");
-            }
-                
+            solicitudesVoluntarias = (ArrayList<SolicitudVoluntaria>) m.mapperArrayBean(rs, SolicitudVoluntaria.class);
+
         } catch (Exception e) {
             LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getSolicitudesVoluntarias " + e.getMessage());
             LogeoDAO.getInstancia().logStackExcepcion(e);
             throw new Exception("ERROR en : " + this.getClass() + " metodo: getSolicitudesVoluntarias " + e.getMessage());
         } finally {
             close(conn, cs, rs);
-        }        
+        }
         return solicitudesVoluntarias;
     }
-    
 }

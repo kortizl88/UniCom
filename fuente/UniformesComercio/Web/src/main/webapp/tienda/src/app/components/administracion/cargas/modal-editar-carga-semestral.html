@@ -1,51 +1,71 @@
 <div md-dialog-content class="contEditCarga">
     <div class="entRecibe">{{ carga.idCarga == 0 ? 'Nueva' : 'Editar'}} Carga Semestral</div>
-    <div>
-        <div class="titSecc">Título</div>
-        <md-input-container class="inpContTitulo">
-            <input mdInput placeholder="título de la carga" [(ngModel)]="carga.titulo" />
-        </md-input-container>
-    </div>
-    <div>
-        <div class="titSecc">Vigencia</div>
-        <div class="inpContFechas">
-            <md-input-container>
-                <input mdInput [mdDatepicker]="dpIni" [(ngModel)]="carga.fechaInicio" placeholder="Fecha inicial">
-                <button mdSuffix [mdDatepickerToggle]="dpIni"></button>
+    <form #frmCarga="ngForm">
+        <div>
+            <div class="titSecc">Título</div>
+            <md-input-container class="inpContTitulo">
+                <input id="titCarga" name="titCarga" maxlength="40" mdInput placeholder="título de la carga" [(ngModel)]="carga.titulo" #titCarga="ngModel"
+                    required/>
             </md-input-container>
-            <md-datepicker #dpIni></md-datepicker>
-            &nbsp;&nbsp;&nbsp;
-            <md-input-container>
-                <input mdInput [mdDatepicker]="dpFin" [(ngModel)]="carga.fechaFin" placeholder="Fecha final">
-                <button mdSuffix [mdDatepickerToggle]="dpFin"></button>
-            </md-input-container>
-            <md-datepicker #dpFin></md-datepicker>
-        </div>
-    </div>
-    <div>
-        <div class="titSecc">Negocios</div>
-        <div class="contNegocios">
-            <div *ngFor="let neg of negocios" class="negocio">
-                <md-checkbox [ngClass]="'chkPol'" color="primary" [(ngModel)]="neg.seleccionado">
-                    <span>{{neg.negocio}}</span>
-                </md-checkbox>
+            <div *ngIf="titCarga.invalid && (titCarga.dirty || titCarga.touched)" class="errFrmVal">
+                <div *ngIf="titCarga.errors.required">
+                    El nombre de la carga es requerida
+                </div>
             </div>
         </div>
-    </div>
-    <div *ngIf="carga.idCarga > 0">
-        <div class="titSecc">Estatus</div>
+        <div>
+            <div class="titSecc">Vigencia</div>
+            <div class="inpContFechas">
+                <md-input-container>
+                    <input id="dpIni" readonly name="fini" required mdInput [mdDatepicker]="dpIni" [(ngModel)]="carga.fechaInicio" #fini="ngModel" placeholder="Fecha inicial">
+                    <button mdSuffix [mdDatepickerToggle]="dpIni"></button>
+                </md-input-container>
+                <md-datepicker #dpIni></md-datepicker>
+                &nbsp;&nbsp;&nbsp;
+                <md-input-container>
+                    <input id="dpFin" readonly name="dpFin" required mdInput [mdDatepicker]="dpFin" [(ngModel)]="carga.fechaFin" placeholder="Fecha final">
+                    <button mdSuffix [mdDatepickerToggle]="dpFin" color="primary"></button>
+                </md-input-container>
+                <md-datepicker #dpFin ></md-datepicker>
+                
+                <div *ngIf="errFecha" class="errFrmVal">
+                    <div>
+                        {{msjFecha}}*
+                    </div>
+                </div>
 
-        <md-checkbox [ngClass]="'chkPol'" color="primary" [(ngModel)]="carga.estatus">
-            <span>{{carga.estatus ? 'Activa' : 'Inactiva'}}</span>
-        </md-checkbox>
-    </div>
-    <div *ngIf="carga.idCarga > 0">
-        <div class="titSecc">Enviar a CD</div>
-        <md-checkbox [ngClass]="'chkPol'" color="primary" [(ngModel)]="carga.generarPedidos">
-            <span>{{carga.generarPedidos ? 'Sí' : 'No'}}</span>
-        </md-checkbox>
-    </div>
-    <br/>
+            </div>
+        </div>
+        <div>
+            <div class="titSecc">Negocios</div>
+            <div class="contNegocios">
+                <div *ngFor="let neg of negocios" class="negocio">
+                    <md-checkbox id="selNeg_{{neg.idNegocio}}" name="selNeg_{{neg.idNegocio}}" [ngClass]="'chkPol'" color="primary" [(ngModel)]="neg.seleccionado">
+                        <span>{{neg.negocio}}</span>
+                    </md-checkbox>
+                </div>
+            </div>
+            <div *ngIf="errNegocios" class="errFrmVal">
+                <div>
+                    Debe seleccionar al menos un negocio para la carga *
+                </div>
+            </div>
+        </div>
+        <div *ngIf="carga.idCarga > 0">
+            <div class="titSecc">Estatus</div>
+
+            <md-checkbox id="selAct" name="selAct" [ngClass]="'chkPol'" color="primary" [(ngModel)]="carga.estatus">
+                <span>{{carga.estatus ? 'Activa' : 'Inactiva'}}</span>
+            </md-checkbox>
+        </div>
+        <div *ngIf="carga.idCarga > 0">
+            <div class="titSecc">Enviar a CD</div>
+            <md-checkbox id="selCD" name="selCD" [ngClass]="'chkPol'" color="primary" [(ngModel)]="carga.generarPedidos">
+                <span>{{carga.generarPedidos ? 'Sí' : 'No'}}</span>
+            </md-checkbox>
+        </div>
+    </form>
+    <br>
 </div>
 <div md-dialog-actions align="end">
     <button md-raised-button md-dialog-close>Cancelar</button>&nbsp;&nbsp;

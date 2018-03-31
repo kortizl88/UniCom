@@ -62,16 +62,12 @@ public class DAOAdministrador {
             if (conn == null) {
                 throw new Exception("La conexion no se creo.");
             }
-            /*cs = conn.prepareCall(funcionesBD.FN_CONS_INFOEMPLEADO);
+            cs = conn.prepareCall(funcionesBD.FN_CONS_INFOEMPLEADO);
             cs.registerOutParameter(1, OracleTypes.CURSOR);
             cs.setInt(2, numEmpleado);
             cs.execute();
             rs = (ResultSet) cs.getObject(1);
-            ad = m.mapperBean(rs, Administrador.class);*/
-            ad = new Administrador();
-            ad.setNombre("Kristian Ortiz");
-            ad.setNumeroEmpledo(888198);
-            ad.setArea("SISTEMAS");
+            ad = m.mapperBean(rs, Administrador.class);
         } catch (Exception e) {
             LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getAvance " + e.getMessage());
             LogeoDAO.getInstancia().logStackExcepcion(e);

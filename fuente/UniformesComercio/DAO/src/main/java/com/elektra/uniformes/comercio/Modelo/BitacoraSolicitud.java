@@ -11,9 +11,9 @@ import com.elektra.mapper.anotaciones.PropiedadMap;
  * @author kortizl
  */
 public class BitacoraSolicitud {
-    @PropiedadMap(campo="FIFOLIOSOLICITUD")
+    @PropiedadMap(id=true, campo="FIFOLIOSOLICITUD")
     private int folioSolicitud;
-    @PropiedadMap(campo="FIIDDETALLE")
+    @PropiedadMap(id=true, campo="FIIDDETALLE")
     private int detalle;
     @PropiedadMap(campo="FIPAIS")
     private int pais;

@@ -18,7 +18,7 @@ import { DatosUsuarioUniformesGlobalService } from '../../servicio/modelo/datos-
 import { WSUniformesComercioGlobalService } from '../../servicio/endpoint/ws-uniformes-comercio-global-service';
 
 //Componentes
-import { DialogGeneralComponent } from '../../servicio/componentes/dialog/dialog-general-component';
+import { DialogGeneralComponent, DialogGuiaComponent } from '../../servicio/componentes/dialog/dialog-general-component';
 
 
 @Component({
@@ -40,7 +40,6 @@ export class HeaderUniformesComponent implements OnInit {
     public empleadoPar: number;
     private router: Router;
     private dialogGeneral: DialogGeneralComponent;
-    private dialogGuia: DialogGeneralComponent;
     private subs: any;
     private subsMenu: any;
     private empAdm: any;
@@ -56,6 +55,7 @@ export class HeaderUniformesComponent implements OnInit {
         this.logueado = false;
         this.menuAdmin = [new Menu(1, "Carga Semestral", "Carga Semestral", "/admin/cargas"), new Menu(2, "Reporte", "Reporte", "/admin/reporte")];
         this.menuAdmin[0].sel = true;
+        this.empAdm = null;
         this.router.events.subscribe((event) => {
             if (event instanceof NavigationStart) {
                 this.verMenuHeader = true;
@@ -67,9 +67,11 @@ export class HeaderUniformesComponent implements OnInit {
                     case '/admin':
                         this.administracion = true;
                         break;
+                    case '/':
                     case '/?numEmpleado': this.obtieneParamatroEmpleado();
                         break;
                 }
+                this.validaSesion(rut);
             }
         });
 
@@ -84,7 +86,7 @@ export class HeaderUniformesComponent implements OnInit {
         });
         /*sub evento cambio de menu*/
         this.subs = this.datosUsuarioUniformes.notificaCambioMenu.subscribe((respMenu) => {
-           this.selMenu(this.menu, respMenu);
+            this.selMenu(this.menu, respMenu);
         });
     }
 
@@ -99,35 +101,25 @@ export class HeaderUniformesComponent implements OnInit {
     private obtieneParamatroEmpleado() {
         this.empleadoPar = this.getParam('numEmpleado');
         if (!this.empleadoPar) {
-            this.dialogGeneral.cerrarEspera();
             this.dialogGeneral.mensajeError("No se proporcionaron los parámetros correctos ", '', 1);
         }
         else {
+            this.mostrarGuia();
             this.consultarDatosEmpleado(this.empleadoPar);
         }
     }
 
+    private mostrarGuia() {
+        let dialogGuia: MdDialogRef<DialogGuiaComponent> = this.dialog.open(DialogGuiaComponent);
+    }
+
     private consultarDatosEmpleado(numEmpleado: number): void {
+        this.dialogGeneral.iniciarEspera();
         this.usuarioService.getDatosUsuario(numEmpleado).subscribe(
             respuestaUsuario => {
                 this.usuario = respuestaUsuario.respuesta;
                 this.datosUsuarioUniformes.setDatosUsuario(this.usuario);
                 this.datosUsuarioUniformes.setTiendaLogin(new Tienda(this.usuario.idPais, String(this.usuario.canal), this.usuario.ceco));
-                /*obtener menu*/
-                /*				
-                this.usuarioService.getMenuUsuario(numEmpleado).subscribe(
-                    respuestaMenu => {                    
-                        this.menu = respuestaMenu.respuesta;
-                        this.datosUsuarioUniformes.setMenu(this.menu);
-                        this.router.navigateByUrl('menu');
-                        this.dialogGeneral.cerrarEspera();
-                    },
-                    error => {
-                        console.log(error);
-                        this.dialogGeneral.cerrarEspera();
-                        this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getMenuUsuario",error,1);
-                    }
-                );*/
                 this.usuarioService.getMenuFuncionNegocio(numEmpleado, this.datosUsuarioUniformes.getDatosUsuario().funcionSAP, this.datosUsuarioUniformes.getDatosUsuario().negocio).subscribe(
                     respuestaMenu => {
                         this.menu = respuestaMenu.respuesta;
@@ -155,6 +147,25 @@ export class HeaderUniformesComponent implements OnInit {
                 menu.sel = false;
             });
             mn.sel = true;
+        }
+    }
+
+    public cerrarSesion() {
+        this.administracion = false;
+        this.logueado = false;
+        this.empAdm = null;
+        this.router.navigateByUrl('admin');
+    }
+
+    private validaSesion(rut: string) {
+        let adm = true;
+        this.menuAdmin.forEach(mnA => {
+            if (rut == mnA.ruta && (!this.logueado && this.empAdm == null)) {
+                adm = false;
+            }
+        });
+        if (!adm) {
+            this.router.navigateByUrl('admin');
         }
     }
     /*

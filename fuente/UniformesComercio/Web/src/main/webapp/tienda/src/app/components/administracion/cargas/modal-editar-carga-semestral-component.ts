@@ -1,13 +1,24 @@
 import { Component } from '@angular/core';
 
 import { MdDialog, MdDialogRef } from '@angular/material';
+import { DateAdapter, MD_DATE_FORMATS } from "@angular/material";
 import { DialogGeneralComponent } from '../../servicio/componentes/dialog/dialog-general-component';
 import { AdministracionService } from '../administracion-uniforme-service';
 import { DatosUsuarioUniformesGlobalService } from '../../servicio/modelo/datos-usuario-uniformes-global-service';
 
+import { AppDateAdapter, APP_DATE_FORMATS } from '../../utileria/fecha/fecha_formato_adaptador'
+
 @Component({
     selector: 'modal-editar-carga-semestral',
-    templateUrl: './modal-editar-carga-semestral.html'
+    templateUrl: './modal-editar-carga-semestral.html',
+    providers: [
+        {
+            provide: DateAdapter, useClass: AppDateAdapter
+        },
+        {
+            provide: MD_DATE_FORMATS, useValue: APP_DATE_FORMATS
+        }
+    ]
 })
 
 export class ModalEditarCargaSemestralComponent {
@@ -15,6 +26,9 @@ export class ModalEditarCargaSemestralComponent {
     public carga: any;
     public negocios: any[];
     public msgError: string;
+    public errNegocios: boolean;
+    public errFecha: boolean;
+    public msjFecha: string;
 
     constructor(public dialog: MdDialog, public administracionService: AdministracionService, private datosUsuarioUniformesGlobalService: DatosUsuarioUniformesGlobalService, public dialogRef: MdDialogRef<ModalEditarCargaSemestralComponent>) {
         this.dialogGeneral = new DialogGeneralComponent(this.dialog);
@@ -32,7 +46,7 @@ export class ModalEditarCargaSemestralComponent {
                     if (this.carga.negocios) {
                         this.negocios.forEach(n => {
                             this.carga.negocios.forEach(ns => {
-                                if(ns.idNegocio == n.idNegocio){
+                                if (ns.idNegocio == n.idNegocio) {
                                     n.seleccionado = true;
                                 }
                             });
@@ -50,31 +64,45 @@ export class ModalEditarCargaSemestralComponent {
     }
 
     public actualizaCarga() {
-        let dialEsp = this.dialogGeneral.iniciarEspera();
+        this.errNegocios = false;
+        this.errFecha = false;
         let nSel = this.negocios.filter(n => n.seleccionado);
+        if( !this.carga.titulo || this.carga.titulo == "" )
+        {
+            console.log("error ti")
+        }else if (!this.carga.fechaInicio || !this.carga.fechaFin) {
+            this.errFecha = true;
+            this.msjFecha = "Seleccione las fechas para la vigencia de la carga";
+        } else if (this.carga.fechaInicio > this.carga.fechaFin) {
+            this.errFecha = true;
+            this.msjFecha = "Verifique las fechas seleccionadas, la fecha inicial debe ser antes de la fecha final ";
+        } else if (!nSel || nSel.length == 0) {
+            this.errNegocios = true;
+        } else {
+            let dialEsp = this.dialogGeneral.iniciarEspera();
+            let cargaPost = {
+                idCarga: this.carga.idCarga, titulo: this.carga.titulo,
+                fechaInicio: this.formatFecha(this.carga.fechaInicio), fechaFin: this.formatFecha(this.carga.fechaFin),
+                estatus: this.carga.estatus ? 1 : 0, generarPedidos: this.carga.generarPedidos ? 1 : 0,
+                negocios: nSel
+            };
 
-        let cargaPost = {
-            idCarga: this.carga.idCarga, titulo: this.carga.titulo,
-            fechaInicio: this.formatFecha(this.carga.fechaInicio), fechaFin: this.formatFecha(this.carga.fechaFin),
-            estatus: this.carga.estatus ? 1 : 0, generarPedidos: this.carga.generarPedidos ? 1 : 0,
-            negocios: nSel
-        };
-
-        this.administracionService.actualizaCarga(cargaPost).subscribe(
-            respuestaCargas => {
-                this.dialogGeneral.cerrarEsperaId(dialEsp);
-                if (!respuestaCargas.error) {
-                    this.actualizaListaCargas();
-                    this.dialogGeneral.mensajeError(respuestaCargas.respuesta, "", 3);
-                    this.dialogRef.close();
-                } else {
-                    this.dialogGeneral.mensajeError(respuestaCargas.mensaje, "", 1);
+            this.administracionService.actualizaCarga(cargaPost).subscribe(
+                respuestaCargas => {
+                    this.dialogGeneral.cerrarEsperaId(dialEsp);
+                    if (!respuestaCargas.error) {
+                        this.actualizaListaCargas();
+                        this.dialogGeneral.mensajeError(respuestaCargas.respuesta, "", 3);
+                        this.dialogRef.close();
+                    } else {
+                        this.dialogGeneral.mensajeError(respuestaCargas.mensaje, "", 1);
+                    }
+                }, error => {
+                    this.dialogGeneral.cerrarEsperaId(dialEsp);
+                    console.log(error);
                 }
-            }, error => {
-                this.dialogGeneral.cerrarEsperaId(dialEsp);
-                console.log(error);
-            }
-        );
+            );
+        }
     }
 
     public actualizaListaCargas() {

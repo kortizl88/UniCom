@@ -5,6 +5,7 @@
 package com.elektra.uniformes.comercio.controller;
 
 import Com.Elektra.Log.Dao.LogeoDAO;
+import com.elektra.uniformes.comercio.Modelo.Administrador;
 import com.elektra.uniformes.comercio.Modelo.CargaSemestral;
 import com.elektra.uniformes.comercio.Modelo.EmpleadoAcceso;
 import com.elektra.uniformes.comercio.Modelo.ReporteReq;
@@ -48,15 +49,22 @@ public class ControllerAdministracion {
 
     @RequestMapping(value = "/datos/acceso", method = RequestMethod.POST)
     public @ResponseBody
-    Respuesta getdatosEmpleado(EmpleadoAcceso acceso) {
+    Respuesta getdatosEmpleado(@RequestBody EmpleadoAcceso acceso) {
         Respuesta r = new Respuesta();
         try {
             if (negocioAdministrador.validaAcceso(acceso)) {
-                r.setRespuesta(negocioAdministrador.getDatosAdministrador(acceso.getUsuario()));
-                r.setError(false);
-                r.setMensaje("Consulta obtenida correctamente");
+                Administrador a = negocioAdministrador.getDatosAdministrador(acceso.getUsuario());
+                if (a.getNumeroEmpledo() == acceso.getUsuario()) {
+                    r.setRespuesta(a);
+                    r.setError(false);
+                    r.setMensaje("Consulta obtenida correctamente");
+                } else {
+                    r.setError(true);
+                    r.setMensaje("El usuario no tiene acceso al sistema de administración");
+                }
+
             } else {
-                r.setRespuesta( null );
+                r.setRespuesta(null);
                 r.setError(true);
                 r.setMensaje("Verifique su usuario y contraseña");
             }

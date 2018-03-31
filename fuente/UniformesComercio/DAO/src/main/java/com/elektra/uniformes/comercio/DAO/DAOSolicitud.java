@@ -59,8 +59,8 @@ public class DAOSolicitud {
         }
 
     }
-    
-        public Tienda getInfoTienda(int pais, int canal, int tienda) throws Exception {
+
+    public Tienda getInfoTienda(int pais, int canal, int tienda) throws Exception {
         Connection conn = null;
         CallableStatement cs = null;
         Tienda t = new Tienda();
@@ -79,7 +79,7 @@ public class DAOSolicitud {
             cs.setInt(4, tienda);
             cs.execute();
             rs = (ResultSet) cs.getObject(1);
-            t = (Tienda)m.mapperBean(rs, Tienda.class);
+            t = (Tienda) m.mapperBean(rs, Tienda.class);
 
         } catch (Exception e) {
             LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getInfoTienda " + e.getMessage());
@@ -90,7 +90,7 @@ public class DAOSolicitud {
         }
         return t;
     }
-        
+
     public ArrayList<EmpleadoKitDTO> getKitEmpleado(int numEmp, int tipoSolicitud) throws Exception {
         Connection conn = null;
         CallableStatement cs = null;
@@ -110,7 +110,7 @@ public class DAOSolicitud {
             cs.execute();
             rs = (ResultSet) cs.getObject(1);
             lk = (ArrayList<EmpleadoKitDTO>) m.mapperArrayBean(rs, EmpleadoKitDTO.class);
-
+            
         } catch (Exception e) {
             LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getKitEmpleado " + e.getMessage());
             LogeoDAO.getInstancia().logStackExcepcion(e);
@@ -142,11 +142,10 @@ public class DAOSolicitud {
             cs.execute();
             rs = (ResultSet) cs.getObject(1);
             lK = (ArrayList<EmpleadoKitDTO>) m.mapperArrayBean(rs, EmpleadoKitDTO.class);
-
         } catch (Exception e) {
             LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getKitEmpleadosTienda " + e.getMessage());
             LogeoDAO.getInstancia().logStackExcepcion(e);
-            throw new Exception("ERROR en : " + this.getClass() + " metodo: getKitEmpleadosTienda " + e.getMessage());
+            throw new Exception(e.getMessage());
         } finally {
             close(conn, cs, rs);
         }
@@ -253,8 +252,8 @@ public class DAOSolicitud {
         }
         return ls;
     }
-    
-        public ArrayList<Usuario> getNuevosIngreso(int tienda) throws Exception {
+
+    public ArrayList<Usuario> getNuevosIngreso(int tienda) throws Exception {
         Connection conn = null;
         CallableStatement cs = null;
         ArrayList<Usuario> lt = new ArrayList<Usuario>();

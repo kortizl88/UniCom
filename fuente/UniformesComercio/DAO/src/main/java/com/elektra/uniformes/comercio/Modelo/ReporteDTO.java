@@ -16,7 +16,7 @@ public class ReporteDTO {
     private int empleado;
     @PropiedadMap(campo="FCNOMBRE")
     private String nombre;
-    @PropiedadMap(campo="FIFOLIOSOLICITUD")
+    @PropiedadMap(id=true, campo="FIFOLIOSOLICITUD")
     private int solicitud;
     @PropiedadMap(campo="FIPAIS")
     private int pais;

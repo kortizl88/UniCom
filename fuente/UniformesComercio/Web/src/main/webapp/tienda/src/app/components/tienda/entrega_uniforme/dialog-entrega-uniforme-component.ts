@@ -123,8 +123,8 @@ export class DialogDetalleEntrega {
         this.descargando = true;
         this.entregaService.postEntregaUniformes(this.usuarioRecibe).subscribe(
             respuestaWS => {
+                this.descargando = false;
                 if (!respuestaWS.error) {
-                    this.descargando = false;
                     this.usuarioRecibe = respuestaWS.respuesta;
                     let erroresDescarga = false;
                     this.usuarioRecibe.pedidos.forEach(ped => {
@@ -138,6 +138,7 @@ export class DialogDetalleEntrega {
                     this.terminoProceso = true;
                 } else {
                     this.dialogGeneral.mensajeError("Ocurrió un error al realizar la descarga de los pedidos", respuestaWS.mensaje, 1);
+                    this.msjError = "Ocurrió un error al realizar la descarga de los pedidos";
                     this.terminoProceso = true;
                 }
             }, error => {

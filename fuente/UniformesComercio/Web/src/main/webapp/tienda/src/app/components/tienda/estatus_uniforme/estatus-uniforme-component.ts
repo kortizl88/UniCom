@@ -24,71 +24,71 @@ import { DialogGeneralComponent } from '../../servicio/componentes/dialog/dialog
 })
 
 export class EstatusUniformeComponent {
-    
-    private dialogGeneral:DialogGeneralComponent;
-    private estatusService:EstatusService;    
+
+    private dialogGeneral: DialogGeneralComponent;
+    private estatusService: EstatusService;
     public solicitudes: Solicitud[];
     public solicitud: Solicitud;
     private _trackings: Tracking[];
     private _avance: Avance;
-	
-    constructor(public dialog:MdDialog, estatusService: EstatusService, public datosUsuarioUniformes:DatosUsuarioUniformesGlobalService) {
+
+    constructor(public dialog: MdDialog, estatusService: EstatusService, public datosUsuarioUniformes: DatosUsuarioUniformesGlobalService) {
         this.dialogGeneral = new DialogGeneralComponent(this.dialog);
         this.dialogGeneral.iniciarEspera();
         this.estatusService = estatusService;
         this.consultarSolicitudes();
     }
-    
-    public seleccionaFolioSolicitud():void{             
+
+    public seleccionaFolioSolicitud(): void {
         this.consultarTracking(this.solicitud.nofolioSolicitud);
-    }   
-  
+    }
+
     /**
      * Consumo del servicio web endpoint : 
      */
     private consultarSolicitudes(): void {
-        this.estatusService.getConsultaSolicitudes(this.datosUsuarioUniformes.getDatosUsuario().empleado).subscribe(            
-            respuestaWS => {                                         
+        this.estatusService.getConsultaSolicitudes(this.datosUsuarioUniformes.getDatosUsuario().empleado).subscribe(
+            respuestaWS => {
                 this.dialogGeneral.cerrarEspera();
-                if(this.contieneSolicitudes(respuestaWS)){
+                if (this.contieneSolicitudes(respuestaWS)) {
                     this.solicitudes = respuestaWS.respuesta;
                     this.solicitud = this.solicitudes[0];
                     this.seleccionaFolioSolicitud();
-                }                   
-            },error => {                                
+                }
+            }, error => {
                 this.dialogGeneral.cerrarEspera();
-                this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getConsultaSolicitudes",error,1);
-            }            
-        );              
+                this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getConsultaSolicitudes", error, 1);
+            }
+        );
     }
-              
+
     /**
      * Consumo del servicio web endpoint : 
      */
     private consultarTracking(idFolioSolicitud: number): void {
         this.estatusService.getTracking(idFolioSolicitud).subscribe(
-            respuestaWS => {                            
+            respuestaWS => {
                 this._trackings = respuestaWS.respuesta;
                 this.dialogGeneral.cerrarEspera();
-                this.consultarAvance();   
-            },error => {                
+                this.consultarAvance();
+            }, error => {
                 this.dialogGeneral.cerrarEspera();
-                this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getTracking",error,1);                
+                this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getTracking", error, 1);
             }
         );
-    }        
-    
+    }
+
     /**
      * Consumo del servicio web endpoint : 
      */
-    private consultarAvance(): void {        
+    private consultarAvance(): void {
         this.estatusService.getAvance().subscribe(
-            respuestaWS => {                
-                this._avance = respuestaWS.respuesta;   
-                this.dialogGeneral.cerrarEspera();                                           
-            },error => {                
+            respuestaWS => {
+                this._avance = respuestaWS.respuesta;
                 this.dialogGeneral.cerrarEspera();
-                this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getAvance",error,1);     
+            }, error => {
+                this.dialogGeneral.cerrarEspera();
+                this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getAvance", error, 1);
             }
         );
     }
@@ -96,26 +96,26 @@ export class EstatusUniformeComponent {
     /**
      * Valida si hay se muestra un error en la parte WS, ademas si tiene solicitudes
      */
-    private contieneSolicitudes(respuestaWS:WrapperRespuesta):boolean{
-        if(!respuestaWS.error){
-            if (respuestaWS.respuesta.length == 0){            
-                this.dialogGeneral.mensajeError('No tiene que consultar','',2);
-		return false;                    
-            }else{
+    private contieneSolicitudes(respuestaWS: WrapperRespuesta): boolean {
+        if (!respuestaWS.error) {
+            if (respuestaWS.respuesta.length == 0) {
+                //this.dialogGeneral.mensajeError('No tiene que consultar', '', 2);
+                return false;
+            } else {
                 return true;
             }
-        }else{
-            this.dialogGeneral.mensajeError('Ocurrio un problema en la parte WS','',1);
-            return false;                  
-        }       
+        } else {
+            this.dialogGeneral.mensajeError('Ocurrio un problema en la parte WS', '', 1);
+            return false;
+        }
     }
-	
-    get trackings(){
+
+    get trackings() {
         return this._trackings;
     }
-	
-    get avance(){
+
+    get avance() {
         return this._avance;
     }
-	
+
 }

@@ -1,164 +1,181 @@
+<div class="main">
+	<div class="sinSolicitudes" *ngIf="!solicitudes || solicitudes.length == 0">
+		<div class="headS">¡No se encontraron solicitudes!</div>
+		<b> Aùn no has registrado solicitudes, puedes hacerlo en la secciòn "Solicitud Voluntaria" o "Solicitud Semestral"</b>
+	</div>
+	<div class="contConsulta" *ngIf="solicitudes && solicitudes.length>0">
+		<div>
+			<b>Consultar Solicitudes</b>
+			<div class="contSelSol">
+				<md-select class="sel" [(ngModel)]="solicitud" (ngModelChange)="seleccionaFolioSolicitud()">
+					<md-option *ngFor="let solicitudElemento of solicitudes" [value]="solicitudElemento">{{ 'Folio: '+solicitudElemento.nofolioSolicitud+' ( ' + solicitudElemento?.cadenafechaCaptura + ' )'}}</md-option>
+				</md-select>
+			</div>
+			<br>
+		</div>
 
-	<div class="main">
-		<!-- Componente de busqueda de excepciones-->
- 		<dl class="accordion2" id="accordion2">  
-			<dd>  
-				<div class="mcontent">   
-				<br> 
-					<b>Consultar periodos anteriores</b><br>  
-					<div class="element5">
-						<div class="div_select">																		
-							<!--md-select [(ngModel)]="solicitud" (ngModelChange)="seleccionaFolioSolicitud(solicitudElemento)"-->
-							<md-select [(ngModel)]="solicitud" (ngModelChange)="seleccionaFolioSolicitud()">
-   								<md-option *ngFor="let solicitudElemento of solicitudes" [value]="solicitudElemento">{{ 'Fecha: ' + solicitudElemento?.cadenafechaCaptura}}</md-option>
-							</md-select>
-						</div>													
-					</div>  
-					<br> 
-				</div><!-- content--> 
-			</dd>     
-		</dl>	 
-
-
-		<div class="content"> 
-		<!--informacion-->
 		<div class="ifseguimiento w50 flef">
-			<h3 class="supseguimiento">ESTATUS DE MI UNIFORME</h3>
-
 			<table class="tseguimiento">
 				<tbody>
 					<tr>
-						<td>Nombre Socio</td>
+						<td>
+							<b> Nombre Socio </b>
+						</td>
 						<td>{{datosUsuarioUniformes?.getDatosUsuario().empleado}}</td>
 					</tr>
 					<tr>
-						<td>Número de Empleado</td>
+						<td>
+							<b>Número de Empleado</b>
+						</td>
 						<td>{{datosUsuarioUniformes?.getDatosUsuario().nombre}}</td>
 					</tr>
 					<tr>
-						<td>Folio Pedido</td>
+						<td>
+							<b>Folio Solicitud</b>
+						</td>
 						<td>{{solicitud?.nofolioSolicitud}}</td>
 					</tr>
 					<tr>
-						<td>Numero de tienda</td>
+						<td>
+							<b>Numero de tienda</b>
+						</td>
 						<td>{{solicitud?.noSucursal}}</td>
-					</tr>					
+					</tr>
 					<tr>
-						<td>Nombre de tienda</td>
+						<td>
+							<b>Nombre de tienda</b>
+						</td>
 						<td>{{solicitud?.cadenaNombreTienda}}</td>
 					</tr>
 					<tr>
-						<td>Fecha de solicitud</td>
+						<td>
+							<b>Fecha de solicitud</b>
+						</td>
 						<td>{{solicitud?.cadenafechaCaptura}}</td>
 					</tr>
 				</tbody>
 			</table>
-		</div> 
-		<!----> 
-        <!--Linea Status-->
+		</div>
+		<!---->
+		<!--Linea Status-->
 		<div class="lstatus w50 fright">
 			<section class="tracking">
 				<div class="padding overflow">
-				<table class="tcenter smiento">
-					<thead>
-						<tr>
-							<td width="10%">
-								<span>SOLICITADO</span><br>
-								<img id="registro" src="assets/img/tienda/shop_online.svg">
-								<h1>{{avance?.cadenaPorcientoSolicitado}}</h1>
-							</td>
+					<table class="tcenter smiento">
+						<thead>
+							<tr>
+								<td width="10%">
+									<span>SOLICITADO</span>
+									<br>
+									<img id="registro" src="assets/img/tienda/shop_online.svg">
+									<h1>{{avance?.cadenaPorcientoSolicitado}}</h1>
+								</td>
 
-							<td width="4%">
-								<span class="bar"></span>
-							</td>
+								<td width="4%">
+									<span class="bar"></span>
+								</td>
 
-							<td width="10%">
-								<span>C.DISTRIBUCIÓN</span><br>
-								<img id="folio" src="assets/img/tienda/pencil.svg">
-								<h1>{{avance?.cadenaPorcientoAtendido}}</h1>
-							</td>
+								<td width="10%">
+									<span>C.DISTRIBUCIÓN</span>
+									<br>
+									<img id="folio" src="assets/img/tienda/pencil.svg">
+									<h1>{{avance?.cadenaPorcientoAtendido}}</h1>
+								</td>
 
-						    <td width="4%">
-								<span class="bar"></span>
-							</td>
+								<td width="4%">
+									<span class="bar"></span>
+								</td>
 
-							<td width="10%">
-								<span>EN CAMINO</span>
-								<img id="autorizacion" src="assets/img/tienda/car-time.svg">
-								<h1>{{avance?.cadenaPorcientoCamino}}</h1>
-							</td>
-							
-							<td width="4%">
-								<span class="bar"></span>
-							</td>
+								<td width="10%">
+									<span>EN CAMINO</span>
+									<img id="autorizacion" src="assets/img/tienda/car-time.svg">
+									<h1>{{avance?.cadenaPorcientoCamino}}</h1>
+								</td>
 
-							<td width="10%">
-								<span>EN TIENDA</span>
-								<img id="autorizacion" src="assets/img/tienda/store.svg">
-								<h1>{{avance?.cadenaPorcientoRecibido}}</h1>
-							</td>
-							
-							<td width="4%">
-								<span class="bar"></span>
-							</td>
+								<td width="4%">
+									<span class="bar"></span>
+								</td>
 
-							<td width="10%">
-								<span>ENTREGADO</span>
-								<img id="autorizacion" src="assets/img/tienda/entrega.svg">
-								<h1>{{avance?.cadenaPorcientoEntregado}}</h1>
-							</td>														
-						</tr>
-						
-						<tr>
-							<td class="current">
-								<img [ngStyle]="avance?.cadenaPorcientoSolicitado.trim() 	== '100%' ? {'background':'#a8efaf'} : {'background':'white'}" src="assets/img/tienda/ok.svg" class="check-ok"></td>
-							<td>&nbsp;</td>
-							<td><img [ngStyle]="avance?.cadenaPorcientoAtendido.trim() 		== '100%' ? {'background':'#a8efaf'} : {'background':'white'}" src="assets/img/tienda/ok.svg" class="check-ok"></td>
-							<td>&nbsp;</td>
-							<td><img [ngStyle]="avance?.cadenaPorcientoCamino.trim() 		== '100%' ? {'background':'#a8efaf'} : {'background':'white'}" src="assets/img/tienda/ok.svg" class="check-ok"></td>
-							<td>&nbsp;</td>
-							<td><img [ngStyle]="avance?.cadenaPorcientoRecibido.trim() 		== '100%' ? {'background':'#a8efaf'} : {'background':'white'}" src="assets/img/tienda/ok.svg" class="check-ok"></td> 
-							<td>&nbsp;</td>
-							<td><img [ngStyle]="avance?.cadenaPorcientoEntregado.trim() 	== '100%' ? {'background':'#a8efaf'} : {'background':'white'}" src="assets/img/tienda/ok.svg" class="check-ok"></td>  
-						</tr>
-					</thead>
-				</table>
-			</div>
+								<td width="10%">
+									<span>EN TIENDA</span>
+									<img id="autorizacion" src="assets/img/tienda/store.svg">
+									<h1>{{avance?.cadenaPorcientoRecibido}}</h1>
+								</td>
+
+								<td width="4%">
+									<span class="bar"></span>
+								</td>
+
+								<td width="10%">
+									<span>ENTREGADO</span>
+									<img id="autorizacion" src="assets/img/tienda/entrega.svg">
+									<h1>{{avance?.cadenaPorcientoEntregado}}</h1>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="current">
+									<img [ngStyle]="avance?.cadenaPorcientoSolicitado.trim() 	== '100%' ? {'background':'#a8efaf'} : {'background':'white'}"
+									 src="assets/img/tienda/ok.svg" class="check-ok">
+								</td>
+								<td>&nbsp;</td>
+								<td>
+									<img [ngStyle]="avance?.cadenaPorcientoAtendido.trim() 		== '100%' ? {'background':'#a8efaf'} : {'background':'white'}" src="assets/img/tienda/ok.svg"
+									 class="check-ok">
+								</td>
+								<td>&nbsp;</td>
+								<td>
+									<img [ngStyle]="avance?.cadenaPorcientoCamino.trim() 		== '100%' ? {'background':'#a8efaf'} : {'background':'white'}" src="assets/img/tienda/ok.svg"
+									 class="check-ok">
+								</td>
+								<td>&nbsp;</td>
+								<td>
+									<img [ngStyle]="avance?.cadenaPorcientoRecibido.trim() 		== '100%' ? {'background':'#a8efaf'} : {'background':'white'}" src="assets/img/tienda/ok.svg"
+									 class="check-ok">
+								</td>
+								<td>&nbsp;</td>
+								<td>
+									<img [ngStyle]="avance?.cadenaPorcientoEntregado.trim() 	== '100%' ? {'background':'#a8efaf'} : {'background':'white'}" src="assets/img/tienda/ok.svg"
+									 class="check-ok">
+								</td>
+							</tr>
+						</thead>
+					</table>
+				</div>
 			</section>
 		</div>
 		<!---->
-        <div class="clear"></div>
-			<div class="border">  
-				<div class="padding overflow mh320">   
-					<table class="items ccenter nowrap">
-						<thead> 
-							<tr> 
-								<th>Pedido</th>
-								<th>SKU</th>
-								<th>Descripción</th>
-								<th>Cantidad</th> 
-								<th>Remisión</th>
-								<th>ID Detalle</th>
-								<th>Estatus</th>
-								<th>Fecha</th> 
-							</tr>
-						</thead>
-						<tbody>
-                            <tr *ngFor="let select of trackings" >
-                                <td>{{select?.noPedido}}</td>
-                                <td>{{select?.cadenaSKU}}</td>
-                                <td>{{select?.cadenaDescripcionPrenda}}</td>
-                                <td>{{select?.noCantidad}}</td>
-                                <td>{{select?.noRemision}}</td>
-                                <td>{{select?.noSolicitudDetalle}}</td>
-                                <td>{{select?.cadenaEstatusNuevo}}</td>
-                                <td>{{select?.cadenaFechaEvento}}</td>
-                            </tr>						
-						</tbody>
-					</table> 
-				</div>  
+		<div class="clear"></div>
+		<div class="border">
+			<div class="padding overflow mh320">
+				<table class="items ccenter nowrap">
+					<thead>
+						<tr>
+							<th>Pedido</th>
+							<th>SKU</th>
+							<th>Descripción</th>
+							<th>Cantidad</th>
+							<th>Remisión</th>
+							<th>ID Detalle</th>
+							<th>Estatus</th>
+							<th>Fecha</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let select of trackings">
+							<td>{{select?.noPedido}}</td>
+							<td>{{select?.cadenaSKU}}</td>
+							<td>{{select?.cadenaDescripcionPrenda}}</td>
+							<td>{{select?.noCantidad}}</td>
+							<td>{{select?.noRemision}}</td>
+							<td>{{select?.noSolicitudDetalle}}</td>
+							<td>{{select?.cadenaEstatusNuevo}}</td>
+							<td>{{select?.cadenaFechaEvento}}</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-		</div><!-- content-->
+		</div>
 	</div>
-
-
+	<!-- content-->
+</div>

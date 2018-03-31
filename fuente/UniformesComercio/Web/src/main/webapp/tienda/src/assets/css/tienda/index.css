@@ -1049,7 +1049,8 @@ b.tcliente {
 }
 
 .superior .usrInf img{
-    width:25px;
+    width:30px;
+    cursor: pointer;
 }
 
 .msjBienv{
@@ -1655,9 +1656,8 @@ table.ccenter td {
     padding: 10px;    
 }
 
-.dialog-title-error .mat-dialog-title img{    
-    height: 40px !important;
-    width: 40px !important;
+.dialog-title-error .mat-dialog-title img{  
+    width: 30px !important;
 }
 
 .texto-error p{
@@ -1890,4 +1890,35 @@ table.ccenter td {
     font-size: 1.3em;
     color:#b4a372;
     text-align: center;
+}
+.errFrmVal{
+    color:red;
+    font-size: 12px;
+    padding: 5px;
+}
+.cerrSes{
+    cursor: pointer;
+    color:#424242!important;
+    font-weight: 700;
+}
+.contSelSol .sel{
+    min-width: 200px!important;
+}
+.contConsulta{
+    padding: 10px;
+}
+.sinSolicitudes{
+    text-align: center;
+    padding: 15px;
+    font-size: 1.4em;
+}
+.sinSolicitudes .headS{
+    color:#dec100;
+    font-weight: 700;
+    padding-bottom: 15px;
+}
+.icoEnt{
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 1px #524114);
+    width: 38px;
 }

@@ -19,7 +19,7 @@
 			<td>{{pedido.cantidad}}</td>
             <td>{{pedido.remision}}</td>
             <td>
-                <img src="../../../../assets/img/tienda/solOK.png" *ngIf="terminoProceso && !pedido.errorEntrega" width="30"/>
+                <img src="../../../../assets/img/tienda/solOK.png" *ngIf="terminoProceso && !pedido.errorEntrega && msjError == '' " width="30"/>
                 <img src="../../../../assets/img/tienda/errdesc.png" *ngIf="terminoProceso && pedido.errorEntrega" width="30"/>
             </td>
             <td>{{pedido.mensaje}}</td>
@@ -28,7 +28,7 @@
     </table>
     <div class='errHuella'>{{msjError}}</div>
     <br/>
-    <div *ngIf="descargando" class="msjDesc"><img src="../../../../assets/img/tienda/espere.gif" width="60"><br> Realizando la descarga de su uniforme, espere por favor</div>
+    <div *ngIf="descargando" class="msjDesc"><img src="../../../../assets/img/tienda/espere.gif" width="60"><br> <b> Realizando la descarga de su uniforme, espere por favor</b></div>
 </div>
 
 <div md-dialog-actions align="end" *ngIf="!descargando">

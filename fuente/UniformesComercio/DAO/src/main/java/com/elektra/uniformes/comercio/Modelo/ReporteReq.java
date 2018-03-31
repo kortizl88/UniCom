@@ -20,6 +20,10 @@ public class ReporteReq {
     private int tienda;
     private int indEmpleado;
     private int empleado;
+    private int indSol;
+    private int solicitud;
+    private int indRem;
+    private int remision;
 
     /**
      * @return the indicaFecha
@@ -173,5 +177,61 @@ public class ReporteReq {
      */
     public void setEmpleado(int empleado) {
         this.empleado = empleado;
+    }
+
+    /**
+     * @return the indSol
+     */
+    public int getIndSol() {
+        return indSol;
+    }
+
+    /**
+     * @param indSol the indSol to set
+     */
+    public void setIndSol(int indSol) {
+        this.indSol = indSol;
+    }
+
+    /**
+     * @return the solicitud
+     */
+    public int getSolicitud() {
+        return solicitud;
+    }
+
+    /**
+     * @param solicitud the solicitud to set
+     */
+    public void setSolicitud(int solicitud) {
+        this.solicitud = solicitud;
+    }
+
+    /**
+     * @return the indRem
+     */
+    public int getIndRem() {
+        return indRem;
+    }
+
+    /**
+     * @param indRem the indRem to set
+     */
+    public void setIndRem(int indRem) {
+        this.indRem = indRem;
+    }
+
+    /**
+     * @return the remision
+     */
+    public int getRemision() {
+        return remision;
+    }
+
+    /**
+     * @param remision the remision to set
+     */
+    public void setRemision(int remision) {
+        this.remision = remision;
     }
 }

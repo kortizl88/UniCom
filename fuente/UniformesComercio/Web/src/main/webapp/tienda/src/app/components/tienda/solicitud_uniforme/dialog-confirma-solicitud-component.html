@@ -1,17 +1,18 @@
-<div md-dialog-content>	
+<div md-dialog-content>
     <div class="dialConfirmaSolicitud">
-	<div class='fel'>Confirma tu pedido</div>
-	<div *ngFor="let kitEmpleado of solicitudes" >
+        <div class='entRecibe'>Confirma tu pedido</div>
+        <div *ngFor="let kitEmpleado of solicitudes">
             <div class="emp">{{kitEmpleado.nombre}}</div>
-            <div *ngFor="let prenda of kitEmpleado.kit.prendas">
-                    <div class="b prenda" *ngIf="prenda.cantidad > 0 && prenda.tallaSeleccionada" >
-                        <img class="img" src="assets/img/tienda/{{prenda.imagen}}" /> {{prenda.cantidad}} {{prenda.descPrenda}} {{prenda.tallaSeleccionada.talla}} {{prenda.cantidad  * prenda.precio  | currency:'USD':true}}
-                    </div>
-		</div>
-           </div>
+            <div *ngFor="let prenda of kitEmpleado.kit.prendas" style="padding-left: 10px;">
+                <div class="b prenda" *ngIf="prenda.cantidad > 0 && prenda.tallaSeleccionada">
+                    <img class="img" src="assets/img/tienda/{{prenda.imagen}}" /> &nbsp;&nbsp;{{prenda.cantidad}} &nbsp;&nbsp;{{prenda.descPrenda}} &nbsp;&nbsp;{{prenda.tallaSeleccionada.talla}} &nbsp;&nbsp;{{prenda.cantidad * prenda.precio
+                    | currency:'USD':true}}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div md-dialog-actions align="end">
-    <button class ="btn full " (click)="dialogRef.close(false)" >CANCELAR</button>
-    <button class ="btn full " (click)="dialogRef.close(true)" >ACEPTAR</button>
+    <button md-raised-button (click)="dialogRef.close(false)">Cancelar</button>&nbsp;&nbsp;&nbsp;
+    <button md-raised-button class="btnUni" (click)="dialogRef.close(true)">Aceptar &#10003;</button>
 </div>
