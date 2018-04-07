@@ -34,10 +34,8 @@ function validaHuellaEmpleado(numEmp) {
 
 function JSSetUpdate(RespuestaPopUp)
 {
-    console.log(RespuestaPopUp);
-    /*QUITAR*/
-    RespuestaPopUp.PluginResponse.authenticated = 1;
-    entrega.huella.validacion(RespuestaPopUp);
+    var respComp = (typeof RespuestaPopUp === 'object') ? RespuestaPopUp : JSON.parse(RespuestaPopUp);
+    entrega.huella.validacion(respComp);
 }
 
 

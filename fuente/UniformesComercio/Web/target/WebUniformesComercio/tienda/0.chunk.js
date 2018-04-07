@@ -35,8 +35,7 @@ function validaHuellaEmpleado(numEmp) {
 function JSSetUpdate(RespuestaPopUp)
 {
     console.log(RespuestaPopUp);
-    /*QUITAR*/
-    RespuestaPopUp.PluginResponse.authenticated = 1;
+    //RespuestaPopUp.PluginResponse.authenticated = 1;
     entrega.huella.validacion(RespuestaPopUp);
 }
 

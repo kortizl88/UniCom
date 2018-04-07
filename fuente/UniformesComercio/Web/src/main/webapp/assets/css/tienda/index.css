@@ -1049,7 +1049,8 @@ b.tcliente {
 }
 
 .superior .usrInf img{
-    width:25px;
+    width:30px;
+    cursor: pointer;
 }
 
 .msjBienv{
@@ -1057,7 +1058,8 @@ b.tcliente {
 }
 
 .menuColap{
-    padding:10px 3%;
+    padding:10px;
+    padding-left: 3%;
 }
 
 .menuColap .opcM{
@@ -1066,7 +1068,7 @@ b.tcliente {
     border-bottom: 2px solid transparent;
     background-color: transparent;
     color: #936e00;
-    font-size: 1.2em;
+    font-size: 1.3em;
     line-height: 1.3em;
     height: 2em;
     font-weight: 200;
@@ -1083,11 +1085,11 @@ b.tcliente {
     border-bottom: 2px solid #000; 
 }
 
-.menuColap .opcM:active{
+.menuColap .opcM.sel{
     color:#000;
-    border-bottom: 2px solid #000; 
-}
-
+    border-bottom: 2px solid #000;
+    font-weight: 700;
+}    
 .contCats{
     width:95%;
     margin:auto;
@@ -1380,6 +1382,10 @@ b.tcliente {
     font-size:13px;
 }
 
+.tablaEnt.det{
+    box-shadow: 0 5px 15px rgba(17, 17, 17, 0.2);
+}
+
 .tablaEnt th{
     border-bottom: 1px solid #b4a373;
     color: #b4a373;
@@ -1404,7 +1410,7 @@ b.tcliente {
     text-align: left;
     font-weight: 700;
     font-size: 15px;
-    color: #7b7777;
+    color: #000;
 }
 
 .contSol .selSol .mat-select-trigger{
@@ -1429,12 +1435,12 @@ b.tcliente {
     text-shadow: #c5c5c5 1px 1px 2px;
     padding: 3px;
 }
-.btnAccNeg{
+/*.btnAccNeg{
     color:#d81212!important;
 }
 .btnAccPos{
     color:#57a728!important;
-}
+}*/
 .leidoPol{
     font-weight: 700;
     padding: 5px;
@@ -1650,9 +1656,8 @@ table.ccenter td {
     padding: 10px;    
 }
 
-.dialog-title-error .mat-dialog-title img{    
-    height: 40px !important;
-    width: 40px !important;
+.dialog-title-error .mat-dialog-title img{  
+    width: 30px !important;
 }
 
 .texto-error p{
@@ -1701,3 +1706,219 @@ table.ccenter td {
 }
 
 /****** FIN DANIEL ****************/
+/*administrador*/
+ .headAdm{
+    font-size: 1.2em;
+    font-weight: 700;
+    padding: 10px 5px;
+}
+.repCarga .headAdm{
+    margin: auto;
+    position: relative;
+    padding-bottom: 20px;
+}
+.repCarga .headAdm .btnUni{
+    position: absolute;
+    right: 30px;
+}
+
+.repCarga .tbCarg{
+    max-width: 90%;
+    margin: auto;
+}
+.admReporte{
+    position: relative;
+}
+.admReporte .filtros{
+    padding: 10px;
+    font-size: 14px;
+    box-shadow: 0 0px 25px rgba(17, 17, 17, 0.3) inset;
+}
+
+.admReporte .filtros{
+    padding-right: 12px;
+}
+
+.admReporte .filtros .seccFil{
+    display: inline-block;
+    width: 30%;
+}
+
+.admReporte .filtros .seccFil.contCargRep .chkPol{
+    padding-top: 18px; 
+}
+
+.admReporte .filtros .seccFil .cargasSel{
+    padding-left: 15px;
+    font-size: 11px;
+    color:darkgreen;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 700;
+}
+.admReporte .filtros .seccFil.contEst .estChk{
+    display: inline-block;
+    width: 45%;
+    font-size: 12px;
+    padding-left: 3px;
+}
+.admReporte .filtros .seccFil.contTdaB .inpBTda,
+.admReporte .filtros .seccFil.contEmpB .inpBEmp{
+    width: 100%;
+}
+.seccFil .titSecc{
+    padding-left: 0px;
+    font-size: 1.1em;
+}
+.btnTglFil{
+    background-color: #4a4a4a;
+    text-align: center;
+    position: absolute;
+    display: block;
+    top: -25px;
+    right: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 40px;
+    -moz-border-radius: 40px;
+    background-image: url(../../img/admin/busq.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out; 
+}
+
+.btnTglFil.activo{
+    background-image: url(../../img/admin/cerrar.png);
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg) ;
+    -webkit-transform: rotate(180deg) ;
+    -moz-transform: rotate(180deg) ;
+    -o-transform: rotate(180deg) ; 
+}   
+.btnUni{
+    background-color: #b4a373!important;
+    color:#fff!important;
+}
+.icoEditCarga{
+    width: 20px;
+    filter: drop-shadow(2px 2px 1px #524114);
+    cursor: pointer;
+}
+.titSecc{
+    font-weight: 700;
+    font-size: 1.3em;
+    padding: 5px 5px;
+    color:#b4a373;
+}
+.contEditCarga{
+    width: 500px;
+}
+.contEditCarga .inpContTitulo{
+    width: 100%;
+}
+.contEditCarga .inpContFechas{
+    width: 100%;
+}
+
+.contEditCarga .inpContFechas md-input-container{
+    width: 47%;
+}
+
+.contEditCarga .chkPol{
+    padding-left: 15px;
+}
+.contNegocios{
+    width: 100%;
+}
+.contNegocios div.negocio{
+    display: inline-block;
+    width: 49%;
+}
+.msjSolSemestral{
+    text-align: center;
+}
+
+.msjSolSemestral span{
+    color:red;
+    font-weight: 700;
+}
+.msjRepo{
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #b4a373;
+    line-height: 40px;
+    padding: 30px;
+} 
+
+.msjRepo img{
+    width: 40px;
+    filter: drop-shadow(2px 2px 1px #524114);
+}
+.msjRep{
+    width: 100%;
+    text-align: center;
+    color:red;
+    text-shadow: #ccc 1px 1px 2px;
+    font-weight: 700;
+}
+.pagTb{
+    text-align: center;
+}
+.itmPag{
+    padding: 10px;
+    padding-bottom: 15px;
+    color:#b4a372;
+
+}
+
+.trReporte:hover{
+    cursor: pointer;
+    background-color:rgb(248, 248, 248);
+}
+.verdeCarga{
+    color:#35c335!important;
+    font-weight: 700;
+}
+
+.msjDesc{
+    font-size: 1.3em;
+    color:#b4a372;
+    text-align: center;
+}
+.errFrmVal{
+    color:red;
+    font-size: 12px;
+    padding: 5px;
+}
+.cerrSes{
+    cursor: pointer;
+    color:#424242!important;
+    font-weight: 700;
+}
+.contSelSol .sel{
+    min-width: 200px!important;
+}
+.contConsulta{
+    padding: 10px;
+}
+.sinSolicitudes{
+    text-align: center;
+    padding: 15px;
+    font-size: 1.4em;
+}
+.sinSolicitudes .headS{
+    color:#dec100;
+    font-weight: 700;
+    padding-bottom: 15px;
+}
+.icoEnt{
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 1px #524114);
+    width: 38px;
+}

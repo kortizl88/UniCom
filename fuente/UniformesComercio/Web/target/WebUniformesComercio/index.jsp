@@ -28,8 +28,8 @@
     <script type="text/javascript">
         function JSSetUpdate(RespuestaPopUp)
         {
-            console.log(RespuestaPopUp);
-            entrega.huella.validacion(RespuestaPopUp);
+            var respComp = (typeof RespuestaPopUp === 'object') ? RespuestaPopUp : JSON.parse(RespuestaPopUp);
+            entrega.huella.validacion(respComp);
         }
 
     </script>
