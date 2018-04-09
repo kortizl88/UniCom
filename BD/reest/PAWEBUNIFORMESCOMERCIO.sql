@@ -19,6 +19,7 @@ AS
   PROCEDURE SPGUARDABITACORA(
   	paSolicitud UNIFORMES.TABITACORASOLICITUD.FIFOLIOSOLICITUD%TYPE,
   	paDetalle   UNIFORMES.TABITACORASOLICITUD.FIIDDETALLE%TYPE,
+  	paPedido    UNIFORMES.TABITACORASOLICITUD.FIPEDIDO%TYPE,
   	paDatosProc UNIFORMES.TABITACORASOLICITUD.FCDATOSPROCESO%TYPE,
   	paEstAnt    UNIFORMES.TABITACORASOLICITUD.FIESTATUSANT%TYPE,
   	paEstAct    UNIFORMES.TABITACORASOLICITUD.FIESTATUSNVO%TYPE,
@@ -228,9 +229,10 @@ AS
               
   END FNCONSULTAINFOEMPLEADO;
   
-  PROCEDURE SPGUARDABITACORA(
+   PROCEDURE SPGUARDABITACORA(
   	paSolicitud UNIFORMES.TABITACORASOLICITUD.FIFOLIOSOLICITUD%TYPE,
   	paDetalle   UNIFORMES.TABITACORASOLICITUD.FIIDDETALLE%TYPE,
+  	paPedido    UNIFORMES.TABITACORASOLICITUD.FIPEDIDO%TYPE,
   	paDatosProc UNIFORMES.TABITACORASOLICITUD.FCDATOSPROCESO%TYPE,
   	paEstAnt    UNIFORMES.TABITACORASOLICITUD.FIESTATUSANT%TYPE,
   	paEstAct    UNIFORMES.TABITACORASOLICITUD.FIESTATUSNVO%TYPE,
@@ -260,7 +262,8 @@ AS
 	END;
 	    	
 			 INSERT INTO UNIFORMES.TABITACORASOLICITUD (FIIDBITACORA, 
-			 											FIFOLIOSOLICITUD, 
+			 											FIFOLIOSOLICITUD,
+			 											FIPEDIDO,
 			 											FIIDDETALLE, 
 			 											FCDATOSPROCESO, 
 			 											FIESTATUSANT, 
@@ -270,6 +273,7 @@ AS
 			 											FIIDERROR)
 			        							VALUES  (vlIdBitacora,
 			        									 paSolicitud,
+			        									 paPedido,
 			        							         paDetalle,
 			        							         paDatosProc,
 													  	 paEstAnt,
@@ -308,27 +312,28 @@ AS
   vlNoCargasSemestrales NUMBER(3);
   
   BEGIN
-    SELECT COUNT(*) INTO vlNoCargasSemestrales FROM TACARGASXNEGOCIO CXN
-    INNER JOIN TACARGAS C ON C.FIIDCARGA = CXN.FIIDCARGA 
-    WHERE
-            CXN.FIIDNEGOCIO = paNoNegocio
-            AND C.FIESTATUS = csgUno
-            AND SYSDATE BETWEEN C.FDFECHAINICIAL AND C.FDFECHAFINAL;
+  		SELECT COUNT(C.FIIDCARGA)
+     	  INTO vlNoCargasSemestrales 
+     	  FROM UNIFORMES.TACARGASXNEGOCIO CXN
+    INNER JOIN UNIFORMES.TACARGAS C 
+            ON C.FIIDCARGA = CXN.FIIDCARGA 
+         WHERE CXN.FIIDNEGOCIO = paNoNegocio
+           AND C.FIESTATUS = csgUno
+           AND SYSDATE BETWEEN C.FDFECHAINICIAL AND C.FDFECHAFINAL;
             
     OPEN curCursorSalida FOR
-    SELECT  M.FIIDMENU,
-            M.FCTITULO,
-            M.FCDESCMENU,
-            M.FCRUTAENLACE
-    FROM TAMENUSFUNCIONESXNEGOCIO MFXN
-    INNER JOIN TAMENUS M ON M.FIIDMENU = MFXN.FIIDMENU 
-    WHERE 
-            MFXN.FIFUNCIONSAP = paNoFuncionSap
-            AND((   vlNoCargasSemestrales > csgCero AND M.FIAPLICACARGA = csgUno)
-            OR (    vlNoCargasSemestrales > csgCero AND M.FIBLOQUEADOCARGA = csgCero)
-            OR (    vlNoCargasSemestrales = csgCero AND M.FIBLOQUEADOCARGA = csgUno)
-            OR (    M.FIAPLICACARGA = csgCero AND M.FIBLOQUEADOCARGA = csgCero)
-             );
+	    SELECT  M.FIIDMENU,
+	            M.FCTITULO,
+	            M.FCDESCMENU,
+	            M.FCRUTAENLACE
+	      FROM UNIFORMES.TAMENUSFUNCIONESXNEGOCIO MFXN
+	INNER JOIN UNIFORMES.TAMENUS M ON M.FIIDMENU = MFXN.FIIDMENU 
+	     WHERE MFXN.FIFUNCIONSAP = paNoFuncionSap
+	            AND((   vlNoCargasSemestrales > csgCero AND M.FIAPLICACARGA = csgUno)
+	            OR (    vlNoCargasSemestrales > csgCero AND M.FIBLOQUEADOCARGA = csgCero)
+	            OR (    vlNoCargasSemestrales = csgCero AND M.FIBLOQUEADOCARGA = csgUno)
+	            OR (    M.FIAPLICACARGA = csgCero AND M.FIBLOQUEADOCARGA = csgCero)
+	             );
     RETURN curCursorSalida;
     
   END FNCONSULTAMENUFUNCIONXNEGOCIO;
@@ -784,26 +789,6 @@ AS
     											paSolicitudes(indSol).FIEMPLEADOCAPTURA,
     											SYSDATE);
     											
-    		IF paSolicitudes(indSol).FIIDTIPOSOLICITUD = vlSolicitudSem THEN
-    		   
-    			BEGIN 
-			  	 SELECT FIIDCARGA
-			  	   INTO vlCargaActiva
-			  	   FROM UNIFORMES.TACARGAS
-			  	  WHERE SYSDATE BETWEEN FDFECHAINICIAL AND FDFECHAFINAL
-			  	    AND FIESTATUS = csgUno;
-			  	  
-			  	 EXCEPTION
-			     WHEN NO_DATA_FOUND THEN
-			     ROLLBACK;
-			     RAISE_APPLICATION_ERROR (-20001,'NO HAY CARGA SEMESTRAL ACTIVA');
-			     END;
-			     
-			     INSERT INTO UNIFORMES.TASOLICITUDESXCARGA(FIFOLIOSOLICITUD, FIIDCARGA)
-			                                        VALUES(vlIdSolicitud, vlCargaActiva);
-    			
-    		END IF;
-    		
     		vlSolicitudes := vlSolicitudes || TO_CHAR(vlIdSolicitud)||',';
     		
         	FOR indDet IN 1..paSolicitudes(indSol).PRENDAS.count
@@ -850,7 +835,7 @@ AS
 			 											 SYSDATE,
 			 											 csgUno);
 			 											 
-			UNIFORMES.PAWEBUNIFORMESCOMERCIO.SPGUARDABITACORA(vlIdSolicitud,vlIdDetalleSol,'SOLICITUD GUARDADA', 1, 1, 'SOLICITUD GUARDADA', 0); 											 
+			UNIFORMES.PAWEBUNIFORMESCOMERCIO.SPGUARDABITACORA(vlIdSolicitud,vlIdDetalleSol,csgCero,'SOLICITUD GUARDADA', 1, 1, 'SOLICITUD GUARDADA', 0); 											 
 			 
 	    	END LOOP;
     	END LOOP;
@@ -1499,7 +1484,7 @@ END FNCALCULOPORCENTAJE;
                AND FIIDDETALLE = paConfirmacionesEntrega(indice).FIIDDETALLE
                AND FIPEDIDO = paConfirmacionesEntrega(indice).FINUMPEDIDO;
                 
-           UNIFORMES.PAWEBUNIFORMESCOMERCIO.SPGUARDABITACORA(paConfirmacionesEntrega(indice).FIFOLIOSOLICITUD ,paConfirmacionesEntrega(indice).FIIDDETALLE,'PEDIDO ENTREGADO A EMPLEADO', paConfirmacionesEntrega(indice).FIIDESTATUSANT, paConfirmacionesEntrega(indice).FIIDESTATUSNVO, 'PEDIDO ENTREGADO A EMPLEADO', 0);
+           UNIFORMES.PAWEBUNIFORMESCOMERCIO.SPGUARDABITACORA(paConfirmacionesEntrega(indice).FIFOLIOSOLICITUD ,paConfirmacionesEntrega(indice).FIIDDETALLE,paConfirmacionesEntrega(indice).FINUMPEDIDO,'PEDIDO ENTREGADO A EMPLEADO', paConfirmacionesEntrega(indice).FIIDESTATUSANT, paConfirmacionesEntrega(indice).FIIDESTATUSNVO, 'PEDIDO ENTREGADO A EMPLEADO', 0);
                 
     END LOOP;
     

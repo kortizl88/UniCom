@@ -23,7 +23,6 @@
     <script type="text/javascript" src="scripts/inline.js"></script>
     <script type="text/javascript" src="scripts/polyfills.js"></script>
     <script type="text/javascript" src="scripts/vendor.js"></script>
-    <script type="text/javascript" src="scripts/styles.js"></script>
     <script type="text/javascript" src="scripts/main.js"></script>
     <script type="text/javascript">
         function JSSetUpdate(RespuestaPopUp)

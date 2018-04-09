@@ -1,0 +1,38 @@
+<div class="main">
+    <div class="sinSolicitudes" *ngIf="!usuariosRecibenPendientes || usuariosRecibenPendientes.length == 0">
+        <div class="headS">¡No se encontraron solicitudes pendientes de entrega!</div>
+        <b> Puedes dar seguimiento a las solicitudes en la sección "Estatus de mi Uniforme" </b>
+    </div>
+    <div class="wrapperEntrega" *ngIf="usuariosRecibenPendientes && usuariosRecibenPendientes.length>0">
+        <div class="contBusqEmp">
+            <div> <b> Búsqueda por número de Empleado </b></div>
+            <div>
+                <md-input-container>
+                    <input mdInput type="text" placeholder="Empleado" [(ngModel)]="empBusqueda" />
+                </md-input-container>
+            </div>
+        </div>
+        <div class="contTablaEnt">
+            <table class="tablaEnt">
+                <tr>
+                    <th>No. Empleado</th>
+                    <th>Nombre</th>
+                    <th>Puesto</th>
+                    <th>CC</th>
+                    <th>Negocio</th>
+                    <th>Entrega</th>
+                </tr>
+                <tr *ngFor="let usuarioRecibe of usuariosRecibenPendientes | searchFilter: 'empleado' : empBusqueda">
+                    <td>{{usuarioRecibe.empleado}}</td>
+                    <td>{{usuarioRecibe.nombre}}</td>
+                    <td>{{usuarioRecibe.posicion}}</td>
+                    <td>{{usuarioRecibe.noTienda}} {{usuarioRecibe.tienda}}</td>
+                    <td>{{usuarioRecibe.negocio}}</td>
+                    <td>
+                        <img class="icoEnt" src="../../../../assets/img/tienda/entrega.svg" (click)='iniciaProcesoEntrega(usuarioRecibe,usuarioLogueado)' />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

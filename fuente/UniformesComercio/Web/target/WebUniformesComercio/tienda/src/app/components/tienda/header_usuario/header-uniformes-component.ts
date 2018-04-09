@@ -101,7 +101,8 @@ export class HeaderUniformesComponent implements OnInit {
     private obtieneParamatroEmpleado() {
         this.empleadoPar = this.getParam('numEmpleado');
         if (!this.empleadoPar) {
-            this.dialogGeneral.mensajeError("No se proporcionaron los parámetros correctos ", '', 1);
+            /*Si no encuentra el parametro de empleado se redirecciona al login de administracion*/
+            this.router.navigateByUrl('admin');
         }
         else {
             this.mostrarGuia();
@@ -109,12 +110,12 @@ export class HeaderUniformesComponent implements OnInit {
         }
     }
 
-    private mostrarGuia() {
+    public mostrarGuia() {
         let dialogGuia: MdDialogRef<DialogGuiaComponent> = this.dialog.open(DialogGuiaComponent);
     }
 
     private consultarDatosEmpleado(numEmpleado: number): void {
-        this.dialogGeneral.iniciarEspera();
+        let esp = this.dialogGeneral.iniciarEspera();
         this.usuarioService.getDatosUsuario(numEmpleado).subscribe(
             respuestaUsuario => {
                 this.usuario = respuestaUsuario.respuesta;
@@ -125,17 +126,17 @@ export class HeaderUniformesComponent implements OnInit {
                         this.menu = respuestaMenu.respuesta;
                         this.datosUsuarioUniformes.setMenu(this.menu);
                         this.router.navigateByUrl('menu');
-                        this.dialogGeneral.cerrarEspera();
+                        this.dialogGeneral.cerrarEsperaId(esp);
                     },
                     error => {
                         console.log(error);
-                        this.dialogGeneral.cerrarEspera();
+                        this.dialogGeneral.cerrarEsperaId(esp);
                         this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getMenuFuncionNegocio", error, 1);
                     }
                 );
             },
             error => {
-                this.dialogGeneral.cerrarEspera();
+                this.dialogGeneral.cerrarEsperaId(esp);
                 this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getDatosUsuario", error, 1);
             }
         );
