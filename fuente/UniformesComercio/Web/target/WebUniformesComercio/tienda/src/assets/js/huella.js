@@ -25,9 +25,9 @@ function validaHuellaEmpleado(numEmp) {
 }
 
 function JSSetUpdate(RespuestaPopUp)
-{
+{   // corr
     var respComp = (typeof RespuestaPopUp === 'object') ? RespuestaPopUp : JSON.parse(RespuestaPopUp);
-    entrega.huella.validacion(RespuestaPopUp);
+    entrega.huella.validacion(respComp);
 }
 
 export {validaHuellaEmpleado};

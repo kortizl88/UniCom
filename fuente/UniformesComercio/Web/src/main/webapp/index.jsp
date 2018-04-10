@@ -26,7 +26,7 @@
     <script type="text/javascript" src="scripts/main.js"></script>
     <script type="text/javascript">
         function JSSetUpdate(RespuestaPopUp)
-        {
+        {  //corr
             var respComp = (typeof RespuestaPopUp === 'object') ? RespuestaPopUp : JSON.parse(RespuestaPopUp);
             entrega.huella.validacion(respComp);
         }
