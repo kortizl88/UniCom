@@ -1,6 +1,4 @@
 <div md-dialog-content>
-    <div class="entRecibe">Selecciona una o más cargas para generar el reporte</div>
-    <br/>
     <table class="tablaEnt">
         <tr>
             <th>Carga</th>
@@ -10,8 +8,8 @@
             <th>Solicitudes</th>
             <th>Seleccionar</th>
         </tr>
-        <tr *ngFor="let carga of cargas | paginate: { itemsPerPage: 10, currentPage: pag}">
-            <td>{{carga.titulo}}</td>
+        <tr *ngFor="let carga of cargas | paginate: { itemsPerPage: 10, currentPage: pag}" style="border-bottom: 1px solid #eee9e9">
+            <td><b>{{carga.titulo}}</b></td>
             <td>{{carga.fechaInicio}}</td>
             <td>{{carga.fechaFin}}</td>
             <td>

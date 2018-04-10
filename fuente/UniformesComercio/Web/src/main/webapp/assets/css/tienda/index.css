@@ -1,3 +1,7 @@
+b{
+    font-weight: bold;
+}
+
 .dialogContratoSolicitaUniforme{
     max-width: 700px;
     font-family: sans-serif;
@@ -1326,7 +1330,6 @@ b.tcliente {
 
 .dialNuevoIngreso,.dialTiendasCercanas{
     min-width:400px;
-    text-align: center;
 }
 
 .dialTiendasCercanas .tituloM,
@@ -1406,11 +1409,11 @@ b.tcliente {
 
 .entRecibe{
     width: 100%;
-    padding: 5px;
-    text-align: left;
-    font-weight: 700;
-    font-size: 15px;
-    color: #000;
+    border-bottom: 1px solid #b4a373;
+    color: #b4a373;
+    font-weight: 100;
+    font-size: 17px;
+    padding: 5px 0;
 }
 
 .contSol .selSol .mat-select-trigger{
@@ -1813,7 +1816,7 @@ table.ccenter td {
     font-weight: 700;
     font-size: 1.3em;
     padding: 5px 5px;
-    color:#b4a373;
+    color:#c4c668;
 }
 .contEditCarga{
     width: 500px;
@@ -1876,6 +1879,9 @@ table.ccenter td {
     color:#b4a372;
 
 }
+.pagTb .current{
+    background-color: #b4a372!important;
+}
 
 .trReporte:hover{
     cursor: pointer;
@@ -1898,7 +1904,7 @@ table.ccenter td {
 }
 .cerrSes{
     cursor: pointer;
-    color:#424242!important;
+    color:red!important;
     font-weight: 700;
 }
 .contSelSol .sel{
@@ -1921,4 +1927,17 @@ table.ccenter td {
     cursor: pointer;
     filter: drop-shadow(2px 2px 1px #524114);
     width: 38px;
+}
+.rstcal img{
+    padding-top: 15px; 
+    width: 20px;
+     cursor: pointer;
+}
+.totalConf{
+    padding: 3px;
+    color: #dec100;
+    font-size: 14px;
+}
+.cent{
+    text-align: center;
 }
