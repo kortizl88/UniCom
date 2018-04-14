@@ -20,7 +20,7 @@ export class SolicitudService {
     constructor(private http: Http, public endPointWSUniformesComercio:WSUniformesComercioGlobalService) {}
     
     /*Obtiene la info de la tienda*/
-    public getInfoTienda(pais:number, canal:string, tienda:number): Observable<WrapperRespuesta> {
+    public getInfoTienda(pais:number, canal:number, tienda:number): Observable<WrapperRespuesta> {
         let observable:Observable<WrapperRespuesta>; 
         try{
             observable = this.http.get(this.endPointWSUniformesComercio.urlGetInfoTienda(pais,canal,tienda))
@@ -32,7 +32,7 @@ export class SolicitudService {
     }
 	
     /*Obtiene las tiendas cercanas*/
-    public getTiendasCercanas(pais:number, canal:string, tienda:number): Observable<WrapperRespuesta> {
+    public getTiendasCercanas(pais:number, canal:number, tienda:number): Observable<WrapperRespuesta> {
         let observable:Observable<WrapperRespuesta>; 
         try{
             observable = this.http.get(this.endPointWSUniformesComercio.urlGetTiendasCercanas(pais,canal,tienda))
@@ -44,10 +44,10 @@ export class SolicitudService {
     }
 	
     /*Obtiene los empleados de nuevo ingreso*/
-    public getEmpleadosNuevoIngreso(numeroTienda:number): Observable<WrapperRespuesta> {
+    public getEmpleadosNuevoIngreso(pais: number, canal: number, ceco: number): Observable<WrapperRespuesta> {
         let observable:Observable<WrapperRespuesta>;
         try{
-            observable = this.http.get(this.endPointWSUniformesComercio.urlGetEmpleadosNuevoIngreso(numeroTienda))
+            observable = this.http.get(this.endPointWSUniformesComercio.urlGetEmpleadosNuevoIngreso(pais,canal,ceco))
             .map((response: Response) => <WrapperRespuesta> response.json());
         }catch(e){
             console.log('Ocurrio un error (SolicitudService: getEmpleadosNuevoIngreso) :'+ e.name + ': ' + e.message);

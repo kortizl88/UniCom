@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { EstatusService } from './estatus-service';
+import { ModalBitacoraSolicitudComponent } from '../../administracion/reporte/modal-bitacora-solicitud-component';
 
 // Servicio global Dialog
 import { DatosUsuarioUniformesGlobalService } from '../../servicio/modelo/datos-usuario-uniformes-global-service';
@@ -120,4 +121,10 @@ export class EstatusUniformeComponent {
         return this._avance;
     }
 
+    /* consultar bitacora*/
+    public verBitacora( solicitud: number): void {
+        let dialogDetalle: MdDialogRef<ModalBitacoraSolicitudComponent> = this.dialog.open(ModalBitacoraSolicitudComponent);
+        dialogDetalle.componentInstance.solicitud = solicitud;
+        dialogDetalle.componentInstance.consultaBitacora(solicitud);
+    }
 }

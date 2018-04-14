@@ -30,7 +30,11 @@ public class NegocioSolicitud {
     public ArrayList<EmpleadoKitDTO> getKitEmpleado(int numEmp, int tipoSolicitud) throws Exception {
         ArrayList<EmpleadoKitDTO> lk = daoSolicitud.getKitEmpleado(numEmp, tipoSolicitud);
         if (lk == null || lk.isEmpty()) {
-            throw new Exception("Ya se tiene registrada tu solicitud para la carga semestral");
+            if (tipoSolicitud == 2 || tipoSolicitud == 3) {/*sol voluntaria - nvo ingreso*/
+                throw new Exception("Aún no han transcurrido 8 semanas desde tu última solicitud");
+            } else {
+                throw new Exception("Ya se tiene registrada tu solicitud para la carga semestral");
+            }
         }
         return lk;
     }
@@ -38,7 +42,7 @@ public class NegocioSolicitud {
     public ArrayList<EmpleadoKitDTO> getKitEmpleadosTienda(int pais, int canal, int tienda, int tipoSolicitud) throws Exception {
         ArrayList<EmpleadoKitDTO> lk = daoSolicitud.getKitEmpleadosTienda(pais, canal, tienda, tipoSolicitud);
         if (lk == null || lk.isEmpty()) {
-            throw new Exception("No se encontraron solicitudes pendientes de registrar para esta carga semestral");
+            throw new Exception("No se encontraron solicitudes pendientes para esta carga semestral en tu tienda");
         }
         return lk;
     }
@@ -56,7 +60,7 @@ public class NegocioSolicitud {
         return daoSolicitud.getTiendasCercanas(pais, canal, tienda);
     }
 
-    public ArrayList<Usuario> getNuevosIngreso(int tienda) throws Exception {
-        return daoSolicitud.getNuevosIngreso(tienda);
+    public ArrayList<Usuario> getNuevosIngreso(int pais, int canal, int ceco) throws Exception {
+        return daoSolicitud.getNuevosIngreso(pais, canal, ceco);
     }
 }

@@ -17,6 +17,8 @@ public class Tienda {
     private int canal;
     @PropiedadMap(id=true, campo="FISUCURSAL")
     private int sucursal;
+    @PropiedadMap(campo="FICECO")
+    private int centroCostos;
     @PropiedadMap(campo="FCNOMBRE")
     private String nombreTienda;
     @PropiedadMap(campo="FISOLICITAENTIENDA")
@@ -83,5 +85,19 @@ public class Tienda {
      */
     public void setNombreTienda(String nombreTienda) {
         this.nombreTienda = nombreTienda;
+    }
+
+    /**
+     * @return the centroCostos
+     */
+    public int getCentroCostos() {
+        return centroCostos;
+    }
+
+    /**
+     * @param centroCostos the centroCostos to set
+     */
+    public void setCentroCostos(int centroCostos) {
+        this.centroCostos = centroCostos;
     }
 }

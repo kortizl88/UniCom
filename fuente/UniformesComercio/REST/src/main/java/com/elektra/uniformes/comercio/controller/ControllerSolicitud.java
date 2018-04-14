@@ -115,12 +115,12 @@ public class ControllerSolicitud {
         return r;
     }
     
-    @RequestMapping(value = "/nuevoingreso/sucursal/{tienda}", method = RequestMethod.GET)
+    @RequestMapping(value = "/nuevoingreso/pais/{pais}/canal/{canal}/ceco/{ceco}", method = RequestMethod.GET)
     public @ResponseBody
-    Respuesta getNuevosIngreso(@PathVariable("tienda") int tienda) {
+    Respuesta getNuevosIngreso(@PathVariable("pais") int pais, @PathVariable("canal") int canal, @PathVariable("ceco") int ceco) {
         Respuesta r = new Respuesta();
         try {
-            r.setRespuesta(negocioSolicitud.getNuevosIngreso(tienda));
+            r.setRespuesta(negocioSolicitud.getNuevosIngreso(pais, canal, ceco));
             r.setError(false);
             r.setMensaje("Consulta obtenida correctamente");
         } catch (Exception e) {

@@ -30,18 +30,6 @@ export class UsuarioService {
         }        
         return observable;
     }
-	
-    /*obtiene el menu asignado al empleado*/
-    public getMenuUsuario(numEmp:number): Observable<WrapperRespuesta> {
-        let observable:Observable<WrapperRespuesta>;
-        try{
-            observable = this.http.get(`${this.endPointWSUniformesComercio.getCadenaUrl()}/json/usuario/${numEmp}/menu`)
-            .map((response: Response) => <WrapperRespuesta> response.json());
-        }catch(e){
-            console.log('Ocurrio un error (UsuarioService: getMenuUsuario) :'+ e.name + ': ' + e.message);
-        }        
-        return observable;
-    }
 
     /*obtiene el menu asignado al empleado*/
     public getMenuFuncionNegocio(numEmp:number, noFuncion:number, noNegocio:number): Observable<WrapperRespuesta> {

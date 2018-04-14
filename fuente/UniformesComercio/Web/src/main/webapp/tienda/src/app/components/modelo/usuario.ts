@@ -1,6 +1,7 @@
 export class Usuario{
     canal:number;
     ceco:number;
+    centroCostos:number;
     descCeco:string;
     descPosicion:string;
     empleado:number;

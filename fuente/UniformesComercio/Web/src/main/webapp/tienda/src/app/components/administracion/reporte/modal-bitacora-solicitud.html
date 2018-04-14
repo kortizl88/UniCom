@@ -15,7 +15,7 @@
             <th>Estatus Nuevo</th>
             <th>Fecha</th>
         </tr>
-        <tr *ngFor="let bit of bitacora" style="border-bottom: 1px solid #eee9e9">
+        <tr *ngFor="let bit of bitacora | paginate: { itemsPerPage: 10, currentPage: pag}" style="border-bottom: 1px solid #eee9e9">
             <td>{{bit.folioSolicitud}}</td>
             <td>{{bit.detalle}}</td>
             <td>{{bit.pais}}</td>
@@ -30,6 +30,9 @@
         </tr>
     </table>
     <br/>
+    <pagination-controls class="pagTb" (pageChange)="pag = $event" previousLabel="Anterior" nextLabel="Siguiente">
+    </pagination-controls>
+    <br>
 </div>
 <div md-dialog-actions align="end">
     <md-checkbox [ngClass]="'chkPol'" color="primary" [(ngModel)]="consDatosProc" (ngModelChange)="datosProc = ( consDatosProc ? 1 : 0 ) ">

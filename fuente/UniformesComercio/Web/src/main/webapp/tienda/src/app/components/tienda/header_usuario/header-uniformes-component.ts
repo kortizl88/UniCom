@@ -105,7 +105,7 @@ export class HeaderUniformesComponent implements OnInit {
             this.router.navigateByUrl('admin');
         }
         else {
-            this.mostrarGuia();
+            //this.mostrarGuia();
             this.consultarDatosEmpleado(this.empleadoPar);
         }
     }
@@ -119,21 +119,26 @@ export class HeaderUniformesComponent implements OnInit {
         this.usuarioService.getDatosUsuario(numEmpleado).subscribe(
             respuestaUsuario => {
                 this.usuario = respuestaUsuario.respuesta;
-                this.datosUsuarioUniformes.setDatosUsuario(this.usuario);
-                this.datosUsuarioUniformes.setTiendaLogin(new Tienda(this.usuario.idPais, String(this.usuario.canal), this.usuario.ceco));
-                this.usuarioService.getMenuFuncionNegocio(numEmpleado, this.datosUsuarioUniformes.getDatosUsuario().funcionSAP, this.datosUsuarioUniformes.getDatosUsuario().negocio).subscribe(
-                    respuestaMenu => {
-                        this.menu = respuestaMenu.respuesta;
-                        this.datosUsuarioUniformes.setMenu(this.menu);
-                        this.router.navigateByUrl('menu');
-                        this.dialogGeneral.cerrarEsperaId(esp);
-                    },
-                    error => {
-                        console.log(error);
-                        this.dialogGeneral.cerrarEsperaId(esp);
-                        this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getMenuFuncionNegocio", error, 1);
-                    }
-                );
+                if (this.usuario.empleado == numEmpleado) {
+                    this.datosUsuarioUniformes.setDatosUsuario(this.usuario);
+                    this.datosUsuarioUniformes.setTiendaLogin(new Tienda(this.usuario.idPais, this.usuario.canal, this.usuario.ceco, this.usuario.centroCostos));
+                    this.usuarioService.getMenuFuncionNegocio(numEmpleado, this.datosUsuarioUniformes.getDatosUsuario().funcionSAP, this.datosUsuarioUniformes.getDatosUsuario().negocio).subscribe(
+                        respuestaMenu => {
+                            this.menu = respuestaMenu.respuesta;
+                            this.datosUsuarioUniformes.setMenu(this.menu);
+                            this.router.navigateByUrl('menu');
+                            this.dialogGeneral.cerrarEsperaId(esp);
+                        },
+                        error => {
+                            console.log(error);
+                            this.dialogGeneral.cerrarEsperaId(esp);
+                            this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getMenuFuncionNegocio", error, 1);
+                        }
+                    );
+                } else {
+                    this.dialogGeneral.cerrarEsperaId(esp);
+                    this.dialogGeneral.mensajeError("El Usuario "+numEmpleado+" no está registrado en el sistema", null, 1);
+                }
             },
             error => {
                 this.dialogGeneral.cerrarEsperaId(esp);

@@ -16,7 +16,8 @@ export class ModalBitacoraSolicitudComponent {
     public datosProc:number;
     public bitacora:any[];
     public consDatosProc:boolean;
-    
+    public pag: number;
+
     constructor(public dialog: MdDialog, public administracionService: AdministracionService, private datosUsuarioUniformesGlobalService: DatosUsuarioUniformesGlobalService, public dialogRef: MdDialogRef<ModalBitacoraSolicitudComponent> ) {
         this.dialogGeneral = new DialogGeneralComponent(this.dialog);
         this.datosProc = 0;

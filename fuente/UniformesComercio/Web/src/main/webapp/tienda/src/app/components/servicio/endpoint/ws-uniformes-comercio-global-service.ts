@@ -58,18 +58,18 @@ export class WSUniformesComercioGlobalService {
     *****************************************************************************/
 
     // Consulta informacion de la tienda
-    public urlGetInfoTienda(pais: number, canal: string, tienda: number): string {
+    public urlGetInfoTienda(pais: number, canal: number, tienda: number): string {
         return `${this._cadenaUrl}/json/solicitud/tienda/pais/${pais}/canal/${canal}/sucursal/${tienda}`;
     }
 
     // Consulta informacion de las tiendas cercanas
-    public urlGetTiendasCercanas(pais: number, canal: string, tienda: number): string {
+    public urlGetTiendasCercanas(pais: number, canal: number, tienda: number): string {
         return `${this._cadenaUrl}/json/solicitud/tiendascercanas/pais/${pais}/canal/${canal}/sucursal/${tienda}`;
     }
 
     // Consulta a los empleados de nuevo ingreso
-    public urlGetEmpleadosNuevoIngreso(numeroTienda: number): string {
-        return `${this._cadenaUrl}/json/solicitud/nuevoingreso/sucursal/${numeroTienda}`
+    public urlGetEmpleadosNuevoIngreso(pais:number, canal: number, ceco: number): string {
+        return `${this._cadenaUrl}/json/solicitud/nuevoingreso/pais/${pais}/canal/${canal}/ceco/${ceco}`
     }
 
     // Consulta del kit del empleado

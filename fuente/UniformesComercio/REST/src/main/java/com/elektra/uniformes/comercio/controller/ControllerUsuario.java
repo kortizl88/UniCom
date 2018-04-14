@@ -44,23 +44,6 @@ public class ControllerUsuario {
         }
         return r;
     }
-
-    @RequestMapping(value = "/{numEmp}/menu", method = RequestMethod.GET)
-    public @ResponseBody
-    Respuesta getMenuUsuario(@PathVariable("numEmp") int numEmp) {
-        Respuesta r = new Respuesta();
-        try {
-            r.setRespuesta(negocioUsuario.getMenuUsuario(numEmp));
-            r.setError(false);
-            r.setMensaje("Consulta obtenida correctamente");
-        } catch (Exception e) {
-            r.setError(true);
-            r.setMensaje(e.getMessage());
-            LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getMenuUsuario " + e.getMessage());
-            LogeoDAO.getInstancia().logStackExcepcion(e);
-        }
-        return r;
-    }
     
     @RequestMapping(value = "/{numEmp}/funcion/{noFuncion}/negocio/{noNegocio}", method = RequestMethod.GET)
     public @ResponseBody

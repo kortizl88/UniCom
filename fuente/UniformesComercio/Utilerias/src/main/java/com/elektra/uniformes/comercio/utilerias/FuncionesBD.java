@@ -20,9 +20,6 @@ public class FuncionesBD {
     @Value("#{propiedadesUniformesComercio['FN_CONS_INFO_USUARIO']}")
     public String FN_CONS_INFO_USUARIO;
     
-    @Value("#{propiedadesUniformesComercio['FN_CONS_MENU_USUARIO']}")
-    public String FN_CONS_MENU_USUARIO;
-    
     @Value("#{propiedadesUniformesComercio['FN_CONS_KIT_EMPLEADO']}")
     public String FN_CONS_KIT_EMPLEADO;
     
