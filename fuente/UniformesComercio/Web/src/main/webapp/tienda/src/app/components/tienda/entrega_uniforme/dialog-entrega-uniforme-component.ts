@@ -31,6 +31,7 @@ export class DialogDetalleEntrega {
     public msjError: String;
     public descargando: boolean;
     public terminoProceso: boolean;
+    public bloqueaHuella: boolean;
 
     constructor(public dialogRef: MdDialogRef<DialogDetalleEntrega>, public dialog: MdDialog, private ngZone: NgZone, public entregaService: EntregaService) {
         this.flujo = 1;
@@ -51,11 +52,12 @@ export class DialogDetalleEntrega {
 
     validacionHuella(respuesta: any) {
         this.ngZone.run(() => {
+            this.bloqueaHuella = false;
             let respComponente = { valido: null, msj: '', usuarioValida: null };
 
             if ((this.flujo == 2 || this.flujo == 4)) {
                 respComponente.valido = respuesta.PluginResponse.authenticated == 0 ? false : true;
-                respComponente.msj = respuesta.PluginResponse.processDetail;
+                respComponente.msj = respuesta.PluginResponse.processDetail == "" ? "Ocurri\u00F3 un error al solicitar el componente de Huella" : respuesta.PluginResponse.processDetail;
             } else {
                 respComponente = respuesta;
             }
@@ -93,6 +95,7 @@ export class DialogDetalleEntrega {
 
     public iniciaValidaHuella(numEmp: number) {
         console.log('aqui llamo al componente de huella');
+        this.bloqueaHuella = true;
         System.import('../../../../assets/js/huella.js')
             .then(huellaJS => {
                 huellaJS.validaHuellaEmpleado(numEmp);
@@ -137,12 +140,12 @@ export class DialogDetalleEntrega {
                     }
                     this.terminoProceso = true;
                 } else {
-                    this.dialogGeneral.mensajeError("OcurriÃ³ un error al realizar la descarga de los pedidos", respuestaWS.mensaje, 1);
-                    this.msjError = "OcurriÃ³ un error al realizar la descarga de los pedidos";
+                    this.dialogGeneral.mensajeError("Ocurri\u00F3 un error al realizar la descarga de los pedidos", respuestaWS.mensaje, 1);
+                    this.msjError = "Ocurrió un error al realizar la descarga de los pedidos";
                     this.terminoProceso = true;
                 }
             }, error => {
-                this.dialogGeneral.mensajeError("OcurriÃ³ un error al realizar la descarga de los pedidos", error, 1);
+                this.dialogGeneral.mensajeError("Ocurrió un error al realizar la descarga de los pedidos", error, 1);
             }
         );
     }

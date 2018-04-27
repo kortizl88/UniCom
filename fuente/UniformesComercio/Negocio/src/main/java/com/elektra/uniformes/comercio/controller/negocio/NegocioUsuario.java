@@ -23,12 +23,8 @@ public class NegocioUsuario {
     @Qualifier("daoUsuario")
     private DAOUsuario daoUsuario;
 
-    public Usuario getInformacionUsuario(int numEmp) throws Exception{
-        return daoUsuario.getInformacionUsuario(numEmp);
-    }
-    
-    public ArrayList<Menu> getMenuUsuario(int numEmp) throws Exception {
-        return daoUsuario.getMenuUsuario(numEmp);
+    public Usuario getInformacionUsuario(int numEmp, int tienda) throws Exception{
+        return daoUsuario.getInformacionUsuario(numEmp , tienda);
     }
     
     public ArrayList<Menu> getMenuFuncionNegocio(int noFuncionSap,int noNegocio) throws Exception {

@@ -1,5 +1,5 @@
 
-package com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda;
+package com.elektra.uniformes.comercio.DAO.clienteWS.Tienda;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +10,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ArrayOfActPedidos complex type.
+ * <p>Java class for ModifPed complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="ArrayOfActPedidos">
+ * &lt;complexType name="ModifPed">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -29,10 +29,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ArrayOfActPedidos", propOrder = {
+@XmlType(name = "ModifPed", propOrder = {
     "actPedidos"
 })
-public class ArrayOfActPedidos {
+public class ModifPed {
 
     @XmlElement(name = "ActPedidos", nillable = true)
     protected List<ActPedidos> actPedidos;
@@ -64,6 +64,10 @@ public class ArrayOfActPedidos {
             actPedidos = new ArrayList<ActPedidos>();
         }
         return this.actPedidos;
+    }
+    
+    public void setActPedidos(List<ActPedidos> value) {
+        this.actPedidos =  value;
     }
 
 }

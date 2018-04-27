@@ -1,5 +1,5 @@
 
-package com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda;
+package com.elektra.uniformes.comercio.DAO.clienteWS.Tienda;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;

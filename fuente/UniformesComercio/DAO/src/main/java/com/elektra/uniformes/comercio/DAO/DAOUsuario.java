@@ -51,7 +51,7 @@ public class DAOUsuario {
 
     }
 
-    public Usuario getInformacionUsuario(int numEmp) throws Exception {
+    public Usuario getInformacionUsuario(int numEmp, int tienda) throws Exception {
         Connection conn = null;
         CallableStatement cs = null;
         Usuario u = new Usuario();
@@ -66,6 +66,7 @@ public class DAOUsuario {
             cs = conn.prepareCall(funcionesBD.FN_CONS_INFO_USUARIO);
             cs.registerOutParameter(1, OracleTypes.CURSOR);
             cs.setInt(2, numEmp);
+            cs.setInt(3, tienda);
             cs.execute();
             rs = (ResultSet) cs.getObject(1);
             u = (Usuario) m.mapperBean(rs, Usuario.class);
@@ -79,7 +80,7 @@ public class DAOUsuario {
         }
         return u;
     }
-    
+
     public ArrayList<Menu> getMenuFuncionNegocio(int noFuncionSap, int noNegocio) throws Exception {
         Connection conn = null;
         CallableStatement cs = null;

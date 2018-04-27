@@ -7,7 +7,7 @@
 				<th>SKU</th>
 				<th>Prenda</th>
 				<th>Cantidad</th>
-                <th>Remisión</th>
+                <th>Remisi&oacute;n</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -19,7 +19,7 @@
 			<td>{{pedido.cantidad}}</td>
             <td>{{pedido.remision}}</td>
             <td>
-                <img src="assets/img/tienda/solOK.png" *ngIf="terminoProceso && !pedido.errorEntrega && msjError == '' " width="30"/>
+                <img src="assets/img/tienda/solOK.png" *ngIf="terminoProceso && !pedido.errorEntrega" width="18"/>
                 <img src="assets/img/tienda/errdesc.png" *ngIf="terminoProceso && pedido.errorEntrega" width="30"/>
             </td>
             <td>{{pedido.mensaje}}</td>
@@ -32,7 +32,7 @@
 </div>
 
 <div md-dialog-actions align="end" *ngIf="!descargando">
-    <button md-raised-button  *ngIf="!terminoProceso" md-dialog-close>Cancelar</button>&nbsp;&nbsp;
-    <button md-raised-button *ngIf="!terminoProceso" class="btnUni" (click)="iniciarEntregaUniforme(usuarioRecibe,usuarioEntrega)">Entregar &#10004;</button>&nbsp;&nbsp;
-    <button md-raised-button *ngIf="terminoProceso" class="btnUni" md-dialog-close>Aceptar</button>&nbsp;&nbsp;
+    <button md-raised-button  [disabled]="bloqueaHuella" *ngIf="!terminoProceso" md-dialog-close>Cancelar</button>&nbsp;&nbsp;
+    <button md-raised-button  [disabled]="bloqueaHuella" *ngIf="!terminoProceso" class="btnUni" (click)="iniciarEntregaUniforme(usuarioRecibe,usuarioEntrega)">Entregar &#10004;</button>&nbsp;&nbsp;
+    <button md-raised-button  [disabled]="bloqueaHuella" *ngIf="terminoProceso" class="btnUni" (click)="dialogRef.close(pedido)" >Aceptar</button>&nbsp;&nbsp;
 </div>

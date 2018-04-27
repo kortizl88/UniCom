@@ -18,6 +18,8 @@ public class ReporteDTO {
     private String nombre;
     @PropiedadMap(id=true, campo="FIFOLIOSOLICITUD")
     private int solicitud;
+    @PropiedadMap(id=true, campo="TIPOSOLICITUD")
+    private String tipoSol;
     @PropiedadMap(campo="FIPAIS")
     private int pais;
     @PropiedadMap(campo="FICANAL")
@@ -187,5 +189,19 @@ public class ReporteDTO {
      */
     public void setNombreTienda(String nombreTienda) {
         this.nombreTienda = nombreTienda;
+    }
+
+    /**
+     * @return the tipoSol
+     */
+    public String getTipoSol() {
+        return tipoSol;
+    }
+
+    /**
+     * @param tipoSol the tipoSol to set
+     */
+    public void setTipoSol(String tipoSol) {
+        this.tipoSol = tipoSol;
     }
 }

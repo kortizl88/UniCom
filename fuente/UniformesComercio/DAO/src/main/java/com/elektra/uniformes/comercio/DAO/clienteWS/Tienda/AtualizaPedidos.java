@@ -1,5 +1,5 @@
 
-package com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda;
+package com.elektra.uniformes.comercio.DAO.clienteWS.Tienda;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="KeyWs" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="ModifPed" type="{http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo}ArrayOfActPedidos" minOccurs="0"/>
+ *         &lt;element name="ModifPed" type="{http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo}ModifPed" minOccurs="0"/>
  *         &lt;element name="TipoNegocio" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="TipoSistema" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="TipoUsuario" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
@@ -45,7 +45,7 @@ public class AtualizaPedidos {
     @XmlElementRef(name = "KeyWs", namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", type = JAXBElement.class)
     protected JAXBElement<String> keyWs;
     @XmlElementRef(name = "ModifPed", namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", type = JAXBElement.class)
-    protected JAXBElement<ArrayOfActPedidos> modifPed;
+    protected JAXBElement<ModifPed> modifPed;
     @XmlElement(name = "TipoNegocio")
     protected Integer tipoNegocio;
     @XmlElement(name = "TipoSistema")
@@ -82,10 +82,10 @@ public class AtualizaPedidos {
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link ArrayOfActPedidos }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ModifPed }{@code >}
      *     
      */
-    public JAXBElement<ArrayOfActPedidos> getModifPed() {
+    public JAXBElement<ModifPed> getModifPed() {
         return modifPed;
     }
 
@@ -94,11 +94,11 @@ public class AtualizaPedidos {
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link ArrayOfActPedidos }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ModifPed }{@code >}
      *     
      */
-    public void setModifPed(JAXBElement<ArrayOfActPedidos> value) {
-        this.modifPed = ((JAXBElement<ArrayOfActPedidos> ) value);
+    public void setModifPed(JAXBElement<ModifPed> value) {
+        this.modifPed = ((JAXBElement<ModifPed> ) value);
     }
 
     /**

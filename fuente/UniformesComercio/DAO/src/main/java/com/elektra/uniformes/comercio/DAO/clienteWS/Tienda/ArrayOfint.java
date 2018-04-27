@@ -1,5 +1,5 @@
 
-package com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda;
+package com.elektra.uniformes.comercio.DAO.clienteWS.Tienda;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 public class ArrayOfint {
 
     @XmlElement(name = "int", type = Integer.class)
-    private List<Integer> _int;
+    protected List<Integer> _int;
 
     /**
      * Gets the value of the int property.
@@ -65,10 +65,7 @@ public class ArrayOfint {
         }
         return this._int;
     }
-
-    /**
-     * @param _int the _int to set
-     */
+    
     public void setInt(List<Integer> _int) {
         this._int = _int;
     }

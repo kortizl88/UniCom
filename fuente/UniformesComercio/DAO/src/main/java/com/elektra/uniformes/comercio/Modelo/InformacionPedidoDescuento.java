@@ -13,7 +13,7 @@ public class InformacionPedidoDescuento {
     @PropiedadMap(campo="FCANO")
     private String cadenaAno;
     
-    @PropiedadMap(campo="FISEMADESCUENTO")
+    @PropiedadMap(campo="FISEMANADESCUENTO")
     private int noSemanaDescuento;    
     
     @PropiedadMap(campo="FCFECHAPAGO")

@@ -28,12 +28,12 @@ public class ControllerUsuario {
     @Qualifier("negocioUsuario")
     private NegocioUsuario negocioUsuario;
 
-    @RequestMapping(value = "/{numEmp}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{numEmp}/tienda/{tienda}", method = RequestMethod.GET)
     public @ResponseBody
-    Respuesta getInformacionUsuario(@PathVariable("numEmp") int numEmp) {
+    Respuesta getInformacionUsuario(@PathVariable("numEmp") int numEmp,@PathVariable("tienda") int tienda ) {
         Respuesta r = new Respuesta();
         try {
-            r.setRespuesta(negocioUsuario.getInformacionUsuario(numEmp));
+            r.setRespuesta(negocioUsuario.getInformacionUsuario(numEmp,tienda));
             r.setError(false);
             r.setMensaje("Consulta obtenida correctamente");
         } catch (Exception e) {

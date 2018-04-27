@@ -1,80 +1,80 @@
-<h1 md-dialog-title>INFORMACION DEL DESCUENTO</h1>
 <div md-dialog-content>
-<!-- Componente Dialog -->   		
-    <div class="dialog-descuento"> 		
+    <div class="entRecibe">Información del Descuento</div><br/>
+    <!-- Componente Dialog -->
+    <div class="dialog-descuento">
         <div class="padding">
             <div class="retra">
-		<div class="cstatus">		
+                <div class="cstatus">
                     <div class="status">
-	    		<img src="assets/img/tienda/{{pedidoDescuento?.cadenaNombreImagen}}">
-                    </div>	
-    		</div>
+                        <img src="assets/img/tienda/{{pedidoDescuento?.cadenaNombreImagen}}">
+                    </div>
+                </div>
             </div>
             <div class="overflow">
-		<table class="blue w100 tcenter">
-                    <thead> 
-                        <tr>  
-                            <th class="borderblack">No. Pedido</th>  
+                <table class="blue w100 tcenter">
+                    <thead>
+                        <tr>
+                            <th class="borderblack">No. Pedido</th>
                             <th class="borderblack">SKU</th>
                             <th class="borderblack">Descripción</th>
-                            <th class="borderblack">Cantidad</th>	
-                            <th class="borderblack">Pagado</th>															
+                            <th class="borderblack">Cantidad</th>
+                            <th class="borderblack">Pagado</th>
                             <th class="borderblack">Por Pagar</th>
                             <th class="borderblack">Total</th>
-			</tr>
+                        </tr>
                     </thead>
                     <tbody>
-			<tr>
+                        <tr>
                             <td>{{pedidoDescuento?.noPedido}}</td>
                             <td>{{pedidoDescuento?.cadenaSku}}</td>
-                            <td>{{pedidoDescuento?.cadenaDescripcion}}</td>								
+                            <td>{{pedidoDescuento?.cadenaDescripcion}}</td>
                             <td>{{pedidoDescuento?.noCantidad}}</td>
-                            <td>{{pedidoDescuento?.cadenaPagado}}</td>									
+                            <td>{{pedidoDescuento?.cadenaPagado}}</td>
                             <td>{{pedidoDescuento?.cadenaSaldoPorPagar}}</td>
-                            <td>{{pedidoDescuento?.cadenaCostoPrenda}}</td>							
+                            <td>{{pedidoDescuento?.cadenaCostoPrenda}}</td>
                         </tr>
-			<tr>
+                        <tr>
                             <td></td>
                             <td colspan="4">
                                 <div class="padding15">
                                     <table class="items nowrap w100">
-					<thead> 	
-                                            <tr> 
-						<th>Fecha pago</th>  											 
-						<th>Año</th> 
-						<th>Semana</th> 
-						<th>Saldo</th>
-						<th>Pago semanal</th> 
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha pago</th>
+                                                <th>Año </th>
+                                                <th>Semana</th>
+                                                <th>Saldo</th>
+                                                <th>Pago semanal</th>
                                             </tr>
                                         </thead>
                                         <tbody *ngFor="let select of arregloInformacionPedidoDescuentos; let idx = index">
                                             <tr *ngIf="idx != this.arregloInformacionPedidoDescuentos.length-1; else elseBlock">
                                                 <td>{{select?.cadenaFechaPago}}</td>
                                                 <td>{{select?.cadenaAno}}</td>
-                                                <td>{{select?.noSemanaDescuento}}</td>											
-						<td>{{select?.cadenaSaldoPorPagar}}</td>
-						<td>{{select?.cadenaPagoSemanal}}</td>
+                                                <td>{{select?.noSemanaDescuento}}</td>
+                                                <td>{{select?.cadenaSaldoPorPagar}}</td>
+                                                <td>{{select?.cadenaPagoSemanal}}</td>
                                             </tr>
                                             <ng-template #elseBlock>
-						<tr>
+                                                <tr>
                                                     <td></td>
                                                     <td></td>
-                                                    <td></td>											
+                                                    <td></td>
                                                     <td class="tipo-letra-totales"> Total</td>
                                                     <td class="tipo-letra-totales">{{select?.cadenaPagoSemanal}}</td>
-						</tr>
+                                                </tr>
                                             </ng-template>
-					</tbody>						
+                                        </tbody>
                                     </table>
-				</div>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
-		</table> 
+                </table>
             </div>
-        </div>  
+        </div>
     </div>
 </div>
 <div md-dialog-actions align="end">
-    <button class ="btn full " md-dialog-close="cerrar">Salir</button>
+    <button md-raised-button class="btnUni" md-dialog-close>Aceptar</button>
 </div>

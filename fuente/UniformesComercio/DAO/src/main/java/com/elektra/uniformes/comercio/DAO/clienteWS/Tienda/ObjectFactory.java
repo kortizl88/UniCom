@@ -1,5 +1,5 @@
 
-package com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda;
+package com.elektra.uniformes.comercio.DAO.clienteWS.Tienda;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -14,7 +14,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda package. 
+ * generated in the clienteWS.Tienda package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -44,7 +44,7 @@ public class ObjectFactory {
     private final static QName _ArrayOfDetalleSKU_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "ArrayOfDetalleSKU");
     private final static QName _ArrayOfAltasPedidos_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "ArrayOfAltasPedidos");
     private final static QName _DetalleSKU_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "DetalleSKU");
-    private final static QName _ArrayOfActPedidos_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "ArrayOfActPedidos");
+    private final static QName _ModifPed_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "ModifPed");
     private final static QName _Boolean_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "boolean");
     private final static QName _ConsultaPedidosEntrada_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "ConsultaPedidosEntrada");
     private final static QName _ActPedidos_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "ActPedidos");
@@ -65,73 +65,57 @@ public class ObjectFactory {
     private final static QName _String_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "string");
     private final static QName _UnsignedLong_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/", "unsignedLong");
     private final static QName _ArrayOfKeyValueOfstringstring_QNAME = new QName("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "ArrayOfKeyValueOfstringstring");
-    private final static QName _AtualizaPedidosModifPed_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "ModifPed");
-    private final static QName _AtualizaPedidosKeyWs_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "KeyWs");
-    private final static QName _ActPedidosNumEmpleado_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "NumEmpleado");
-    private final static QName _ActPedidosObservaciones_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "Observaciones");
-    private final static QName _ActPedidosSKU_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "SKU");
-    private final static QName _CreaPedidoAltaPed_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "AltaPed");
-    private final static QName _CreaPedidoMsjSalida_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "msjSalida");
-    private final static QName _ReciveDatosSku_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "Sku");
-    private final static QName _ReciveDatosNumTienda_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "NumTienda");
-    private final static QName _ReciveDatosEmpleado_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "Empleado");
-    private final static QName _ReciveDatosNoEmpIngreso_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "NoEmpIngreso");
-    private final static QName _ConsultaParametrosResponseConsultaParametrosResult_QNAME = new QName("http://tempuri.org/", "ConsultaParametrosResult");
-    private final static QName _ConsultaPedidosConsulPedidos_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "ConsulPedidos");
-    private final static QName _GeneraPedidoRecive_QNAME = new QName("http://tempuri.org/", "Recive");
+    private final static QName _ConsultaPedidoResponseConsultaPedidoResult_QNAME = new QName("http://tempuri.org/", "ConsultaPedidoResult");
+    private final static QName _ConsPedidoNumEmpleado_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "NumEmpleado");
     private final static QName _ConsPedidoNoTienda_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "NoTienda");
     private final static QName _ConsPedidoSKUDetalle_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "SKUDetalle");
-    private final static QName _ConsultaPedidoDatosP_QNAME = new QName("http://tempuri.org/", "DatosP");
-    private final static QName _ConsultaPedidoResponseConsultaPedidoResult_QNAME = new QName("http://tempuri.org/", "ConsultaPedidoResult");
+    private final static QName _SalidaDatosMsjSalida_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "msjSalida");
+    private final static QName _AtualizaPedidosModifPed_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "ModifPed");
+    private final static QName _AtualizaPedidosKeyWs_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "KeyWs");
+    private final static QName _GeneraPedidoRecive_QNAME = new QName("http://tempuri.org/", "Recive");
     private final static QName _GeneraPedidoResponseGeneraPedidoResult_QNAME = new QName("http://tempuri.org/", "GeneraPedidoResult");
-    private final static QName _DetalleSKUEmpRemision_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "EmpRemision");
+    private final static QName _ConsultaPedidosConsulPedidos_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "ConsulPedidos");
     private final static QName _ActualizaPedidoResponseActualizaPedidoResult_QNAME = new QName("http://tempuri.org/", "ActualizaPedidoResult");
+    private final static QName _ActPedidosObservaciones_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "Observaciones");
+    private final static QName _ActPedidosSKU_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "SKU");
+    private final static QName _ConsultaParametrosResponseConsultaParametrosResult_QNAME = new QName("http://tempuri.org/", "ConsultaParametrosResult");
+    private final static QName _DetalleSKUEmpRemision_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "EmpRemision");
+    private final static QName _ActualizaPedidoDatosP_QNAME = new QName("http://tempuri.org/", "DatosP");
+    private final static QName _AltasPedidosEmpleado_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "Empleado");
+    private final static QName _CreaPedidoAltaPed_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "AltaPed");
+    private final static QName _ReciveDatosSku_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "Sku");
+    private final static QName _ReciveDatosNumTienda_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "NumTienda");
+    private final static QName _ReciveDatosNoEmpIngreso_QNAME = new QName("http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", "NoEmpIngreso");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: clienteWS.Tienda
      * 
      */
     public ObjectFactory() {
     }
 
     /**
-     * Create an instance of {@link ConsultaParametros }
+     * Create an instance of {@link ConsultaPedidoResponse }
      * 
      */
-    public ConsultaParametros createConsultaParametros() {
-        return new ConsultaParametros();
+    public ConsultaPedidoResponse createConsultaPedidoResponse() {
+        return new ConsultaPedidoResponse();
     }
 
     /**
-     * Create an instance of {@link ActPedidos }
+     * Create an instance of {@link ArrayOfDetalleSKU }
      * 
      */
-    public ActPedidos createActPedidos() {
-        return new ActPedidos();
+    public ArrayOfDetalleSKU createArrayOfDetalleSKU() {
+        return new ArrayOfDetalleSKU();
     }
 
     /**
-     * Create an instance of {@link ReciveDatos }
+     * Create an instance of {@link GeneraPedido }
      * 
      */
-    public ReciveDatos createReciveDatos() {
-        return new ReciveDatos();
-    }
-
-    /**
-     * Create an instance of {@link ConsPedido }
-     * 
-     */
-    public ConsPedido createConsPedido() {
-        return new ConsPedido();
-    }
-
-    /**
-     * Create an instance of {@link ConsultaPedido }
-     * 
-     */
-    public ConsultaPedido createConsultaPedido() {
-        return new ConsultaPedido();
+    public GeneraPedido createGeneraPedido() {
+        return new GeneraPedido();
     }
 
     /**
@@ -143,11 +127,91 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfDetalleSKU }
+     * Create an instance of {@link ConsultaPedidos }
      * 
      */
-    public ArrayOfDetalleSKU createArrayOfDetalleSKU() {
-        return new ArrayOfDetalleSKU();
+    public ConsultaPedidos createConsultaPedidos() {
+        return new ConsultaPedidos();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfint }
+     * 
+     */
+    public ArrayOfint createArrayOfint() {
+        return new ArrayOfint();
+    }
+
+    /**
+     * Create an instance of {@link ConsultaPedidosEntrada }
+     * 
+     */
+    public ConsultaPedidosEntrada createConsultaPedidosEntrada() {
+        return new ConsultaPedidosEntrada();
+    }
+
+    /**
+     * Create an instance of {@link ConsultaParametrosResponse }
+     * 
+     */
+    public ConsultaParametrosResponse createConsultaParametrosResponse() {
+        return new ConsultaParametrosResponse();
+    }
+
+    /**
+     * Create an instance of {@link ModifPed }
+     * 
+     */
+    public ModifPed createModifPed() {
+        return new ModifPed();
+    }
+
+    /**
+     * Create an instance of {@link ActualizaPedido }
+     * 
+     */
+    public ActualizaPedido createActualizaPedido() {
+        return new ActualizaPedido();
+    }
+
+    /**
+     * Create an instance of {@link AltasPedidos }
+     * 
+     */
+    public AltasPedidos createAltasPedidos() {
+        return new AltasPedidos();
+    }
+
+    /**
+     * Create an instance of {@link ConsultaPedido }
+     * 
+     */
+    public ConsultaPedido createConsultaPedido() {
+        return new ConsultaPedido();
+    }
+
+    /**
+     * Create an instance of {@link ReciveDatos }
+     * 
+     */
+    public ReciveDatos createReciveDatos() {
+        return new ReciveDatos();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfAltasPedidos }
+     * 
+     */
+    public ArrayOfAltasPedidos createArrayOfAltasPedidos() {
+        return new ArrayOfAltasPedidos();
+    }
+
+    /**
+     * Create an instance of {@link ConsPedido }
+     * 
+     */
+    public ConsPedido createConsPedido() {
+        return new ConsPedido();
     }
 
     /**
@@ -167,6 +231,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AtualizaPedidos }
+     * 
+     */
+    public AtualizaPedidos createAtualizaPedidos() {
+        return new AtualizaPedidos();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfKeyValueOfstringstring.KeyValueOfstringstring }
      * 
      */
@@ -183,83 +255,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfActPedidos }
+     * Create an instance of {@link ConsultaParametros }
      * 
      */
-    public ArrayOfActPedidos createArrayOfActPedidos() {
-        return new ArrayOfActPedidos();
+    public ConsultaParametros createConsultaParametros() {
+        return new ConsultaParametros();
     }
 
     /**
-     * Create an instance of {@link AltasPedidos }
+     * Create an instance of {@link ActPedidos }
      * 
      */
-    public AltasPedidos createAltasPedidos() {
-        return new AltasPedidos();
-    }
-
-    /**
-     * Create an instance of {@link ConsultaPedidosEntrada }
-     * 
-     */
-    public ConsultaPedidosEntrada createConsultaPedidosEntrada() {
-        return new ConsultaPedidosEntrada();
-    }
-
-    /**
-     * Create an instance of {@link AtualizaPedidos }
-     * 
-     */
-    public AtualizaPedidos createAtualizaPedidos() {
-        return new AtualizaPedidos();
-    }
-
-    /**
-     * Create an instance of {@link CreaPedido }
-     * 
-     */
-    public CreaPedido createCreaPedido() {
-        return new CreaPedido();
-    }
-
-    /**
-     * Create an instance of {@link ConsultaParametrosResponse }
-     * 
-     */
-    public ConsultaParametrosResponse createConsultaParametrosResponse() {
-        return new ConsultaParametrosResponse();
-    }
-
-    /**
-     * Create an instance of {@link ConsultaPedidos }
-     * 
-     */
-    public ConsultaPedidos createConsultaPedidos() {
-        return new ConsultaPedidos();
-    }
-
-    /**
-     * Create an instance of {@link GeneraPedido }
-     * 
-     */
-    public GeneraPedido createGeneraPedido() {
-        return new GeneraPedido();
-    }
-
-    /**
-     * Create an instance of {@link ConsultaPedidoResponse }
-     * 
-     */
-    public ConsultaPedidoResponse createConsultaPedidoResponse() {
-        return new ConsultaPedidoResponse();
-    }
-
-    /**
-     * Create an instance of {@link ActualizaPedido }
-     * 
-     */
-    public ActualizaPedido createActualizaPedido() {
-        return new ActualizaPedido();
+    public ActPedidos createActPedidos() {
+        return new ActPedidos();
     }
 
     /**
@@ -271,11 +279,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfint }
+     * Create an instance of {@link CreaPedido }
      * 
      */
-    public ArrayOfint createArrayOfint() {
-        return new ArrayOfint();
+    public CreaPedido createCreaPedido() {
+        return new CreaPedido();
     }
 
     /**
@@ -284,14 +292,6 @@ public class ObjectFactory {
      */
     public ArrayOfConsPedido createArrayOfConsPedido() {
         return new ArrayOfConsPedido();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfAltasPedidos }
-     * 
-     */
-    public ArrayOfAltasPedidos createArrayOfAltasPedidos() {
-        return new ArrayOfAltasPedidos();
     }
 
     /**
@@ -439,12 +439,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfActPedidos }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModifPed }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "ArrayOfActPedidos")
-    public JAXBElement<ArrayOfActPedidos> createArrayOfActPedidos(ArrayOfActPedidos value) {
-        return new JAXBElement<ArrayOfActPedidos>(_ArrayOfActPedidos_QNAME, ArrayOfActPedidos.class, null, value);
+    public JAXBElement<ModifPed> createModifPed(ModifPed value) {
+        return new JAXBElement<ModifPed>(_ModifPed_QNAME, ModifPed.class, null, value);
     }
 
     /**
@@ -628,12 +628,57 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfActPedidos }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ConsultaPedidos }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "ConsultaPedidoResult", scope = ConsultaPedidoResponse.class)
+    public JAXBElement<ConsultaPedidos> createConsultaPedidoResponseConsultaPedidoResult(ConsultaPedidos value) {
+        return new JAXBElement<ConsultaPedidos>(_ConsultaPedidoResponseConsultaPedidoResult_QNAME, ConsultaPedidos.class, ConsultaPedidoResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "NumEmpleado", scope = ConsPedido.class)
+    public JAXBElement<String> createConsPedidoNumEmpleado(String value) {
+        return new JAXBElement<String>(_ConsPedidoNumEmpleado_QNAME, String.class, ConsPedido.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "NoTienda", scope = ConsPedido.class)
+    public JAXBElement<String> createConsPedidoNoTienda(String value) {
+        return new JAXBElement<String>(_ConsPedidoNoTienda_QNAME, String.class, ConsPedido.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfDetalleSKU }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "SKUDetalle", scope = ConsPedido.class)
+    public JAXBElement<ArrayOfDetalleSKU> createConsPedidoSKUDetalle(ArrayOfDetalleSKU value) {
+        return new JAXBElement<ArrayOfDetalleSKU>(_ConsPedidoSKUDetalle_QNAME, ArrayOfDetalleSKU.class, ConsPedido.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "msjSalida", scope = SalidaDatos.class)
+    public JAXBElement<String> createSalidaDatosMsjSalida(String value) {
+        return new JAXBElement<String>(_SalidaDatosMsjSalida_QNAME, String.class, SalidaDatos.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModifPed }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "ModifPed", scope = AtualizaPedidos.class)
-    public JAXBElement<ArrayOfActPedidos> createAtualizaPedidosModifPed(ArrayOfActPedidos value) {
-        return new JAXBElement<ArrayOfActPedidos>(_AtualizaPedidosModifPed_QNAME, ArrayOfActPedidos.class, AtualizaPedidos.class, value);
+    public JAXBElement<ModifPed> createAtualizaPedidosModifPed(ModifPed value) {
+        return new JAXBElement<ModifPed>(_AtualizaPedidosModifPed_QNAME, ModifPed.class, AtualizaPedidos.class, value);
     }
 
     /**
@@ -646,12 +691,57 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReciveDatos }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "Recive", scope = GeneraPedido.class)
+    public JAXBElement<ReciveDatos> createGeneraPedidoRecive(ReciveDatos value) {
+        return new JAXBElement<ReciveDatos>(_GeneraPedidoRecive_QNAME, ReciveDatos.class, GeneraPedido.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreaPedido }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GeneraPedidoResult", scope = GeneraPedidoResponse.class)
+    public JAXBElement<CreaPedido> createGeneraPedidoResponseGeneraPedidoResult(CreaPedido value) {
+        return new JAXBElement<CreaPedido>(_GeneraPedidoResponseGeneraPedidoResult_QNAME, CreaPedido.class, GeneraPedidoResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfConsPedido }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "ConsulPedidos", scope = ConsultaPedidos.class)
+    public JAXBElement<ArrayOfConsPedido> createConsultaPedidosConsulPedidos(ArrayOfConsPedido value) {
+        return new JAXBElement<ArrayOfConsPedido>(_ConsultaPedidosConsulPedidos_QNAME, ArrayOfConsPedido.class, ConsultaPedidos.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "msjSalida", scope = ConsultaPedidos.class)
+    public JAXBElement<String> createConsultaPedidosMsjSalida(String value) {
+        return new JAXBElement<String>(_SalidaDatosMsjSalida_QNAME, String.class, ConsultaPedidos.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SalidaDatos }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "ActualizaPedidoResult", scope = ActualizaPedidoResponse.class)
+    public JAXBElement<SalidaDatos> createActualizaPedidoResponseActualizaPedidoResult(SalidaDatos value) {
+        return new JAXBElement<SalidaDatos>(_ActualizaPedidoResponseActualizaPedidoResult_QNAME, SalidaDatos.class, ActualizaPedidoResponse.class, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "NumEmpleado", scope = ActPedidos.class)
     public JAXBElement<String> createActPedidosNumEmpleado(String value) {
-        return new JAXBElement<String>(_ActPedidosNumEmpleado_QNAME, String.class, ActPedidos.class, value);
+        return new JAXBElement<String>(_ConsPedidoNumEmpleado_QNAME, String.class, ActPedidos.class, value);
     }
 
     /**
@@ -673,6 +763,69 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "ConsulPedidos", scope = ConsultaPedidosEntrada.class)
+    public JAXBElement<String> createConsultaPedidosEntradaConsulPedidos(String value) {
+        return new JAXBElement<String>(_ConsultaPedidosConsulPedidos_QNAME, String.class, ConsultaPedidosEntrada.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValueOfstringstring }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "ConsultaParametrosResult", scope = ConsultaParametrosResponse.class)
+    public JAXBElement<ArrayOfKeyValueOfstringstring> createConsultaParametrosResponseConsultaParametrosResult(ArrayOfKeyValueOfstringstring value) {
+        return new JAXBElement<ArrayOfKeyValueOfstringstring>(_ConsultaParametrosResponseConsultaParametrosResult_QNAME, ArrayOfKeyValueOfstringstring.class, ConsultaParametrosResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "EmpRemision", scope = DetalleSKU.class)
+    public JAXBElement<String> createDetalleSKUEmpRemision(String value) {
+        return new JAXBElement<String>(_DetalleSKUEmpRemision_QNAME, String.class, DetalleSKU.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AtualizaPedidos }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "DatosP", scope = ActualizaPedido.class)
+    public JAXBElement<AtualizaPedidos> createActualizaPedidoDatosP(AtualizaPedidos value) {
+        return new JAXBElement<AtualizaPedidos>(_ActualizaPedidoDatosP_QNAME, AtualizaPedidos.class, ActualizaPedido.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "NoTienda", scope = AltasPedidos.class)
+    public JAXBElement<String> createAltasPedidosNoTienda(String value) {
+        return new JAXBElement<String>(_ConsPedidoNoTienda_QNAME, String.class, AltasPedidos.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "Empleado", scope = AltasPedidos.class)
+    public JAXBElement<String> createAltasPedidosEmpleado(String value) {
+        return new JAXBElement<String>(_AltasPedidosEmpleado_QNAME, String.class, AltasPedidos.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfint }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "SKU", scope = AltasPedidos.class)
+    public JAXBElement<ArrayOfint> createAltasPedidosSKU(ArrayOfint value) {
+        return new JAXBElement<ArrayOfint>(_ActPedidosSKU_QNAME, ArrayOfint.class, AltasPedidos.class, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfAltasPedidos }{@code >}}
      * 
      */
@@ -687,7 +840,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "msjSalida", scope = CreaPedido.class)
     public JAXBElement<String> createCreaPedidoMsjSalida(String value) {
-        return new JAXBElement<String>(_CreaPedidoMsjSalida_QNAME, String.class, CreaPedido.class, value);
+        return new JAXBElement<String>(_SalidaDatosMsjSalida_QNAME, String.class, CreaPedido.class, value);
     }
 
     /**
@@ -714,7 +867,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "Empleado", scope = ReciveDatos.class)
     public JAXBElement<String> createReciveDatosEmpleado(String value) {
-        return new JAXBElement<String>(_ReciveDatosEmpleado_QNAME, String.class, ReciveDatos.class, value);
+        return new JAXBElement<String>(_AltasPedidosEmpleado_QNAME, String.class, ReciveDatos.class, value);
     }
 
     /**
@@ -736,165 +889,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfKeyValueOfstringstring }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "ConsultaParametrosResult", scope = ConsultaParametrosResponse.class)
-    public JAXBElement<ArrayOfKeyValueOfstringstring> createConsultaParametrosResponseConsultaParametrosResult(ArrayOfKeyValueOfstringstring value) {
-        return new JAXBElement<ArrayOfKeyValueOfstringstring>(_ConsultaParametrosResponseConsultaParametrosResult_QNAME, ArrayOfKeyValueOfstringstring.class, ConsultaParametrosResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfConsPedido }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "ConsulPedidos", scope = ConsultaPedidos.class)
-    public JAXBElement<ArrayOfConsPedido> createConsultaPedidosConsulPedidos(ArrayOfConsPedido value) {
-        return new JAXBElement<ArrayOfConsPedido>(_ConsultaPedidosConsulPedidos_QNAME, ArrayOfConsPedido.class, ConsultaPedidos.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "msjSalida", scope = ConsultaPedidos.class)
-    public JAXBElement<String> createConsultaPedidosMsjSalida(String value) {
-        return new JAXBElement<String>(_CreaPedidoMsjSalida_QNAME, String.class, ConsultaPedidos.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ReciveDatos }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "Recive", scope = GeneraPedido.class)
-    public JAXBElement<ReciveDatos> createGeneraPedidoRecive(ReciveDatos value) {
-        return new JAXBElement<ReciveDatos>(_GeneraPedidoRecive_QNAME, ReciveDatos.class, GeneraPedido.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "NumEmpleado", scope = ConsPedido.class)
-    public JAXBElement<String> createConsPedidoNumEmpleado(String value) {
-        return new JAXBElement<String>(_ActPedidosNumEmpleado_QNAME, String.class, ConsPedido.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "NoTienda", scope = ConsPedido.class)
-    public JAXBElement<String> createConsPedidoNoTienda(String value) {
-        return new JAXBElement<String>(_ConsPedidoNoTienda_QNAME, String.class, ConsPedido.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfDetalleSKU }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "SKUDetalle", scope = ConsPedido.class)
-    public JAXBElement<ArrayOfDetalleSKU> createConsPedidoSKUDetalle(ArrayOfDetalleSKU value) {
-        return new JAXBElement<ArrayOfDetalleSKU>(_ConsPedidoSKUDetalle_QNAME, ArrayOfDetalleSKU.class, ConsPedido.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ConsultaPedidosEntrada }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "DatosP", scope = ConsultaPedido.class)
     public JAXBElement<ConsultaPedidosEntrada> createConsultaPedidoDatosP(ConsultaPedidosEntrada value) {
-        return new JAXBElement<ConsultaPedidosEntrada>(_ConsultaPedidoDatosP_QNAME, ConsultaPedidosEntrada.class, ConsultaPedido.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ConsultaPedidos }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "ConsultaPedidoResult", scope = ConsultaPedidoResponse.class)
-    public JAXBElement<ConsultaPedidos> createConsultaPedidoResponseConsultaPedidoResult(ConsultaPedidos value) {
-        return new JAXBElement<ConsultaPedidos>(_ConsultaPedidoResponseConsultaPedidoResult_QNAME, ConsultaPedidos.class, ConsultaPedidoResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreaPedido }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GeneraPedidoResult", scope = GeneraPedidoResponse.class)
-    public JAXBElement<CreaPedido> createGeneraPedidoResponseGeneraPedidoResult(CreaPedido value) {
-        return new JAXBElement<CreaPedido>(_GeneraPedidoResponseGeneraPedidoResult_QNAME, CreaPedido.class, GeneraPedidoResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AtualizaPedidos }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "DatosP", scope = ActualizaPedido.class)
-    public JAXBElement<AtualizaPedidos> createActualizaPedidoDatosP(AtualizaPedidos value) {
-        return new JAXBElement<AtualizaPedidos>(_ConsultaPedidoDatosP_QNAME, AtualizaPedidos.class, ActualizaPedido.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "msjSalida", scope = SalidaDatos.class)
-    public JAXBElement<String> createSalidaDatosMsjSalida(String value) {
-        return new JAXBElement<String>(_CreaPedidoMsjSalida_QNAME, String.class, SalidaDatos.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "EmpRemision", scope = DetalleSKU.class)
-    public JAXBElement<String> createDetalleSKUEmpRemision(String value) {
-        return new JAXBElement<String>(_DetalleSKUEmpRemision_QNAME, String.class, DetalleSKU.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SalidaDatos }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "ActualizaPedidoResult", scope = ActualizaPedidoResponse.class)
-    public JAXBElement<SalidaDatos> createActualizaPedidoResponseActualizaPedidoResult(SalidaDatos value) {
-        return new JAXBElement<SalidaDatos>(_ActualizaPedidoResponseActualizaPedidoResult_QNAME, SalidaDatos.class, ActualizaPedidoResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "NoTienda", scope = AltasPedidos.class)
-    public JAXBElement<String> createAltasPedidosNoTienda(String value) {
-        return new JAXBElement<String>(_ConsPedidoNoTienda_QNAME, String.class, AltasPedidos.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "Empleado", scope = AltasPedidos.class)
-    public JAXBElement<String> createAltasPedidosEmpleado(String value) {
-        return new JAXBElement<String>(_ReciveDatosEmpleado_QNAME, String.class, AltasPedidos.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfint }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "SKU", scope = AltasPedidos.class)
-    public JAXBElement<ArrayOfint> createAltasPedidosSKU(ArrayOfint value) {
-        return new JAXBElement<ArrayOfint>(_ActPedidosSKU_QNAME, ArrayOfint.class, AltasPedidos.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/Elektra.Servicios.Datos.AdmonUniformes.Modelo", name = "ConsulPedidos", scope = ConsultaPedidosEntrada.class)
-    public JAXBElement<String> createConsultaPedidosEntradaConsulPedidos(String value) {
-        return new JAXBElement<String>(_ConsultaPedidosConsulPedidos_QNAME, String.class, ConsultaPedidosEntrada.class, value);
+        return new JAXBElement<ConsultaPedidosEntrada>(_ActualizaPedidoDatosP_QNAME, ConsultaPedidosEntrada.class, ConsultaPedido.class, value);
     }
 
 }

@@ -1,5 +1,5 @@
 
-package com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda;
+package com.elektra.uniformes.comercio.DAO.clienteWS.Tienda;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -17,22 +17,22 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "WSUniformes", targetNamespace = "http://tempuri.org/", wsdlLocation = "http://10.54.28.114/WebServicioTienda/Elektra.Servicios.Datos.AdmonUniformes.WSUniformes.svc?wsdl")
+@WebServiceClient(name = "WSUniformes", targetNamespace = "http://tempuri.org/", wsdlLocation = "http://nt0055.dom0055.mex/WebServicioTienda/Elektra.Servicios.Datos.AdmonUniformes.WSUniformes.svc?wsdl")
 public class WSUniformes
     extends Service
 {
 
     private final static URL WSUNIFORMES_WSDL_LOCATION;
-    private final static Logger logger = Logger.getLogger(com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda.WSUniformes.class.getName());
+    private final static Logger logger = Logger.getLogger(com.elektra.uniformes.comercio.DAO.clienteWS.Tienda.WSUniformes.class.getName());
 
     static {
         URL url = null;
         try {
             URL baseUrl;
-            baseUrl = com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda.WSUniformes.class.getResource(".");
-            url = new URL(baseUrl, "http://10.54.28.114/WebServicioTienda/Elektra.Servicios.Datos.AdmonUniformes.WSUniformes.svc?wsdl");
+            baseUrl = com.elektra.uniformes.comercio.DAO.clienteWS.Tienda.WSUniformes.class.getResource(".");
+            url = new URL(baseUrl, "http://nt0055.dom0055.mex/WebServicioTienda/Elektra.Servicios.Datos.AdmonUniformes.WSUniformes.svc?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'http://10.54.28.114/WebServicioTienda/Elektra.Servicios.Datos.AdmonUniformes.WSUniformes.svc?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'http://nt0055.dom0055.mex/WebServicioTienda/Elektra.Servicios.Datos.AdmonUniformes.WSUniformes.svc?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         WSUNIFORMES_WSDL_LOCATION = url;

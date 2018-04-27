@@ -14,6 +14,10 @@
             <th>Estatus Anterior</th>
             <th>Estatus Nuevo</th>
             <th>Fecha</th>
+            <th>Remisión</th>
+            <th>Nota Cargo</th>
+            <th>Comentario NC</th>
+            <th>Comentario NE</th>
         </tr>
         <tr *ngFor="let bit of bitacora | paginate: { itemsPerPage: 10, currentPage: pag}" style="border-bottom: 1px solid #eee9e9">
             <td>{{bit.folioSolicitud}}</td>
@@ -27,6 +31,10 @@
             <td>{{bit.estatusAnt}}</td>
             <td>{{bit.estatusNvo}}</td>
             <td>{{bit.fecha}}</td>
+            <td>{{bit.folioRemision}}</td>
+            <td>{{bit.notaCargo}}</td>
+            <td>{{bit.observacionesNC}}</td>
+            <td>{{bit.observacionesNE}}</td>
         </tr>
     </table>
     <br/>

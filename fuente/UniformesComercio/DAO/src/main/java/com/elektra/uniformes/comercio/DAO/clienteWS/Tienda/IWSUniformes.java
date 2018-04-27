@@ -1,13 +1,12 @@
 
-package com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda;
+package com.elektra.uniformes.comercio.DAO.clienteWS.Tienda;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.ws.RequestWrapper;
-import javax.xml.ws.ResponseWrapper;
 
 
 /**
@@ -17,6 +16,7 @@ import javax.xml.ws.ResponseWrapper;
  * 
  */
 @WebService(name = "IWSUniformes", targetNamespace = "http://tempuri.org/")
+@SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
 @XmlSeeAlso({
     ObjectFactory.class
 })
@@ -25,55 +25,50 @@ public interface IWSUniformes {
 
     /**
      * 
-     * @param recive
+     * @param parameters
      * @return
-     *     returns com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda.CreaPedido
+     *     returns clienteWS.Tienda.GeneraPedidoResponse
      */
     @WebMethod(operationName = "GeneraPedido", action = "http://tempuri.org/IWSUniformes/GeneraPedido")
-    @WebResult(name = "GeneraPedidoResult", targetNamespace = "http://tempuri.org/")
-    @RequestWrapper(localName = "GeneraPedido", targetNamespace = "http://tempuri.org/", className = "com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda.GeneraPedido")
-    @ResponseWrapper(localName = "GeneraPedidoResponse", targetNamespace = "http://tempuri.org/", className = "com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda.GeneraPedidoResponse")
-    public CreaPedido generaPedido(
-        @WebParam(name = "Recive", targetNamespace = "http://tempuri.org/")
-        ReciveDatos recive);
+    @WebResult(name = "GeneraPedidoResponse", targetNamespace = "http://tempuri.org/", partName = "parameters")
+    public GeneraPedidoResponse generaPedido(
+        @WebParam(name = "GeneraPedido", targetNamespace = "http://tempuri.org/", partName = "parameters")
+        GeneraPedido parameters);
 
     /**
      * 
-     * @param datosP
+     * @param parameters
      * @return
-     *     returns com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda.SalidaDatos
+     *     returns clienteWS.Tienda.ActualizaPedidoResponse
      */
     @WebMethod(operationName = "ActualizaPedido", action = "http://tempuri.org/IWSUniformes/ActualizaPedido")
-    @WebResult(name = "ActualizaPedidoResult", targetNamespace = "http://tempuri.org/")
-    @RequestWrapper(localName = "ActualizaPedido", targetNamespace = "http://tempuri.org/", className = "com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda.ActualizaPedido")
-    @ResponseWrapper(localName = "ActualizaPedidoResponse", targetNamespace = "http://tempuri.org/", className = "com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda.ActualizaPedidoResponse")
-    public SalidaDatos actualizaPedido(
-        @WebParam(name = "DatosP", targetNamespace = "http://tempuri.org/")
-        AtualizaPedidos datosP);
+    @WebResult(name = "ActualizaPedidoResponse", targetNamespace = "http://tempuri.org/", partName = "parameters")
+    public ActualizaPedidoResponse actualizaPedido(
+        @WebParam(name = "ActualizaPedido", targetNamespace = "http://tempuri.org/", partName = "parameters")
+        ActualizaPedido parameters);
 
     /**
      * 
-     * @param datosP
+     * @param parameters
      * @return
-     *     returns com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda.ConsultaPedidos
+     *     returns clienteWS.Tienda.ConsultaPedidoResponse
      */
     @WebMethod(operationName = "ConsultaPedido", action = "http://tempuri.org/IWSUniformes/ConsultaPedido")
-    @WebResult(name = "ConsultaPedidoResult", targetNamespace = "http://tempuri.org/")
-    @RequestWrapper(localName = "ConsultaPedido", targetNamespace = "http://tempuri.org/", className = "com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda.ConsultaPedido")
-    @ResponseWrapper(localName = "ConsultaPedidoResponse", targetNamespace = "http://tempuri.org/", className = "com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda.ConsultaPedidoResponse")
-    public ConsultaPedidos consultaPedido(
-        @WebParam(name = "DatosP", targetNamespace = "http://tempuri.org/")
-        ConsultaPedidosEntrada datosP);
+    @WebResult(name = "ConsultaPedidoResponse", targetNamespace = "http://tempuri.org/", partName = "parameters")
+    public ConsultaPedidoResponse consultaPedido(
+        @WebParam(name = "ConsultaPedido", targetNamespace = "http://tempuri.org/", partName = "parameters")
+        ConsultaPedido parameters);
 
     /**
      * 
+     * @param parameters
      * @return
-     *     returns com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda.ArrayOfKeyValueOfstringstring
+     *     returns clienteWS.Tienda.ConsultaParametrosResponse
      */
     @WebMethod(operationName = "ConsultaParametros", action = "http://tempuri.org/IWSUniformes/ConsultaParametros")
-    @WebResult(name = "ConsultaParametrosResult", targetNamespace = "http://tempuri.org/")
-    @RequestWrapper(localName = "ConsultaParametros", targetNamespace = "http://tempuri.org/", className = "com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda.ConsultaParametros")
-    @ResponseWrapper(localName = "ConsultaParametrosResponse", targetNamespace = "http://tempuri.org/", className = "com.elektra.uniformes.comercio.cron.dao.clienteWS.tienda.ConsultaParametrosResponse")
-    public ArrayOfKeyValueOfstringstring consultaParametros();
+    @WebResult(name = "ConsultaParametrosResponse", targetNamespace = "http://tempuri.org/", partName = "parameters")
+    public ConsultaParametrosResponse consultaParametros(
+        @WebParam(name = "ConsultaParametros", targetNamespace = "http://tempuri.org/", partName = "parameters")
+        ConsultaParametros parameters);
 
 }

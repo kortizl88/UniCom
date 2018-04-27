@@ -37,7 +37,7 @@ export class EntregaUniformeComponent {
         public dialog: MdDialog) {
         this.usuarioLogueado = datosUsuarioUniformes.getDatosUsuario();
         this.dialogGeneral = new DialogGeneralComponent(this.dialog);
-        
+
         this.consultaPendientesEntrega(this.usuarioLogueado.empleado);
     }
 
@@ -60,9 +60,14 @@ export class EntregaUniformeComponent {
     }
 
     public iniciaProcesoEntrega(usuarioRecibe: UsuarioRecibe, usuarioEntrega: Usuario): void {
-        let dialogDetEntrega: MdDialogRef<DialogDetalleEntrega> = this.dialog.open(DialogDetalleEntrega, {disableClose: true});
+        let dialogDetEntrega: MdDialogRef<DialogDetalleEntrega> = this.dialog.open(DialogDetalleEntrega, { disableClose: true });
         dialogDetEntrega.componentInstance.usuarioRecibe = usuarioRecibe;
         dialogDetEntrega.componentInstance.usuarioEntrega = usuarioEntrega;
+        dialogDetEntrega.afterClosed().subscribe(
+            entregoSolicitud => {
+                this.consultaPendientesEntrega(this.usuarioLogueado.empleado);
+            }
+        );
     }
 
 }

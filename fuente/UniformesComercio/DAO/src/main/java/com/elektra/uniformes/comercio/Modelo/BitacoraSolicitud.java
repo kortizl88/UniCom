@@ -33,7 +33,15 @@ public class BitacoraSolicitud {
     private String estatusNvo;
     @PropiedadMap(campo="FDFECHA")
     private String fecha;
-
+    @PropiedadMap(campo="FIFOLIOREMISION")
+    private int folioRemision;
+    @PropiedadMap(campo="FINOTACARGO")
+    private int notaCargo;
+    @PropiedadMap(campo="FCOBSERVACIONNC")
+    private String observacionesNC;
+    @PropiedadMap(campo="FCOBSERVACIONNE")
+    private String observacionesNE;
+    
     /**
      * @return the folioSolicitud
      */
@@ -186,6 +194,62 @@ public class BitacoraSolicitud {
      */
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+
+    /**
+     * @return the folioRemision
+     */
+    public int getFolioRemision() {
+        return folioRemision;
+    }
+
+    /**
+     * @param folioRemision the folioRemision to set
+     */
+    public void setFolioRemision(int folioRemision) {
+        this.folioRemision = folioRemision;
+    }
+
+    /**
+     * @return the notaCargo
+     */
+    public int getNotaCargo() {
+        return notaCargo;
+    }
+
+    /**
+     * @param notaCargo the notaCargo to set
+     */
+    public void setNotaCargo(int notaCargo) {
+        this.notaCargo = notaCargo;
+    }
+
+    /**
+     * @return the observacionesNC
+     */
+    public String getObservacionesNC() {
+        return observacionesNC;
+    }
+
+    /**
+     * @param observacionesNC the observacionesNC to set
+     */
+    public void setObservacionesNC(String observacionesNC) {
+        this.observacionesNC = observacionesNC;
+    }
+
+    /**
+     * @return the observacionesNE
+     */
+    public String getObservacionesNE() {
+        return observacionesNE;
+    }
+
+    /**
+     * @param observacionesNE the observacionesNE to set
+     */
+    public void setObservacionesNE(String observacionesNE) {
+        this.observacionesNE = observacionesNE;
     }
            
 }
