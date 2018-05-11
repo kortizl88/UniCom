@@ -8,6 +8,7 @@ import Com.Elektra.Log.Dao.LogeoDAO;
 import com.elektra.mapper.Mapper;
 import com.elektra.uniformes.comercio.Modelo.Administrador;
 import com.elektra.uniformes.comercio.Modelo.CargaSemestral;
+import com.elektra.uniformes.comercio.Modelo.CentroDistribucion;
 import com.elektra.uniformes.comercio.Modelo.DetalleSolicitud;
 import com.elektra.uniformes.comercio.Modelo.Negocio;
 import com.elektra.uniformes.comercio.Modelo.RespuestaSolicitudDTO;
@@ -111,6 +112,32 @@ public class DAOAdministradorCargas {
         }
         return ln;
     }
+    
+    public ArrayList<CentroDistribucion> getCeDis() throws Exception {
+        Connection conn = null;
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        Mapper m = new Mapper();
+        ArrayList<CentroDistribucion> ln = null;
+        try {
+            conn = fabricaDAO.getConexion();
+            if (conn == null) {
+                throw new Exception("La conexion no se creo.");
+            }
+            cs = conn.prepareCall(funcionesBD.FN_CONS_CEDIS);
+            cs.registerOutParameter(1, OracleTypes.CURSOR);
+            cs.execute();
+            rs = (ResultSet) cs.getObject(1);
+            ln = (ArrayList<CentroDistribucion>) m.mapperArrayBean(rs, CentroDistribucion.class);
+        } catch (Exception e) {
+            LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getCeDis " + e.getMessage());
+            LogeoDAO.getInstancia().logStackExcepcion(e);
+            throw new Exception("ERROR en : " + this.getClass() + " metodo: getCargas " + e.getMessage());
+        } finally {
+            close(conn, cs, rs);
+        }
+        return ln;
+    }
 
     public String actualizaCarga(CargaSemestral carga) throws Exception {
         String res = "";
@@ -132,8 +159,11 @@ public class DAOAdministradorCargas {
 
             StructDescriptor descNegocio = StructDescriptor.createDescriptor(funcionesBD.TYP_NEGOCIO, (java.sql.Connection) oracleConnection);
             ArrayDescriptor descArrNegocio = ArrayDescriptor.createDescriptor(funcionesBD.TYP_ARR_NEGOCIO, (java.sql.Connection) oracleConnection);
+            StructDescriptor descCD = StructDescriptor.createDescriptor(funcionesBD.TYP_CEDIS, (java.sql.Connection) oracleConnection);
+            ArrayDescriptor descArrCD = ArrayDescriptor.createDescriptor(funcionesBD.TYP_ARR_CEDIS, (java.sql.Connection) oracleConnection);
             StructDescriptor descCarga = StructDescriptor.createDescriptor(funcionesBD.TYP_CARGA, (java.sql.Connection) oracleConnection);
-
+            
+            /*negocios*/
             ArrayList<STRUCT> arNeg = new ArrayList<STRUCT>();
             for (Negocio negocio : carga.getNegocios()) {
                 Object[] detO = new Object[2];
@@ -144,8 +174,20 @@ public class DAOAdministradorCargas {
             }
             STRUCT arF[] = arNeg.toArray(new STRUCT[arNeg.size()]);
             ARRAY arNegocios = new ARRAY(descArrNegocio, (java.sql.Connection) oracleConnection, arF);
-
-            Object[] cargaO = new Object[7];
+            
+            /*cedis*/
+            ArrayList<STRUCT> arCD = new ArrayList<STRUCT>();
+            for (CentroDistribucion cd : carga.getCedis()) {
+                Object[] detO = new Object[2];
+                detO[0] = cd.getPais();
+                detO[1] = cd.getCedis();
+                STRUCT strCD = new STRUCT(descCD, (java.sql.Connection) oracleConnection, detO);
+                arCD.add(strCD);
+            }
+            STRUCT arC[] = arCD.toArray(new STRUCT[arCD.size()]);
+            ARRAY arCedis = new ARRAY(descArrCD, (java.sql.Connection) oracleConnection, arC);
+            
+            Object[] cargaO = new Object[8];
             cargaO[0] = carga.getIdCarga();
             cargaO[1] = carga.getTitulo();
             cargaO[2] = carga.getFechaInicio();
@@ -153,6 +195,7 @@ public class DAOAdministradorCargas {
             cargaO[4] = carga.getEstatus();
             cargaO[5] = carga.getGenerarPedidos();
             cargaO[6] = arNegocios;
+            cargaO[7] = arCedis;
 
             STRUCT strCarga = new STRUCT(descCarga, (java.sql.Connection) oracleConnection, cargaO);
 

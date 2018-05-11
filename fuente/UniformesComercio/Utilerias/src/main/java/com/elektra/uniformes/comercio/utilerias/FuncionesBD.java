@@ -114,4 +114,15 @@ public class FuncionesBD {
     @Value("#{propiedadesUniformesComercio['FN_CONS_SEGUIMIENTO_SOL']}")
     public String FN_CONS_SEGUIMIENTO_SOL;
     
+    /*cedis*/
+    @Value("#{propiedadesUniformesComercio['FN_CONS_CEDIS']}")
+    public String FN_CONS_CEDIS;
+    
+    @Value("#{propiedadesUniformesComercio['TYP_CEDIS']}")
+    public String TYP_CEDIS;
+    
+    @Value("#{propiedadesUniformesComercio['TYP_ARR_CEDIS']}")
+    public String TYP_ARR_CEDIS;
+    
+    
 }

@@ -17,6 +17,7 @@ import { WrapperRespuesta } from '../../modelo/wrapper_respuesta';
 
 //Componentes
 import { DialogGeneralComponent } from '../../servicio/componentes/dialog/dialog-general-component';
+import { DialogConfirmaCancelacionComponent } from './dialog-confirma-cancelacion-component';
 
 
 @Component({
@@ -126,5 +127,20 @@ export class EstatusUniformeComponent {
         let dialogDetalle: MdDialogRef<ModalBitacoraSolicitudComponent> = this.dialog.open(ModalBitacoraSolicitudComponent);
         dialogDetalle.componentInstance.solicitud = solicitud;
         dialogDetalle.componentInstance.consultaBitacora(solicitud);
+    }
+
+    /*Cancelacion */
+    public cancelarSolicitud(solicitud: Solicitud):void{
+        let dialogCancela: MdDialogRef<DialogConfirmaCancelacionComponent> = this.dialog.open(DialogConfirmaCancelacionComponent);
+        dialogCancela.componentInstance.solicitud = solicitud;
+        dialogCancela.afterClosed().subscribe(
+            confirmaCancelacion => {
+                if (confirmaCancelacion) {
+                    alert("CANCELADO!!!");
+                } else {
+                    alert("NO CANCELO!!!");
+                }
+            }
+        );
     }
 }

@@ -127,6 +127,9 @@ export class WSUniformesComercioGlobalService {
     public consultaNegocios(): string {
         return `${this._cadenaUrl}/json/administracion/reporte/negocios`;
     }
+    public consultaCeDis(): string {
+        return `${this._cadenaUrl}/json/administracion/reporte/cedis`;
+    }
     public obtieneReporte(): string {
         return `${this._cadenaUrl}/json/administracion/reporte`;
     }

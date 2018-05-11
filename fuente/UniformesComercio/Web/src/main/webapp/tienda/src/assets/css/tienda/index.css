@@ -1064,6 +1064,7 @@ b.tcliente {
 .menuColap{
     padding:10px;
     padding-left: 3%;
+    text-align: center;
 }
 
 .menuColap .opcM{
@@ -1071,8 +1072,8 @@ b.tcliente {
     text-align: center;
     border-bottom: 2px solid transparent;
     background-color: transparent;
-    color: #936e00;
-    font-size: 1.3em;
+    color: #000;
+    font-size: 15px;
     line-height: 1.3em;
     height: 2em;
     font-weight: 200;
@@ -1134,7 +1135,7 @@ b.tcliente {
 }
 
 .contCats .cats .catDesc{
-    color:#878787;
+    color:#403e3e;
 }
 
 .contCats .cats img{
@@ -1696,7 +1697,7 @@ table.ccenter td {
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 
-.dialog-sincrono-transparente{
+.dialog-sincrono-transparente md-dialog-container{
     background: transparent !important;   
     box-shadow: none !important;
 
@@ -1940,4 +1941,11 @@ table.ccenter td {
 }
 .cent{
     text-align: center;
+}
+.cancelaSol{
+    color:#d4243c;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    padding-top: 5px;
 }

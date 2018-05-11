@@ -162,6 +162,23 @@ public class ControllerAdministracion {
         return r;
     }
 
+    @RequestMapping(value = "/reporte/cedis", method = RequestMethod.GET)
+    public @ResponseBody
+    Respuesta getCeDis() {
+        Respuesta r = new Respuesta();
+        try {
+            r.setRespuesta(negocioAdministradorCargas.getCeDis());
+            r.setError(false);
+            r.setMensaje("Consulta obtenida correctamente");
+        } catch (Exception e) {
+            r.setError(true);
+            r.setMensaje(e.getMessage());
+            LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getNegocios " + e.getMessage());
+            LogeoDAO.getInstancia().logStackExcepcion(e);
+        }
+        return r;
+    }
+
     @RequestMapping(value = "/reporte", method = RequestMethod.POST)
     public @ResponseBody
     Respuesta consultaReporte(@RequestBody ReporteReq reporteReqa) {

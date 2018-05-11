@@ -6,6 +6,7 @@ package com.elektra.uniformes.comercio.controller.negocio;
 
 import com.elektra.uniformes.comercio.DAO.DAOAdministradorCargas;
 import com.elektra.uniformes.comercio.Modelo.CargaSemestral;
+import com.elektra.uniformes.comercio.Modelo.CentroDistribucion;
 import com.elektra.uniformes.comercio.Modelo.Negocio;
 import com.elektra.uniformes.comercio.Modelo.Tienda;
 import java.util.ArrayList;
@@ -34,6 +35,10 @@ public class NegocioAdministradorCargas {
     
     public String actualizaCarga(CargaSemestral carga) throws Exception {
         return daoAdministradorCargas.actualizaCarga(carga);
+    }
+    
+    public ArrayList<CentroDistribucion> getCeDis() throws Exception {
+        return daoAdministradorCargas.getCeDis();
     }
     
 }

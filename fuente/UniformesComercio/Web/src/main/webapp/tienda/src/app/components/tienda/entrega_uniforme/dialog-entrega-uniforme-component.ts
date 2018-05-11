@@ -141,11 +141,11 @@ export class DialogDetalleEntrega {
                     this.terminoProceso = true;
                 } else {
                     this.dialogGeneral.mensajeError("Ocurri\u00F3 un error al realizar la descarga de los pedidos", respuestaWS.mensaje, 1);
-                    this.msjError = "Ocurrió un error al realizar la descarga de los pedidos";
+                    this.msjError = "OcurriÃ³ un error al realizar la descarga de los pedidos";
                     this.terminoProceso = true;
                 }
             }, error => {
-                this.dialogGeneral.mensajeError("Ocurrió un error al realizar la descarga de los pedidos", error, 1);
+                this.dialogGeneral.mensajeError("Ocurri\u00F3 un error al realizar la descarga de los pedidos", error, 1);
             }
         );
     }
@@ -192,7 +192,7 @@ export class DialogConfirmaRecibido {
     }
 
     public iniciarHuellaEmpleadoConfirmacion(usuarioRecibe: UsuarioRecibe, usuarioEntrega: Usuario) {
-        this.recibeRespuestaComponente.emit({ valido: true, flujo: 3, msj: 'procede a validar huella', usuarioValida: UsuarioRecibe });
+        this.recibeRespuestaComponente.emit({ valido: true, flujo: 3, msj: 'procede a validar huella', usuarioValida: usuarioRecibe });
         this.dialogRef.close();
     }
 

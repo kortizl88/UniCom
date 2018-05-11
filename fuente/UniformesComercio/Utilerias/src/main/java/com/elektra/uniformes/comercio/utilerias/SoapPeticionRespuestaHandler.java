@@ -6,61 +6,27 @@ package com.elektra.uniformes.comercio.utilerias;
 
 import Com.Elektra.Log.Dao.LogeoDAO;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.Set;
-import javax.xml.namespace.QName;
-import javax.xml.ws.handler.soap.SOAPMessageContext;
-import javax.xml.soap.SOAPException;
-import javax.xml.soap.SOAPMessage;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.ws.LogicalMessage;
+import javax.xml.ws.handler.LogicalHandler;
+import javax.xml.ws.handler.LogicalMessageContext;
 import javax.xml.ws.handler.MessageContext;
-import javax.xml.ws.handler.soap.SOAPHandler;
+
 
 /**
  *
  * @author kortizl
  */
-public class SoapPeticionRespuestaHandler implements SOAPHandler<SOAPMessageContext> {
+public class SoapPeticionRespuestaHandler implements LogicalHandler<LogicalMessageContext> {
 
     private String peticion = null;
     private String respuesta = null;
-
-    @Override
-    public Set<QName> getHeaders() {
-        return null;
-    }
-
-    @Override
-    public boolean handleMessage(SOAPMessageContext c) {
-        this.procesaPeticionRespuesta(c);
-        return true;
-    }
-
-    @Override
-    public boolean handleFault(SOAPMessageContext c) {
-        this.procesaPeticionRespuesta(c);
-        return true;
-    }
-
-    @Override
-    public void close(MessageContext mc) {
-    }
-
-    private void procesaPeticionRespuesta(SOAPMessageContext sc) {
-        Boolean esRequest = (Boolean) sc.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
-        SOAPMessage soapMessage = sc.getMessage();
-        try {
-            ByteArrayOutputStream bAOS = new ByteArrayOutputStream();
-            soapMessage.writeTo(bAOS);
-            String strSoap = new String(bAOS.toByteArray());
-            if (esRequest) {
-                setPeticion(strSoap);
-            } else {
-                setRespuesta(strSoap);
-            }
-        } catch (Exception e) {
-            LogeoDAO.getInstancia().logExcepcion(e.getMessage());
-        }
-    }
 
     /**
      * @return the peticion
@@ -88,5 +54,44 @@ public class SoapPeticionRespuestaHandler implements SOAPHandler<SOAPMessageCont
      */
     public void setRespuesta(String respuesta) {
         this.respuesta = respuesta;
+    }
+
+    @Override
+    public boolean handleMessage(LogicalMessageContext c) {
+        Boolean outboundProperty = (Boolean) c.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
+        LogicalMessage logicalMessage = c.getMessage();
+        Source payload = logicalMessage.getPayload();
+        //imprimir el payload
+        try {
+            TransformerFactory factory = TransformerFactory.newInstance();
+            Transformer transformer = factory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            Result result = new StreamResult(out);
+            transformer.transform(payload, result);
+            String strSoap = new String(out.toByteArray(), "UTF-8");
+            if (outboundProperty) {
+                LogeoDAO.getInstancia().logExcepcion("mensaje de salida");
+                this.setPeticion(strSoap);
+            } else {
+                LogeoDAO.getInstancia().logExcepcion("mensaje de entrada");
+                this.setRespuesta(strSoap);
+            }
+
+        } catch (Exception ex) {
+            LogeoDAO.getInstancia().logExcepcion("error procesando xml de payload");
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean handleFault(LogicalMessageContext c) {
+        return false;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void close(MessageContext mc) {
     }
 }

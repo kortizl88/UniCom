@@ -6,6 +6,7 @@ package com.elektra.uniformes.comercio.controller.negocio;
 
 import com.elektra.uniformes.comercio.DAO.DAOAdministradorReporte;
 import com.elektra.uniformes.comercio.Modelo.BitacoraSolicitud;
+import com.elektra.uniformes.comercio.Modelo.CentroDistribucion;
 import com.elektra.uniformes.comercio.Modelo.EstatusSolicitud;
 import com.elektra.uniformes.comercio.Modelo.PedidoReporteDTO;
 import com.elektra.uniformes.comercio.Modelo.ReporteDTO;
@@ -122,6 +123,8 @@ public class NegocioAdministradorReporte {
         rowhead.getCell(12).setCellStyle(stCellHeader);
         rowhead.createCell(13).setCellValue("Cantidad");
         rowhead.getCell(13).setCellStyle(stCellHeader);
+        rowhead.createCell(14).setCellValue("CD");
+        rowhead.getCell(14).setCellStyle(stCellHeader);
         int indRows = 2;
         for (ReporteDTO rep : reporte) {
             for (PedidoReporteDTO ped : rep.getPedidos()) {
@@ -147,6 +150,8 @@ public class NegocioAdministradorReporte {
                 row.getCell(12).setCellStyle(stCellVAlign);
                 row.createCell(13).setCellValue(ped.getCantidad());
                 row.getCell(13).setCellStyle(stCellVAlign);
+                row.createCell(14).setCellValue(ped.getCedis());
+                row.getCell(14).setCellStyle(stCellVAlign);
                 indRows++;
             }
 
