@@ -11,6 +11,7 @@ import com.elektra.uniformes.comercio.Modelo.DetalleEntrega;
 import com.elektra.uniformes.comercio.Modelo.EntregaDTO;
 import com.elektra.uniformes.comercio.utilerias.FuncionesBD;
 import java.sql.CallableStatement;
+import java.sql.Clob;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +20,7 @@ import oracle.jdbc.OracleConnection;
 import oracle.jdbc.OracleTypes;
 import oracle.sql.ARRAY;
 import oracle.sql.ArrayDescriptor;
+import oracle.sql.CLOB;
 import oracle.sql.STRUCT;
 import oracle.sql.StructDescriptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,6 +112,8 @@ public class DAOEntrega {
             }
 
             StructDescriptor sdConfirmacionEntrega = StructDescriptor.createDescriptor(funcionesBD.TYPE_CONFIRMACION_ENTREGA, (java.sql.Connection) oracleConnection);
+            ArrayDescriptor adConfirmacionEntrega = ArrayDescriptor.createDescriptor(funcionesBD.TYPE_ARR_CONFIRMACION_ENTREGA, (java.sql.Connection) oracleConnection);
+
             ArrayList<STRUCT> listaStruct = new ArrayList<STRUCT>();
             for (DetalleEntrega pedido : entrega.getPedidos()) {
                 Object[] objetoConfirmacion = new Object[13];
@@ -118,19 +122,21 @@ public class DAOEntrega {
                 objetoConfirmacion[2] = pedido.getNoPais();
                 objetoConfirmacion[3] = pedido.getNoCanal();
                 objetoConfirmacion[4] = pedido.getNoSucursal();
-                objetoConfirmacion[5] = entrega.getEmpleado();
+                objetoConfirmacion[5] = pedido.getPedido();
                 objetoConfirmacion[6] = pedido.getSku();
                 objetoConfirmacion[7] = 0;
-                objetoConfirmacion[8] = pedido.getMensaje();
-                objetoConfirmacion[9] = 6;
-                objetoConfirmacion[10] = ( pedido.isErrorEntrega() ? 6 : 7 );
-                objetoConfirmacion[11] = ( pedido.isErrorEntrega() ? 1 : 0 );
+                Clob clob = oracleConnection.createClob();
+                clob.setString(1,pedido.getDatosProceso());
+                objetoConfirmacion[8] = clob;
+                objetoConfirmacion[9] = 6;/* Estatus recibido en tienda */
+                objetoConfirmacion[10] = (pedido.isErrorEntrega() ? 6 : 7);/* 6 - en tda | 7 - entregado */
+                objetoConfirmacion[11] = (pedido.isErrorEntrega() ? 1 : 0);
                 objetoConfirmacion[12] = pedido.getMensaje();
                 STRUCT struct = new STRUCT(sdConfirmacionEntrega, (java.sql.Connection) oracleConnection, objetoConfirmacion);
                 listaStruct.add(struct);
             }
             STRUCT arregloStructConfirmacion[] = listaStruct.toArray(new STRUCT[listaStruct.size()]);
-            ArrayDescriptor adConfirmacionEntrega = ArrayDescriptor.createDescriptor(funcionesBD.TYPE_ARR_CONFIRMACION_ENTREGA, (java.sql.Connection) oracleConnection);
+
             ARRAY arrayConfirmacionEntrega = new ARRAY(adConfirmacionEntrega, (java.sql.Connection) oracleConnection, arregloStructConfirmacion);
 
             cs = conn.prepareCall(funcionesBD.SP_GUARDA_CONFIRMACION_ENTREGA);
@@ -138,7 +144,7 @@ public class DAOEntrega {
             cs.registerOutParameter(2, OracleTypes.NUMBER);
             cs.execute();
 
-            System.out.println("Numero de registros " + (int) cs.getInt(2));
+            LogeoDAO.getInstancia().logExcepcion("SOLICITUD entregada al empleado - > "+ entrega.getEmpleado() +" Numero de registros actualizados en bd -> " + (int) cs.getInt(2) );
         } catch (Exception e) {
             LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: postConfirmacionEntrega " + e.getMessage());
             LogeoDAO.getInstancia().logStackExcepcion(e);

@@ -49,6 +49,7 @@
             <th>Cantidad</th>
             <th>Estatus</th>
             <th>Remisión</th>
+            <th>CD</th>
             <th>Fecha Actualización</th>
         </tr>
         <tr *ngFor="let pedido of solicitud.pedidos" style="border-bottom: 1px solid #eee9e9">
@@ -59,6 +60,7 @@
             <td>{{pedido.cantidad}}</td>
             <td>{{pedido.estatusPedido}}</td>
             <td>{{pedido.remision}}</td>
+            <td>{{pedido.cedis}}</td>
             <td>{{pedido.fechaAct}}</td>
         </tr>
     </table>

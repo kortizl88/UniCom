@@ -41,6 +41,8 @@ public class Usuario {
     private int canal;
     @PropiedadMap(campo="FICECO")
     private int ceco;
+    @PropiedadMap(campo="CENTROCOSTOS")
+    private int centroCostos;
     @PropiedadMap(campo="FCCECO")
     private String descCeco;
     
@@ -262,5 +264,19 @@ public class Usuario {
      */
     public void setSolicitudPlantilla(int solicitudPlantilla) {
         this.solicitudPlantilla = solicitudPlantilla;
+    }
+
+    /**
+     * @return the centroCostos
+     */
+    public int getCentroCostos() {
+        return centroCostos;
+    }
+
+    /**
+     * @param centroCostos the centroCostos to set
+     */
+    public void setCentroCostos(int centroCostos) {
+        this.centroCostos = centroCostos;
     }
 }

@@ -139,7 +139,7 @@ export class SolicitudUniformeComponent implements OnInit, OnDestroy {
 
     public consultaInfoTienda(validaEmpleado: boolean) {
         let dialEsp = this.dialogGeneral.iniciarEspera();
-        this.solicitudService.getInfoTienda(this.tiendaLogin.pais, this.tiendaLogin.canal, this.tiendaLogin.sucursal).subscribe(
+        this.solicitudService.getInfoTienda(this.tiendaLogin.pais, this.tiendaLogin.canal, this.tiendaLogin.centroCostos).subscribe(
             respuestaTienda => {
                 this.dialogGeneral.cerrarEsperaId(dialEsp);
                 if (!respuestaTienda.error) {
@@ -149,7 +149,7 @@ export class SolicitudUniformeComponent implements OnInit, OnDestroy {
                             this.validaEmpleado();
                         } else {/*seleccionar tienda receptora*/
                             let dialEspTC = this.dialogGeneral.iniciarEspera();
-                            this.solicitudService.getTiendasCercanas(this.tiendaLogin.pais, this.tiendaLogin.canal, this.tiendaLogin.sucursal).subscribe(
+                            this.solicitudService.getTiendasCercanas(this.tiendaLogin.pais, this.tiendaLogin.canal, this.tiendaLogin.centroCostos).subscribe(
                                 respuestaTiendasCercanas => {
                                     this.dialogGeneral.cerrarEsperaId(dialEspTC);
                                     if (!respuestaTienda.error) {
@@ -204,7 +204,7 @@ export class SolicitudUniformeComponent implements OnInit, OnDestroy {
                 break;
             case 3:/*solicitud nuevo ingreso*/
                 /*consultar los empleados de nuevo ingreso*/
-                this.consultaEmpleadosNuevoIngreso(this.tiendaSolicitud.sucursal);
+                this.consultaEmpleadosNuevoIngreso(this.tiendaSolicitud.pais,this.tiendaSolicitud.canal ,this.tiendaSolicitud.centroCostos);
         }
     }
 
@@ -244,9 +244,9 @@ export class SolicitudUniformeComponent implements OnInit, OnDestroy {
         );
     }
 
-    public consultaEmpleadosNuevoIngreso(sucursal: number) {
+    public consultaEmpleadosNuevoIngreso(pais: number, canal: number, ceco: number) {
         let dialEsp = this.dialogGeneral.iniciarEspera();
-        this.solicitudService.getEmpleadosNuevoIngreso(sucursal).subscribe(
+        this.solicitudService.getEmpleadosNuevoIngreso(pais,canal,ceco).subscribe(
             respuestaNuevosIngresos => {
                 this.dialogGeneral.cerrarEsperaId(dialEsp);
                 if (!respuestaNuevosIngresos.error) {

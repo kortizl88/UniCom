@@ -24,6 +24,7 @@ import { ModalCargaSemestralComponent } from './components/administracion/report
 import { ModalEditarCargaSemestralComponent } from './components/administracion/cargas/modal-editar-carga-semestral-component';
 import { ModalDetalleSolicitudComponent } from './components/administracion/reporte/modal-detalle-solicitud-component';
 import { ModalBitacoraSolicitudComponent } from './components/administracion/reporte/modal-bitacora-solicitud-component' ;
+import { DialogConfirmaCancelacionComponent } from './components/tienda/estatus_uniforme/dialog-confirma-cancelacion-component' ;
 import {
     DialogDetalleEntrega,
     DialogConfirmaEntrega,
@@ -121,7 +122,8 @@ import { AdministracionService } from './components/administracion/administracio
         ModalCargaSemestralComponent,
         ModalEditarCargaSemestralComponent,
         ModalDetalleSolicitudComponent,
-        ModalBitacoraSolicitudComponent
+        ModalBitacoraSolicitudComponent,
+        DialogConfirmaCancelacionComponent
     ],
     imports: [
         NoopAnimationsModule,
@@ -230,7 +232,8 @@ import { AdministracionService } from './components/administracion/administracio
         ModalCargaSemestralComponent,
         ModalEditarCargaSemestralComponent,
         ModalDetalleSolicitudComponent,
-        ModalBitacoraSolicitudComponent
+        ModalBitacoraSolicitudComponent,
+        DialogConfirmaCancelacionComponent
 
     ] // Component Dialog
 })

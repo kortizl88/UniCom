@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { EstatusService } from './estatus-service';
+import { ModalBitacoraSolicitudComponent } from '../../administracion/reporte/modal-bitacora-solicitud-component';
 
 // Servicio global Dialog
 import { DatosUsuarioUniformesGlobalService } from '../../servicio/modelo/datos-usuario-uniformes-global-service';
@@ -16,6 +17,7 @@ import { WrapperRespuesta } from '../../modelo/wrapper_respuesta';
 
 //Componentes
 import { DialogGeneralComponent } from '../../servicio/componentes/dialog/dialog-general-component';
+import { DialogConfirmaCancelacionComponent } from './dialog-confirma-cancelacion-component';
 
 
 @Component({
@@ -120,4 +122,25 @@ export class EstatusUniformeComponent {
         return this._avance;
     }
 
+    /* consultar bitacora*/
+    public verBitacora( solicitud: number): void {
+        let dialogDetalle: MdDialogRef<ModalBitacoraSolicitudComponent> = this.dialog.open(ModalBitacoraSolicitudComponent);
+        dialogDetalle.componentInstance.solicitud = solicitud;
+        dialogDetalle.componentInstance.consultaBitacora(solicitud);
+    }
+
+    /*Cancelacion */
+    public cancelarSolicitud(solicitud: Solicitud):void{
+        let dialogCancela: MdDialogRef<DialogConfirmaCancelacionComponent> = this.dialog.open(DialogConfirmaCancelacionComponent);
+        dialogCancela.componentInstance.solicitud = solicitud;
+        dialogCancela.afterClosed().subscribe(
+            confirmaCancelacion => {
+                if (confirmaCancelacion) {
+                    alert("CANCELADO!!!");
+                } else {
+                    alert("NO CANCELO!!!");
+                }
+            }
+        );
+    }
 }

@@ -110,7 +110,7 @@ public class DAOSolicitud {
             cs.execute();
             rs = (ResultSet) cs.getObject(1);
             lk = (ArrayList<EmpleadoKitDTO>) m.mapperArrayBean(rs, EmpleadoKitDTO.class);
-            
+
         } catch (Exception e) {
             LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getKitEmpleado " + e.getMessage());
             LogeoDAO.getInstancia().logStackExcepcion(e);
@@ -253,7 +253,7 @@ public class DAOSolicitud {
         return ls;
     }
 
-    public ArrayList<Usuario> getNuevosIngreso(int tienda) throws Exception {
+    public ArrayList<Usuario> getNuevosIngreso(int pais, int canal, int ceco) throws Exception {
         Connection conn = null;
         CallableStatement cs = null;
         ArrayList<Usuario> lt = new ArrayList<Usuario>();
@@ -267,7 +267,9 @@ public class DAOSolicitud {
             }
             cs = conn.prepareCall(funcionesBD.FN_CONS_EMP_NUEVO_INGRESO);
             cs.registerOutParameter(1, OracleTypes.CURSOR);
-            cs.setInt(2, tienda);
+            cs.setInt(2, pais);
+            cs.setInt(3, canal);
+            cs.setInt(4, ceco);
             cs.execute();
             rs = (ResultSet) cs.getObject(1);
             lt = (ArrayList<Usuario>) m.mapperArrayBean(rs, Usuario.class);

@@ -18,7 +18,8 @@
             <div class="titSecc">Vigencia</div>
             <div class="inpContFechas">
                 <md-input-container>
-                    <input id="dpIni" readonly name="fini" required mdInput [mdDatepicker]="dpIni" [(ngModel)]="carga.fechaInicio" #fini="ngModel" placeholder="Fecha inicial">
+                    <input id="dpIni" readonly name="fini" required mdInput [mdDatepicker]="dpIni" [(ngModel)]="carga.fechaInicio" #fini="ngModel"
+                        placeholder="Fecha inicial">
                     <button mdSuffix [mdDatepickerToggle]="dpIni"></button>
                 </md-input-container>
                 <md-datepicker #dpIni></md-datepicker>
@@ -27,8 +28,8 @@
                     <input id="dpFin" readonly name="dpFin" required mdInput [mdDatepicker]="dpFin" [(ngModel)]="carga.fechaFin" placeholder="Fecha final">
                     <button mdSuffix [mdDatepickerToggle]="dpFin" color="primary"></button>
                 </md-input-container>
-                <md-datepicker #dpFin ></md-datepicker>
-                
+                <md-datepicker #dpFin></md-datepicker>
+
                 <div *ngIf="errFecha" class="errFrmVal">
                     <div>
                         {{msjFecha}}*
@@ -61,9 +62,16 @@
         </div>
         <div *ngIf="carga.idCarga > 0">
             <div class="titSecc">Enviar a CD</div>
-            <md-checkbox id="selCD" name="selCD" [ngClass]="'chkPol'" color="primary" [(ngModel)]="carga.generarPedidos">
+            <!-- <md-checkbox id="selCD" name="selCD" [ngClass]="'chkPol'" color="primary" [(ngModel)]="carga.generarPedidos">
                 <span>{{carga.generarPedidos ? 'Sí' : 'No'}}</span>
-            </md-checkbox>
+            </md-checkbox> -->
+            <div class="contNegocios">
+                <div *ngFor="let cd of cedis" class="negocio">
+                    <md-checkbox id="selCD_{{cd.cedis}}" name="selCD_{{cd.cedis}}" [ngClass]="'chkPol'" color="primary" [(ngModel)]="cd.seleccionado">
+                        <span>( {{cd.cedis}} ) {{cd.descCedis}}</span>
+                    </md-checkbox>
+                </div>
+            </div>
         </div>
     </form>
     <br>

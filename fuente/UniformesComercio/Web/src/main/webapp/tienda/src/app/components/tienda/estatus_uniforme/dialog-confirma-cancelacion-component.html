@@ -1,0 +1,11 @@
+<div md-dialog-content>
+    <div class="dialConfirmaSolicitud" style="min-width: 300px;">
+        <div class='entRecibe'>Confirmar Cancelación Solicitud {{solicitud.nofolioSolicitud}}</div>
+        <br>
+        <div style="text-align: center;">¿Estás seguro de cancelar la solcitud <b>{{solicitud.nofolioSolicitud}}?</b></div>
+    </div>
+</div>
+<div md-dialog-actions align="end">
+    <button md-raised-button (click)="dialogRef.close(false)">Cancelar</button>&nbsp;&nbsp;&nbsp;
+    <button md-raised-button class="btnUni" (click)="dialogRef.close(true)">Confirmar</button>
+</div>

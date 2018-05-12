@@ -28,6 +28,8 @@ public class CargaSemestral {
     private int totalSolicitudes;
     @PropiedadMap(lista = true, tipoComplejo = "com.elektra.uniformes.comercio.Modelo.Negocio")
     private ArrayList<Negocio> negocios;
+    @PropiedadMap(lista = true, tipoComplejo = "com.elektra.uniformes.comercio.Modelo.CentroDistribucion")
+    private ArrayList<CentroDistribucion> cedis;
 
     /**
      * @return the idCarga
@@ -139,5 +141,19 @@ public class CargaSemestral {
      */
     public void setTotalSolicitudes(int totalSolicitudes) {
         this.totalSolicitudes = totalSolicitudes;
+    }
+
+    /**
+     * @return the cedis
+     */
+    public ArrayList<CentroDistribucion> getCedis() {
+        return cedis;
+    }
+
+    /**
+     * @param cedis the cedis to set
+     */
+    public void setCedis(ArrayList<CentroDistribucion> cedis) {
+        this.cedis = cedis;
     }
 }

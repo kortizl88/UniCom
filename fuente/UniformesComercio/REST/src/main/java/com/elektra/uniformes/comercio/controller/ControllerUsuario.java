@@ -28,35 +28,18 @@ public class ControllerUsuario {
     @Qualifier("negocioUsuario")
     private NegocioUsuario negocioUsuario;
 
-    @RequestMapping(value = "/{numEmp}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{numEmp}/tienda/{tienda}", method = RequestMethod.GET)
     public @ResponseBody
-    Respuesta getInformacionUsuario(@PathVariable("numEmp") int numEmp) {
+    Respuesta getInformacionUsuario(@PathVariable("numEmp") int numEmp,@PathVariable("tienda") int tienda ) {
         Respuesta r = new Respuesta();
         try {
-            r.setRespuesta(negocioUsuario.getInformacionUsuario(numEmp));
+            r.setRespuesta(negocioUsuario.getInformacionUsuario(numEmp,tienda));
             r.setError(false);
             r.setMensaje("Consulta obtenida correctamente");
         } catch (Exception e) {
             r.setError(true);
             r.setMensaje(e.getMessage());
             LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getInformacionUsuario " + e.getMessage());
-            LogeoDAO.getInstancia().logStackExcepcion(e);
-        }
-        return r;
-    }
-
-    @RequestMapping(value = "/{numEmp}/menu", method = RequestMethod.GET)
-    public @ResponseBody
-    Respuesta getMenuUsuario(@PathVariable("numEmp") int numEmp) {
-        Respuesta r = new Respuesta();
-        try {
-            r.setRespuesta(negocioUsuario.getMenuUsuario(numEmp));
-            r.setError(false);
-            r.setMensaje("Consulta obtenida correctamente");
-        } catch (Exception e) {
-            r.setError(true);
-            r.setMensaje(e.getMessage());
-            LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getMenuUsuario " + e.getMessage());
             LogeoDAO.getInstancia().logStackExcepcion(e);
         }
         return r;

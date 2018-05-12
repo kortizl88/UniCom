@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --output-path=../scripts/ && move ../scripts\\main*.js ../scripts\\main.js && move ../scripts\\inline*.js ../scripts\\inline.js && move ../scripts\\polyfills*.js ../scripts\\polyfills.js && move ../scripts\\styles*.css ../scripts\\styles.css && move ../scripts\\vendor*.js ../scripts\\vendor.js && rmdir /s /q ..\\assets && move ../scripts/assets ../ && move /Y ../scripts\\*chunk.js ../",
+    "build": "ng build --prod --aot=false --sourcemap=false --output-path=../scripts/ && move ../scripts\\main*.js ../scripts\\main.js && move ../scripts\\inline*.js ../scripts\\inline.js && move ../scripts\\polyfills*.js ../scripts\\polyfills.js && move ../scripts\\styles*.css ../scripts\\styles.css && move ../scripts\\vendor*.js ../scripts\\vendor.js && rmdir /s /q ..\\assets && move ../scripts/assets ../ && move /Y ../scripts\\*chunk.js ../",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

@@ -51,7 +51,7 @@ public class DAOUsuario {
 
     }
 
-    public Usuario getInformacionUsuario(int numEmp) throws Exception {
+    public Usuario getInformacionUsuario(int numEmp, int tienda) throws Exception {
         Connection conn = null;
         CallableStatement cs = null;
         Usuario u = new Usuario();
@@ -66,6 +66,7 @@ public class DAOUsuario {
             cs = conn.prepareCall(funcionesBD.FN_CONS_INFO_USUARIO);
             cs.registerOutParameter(1, OracleTypes.CURSOR);
             cs.setInt(2, numEmp);
+            cs.setInt(3, tienda);
             cs.execute();
             rs = (ResultSet) cs.getObject(1);
             u = (Usuario) m.mapperBean(rs, Usuario.class);
@@ -80,35 +81,6 @@ public class DAOUsuario {
         return u;
     }
 
-    public ArrayList<Menu> getMenuUsuario(int numEmp) throws Exception {
-        Connection conn = null;
-        CallableStatement cs = null;
-        ArrayList<Menu> lU = new ArrayList<Menu>();
-        ResultSet rs = null;
-        Mapper m = new Mapper();
-        try {
-            conn = fabricaDAO.getConexion();
-
-            if (conn == null) {
-                throw new Exception("La conexion no se creo.");
-            }
-            cs = conn.prepareCall(funcionesBD.FN_CONS_MENU_USUARIO);
-            cs.registerOutParameter(1, OracleTypes.CURSOR);
-            cs.setInt(2, numEmp);
-            cs.execute();
-            rs = (ResultSet) cs.getObject(1);
-            lU = (ArrayList<Menu>) m.mapperArrayBean(rs, Menu.class);
-
-        } catch (Exception e) {
-            LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getMenuUsuario " + e.getMessage());
-            LogeoDAO.getInstancia().logStackExcepcion(e);
-            throw new Exception("ERROR en : " + this.getClass() + " metodo: getMenuUsuario " + e.getMessage());
-        } finally {
-            close(conn, cs, rs);
-        }
-        return lU;
-    }
-    
     public ArrayList<Menu> getMenuFuncionNegocio(int noFuncionSap, int noNegocio) throws Exception {
         Connection conn = null;
         CallableStatement cs = null;

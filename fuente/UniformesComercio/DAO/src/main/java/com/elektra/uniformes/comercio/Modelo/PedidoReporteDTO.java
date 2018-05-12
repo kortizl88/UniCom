@@ -30,6 +30,8 @@ public class PedidoReporteDTO {
     private int remision;
     @PropiedadMap(campo = "FDFECHAACT")
     private String fechaAct;
+    @PropiedadMap(campo = "FICEDIS")
+    private int cedis;
 
     /**
      * @return the pedido
@@ -155,5 +157,19 @@ public class PedidoReporteDTO {
      */
     public void setFechaAct(String fechaAct) {
         this.fechaAct = fechaAct;
+    }
+
+    /**
+     * @return the cedis
+     */
+    public int getCedis() {
+        return cedis;
+    }
+
+    /**
+     * @param cedis the cedis to set
+     */
+    public void setCedis(int cedis) {
+        this.cedis = cedis;
     }
 }

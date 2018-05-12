@@ -36,7 +36,7 @@ public class DetalleEntrega {
     
     private boolean errorEntrega;
     private String mensaje;
-
+    private String datosProceso;
     /**
      * @return the solicitud
      */
@@ -193,6 +193,20 @@ public class DetalleEntrega {
      */
     public void setTiendaIP(String tiendaIP) {
         this.tiendaIP = tiendaIP;
+    }
+
+    /**
+     * @return the datosProceso
+     */
+    public String getDatosProceso() {
+        return datosProceso;
+    }
+
+    /**
+     * @param datosProceso the datosProceso to set
+     */
+    public void setDatosProceso(String datosProceso) {
+        this.datosProceso = datosProceso;
     }
     
     

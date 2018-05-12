@@ -82,6 +82,18 @@ export class AdministracionService {
         return observable;
     }
 
+    /*cedis*/
+    public getCeDis(): Observable<WrapperRespuesta> {
+        let observable: Observable<WrapperRespuesta>;
+        try {
+            observable = this.http.get(this.endPointWSUniformesComercio.consultaCeDis())
+                .map((response: Response) => <WrapperRespuesta>response.json());
+        } catch (e) {
+            console.log('Ocurrio un error (AdministracionService: getCeDis) :' + e.name + ': ' + e.message);
+        }
+        return observable;
+    }
+
     /* actualiza guarda carga*/
     public actualizaCarga(carga: any): Observable<WrapperRespuesta> {
         let observable: Observable<WrapperRespuesta>;

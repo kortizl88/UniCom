@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.elektra.agenda.utilerias.AppTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 sec
+=======
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
+>>>>>>> 53a4499b8bbe2824d7c0c8a301d746ff63fc2fe5

@@ -38,6 +38,7 @@ export class HeaderUniformesComponent implements OnInit {
     public logueado: boolean;
     public menuAdmin: Menu[];
     public empleadoPar: number;
+    public tiendaPar: number;
     private router: Router;
     private dialogGeneral: DialogGeneralComponent;
     private subs: any;
@@ -64,12 +65,13 @@ export class HeaderUniformesComponent implements OnInit {
                 switch (rut) {
                     case '/menu': this.verMenuHeader = false;
                         break;
-                    case '/admin':
-                        this.administracion = true;
-                        break;
                     case '/':
-                    case '/?numEmpleado': this.obtieneParamatroEmpleado();
+                        this.administracion = true;
+                        this.router.navigateByUrl('admin');
                         break;
+                }
+                if( (!this.administracion) && ( this.usuario == null || !this.usuario.empleado || this.usuario.empleado == 0 ) ){
+                    this.obtieneParamatroEmpleado();
                 }
                 this.validaSesion(rut);
             }
@@ -99,14 +101,15 @@ export class HeaderUniformesComponent implements OnInit {
     }
 
     private obtieneParamatroEmpleado() {
-        this.empleadoPar = this.getParam('numEmpleado');
-        if (!this.empleadoPar) {
+        this.empleadoPar = this.getParam('numempleado');
+        this.tiendaPar = this.getParam('sucursal'); /*Se obtiene el numero de tienda para el generalista*/
+        if (!this.empleadoPar || !this.tiendaPar) {
             /*Si no encuentra el parametro de empleado se redirecciona al login de administracion*/
             this.router.navigateByUrl('admin');
         }
         else {
-            this.mostrarGuia();
-            this.consultarDatosEmpleado(this.empleadoPar);
+            //this.mostrarGuia();
+            this.consultarDatosEmpleado(this.empleadoPar,this.tiendaPar);
         }
     }
 
@@ -114,26 +117,35 @@ export class HeaderUniformesComponent implements OnInit {
         let dialogGuia: MdDialogRef<DialogGuiaComponent> = this.dialog.open(DialogGuiaComponent);
     }
 
-    private consultarDatosEmpleado(numEmpleado: number): void {
+    private consultarDatosEmpleado(numEmpleado: number, tienda:number): void {
         let esp = this.dialogGeneral.iniciarEspera();
-        this.usuarioService.getDatosUsuario(numEmpleado).subscribe(
+        this.usuarioService.getDatosUsuario(numEmpleado , tienda).subscribe(
             respuestaUsuario => {
-                this.usuario = respuestaUsuario.respuesta;
-                this.datosUsuarioUniformes.setDatosUsuario(this.usuario);
-                this.datosUsuarioUniformes.setTiendaLogin(new Tienda(this.usuario.idPais, String(this.usuario.canal), this.usuario.ceco));
-                this.usuarioService.getMenuFuncionNegocio(numEmpleado, this.datosUsuarioUniformes.getDatosUsuario().funcionSAP, this.datosUsuarioUniformes.getDatosUsuario().negocio).subscribe(
-                    respuestaMenu => {
-                        this.menu = respuestaMenu.respuesta;
-                        this.datosUsuarioUniformes.setMenu(this.menu);
-                        this.router.navigateByUrl('menu');
+                if (respuestaUsuario.error) {
+                    this.dialogGeneral.mensajeError("Ocurrio un problema al consultar los datos del usuario", respuestaUsuario.mensaje, 1);
+                } else {
+                    this.usuario = respuestaUsuario.respuesta;
+                    if (this.usuario.empleado == numEmpleado) {
+                        this.datosUsuarioUniformes.setDatosUsuario(this.usuario);
+                        this.datosUsuarioUniformes.setTiendaLogin(new Tienda(this.usuario.idPais, this.usuario.canal, this.usuario.ceco, this.usuario.centroCostos));
+                        this.usuarioService.getMenuFuncionNegocio(numEmpleado, this.datosUsuarioUniformes.getDatosUsuario().funcionSAP, this.datosUsuarioUniformes.getDatosUsuario().negocio).subscribe(
+                            respuestaMenu => {
+                                this.menu = respuestaMenu.respuesta;
+                                this.datosUsuarioUniformes.setMenu(this.menu);
+                                this.router.navigateByUrl('menu');
+                                this.dialogGeneral.cerrarEsperaId(esp);
+                            },
+                            error => {
+                                console.log(error);
+                                this.dialogGeneral.cerrarEsperaId(esp);
+                                this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getMenuFuncionNegocio", error, 1);
+                            }
+                        );
+                    } else {
                         this.dialogGeneral.cerrarEsperaId(esp);
-                    },
-                    error => {
-                        console.log(error);
-                        this.dialogGeneral.cerrarEsperaId(esp);
-                        this.dialogGeneral.mensajeError("Ocurrio un problema al consumir los WS getMenuFuncionNegocio", error, 1);
+                        this.dialogGeneral.mensajeError("El Usuario " + numEmpleado + " no está registrado en el sistema", null, 1);
                     }
-                );
+                }
             },
             error => {
                 this.dialogGeneral.cerrarEsperaId(esp);
@@ -155,7 +167,7 @@ export class HeaderUniformesComponent implements OnInit {
         this.administracion = false;
         this.logueado = false;
         this.empAdm = null;
-        this.router.navigateByUrl('admin');
+        this.router.navigateByUrl('/');
     }
 
     private validaSesion(rut: string) {
@@ -166,11 +178,11 @@ export class HeaderUniformesComponent implements OnInit {
             }
         });
         if (!adm) {
-            this.router.navigateByUrl('admin');
+            this.router.navigateByUrl('/');
         }
     }
     /*
-    * Recupera el parametros de la URL, que enviará el navegador del mago
+    * Recupera el parametros de la URL, que enviara el navegador del mago
     */
     private getParam(nombrePar: any) {
         let params = new URLSearchParams(window.location.search.slice(1));

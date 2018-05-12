@@ -19,13 +19,13 @@
 				<tbody>
 					<tr>
 						<td>
-							<b> Nombre Socio </b>
+							<b> Núm. Empleado </b>
 						</td>
 						<td>{{datosUsuarioUniformes?.getDatosUsuario().empleado}}</td>
 					</tr>
 					<tr>
 						<td>
-							<b>Número de Empleado</b>
+							<b>Nombre </b>
 						</td>
 						<td>{{datosUsuarioUniformes?.getDatosUsuario().nombre}}</td>
 					</tr>
@@ -52,6 +52,18 @@
 							<b>Fecha de solicitud</b>
 						</td>
 						<td>{{solicitud?.cadenafechaCaptura}}</td>
+					</tr>
+					<tr>
+						<td>
+							<b>
+								<a (click)="verBitacora(solicitud.nofolioSolicitud)">Seguimiento</a>
+							</b>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="cancelaSol" (click)="cancelarSolicitud(solicitud)" >Cancelar Solicitud <img src="assets/img/tienda/ico_cancela_sol.png" width="20"/></div>
+						</td>
 					</tr>
 				</tbody>
 			</table>
