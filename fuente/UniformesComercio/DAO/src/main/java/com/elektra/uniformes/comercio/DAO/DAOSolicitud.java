@@ -283,4 +283,30 @@ public class DAOSolicitud {
         }
         return lt;
     }
+
+    public String cancelaSolicitud(int solicitud)throws Exception{
+        String resp = "";
+        ArrayList<RespuestaSolicitudDTO> ls = new ArrayList<RespuestaSolicitudDTO>();
+        Connection conn = null;
+        CallableStatement cs = null;
+        try {
+            conn = fabricaDAO.getConexion();
+            if (conn == null) {
+                throw new SQLException("La conexion no se creo.");
+            }
+            
+            cs = conn.prepareCall(funcionesBD.SP_CANCELA_SOLICITUD);
+            cs.setInt(1, solicitud);
+            cs.registerOutParameter(2, OracleTypes.NUMBER);
+            cs.execute();
+            resp = "Se canceló solicitud: " + (int) cs.getInt(2);
+        } catch (Exception e) {
+            LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: cancelaSolicitud " + e.getMessage());
+            LogeoDAO.getInstancia().logStackExcepcion(e);
+            throw new Exception("ERROR en : " + this.getClass() + " metodo: cancelaSolicitud " + e.getMessage());
+        } finally {
+            close(conn, cs, null);
+        }
+        return resp;
+    }
 }

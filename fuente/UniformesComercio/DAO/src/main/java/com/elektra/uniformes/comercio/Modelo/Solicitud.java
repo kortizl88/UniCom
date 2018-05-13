@@ -21,6 +21,9 @@ public class Solicitud {
         
     @PropiedadMap(campo = "FCNOMBRE")
     private String cadenaNombreTienda;
+    
+    @PropiedadMap(campo = "FICANCELADO")
+    private int cancelado;
 
     public int getNofolioSolicitud() {
         return nofolioSolicitud;
@@ -53,5 +56,19 @@ public class Solicitud {
     public void setCadenaNombreTienda(String cadenaNombreTienda) {
         this.cadenaNombreTienda = cadenaNombreTienda;
     }    
+
+    /**
+     * @return the cancelado
+     */
+    public int getCancelado() {
+        return cancelado;
+    }
+
+    /**
+     * @param cancelado the cancelado to set
+     */
+    public void setCancelado(int cancelado) {
+        this.cancelado = cancelado;
+    }
     
 }

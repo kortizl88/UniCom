@@ -78,6 +78,7 @@ export class DialogConfirmaSolicitudComponent {
 export class DialogRespuestaSolicitudComponent {
 
   public solicitudes: any;
+  public fechaCancelacion: string;
 
   constructor(public dialogRef: MdDialogRef<DialogRespuestaSolicitudComponent>) { }
 

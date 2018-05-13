@@ -62,7 +62,7 @@
 					</tr>
 					<tr>
 						<td>
-							<div class="cancelaSol" (click)="cancelarSolicitud(solicitud)" >Cancelar Solicitud <img src="assets/img/tienda/ico_cancela_sol.png" width="20"/></div>
+							<div *ngIf="solicitud.cancelado == 0" class="cancelaSol" (click)="cancelarSolicitud(solicitud)" >Cancelar Solicitud <img src="assets/img/tienda/ico_cancela_sol.png" width="17"/></div>
 						</td>
 					</tr>
 				</tbody>

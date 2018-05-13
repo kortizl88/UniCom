@@ -71,11 +71,7 @@ public class DAOSolicitudTracking {
             cs.execute();
             rs = (ResultSet) cs.getObject(1);                  
             solicitudes = null;
-            
-            solicitudes = (ArrayList<Solicitud>) m.mapperArrayBean(rs, Solicitud.class);            
-            if (solicitudes.size() == 0) {                
-                System.out.println("Esta vacia la estrutura de datos (arrayList)");
-            }
+            solicitudes = (ArrayList<Solicitud>) m.mapperArrayBean(rs, Solicitud.class);
                 
         } catch (Exception e) {
             LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getSolicitudes " + e.getMessage());

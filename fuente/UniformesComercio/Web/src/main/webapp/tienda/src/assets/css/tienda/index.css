@@ -440,12 +440,16 @@ div.user span {
 .show{display:block;}
 
 .ttitulos{
-    font-size: 1.8em;
-    display: block; 
+    font-size: 2.5em;
+    display: block;
+    color:#545554;
+    padding-bottom: 3px;
+    font-weight: 700;
 }
 
 .btitulos{
-    font-size:15px; 
+    font-size:17px; 
+    color:#545554;
 }
 
 /*
@@ -1943,9 +1947,20 @@ table.ccenter td {
     text-align: center;
 }
 .cancelaSol{
-    color:#d4243c;
+    color:#ff0000;
     font-weight: 700;
     font-size: 13px;
     cursor: pointer;
     padding-top: 5px;
+}
+.detCanc{
+    text-align: center; 
+    font-size:16px;
+}
+
+.detCanc .idSol{
+    font-weight: 700;
+    text-shadow: 1px 1px 1px #ccc;
+    color:#b4a373;
+    text-decoration: underline;
 }

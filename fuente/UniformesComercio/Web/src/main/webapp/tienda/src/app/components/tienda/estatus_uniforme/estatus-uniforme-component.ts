@@ -123,22 +123,35 @@ export class EstatusUniformeComponent {
     }
 
     /* consultar bitacora*/
-    public verBitacora( solicitud: number): void {
+    public verBitacora(solicitud: number): void {
         let dialogDetalle: MdDialogRef<ModalBitacoraSolicitudComponent> = this.dialog.open(ModalBitacoraSolicitudComponent);
         dialogDetalle.componentInstance.solicitud = solicitud;
         dialogDetalle.componentInstance.consultaBitacora(solicitud);
     }
 
     /*Cancelacion */
-    public cancelarSolicitud(solicitud: Solicitud):void{
+    public cancelarSolicitud(solicitud: Solicitud): void {
         let dialogCancela: MdDialogRef<DialogConfirmaCancelacionComponent> = this.dialog.open(DialogConfirmaCancelacionComponent);
         dialogCancela.componentInstance.solicitud = solicitud;
         dialogCancela.afterClosed().subscribe(
             confirmaCancelacion => {
                 if (confirmaCancelacion) {
-                    alert("CANCELADO!!!");
-                } else {
-                    alert("NO CANCELO!!!");
+                    let esp = this.dialogGeneral.iniciarEspera();
+                    this.estatusService.cancelaSolicitud(solicitud.nofolioSolicitud).subscribe(
+                        respuestaCanc => {
+                            this.dialogGeneral.cerrarEsperaId(esp);
+                            if(!respuestaCanc.error)
+                            {
+                                this.dialogGeneral.mensajeError("La solicitud "+ solicitud.nofolioSolicitud +" se canceló correctamente, puedes volver a realizar tu solicitud", null, 3);
+                                this.consultarSolicitudes();
+                            }else{
+                                this.dialogGeneral.mensajeError("Ocurrió un problema al cancelar la solicitud", respuestaCanc.mensaje, 1);    
+                            }
+                        }, error => {
+                            this.dialogGeneral.cerrarEsperaId(esp);
+                            this.dialogGeneral.mensajeError("Ocurrió un problema al cancelar la solicitud", error, 1);
+                        }
+                    );
                 }
             }
         );
