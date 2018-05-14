@@ -339,7 +339,8 @@ export class SolicitudUniformeComponent implements OnInit, OnDestroy {
                                 this.dialogGeneral.cerrarEsperaId(dialEsp);
                                 if (!respuestaGuardaSol.error) {
                                     let dialRespSol: MdDialogRef<DialogRespuestaSolicitudComponent> = this.dialog.open(DialogRespuestaSolicitudComponent, { disableClose: true });
-                                    dialRespSol.componentInstance.solicitudes = respuestaGuardaSol.respuesta;
+                                    dialRespSol.componentInstance.solicitudes = respuestaGuardaSol.respuesta.solicitudes;
+                                    dialRespSol.componentInstance.fechaCancelacion = respuestaGuardaSol.respuesta.fechaCancela;
                                     dialRespSol.afterClosed().subscribe(
                                         respSol => {
                                             if ( (this.tipoSolicitud == 1 && this.esIndividual) || (this.tipoSolicitud == 2) ) {

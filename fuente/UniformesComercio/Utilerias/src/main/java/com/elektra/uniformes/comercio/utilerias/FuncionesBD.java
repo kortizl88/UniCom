@@ -124,5 +124,7 @@ public class FuncionesBD {
     @Value("#{propiedadesUniformesComercio['TYP_ARR_CEDIS']}")
     public String TYP_ARR_CEDIS;
     
-    
+    /*cancelacion*/
+    @Value("#{propiedadesUniformesComercio['SP_CANCELA_SOLICITUD']}")
+    public String SP_CANCELA_SOLICITUD;
 }

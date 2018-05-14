@@ -140,7 +140,7 @@ AS
     paNoConfirmaciones OUT NUMBER );
 
  PROCEDURE SPCANCELASOLICITUD(
- 	paSolicitud   IN UNIFORMES.TASOLICITUDES.FIFOLIOSOLICITUD,
+ 	paSolicitud   IN UNIFORMES.TASOLICITUDES.FIFOLIOSOLICITUD%TYPE,
     paCancelados OUT NUMBER);
  	
 END PAWEBUNIFORMESCOMERCIO;
@@ -588,7 +588,8 @@ CREATE OR REPLACE PACKAGE BODY                      UNIFORMES.PAWEBUNIFORMESCOME
        						    	  ON S.FIFOLIOSOLICITUD = SC.FIFOLIOSOLICITUD 
        							   WHERE S.FIIDEMPLEADO = paNumEmp
        							 	 AND TRUNC(SYSDATE) BETWEEN C.FDFECHAINICIAL AND C.FDFECHAFINAL
-       							     AND C.FIESTATUS = csgUno)
+       							     AND C.FIESTATUS = csgUno
+       							     AND S.FICANCELADO = csgCero)
          AND E.FCSITUACION = csgEmpActivo
    ORDER BY E.FIEMPLEADO, 
     		F.FIKIT, 
@@ -641,6 +642,7 @@ CREATE OR REPLACE PACKAGE BODY                      UNIFORMES.PAWEBUNIFORMESCOME
           							WHERE FIIDEMPLEADO = paNumEmp
           							  AND FDFECHACAPTURA >= SYSDATE - vlDiasParaSolicitar
           							  AND FIIDTIPOSOLICITUD IN (csgDos,csgTres)
+          							  AND FICANCELADO = csgCero
          						  )
    ORDER BY E.FIEMPLEADO, F.FIKIT, TP.FIIDTIPOPRENDA, T.FIORDEN;
 
@@ -998,7 +1000,8 @@ CREATE OR REPLACE PACKAGE BODY                      UNIFORMES.PAWEBUNIFORMESCOME
      SELECT S.FIFOLIOSOLICITUD, 
             TO_CHAR(S.FDFECHACAPTURA,'DD/MM/YYYY') AS FCFECHACAPTURA,
             T.FISUCURSAL,
-            T.FCNOMBRE                
+            T.FCNOMBRE,
+            S.FICANCELADO                
        FROM UNIFORMES.TASOLICITUDES S
  INNER JOIN UNIFORMES.TAEMPLEADOS E
          ON S.FIIDEMPLEADO = E.FIEMPLEADO
@@ -1015,7 +1018,8 @@ CREATE OR REPLACE PACKAGE BODY                      UNIFORMES.PAWEBUNIFORMESCOME
    GROUP BY S.FIFOLIOSOLICITUD, 
             S.FDFECHACAPTURA,
             T.FISUCURSAL,
-            T.FCNOMBRE
+            T.FCNOMBRE,
+            S.FICANCELADO
    ORDER BY S.FDFECHACAPTURA DESC;         
 
  	RETURN curDatos;
@@ -1505,7 +1509,6 @@ INNER JOIN UNIFORMES.TADESCUENTOSSAPXPEDIDO TDSAP
  *************************************************************************************************************/   
  vlIdBitacora 	 UNIFORMES.TABITACORASOLICITUD.FIIDBITACORA%TYPE;
  vlCadConfEntrega VARCHAR2(30 CHAR):= 'PEDIDO ENTREGADO A EMPLEADO';
-
  BEGIN
     FOR indice IN 1..paConfirmacionesEntrega.count
         LOOP    
@@ -1541,7 +1544,7 @@ INNER JOIN UNIFORMES.TADESCUENTOSSAPXPEDIDO TDSAP
  END SPGUARDACONFIRMACIONENTREGA;
  
  PROCEDURE SPCANCELASOLICITUD(
- 	paSolicitud   IN UNIFORMES.TASOLICITUDES.FIFOLIOSOLICITUD,
+ 	paSolicitud   IN UNIFORMES.TASOLICITUDES.FIFOLIOSOLICITUD%TYPE,
     paCancelados OUT NUMBER)
  IS
  /************************************************************************************************************
@@ -1556,6 +1559,7 @@ INNER JOIN UNIFORMES.TADESCUENTOSSAPXPEDIDO TDSAP
  *************************************************************************************************************/ 
  vlEstSolicitado NUMBER(1):= 1;
  vlEstCancelado  NUMBER(1):= 0;
+ vlCanc NUMBER(2):=0;
  CURSOR curSolicitudCanc IS
  SELECT FIFOLIOSOLICITUD,
  		FIIDDETALLE
@@ -1568,12 +1572,27 @@ INNER JOIN UNIFORMES.TADESCUENTOSSAPXPEDIDO TDSAP
 	    SET FICANCELADO = csgUno
 	  WHERE FIFOLIOSOLICITUD  = paSolicitud;
   	 
+  	 FOR solDet IN curSolicitudCanc LOOP
+  	 
   	 UPDATE UNIFORMES.TASOLICITUDESDETALLE
 	    SET FIESTATUSSOL = csgCero
-	  WHERE FIFOLIOSOLICITUD  = paSolicitud;
+	  WHERE FIFOLIOSOLICITUD  = paSolicitud
+	    AND FIIDDETALLE = solDet.FIIDDETALLE;
   	 
-  	 UNIFORMES.PAWEBUNIFORMESCOMERCIO.SPGUARDABITACORA(paSolicitud, vlIdDetalleSol, csgCero, ' ', vlEstSolicitado, vlEstCancelado, 'SOLICITUD CANCELADA POR USUARIO', csgCero);
+  	 UNIFORMES.PAWEBUNIFORMESCOMERCIO.SPGUARDABITACORA(paSolicitud, solDet.FIIDDETALLE, csgCero, ' ', vlEstSolicitado, vlEstCancelado, 'SOLICITUD CANCELADA POR USUARIO', csgCero);
+  	 vlCanc := vlCanc + csgUno;
+  	 END LOOP;
   	 
+  	 COMMIT;
+  	 paCancelados := vlCanc;
+  	 
+  	 EXCEPTION
+        WHEN OTHERS THEN
+              ROLLBACK;
+              vgErrCode := SQLCODE;
+              vgErrMsg := SQLERRM;
+              RAISE_APPLICATION_ERROR (-20002,'ERROR ' || vgErrCode  || ' "PAWEBUNIFORMESCOMERCIO.SPCANCELASOLICITUD": ' || vgErrMsg );
+
  END SPCANCELASOLICITUD;
  
 END PAWEBUNIFORMESCOMERCIO;

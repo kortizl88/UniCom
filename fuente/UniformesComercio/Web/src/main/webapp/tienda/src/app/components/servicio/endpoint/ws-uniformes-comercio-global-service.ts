@@ -53,6 +53,11 @@ export class WSUniformesComercioGlobalService {
         return `${this._cadenaUrl}/json/solicitudes/${numeroEmpleado}/tracking/${idFolioSolicitud}/avance`;
     }
 
+    //cancelar solicitud
+    public cancelaSolicitud(solicitud:number): string {
+        return `${this._cadenaUrl}/json/solicitud/cancelar/${solicitud}`;
+    }
+
     /**************************************************************************** 
     *	SolicitudService
     *****************************************************************************/

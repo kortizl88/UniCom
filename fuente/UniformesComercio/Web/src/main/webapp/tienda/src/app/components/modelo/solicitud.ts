@@ -5,5 +5,5 @@ export class Solicitud {
     cadenafechaCaptura: string;
     noSucursal: number;
     cadenaNombreTienda: string;
-	
+	cancelado:number;
 }

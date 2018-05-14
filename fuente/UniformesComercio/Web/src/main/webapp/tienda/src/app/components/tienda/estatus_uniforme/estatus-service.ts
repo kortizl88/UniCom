@@ -65,5 +65,16 @@ export class EstatusService {
         }
         return observable;  
    }
+
+   public cancelaSolicitud(solicitud: number): Observable<WrapperRespuesta> {
+    let observable:Observable<WrapperRespuesta>;
+    try{            
+        observable = this.http.get(this.endPointWSUniformesComercio.cancelaSolicitud(solicitud))
+        .map((response: Response) => <WrapperRespuesta> response.json());            
+    }catch(e){
+        console.log('Ocurrio un error (EstatusService: cancelaSolicitud):'+ e.name + ': ' + e.message);
+    }
+    return observable;  
+}
    
 }

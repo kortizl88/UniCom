@@ -131,4 +131,21 @@ public class ControllerSolicitud {
         }
         return r;
     }
+    
+    @RequestMapping(value = "/cancelar/{solicitud}", method = RequestMethod.GET)
+    public @ResponseBody
+    Respuesta cancelaSolicitud(@PathVariable("solicitud") int solicitud) {
+        Respuesta r = new Respuesta();
+        try {
+            r.setRespuesta(negocioSolicitud.cancelaSolicitud(solicitud));
+            r.setError(false);
+            r.setMensaje("Consulta obtenida correctamente");
+        } catch (Exception e) {
+            r.setError(true);
+            r.setMensaje(e.getMessage());
+            LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getNuevosIngreso " + e.getMessage());
+            LogeoDAO.getInstancia().logStackExcepcion(e);
+        }
+        return r;
+    }
 }
