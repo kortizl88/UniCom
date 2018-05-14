@@ -53,7 +53,7 @@ public class NegocioAdministradorReporte {
         return daoAdministradorReporte.obtieneReporte(reporteReq);
     }
 
-    public File generarReporteExcel(int indicaFecha, String fechaInicio, String fechaFin, int indCarga, String carga, int indEstatus, String estatus, int indTienda, int tienda, int indEmpleado, int empleado) throws Exception {
+    public File generarReporteExcel(int indicaFecha, String fechaInicio, String fechaFin, int indCarga, String carga, int indEstatus, String estatus, int indTienda, int tienda, int indEmpleado, int empleado, int indSol, int solicitud, int indRem, int remision) throws Exception {
         SimpleDateFormat f  = new SimpleDateFormat("dd-MM-yyyy");
         File file = new File("reporte_uniformes_comercio_"+f.format(new Date())+".xlsx");
         ReporteReq r = new ReporteReq();
@@ -68,6 +68,10 @@ public class NegocioAdministradorReporte {
         r.setTienda(tienda);
         r.setIndEmpleado(indEmpleado);
         r.setEmpleado(empleado);
+        r.setIndSol(indSol);
+        r.setSolicitud(solicitud);
+        r.setIndRem(indRem);
+        r.setRemision(remision);
         ArrayList<ReporteDTO> reporte = daoAdministradorReporte.obtieneReporte(r);
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheetRep = workbook.createSheet("REPORTE");
@@ -125,6 +129,8 @@ public class NegocioAdministradorReporte {
         rowhead.getCell(13).setCellStyle(stCellHeader);
         rowhead.createCell(14).setCellValue("CD");
         rowhead.getCell(14).setCellStyle(stCellHeader);
+        rowhead.createCell(15).setCellValue("Nombre CD");
+        rowhead.getCell(15).setCellStyle(stCellHeader);
         int indRows = 2;
         for (ReporteDTO rep : reporte) {
             for (PedidoReporteDTO ped : rep.getPedidos()) {
@@ -152,6 +158,8 @@ public class NegocioAdministradorReporte {
                 row.getCell(13).setCellStyle(stCellVAlign);
                 row.createCell(14).setCellValue(ped.getCedis());
                 row.getCell(14).setCellStyle(stCellVAlign);
+                row.createCell(15).setCellValue(ped.getNombreCedis());
+                row.getCell(15).setCellStyle(stCellVAlign);
                 indRows++;
             }
 

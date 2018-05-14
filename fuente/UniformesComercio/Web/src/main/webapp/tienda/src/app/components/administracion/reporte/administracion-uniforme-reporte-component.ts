@@ -231,7 +231,7 @@ export class AdministracionReporteComponent {
     }
 
     public exportar() {
-        this.urlExpExcel = this.sanitizer.bypassSecurityTrustResourceUrl(this.endPointWSUniformesComercio.exportarAExcel() + "/" + this.reqPet.indicaFecha + "/" + (this.reqPet.indicaFecha == 1 ? this.reqPet.fechaInicio.replace(/\//g, "-") : 0) + "/" + (this.reqPet.indicaFecha == 1 ? this.reqPet.fechaFin.replace(/\//g, "-") : 0) + "/" + this.reqPet.indCarga + "/" + (this.reqPet.indCarga == 1 ? this.reqPet.carga : "0") + "/" + this.reqPet.indEstatus + "/" + (this.reqPet.indEstatus == 1 ? this.reqPet.estatus : "0") + "/" + this.reqPet.indTienda + "/" + this.reqPet.tienda + "/" + this.reqPet.indEmpleado + "/" + this.reqPet.empleado);
+        this.urlExpExcel = this.sanitizer.bypassSecurityTrustResourceUrl(this.endPointWSUniformesComercio.exportarAExcel() + "/" + this.reqPet.indicaFecha + "/" + (this.reqPet.indicaFecha == 1 ? this.reqPet.fechaInicio.replace(/\//g, "-") : 0) + "/" + (this.reqPet.indicaFecha == 1 ? this.reqPet.fechaFin.replace(/\//g, "-") : 0) + "/" + this.reqPet.indCarga + "/" + (this.reqPet.indCarga == 1 ? this.reqPet.carga : "0") + "/" + this.reqPet.indEstatus + "/" + (this.reqPet.indEstatus == 1 ? this.reqPet.estatus : "0") + "/" + this.reqPet.indTienda + "/" + this.reqPet.tienda + "/" + this.reqPet.indEmpleado + "/" + this.reqPet.empleado+ "/" + this.reqPet.indSol + "/" + this.reqPet.solicitud + "/" + this.reqPet.indRem + "/" + this.reqPet.remision);
     }
 
     onLoad() {

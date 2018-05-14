@@ -32,6 +32,8 @@ public class PedidoReporteDTO {
     private String fechaAct;
     @PropiedadMap(campo = "FICEDIS")
     private int cedis;
+    @PropiedadMap(campo = "FCCEDIS")
+    private String nombreCedis;
 
     /**
      * @return the pedido
@@ -171,5 +173,19 @@ public class PedidoReporteDTO {
      */
     public void setCedis(int cedis) {
         this.cedis = cedis;
+    }
+
+    /**
+     * @return the nombreCedis
+     */
+    public String getNombreCedis() {
+        return nombreCedis;
+    }
+
+    /**
+     * @param nombreCedis the nombreCedis to set
+     */
+    public void setNombreCedis(String nombreCedis) {
+        this.nombreCedis = nombreCedis;
     }
 }

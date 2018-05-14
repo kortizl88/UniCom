@@ -196,7 +196,7 @@ public class ControllerAdministracion {
         return r;
     }
 
-    @RequestMapping(value = "/reporte/generar/{indicaFecha}/{fechaInicio}/{fechaFin}/{indCarga}/{carga}/{indEstatus}/{estatus}/{indTienda}/{tienda}/{indEmpleado}/{empleado}", method = RequestMethod.GET)
+    @RequestMapping(value = "/reporte/generar/{indicaFecha}/{fechaInicio}/{fechaFin}/{indCarga}/{carga}/{indEstatus}/{estatus}/{indTienda}/{tienda}/{indEmpleado}/{empleado}/{indSol}/{solicitud}/{indRem}/{remision}", method = RequestMethod.GET)
     public void generaReporteExcel(HttpServletResponse response, @PathVariable("indicaFecha") int indicaFecha,
             @PathVariable("fechaInicio") String fechaInicio,
             @PathVariable("fechaFin") String fechaFin,
@@ -207,9 +207,13 @@ public class ControllerAdministracion {
             @PathVariable("indTienda") int indTienda,
             @PathVariable("tienda") int tienda,
             @PathVariable("indEmpleado") int indEmpleado,
-            @PathVariable("empleado") int empleado) {
+            @PathVariable("empleado") int empleado,
+            @PathVariable("indSol") int indSol,
+            @PathVariable("solicitud") int solicitud,
+            @PathVariable("indRem") int indRem,
+            @PathVariable("remision") int remision) {
         try {
-            File file = negocioAdministradorReporte.generarReporteExcel(indicaFecha, fechaInicio, fechaFin, indCarga, carga, indEstatus, estatus, indTienda, tienda, indEmpleado, empleado);
+            File file = negocioAdministradorReporte.generarReporteExcel(indicaFecha, fechaInicio, fechaFin, indCarga, carga, indEstatus, estatus, indTienda, tienda, indEmpleado, empleado, indSol, solicitud, indRem, remision);
             response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             response.setHeader("Content-Disposition", String.format("inline; filename=\"" + file.getName() + "\""));
             response.setContentLength((int) file.length());
