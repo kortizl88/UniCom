@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *
  * @author kortizl
  */
-
 @Controller
 @RequestMapping("/solicitud")
 public class ControllerSolicitud {
@@ -30,10 +29,10 @@ public class ControllerSolicitud {
     @Autowired
     @Qualifier("negocioSolicitud")
     private NegocioSolicitud negocioSolicitud;
-    
+
     @RequestMapping(value = "/tienda/pais/{pais}/canal/{canal}/sucursal/{tienda}", method = RequestMethod.GET)
     public @ResponseBody
-    Respuesta getInfoTienda(@PathVariable("pais") int pais, @PathVariable("canal") int canal,@PathVariable("tienda") int tienda) {
+    Respuesta getInfoTienda(@PathVariable("pais") int pais, @PathVariable("canal") int canal, @PathVariable("tienda") int tienda) {
         Respuesta r = new Respuesta();
         try {
             r.setRespuesta(negocioSolicitud.getInfoTienda(pais, canal, tienda));
@@ -47,13 +46,13 @@ public class ControllerSolicitud {
         }
         return r;
     }
-    
+
     @RequestMapping(value = "/kit/empleado/{numEmp}/tiposolicitud/{tipo}", method = RequestMethod.GET)
     public @ResponseBody
     Respuesta getKitEmpleado(@PathVariable("numEmp") int numEmp, @PathVariable("tipo") int tipo) {
         Respuesta r = new Respuesta();
         try {
-            r.setRespuesta(negocioSolicitud.getKitEmpleado(numEmp,tipo));
+            r.setRespuesta(negocioSolicitud.getKitEmpleado(numEmp, tipo));
             r.setError(false);
             r.setMensaje("Consulta obtenida correctamente");
         } catch (Exception e) {
@@ -67,10 +66,10 @@ public class ControllerSolicitud {
 
     @RequestMapping(value = "/kit/pais/{pais}/canal/{canal}/sucursal/{tienda}/tiposolicitud/{tipo}", method = RequestMethod.GET)
     public @ResponseBody
-    Respuesta getKitEmpleadosTienda(@PathVariable("pais") int pais, @PathVariable("canal") int canal,@PathVariable("tienda") int tienda, @PathVariable("tipo") int tipo) {
+    Respuesta getKitEmpleadosTienda(@PathVariable("pais") int pais, @PathVariable("canal") int canal, @PathVariable("tienda") int tienda, @PathVariable("tipo") int tipo) {
         Respuesta r = new Respuesta();
         try {
-            r.setRespuesta(negocioSolicitud.getKitEmpleadosTienda(pais , canal, tienda, tipo));
+            r.setRespuesta(negocioSolicitud.getKitEmpleadosTienda(pais, canal, tienda, tipo));
             r.setError(false);
             r.setMensaje("Consulta obtenida correctamente");
         } catch (Exception e) {
@@ -81,9 +80,10 @@ public class ControllerSolicitud {
         }
         return r;
     }
-    
+
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public @ResponseBody Respuesta guardaSolicitud(@RequestBody SolicitudDTO[] arregloSolicitudes) {     
+    public @ResponseBody
+    Respuesta guardaSolicitud(@RequestBody SolicitudDTO[] arregloSolicitudes) {
         Respuesta r = new Respuesta();
         try {
             r.setRespuesta(negocioSolicitud.guardaSolicitud(arregloSolicitudes));
@@ -97,10 +97,10 @@ public class ControllerSolicitud {
         }
         return r;
     }
-    
+
     @RequestMapping(value = "/tiendascercanas/pais/{pais}/canal/{canal}/sucursal/{tienda}", method = RequestMethod.GET)
     public @ResponseBody
-    Respuesta getTiendasCercanas(@PathVariable("pais") int pais, @PathVariable("canal") int canal,@PathVariable("tienda") int tienda) {
+    Respuesta getTiendasCercanas(@PathVariable("pais") int pais, @PathVariable("canal") int canal, @PathVariable("tienda") int tienda) {
         Respuesta r = new Respuesta();
         try {
             r.setRespuesta(negocioSolicitud.getTiendasCercanas(pais, canal, tienda));
@@ -114,7 +114,7 @@ public class ControllerSolicitud {
         }
         return r;
     }
-    
+
     @RequestMapping(value = "/nuevoingreso/pais/{pais}/canal/{canal}/ceco/{ceco}", method = RequestMethod.GET)
     public @ResponseBody
     Respuesta getNuevosIngreso(@PathVariable("pais") int pais, @PathVariable("canal") int canal, @PathVariable("ceco") int ceco) {
@@ -131,7 +131,7 @@ public class ControllerSolicitud {
         }
         return r;
     }
-    
+
     @RequestMapping(value = "/cancelar/{solicitud}", method = RequestMethod.GET)
     public @ResponseBody
     Respuesta cancelaSolicitud(@PathVariable("solicitud") int solicitud) {
@@ -143,6 +143,25 @@ public class ControllerSolicitud {
         } catch (Exception e) {
             r.setError(true);
             r.setMensaje(e.getMessage());
+            LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getNuevosIngreso " + e.getMessage());
+            LogeoDAO.getInstancia().logStackExcepcion(e);
+        }
+        return r;
+    }
+
+    @RequestMapping(value = "/inventario/tienda/{tienda}/sku/{sku}", method = RequestMethod.GET)
+    public @ResponseBody
+    Respuesta getInventario(@PathVariable("tienda") int tienda,
+            @PathVariable("sku") int sku) {
+        Respuesta r = new Respuesta();
+        try {
+            r.setRespuesta(negocioSolicitud.getInventario(tienda, sku));
+            r.setError(false);
+            r.setMensaje("Consulta obtenida correctamente");
+        } catch (Exception e) {
+            r.setError(true);
+            r.setMensaje(e.getMessage());
+            r.setRespuesta(0);
             LogeoDAO.getInstancia().logExcepcion("ERROR en : " + this.getClass() + " metodo: getNuevosIngreso " + e.getMessage());
             LogeoDAO.getInstancia().logStackExcepcion(e);
         }

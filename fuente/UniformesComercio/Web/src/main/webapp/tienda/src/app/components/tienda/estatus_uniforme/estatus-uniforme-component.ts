@@ -56,6 +56,8 @@ export class EstatusUniformeComponent {
                     this.solicitudes = respuestaWS.respuesta;
                     this.solicitud = this.solicitudes[0];
                     this.seleccionaFolioSolicitud();
+                } else {
+                    this.solicitudes = null
                 }
             }, error => {
                 this.dialogGeneral.cerrarEsperaId(esp);
@@ -140,12 +142,11 @@ export class EstatusUniformeComponent {
                     this.estatusService.cancelaSolicitud(solicitud.nofolioSolicitud).subscribe(
                         respuestaCanc => {
                             this.dialogGeneral.cerrarEsperaId(esp);
-                            if(!respuestaCanc.error)
-                            {
-                                this.dialogGeneral.mensajeError("La solicitud "+ solicitud.nofolioSolicitud +" se canceló correctamente, puedes volver a realizar tu solicitud", null, 3);
+                            if (!respuestaCanc.error) {
+                                this.dialogGeneral.mensajeError("La solicitud " + solicitud.nofolioSolicitud + " se canceló correctamente, puedes volver a realizar tu solicitud", null, 3);
                                 this.consultarSolicitudes();
-                            }else{
-                                this.dialogGeneral.mensajeError("Ocurrió un problema al cancelar la solicitud", respuestaCanc.mensaje, 1);    
+                            } else {
+                                this.dialogGeneral.mensajeError("Ocurrió un problema al cancelar la solicitud", respuestaCanc.mensaje, 1);
                             }
                         }, error => {
                             this.dialogGeneral.cerrarEsperaId(esp);

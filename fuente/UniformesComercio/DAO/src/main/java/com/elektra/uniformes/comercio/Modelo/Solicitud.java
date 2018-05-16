@@ -24,6 +24,8 @@ public class Solicitud {
     
     @PropiedadMap(campo = "FICANCELADO")
     private int cancelado;
+    
+    private boolean cancelable;
 
     public int getNofolioSolicitud() {
         return nofolioSolicitud;
@@ -69,6 +71,20 @@ public class Solicitud {
      */
     public void setCancelado(int cancelado) {
         this.cancelado = cancelado;
+    }
+
+    /**
+     * @return the cancelable
+     */
+    public boolean isCancelable() {
+        return cancelable;
+    }
+
+    /**
+     * @param cancelable the cancelable to set
+     */
+    public void setCancelable(boolean cancelable) {
+        this.cancelable = cancelable;
     }
     
 }

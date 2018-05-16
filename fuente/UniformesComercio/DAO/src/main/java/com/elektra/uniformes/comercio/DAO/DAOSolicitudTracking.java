@@ -58,7 +58,6 @@ public class DAOSolicitudTracking {
         ResultSet rs = null;        
         Mapper m = new Mapper();        
         ArrayList<Solicitud> solicitudes;
-                System.out.println("ID getSolicitudes "+ numeroEmpleado);
         try {
             conn = fabricaDAO.getConexion();
             if (conn == null) {

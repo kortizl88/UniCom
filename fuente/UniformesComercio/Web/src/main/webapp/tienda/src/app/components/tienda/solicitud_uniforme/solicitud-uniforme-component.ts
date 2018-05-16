@@ -1,36 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
+//animaciones
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
-import { Router, ActivatedRoute, ParamMap } from "@angular/router";
+import { ActivatedRoute, NavigationStart, Router } from "@angular/router";
 import { NgxSiemaOptions, NgxSiemaService } from 'ngx-siema';
-import { NavigationStart } from '@angular/router';
-
+import { Tienda } from '../../modelo/tienda';
 //Modelo
 import { Usuario } from '../../modelo/usuario';
-import { Tienda } from '../../modelo/tienda';
-
-
+import { DialogGeneralComponent } from '../../servicio/componentes/dialog/dialog-general-component';
 //Servicio Global
 import { DatosUsuarioUniformesGlobalService } from '../../servicio/modelo/datos-usuario-uniformes-global-service';
-
-
+//Componentes
+import { DialogConfirmaSolicitudComponent, DialogImagenCompletaComponent, DialogNuevosIngresosComponent, DialogRespuestaSolicitudComponent, DialogTiendasCercanasComponent } from './dialog-solicitud-uniforme-component';
 //WS
 import { SolicitudService } from './solicitud-uniforme-service';
 
 
-//Componentes
-import {
-    DialogImagenCompletaComponent,
-    DialogTiendasCercanasComponent,
-    DialogNuevosIngresosComponent,
-    DialogRespuestaSolicitudComponent,
-    DialogConfirmaSolicitudComponent
-} from './dialog-solicitud-uniforme-component';
-import { DialogGeneralComponent } from '../../servicio/componentes/dialog/dialog-general-component';
+
+
+
+
+
 
 @Component({
     selector: 'app-solicitud-uniforme',
-    templateUrl: './solicitud-uniforme-component.html'
+    templateUrl: './solicitud-uniforme-component.html',
+    animations: [
+        trigger('animaMsj', [
+            state('0', style({
+                transform: 'scale(0)'
+            })),
+            state('1', style({
+                transform: 'scale(1)'
+            })),
+            transition('* => *', animate('.2s linear')),
+        ])
+    ]
 })
 export class SolicitudUniformeComponent implements OnInit, OnDestroy {
 
@@ -204,7 +209,7 @@ export class SolicitudUniformeComponent implements OnInit, OnDestroy {
                 break;
             case 3:/*solicitud nuevo ingreso*/
                 /*consultar los empleados de nuevo ingreso*/
-                this.consultaEmpleadosNuevoIngreso(this.tiendaSolicitud.pais,this.tiendaSolicitud.canal ,this.tiendaSolicitud.centroCostos);
+                this.consultaEmpleadosNuevoIngreso(this.tiendaSolicitud.pais, this.tiendaSolicitud.canal, this.tiendaSolicitud.centroCostos);
         }
     }
 
@@ -246,7 +251,7 @@ export class SolicitudUniformeComponent implements OnInit, OnDestroy {
 
     public consultaEmpleadosNuevoIngreso(pais: number, canal: number, ceco: number) {
         let dialEsp = this.dialogGeneral.iniciarEspera();
-        this.solicitudService.getEmpleadosNuevoIngreso(pais,canal,ceco).subscribe(
+        this.solicitudService.getEmpleadosNuevoIngreso(pais, canal, ceco).subscribe(
             respuestaNuevosIngresos => {
                 this.dialogGeneral.cerrarEsperaId(dialEsp);
                 if (!respuestaNuevosIngresos.error) {
@@ -292,6 +297,24 @@ export class SolicitudUniformeComponent implements OnInit, OnDestroy {
         }
     }
 
+    public validaInventario(prenda: any) {
+        prenda.error = false;
+        prenda.errorMsj = "";
+        prenda.errorTalla = false;
+        if (this.tipoSolicitud != 1)/*NO aplica a solicitud semestral*/ {
+            this.solicitudService.consultaInventario(this.tiendaLogin.sucursal, prenda.tallaSeleccionada.sku).subscribe(
+                respConsInv => {
+                    if (respConsInv.respuesta <= 0) {
+                        prenda.error = true;
+                        prenda.errorMsj = "No hay inventario disponible";
+                        prenda.errorTalla = true;
+                    }
+                }, error => {
+                    console.log(error);
+                }
+            );
+        }
+    }
     public guardaSolicitud() {
         let solicitudArr = [];
         let solValida = true;
@@ -307,7 +330,7 @@ export class SolicitudUniformeComponent implements OnInit, OnDestroy {
             for (let prenda of sol.kit.prendas) {
                 if (prenda.cantidad && prenda.cantidad > 0) {
 
-                    if (prenda.tallaSeleccionada) {
+                    if (prenda.tallaSeleccionada && !prenda.errorTalla) {
                         let prendaO: any = {};
                         prendaO.pais = this.tiendaSolicitud.pais;
                         prendaO.canal = this.tiendaSolicitud.canal;
@@ -320,6 +343,10 @@ export class SolicitudUniformeComponent implements OnInit, OnDestroy {
                         solVacia = false;
                     } else {
                         prenda.error = true;
+                        if (prenda.errorTalla)
+                            prenda.errorMsj = "No hay inventario disponible";
+                        else
+                            prenda.errorMsj = "Selecciona una talla";
                         solValida = false;
                     }
                 }
@@ -343,7 +370,7 @@ export class SolicitudUniformeComponent implements OnInit, OnDestroy {
                                     dialRespSol.componentInstance.fechaCancelacion = respuestaGuardaSol.respuesta.fechaCancela;
                                     dialRespSol.afterClosed().subscribe(
                                         respSol => {
-                                            if ( (this.tipoSolicitud == 1 && this.esIndividual) || (this.tipoSolicitud == 2) ) {
+                                            if ((this.tipoSolicitud == 1 && this.esIndividual) || (this.tipoSolicitud == 2)) {
                                                 this.router.navigateByUrl('estatus_uniforme');
                                             } else {
                                                 this.router.navigateByUrl('menu');

@@ -79,7 +79,18 @@ export class SolicitudService {
         }        
         return observable;
     }
-	
+    /*Consulta Inventario ski tienda*/
+    public consultaInventario(tienda:number , sku:number): Observable<WrapperRespuesta> {
+        let observable:Observable<WrapperRespuesta>; 
+        try{
+            observable = this.http.get(this.endPointWSUniformesComercio.urlconsultaInventarios(tienda,sku))
+            .map((response: Response) => <WrapperRespuesta> response.json());
+        }catch(e){
+            console.log('Ocurrio un error (SolicitudService: consultaInventario) :'+ e.name + ': ' + e.message);
+        }        
+        return observable;
+    }
+    
 	/*guardar solicitud*/
     public guardaSolicitud(solicitud:any): Observable<WrapperRespuesta> {
         let observable:Observable<WrapperRespuesta>; 

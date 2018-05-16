@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://servicios.elektra.com.mx/ekt/1.0/inventario" xmlns:ns0="http://esquemas.elektra.com.mx/ekt/1.0/Esq_Entr_Inventario" xmlns:ns1="http://esquemas.elektra.com.mx/ekt/1.0/Esq_Salid_Inventario" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Untitled" targetNamespace="http://servicios.elektra.com.mx/ekt/1.0/inventario">
+    <wsdl:types>
+        <xs:schema xmlns="http://esquemas.elektra.com.mx/ekt/1.0/Esq_Salid_Inventario" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://esquemas.elektra.com.mx/ekt/1.0/Esq_Salid_Inventario" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="Parametros">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ALMAC" type="xs:string"/>
+                        <xs:element name="TIENDA" type="xs:string"/>
+                        <xs:element name="SKU" type="xs:string"/>
+                        <xs:element name="QTY" type="xs:string"/>
+                        <xs:element name="MSG" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns="http://esquemas.elektra.com.mx/ekt/1.0/Esq_Entr_Inventario" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://esquemas.elektra.com.mx/ekt/1.0/Esq_Entr_Inventario" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="Parametros_Entrada">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Tienda" type="xs:string"/>
+                        <xs:element name="Sku" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="intfCONSUL_INVENTARIO-service">
+        <wsdl:port name="intfwsCONSUL_INVENTARIOEndpoint1" binding="tns:intfwsCONSUL_INVENTARIOEndpoint1Binding">
+            <soap:address location="http://ws.ad.elektra.com.mx:7053/BusinessProcesses/Systems/WSEvents/intfCONSUL_INVENTARIO-service.serviceagent/intfwsCONSUL_INVENTARIOEndpoint1"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="portType">
+        <wsdl:operation name="CONSUL__INVENTARIOOp">
+            <wsdl:input message="tns:Parametros_Entrada"/>
+            <wsdl:output message="tns:Parametros"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="intfwsCONSUL_INVENTARIOEndpoint1Binding" type="tns:portType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="CONSUL__INVENTARIOOp">
+            <soap:operation style="document" soapAction="/BusinessProcesses/Systems/WSEvents/intfCONSUL_INVENTARIO-service.serviceagent/intfwsCONSUL_INVENTARIOEndpoint1/CONSUL__INVENTARIOOp"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="Parametros_Entrada">
+        <wsdl:part name="parameters" element="ns0:Parametros_Entrada"/>
+    </wsdl:message>
+    <wsdl:message name="Parametros">
+        <wsdl:part name="parameters" element="ns1:Parametros"/>
+    </wsdl:message>
+</wsdl:definitions>

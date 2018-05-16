@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxSiemaModule } from 'ngx-siema';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Md2Module } from 'md2';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /*Ruteo*/
 import { APP_ROUTING } from './app.routes';
@@ -126,7 +126,7 @@ import { AdministracionService } from './components/administracion/administracio
         DialogConfirmaCancelacionComponent
     ],
     imports: [
-        NoopAnimationsModule,
+        BrowserAnimationsModule,
         Md2Module,
         BrowserModule,
         APP_ROUTING,

@@ -1964,3 +1964,30 @@ table.ccenter td {
     color:#b4a373;
     text-decoration: underline;
 }
+
+.errTallaMsj{
+    position: absolute;
+    top: -25px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    box-shadow: 2px 2px 2px #ccc;
+    background-color: red;
+    color:#fff;
+    padding: 2px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 10px;
+    transform: scale(0);
+}
+
+.errTallaMsj::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: red transparent transparent transparent;
+}

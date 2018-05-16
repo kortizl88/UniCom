@@ -15,6 +15,8 @@ public class Talla {
     private int idTalla;
     @PropiedadMap(campo="FCTALLA")
     private String talla;
+    @PropiedadMap(campo="FISKU")
+    private int sku;
 
     /**
      * @return the idTalla
@@ -42,5 +44,19 @@ public class Talla {
      */
     public void setTalla(String talla) {
         this.talla = talla;
+    }
+
+    /**
+     * @return the sku
+     */
+    public int getSku() {
+        return sku;
+    }
+
+    /**
+     * @param sku the sku to set
+     */
+    public void setSku(int sku) {
+        this.sku = sku;
     }
 }

@@ -4,6 +4,7 @@
  */
 package com.elektra.uniformes.comercio.controller.negocio;
 
+import com.elektra.uniformes.comercio.DAO.DAOInventarioTienda;
 import com.elektra.uniformes.comercio.DAO.DAOSolicitud;
 import com.elektra.uniformes.comercio.Modelo.EmpleadoKitDTO;
 import com.elektra.uniformes.comercio.Modelo.RespuestaGuardaSolicitud;
@@ -35,6 +36,9 @@ public class NegocioSolicitud {
     public String HORA_CANCELACION;
     @Value("#{propiedadesUniformesComercio['MINUTO_CANCELACION']}")
     public String MINUTO_CANCELACION;
+    @Autowired
+    @Qualifier("daoInventarioTienda")
+    private DAOInventarioTienda daoInventarioTienda;
 
     public ArrayList<EmpleadoKitDTO> getKitEmpleado(int numEmp, int tipoSolicitud) throws Exception {
         ArrayList<EmpleadoKitDTO> lk = daoSolicitud.getKitEmpleado(numEmp, tipoSolicitud);
@@ -89,15 +93,17 @@ public class NegocioSolicitud {
         csol.set(Calendar.HOUR_OF_DAY, Integer.valueOf(HORA_CANCELACION));
         csol.set(Calendar.MINUTE, Integer.valueOf(MINUTO_CANCELACION));
         Date solicitud = csol.getTime();
-        
-        if(actual.before(solicitud)){
+
+        if (actual.before(solicitud)) {
             fechaCancelacion = df.format(solicitud);
-        }else{
+        } else {
             csol.add(Calendar.DATE, 1);
             fechaCancelacion = df.format(csol.getTime());
         }
-        System.out.println("actual : " + df.format(actual) + " fecha cancela : " + df.format(solicitud));
         return fechaCancelacion;
     }
-;
+
+    public int getInventario(int tienda, int sku) throws Exception {
+        return daoInventarioTienda.getInventario(tienda, sku);
+    }
 }

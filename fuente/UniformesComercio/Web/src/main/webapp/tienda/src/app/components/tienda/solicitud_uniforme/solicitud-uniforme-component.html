@@ -67,10 +67,12 @@
                                     </md-select>
                                 </td>
                                 <td>
-                                    <md-select placeholder="Talla" [(ngModel)]="prenda.tallaSeleccionada" [ngClass]="{'errTalla': prenda.error}" >
-                                        <md-option *ngFor="let talla of prenda.tallas" [value]="talla">{{ talla.talla }}</md-option>
-                                    </md-select>
-                                    <div style="color:red;" *ngIf="!prenda.tallaSeleccionada && prenda.error">*Seleccione la talla</div>
+                                    <div style="position: relative; width: 100%;">
+                                        <md-select placeholder="Talla" [(ngModel)]="prenda.tallaSeleccionada" [ngClass]="{'errTalla': prenda.error}" (ngModelChange)="validaInventario(prenda)">
+                                            <md-option *ngFor="let talla of prenda.tallas" [value]="talla">{{ talla.talla }}</md-option>
+                                        </md-select>
+                                        <div [@animaMsj]="prenda.error" class="errTallaMsj" >{{prenda.errorMsj}}</div>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>

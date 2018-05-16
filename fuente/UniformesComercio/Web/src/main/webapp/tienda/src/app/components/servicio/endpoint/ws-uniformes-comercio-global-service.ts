@@ -87,6 +87,11 @@ export class WSUniformesComercioGlobalService {
         return `${this._cadenaUrl}/json/solicitud/kit/pais/${pais}/canal/${canal}/sucursal/${tienda}/tiposolicitud/${tipo}`;
     }
 
+    /* Consulta inventario tienda sku*/
+    public urlconsultaInventarios(tienda: number, sku: number): string {
+        return `${this._cadenaUrl}/json/solicitud/inventario/tienda/${tienda}/sku/${sku}`;
+    }
+
     // Guarda la solicitud
     public urlGuardaSolicitud(): string {
         return `${this._cadenaUrl}/json/solicitud/`;
